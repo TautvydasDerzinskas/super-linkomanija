@@ -1,0 +1,626 @@
+@import '../../../popup/variables';
+
+form {
+  input[name="preview"] {
+    display: none;
+  }
+}
+
+.sceditor-button div, div.sceditor-grip {
+  background-image: url('data:image/png;base64,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');
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+}
+
+.sceditor-button-youtube div {
+  background-position: 0 0;
+}
+
+.sceditor-button-link div {
+  background-position: 0 -16px;
+}
+
+.sceditor-button-unlink div {
+  background-position: 0 -32px;
+}
+
+.sceditor-button-underline div {
+  background-position: 0 -48px;
+}
+
+.sceditor-button-time div {
+  background-position: 0 -64px;
+}
+
+.sceditor-button-table div {
+  background-position: 0 -80px;
+}
+
+.sceditor-button-superscript div {
+  background-position: 0 -96px;
+}
+
+.sceditor-button-subscript div {
+  background-position: 0 -112px;
+}
+
+.sceditor-button-strike div {
+  background-position: 0 -128px;
+}
+
+.sceditor-button-source div {
+  background-position: 0 -144px;
+}
+
+.sceditor-button-size div {
+  background-position: 0 -160px;
+}
+
+.sceditor-button-rtl div {
+  background-position: 0 -176px;
+}
+
+.sceditor-button-right div {
+  background-position: 0 -192px;
+}
+
+.sceditor-button-removeformat div {
+  background-position: 0 -208px;
+}
+
+.sceditor-button-quote div {
+  background-position: 0 -224px;
+}
+
+.sceditor-button-print div {
+  background-position: 0 -240px;
+}
+
+.sceditor-button-pastetext div {
+  background-position: 0 -256px;
+}
+
+.sceditor-button-paste div {
+  background-position: 0 -272px;
+}
+
+.sceditor-button-outdent div {
+  background-position: 0 -288px;
+}
+
+.sceditor-button-orderedlist div {
+  background-position: 0 -304px;
+}
+
+.sceditor-button-maximize div {
+  background-position: 0 -320px;
+}
+
+.sceditor-button-ltr div {
+  background-position: 0 -336px;
+}
+
+.sceditor-button-left div {
+  background-position: 0 -352px;
+}
+
+.sceditor-button-justify div {
+  background-position: 0 -368px;
+}
+
+.sceditor-button-italic div {
+  background-position: 0 -384px;
+}
+
+.sceditor-button-indent div {
+  background-position: 0 -400px;
+}
+
+.sceditor-button-image div {
+  background-position: 0 -416px;
+}
+
+.sceditor-button-horizontalrule div {
+  background-position: 0 -432px;
+}
+
+.sceditor-button-format div {
+  background-position: 0 -448px;
+}
+
+.sceditor-button-font div {
+  background-position: 0 -464px;
+}
+
+.sceditor-button-emoticon div {
+  background-position: 0 -480px;
+}
+
+.sceditor-button-email div {
+  background-position: 0 -496px;
+}
+
+.sceditor-button-date div {
+  background-position: 0 -512px;
+}
+
+.sceditor-button-cut div {
+  background-position: 0 -528px;
+}
+
+.sceditor-button-copy div {
+  background-position: 0 -544px;
+}
+
+.sceditor-button-color div {
+  background-position: 0 -560px;
+}
+
+.sceditor-button-code div {
+  background-position: 0 -576px;
+}
+
+.sceditor-button-center div {
+  background-position: 0 -592px;
+}
+
+.sceditor-button-bulletlist div {
+  background-position: 0 -608px;
+}
+
+.sceditor-button-bold div {
+  background-position: 0 -624px;
+}
+
+div.sceditor-grip {
+  background-position: 0 -640px;
+}
+
+.rtl div.sceditor-grip {
+  background-position: 0 -650px;
+  right: auto;
+  left: 0;
+}
+
+.sceditor-container {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  position: relative;
+  background: padding-box #fff;
+  border: 1px solid #d9d9d9;
+  font-size: 13px;
+  font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+  color: #333;
+  line-height: 1;
+  font-weight: 700;
+  height: 250px;
+  border-radius: 4px;
+  *, :after, :before {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+  padding: 0;
+  margin: 0;
+  z-index: 3;
+  div {
+    padding: 0;
+    margin: 0;
+    z-index: 3;
+  }
+}
+
+div.sceditor-dropdown {
+  padding: 0;
+  margin: 0;
+  z-index: 3;
+  div {
+    padding: 0;
+    margin: 0;
+    z-index: 3;
+  }
+}
+
+.sceditor-container {
+  iframe {
+    display: block;
+    -ms-flex: 1 1 0%;
+    -webkit-box-flex: 1;
+    flex: 1 1 0%;
+    line-height: 1.25;
+    border: 0;
+    outline: 0;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    color: #111;
+    padding: 0;
+    margin: 5px;
+    resize: none;
+    background: #fff;
+    height: auto !important;
+    width: auto !important;
+    width: calc(100% - 10px) !important;
+    min-height: 1px;
+  }
+  textarea {
+    display: block;
+    -ms-flex: 1 1 0%;
+    -webkit-box-flex: 1;
+    flex: 1 1 0%;
+    line-height: 1.25;
+    border: 0;
+    outline: 0;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    color: #111;
+    padding: 0;
+    margin: 5px;
+    resize: none;
+    background: #fff;
+    height: auto !important;
+    width: auto !important;
+    width: calc(100% - 10px) !important;
+    min-height: 1px;
+    margin: 7px 5px;
+  }
+}
+
+div {
+  &.sceditor-dnd-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: 5px dashed #aaa;
+    z-index: 200;
+    font-size: 2em;
+    text-align: center;
+    color: #aaa;
+    p {
+      position: relative;
+      top: 45%;
+      pointer-events: none;
+    }
+  }
+  &.sceditor-resize-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: .3;
+  }
+  &.sceditor-grip {
+    overflow: hidden;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+    line-height: 0;
+    &.has-icon {
+      background-image: none;
+    }
+  }
+}
+
+.sceditor-maximize {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100% !important;
+  width: 100% !important;
+  border-radius: 0;
+  background-clip: padding-box;
+  z-index: 2000;
+}
+
+body.sceditor-maximize, html.sceditor-maximize {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.sceditor-maximize div {
+  &.sceditor-grip {
+    display: none;
+  }
+  &.sceditor-toolbar {
+    border-radius: 0;
+    background-clip: padding-box;
+  }
+}
+
+div {
+  &.sceditor-dropdown {
+    position: absolute;
+    border: 1px solid #ccc;
+    background: padding-box #fff;
+    z-index: 4000;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    *, :after, :before {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    a {
+      color: #333;
+      &:link {
+        color: #333;
+      }
+    }
+    form {
+      margin: 0;
+    }
+    label {
+      display: block;
+      font-weight: 700;
+      color: #3c3c3c;
+      padding: 4px 0;
+    }
+    input {
+      font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+      outline: 0;
+      padding: 4px;
+      border: 1px solid #ccc;
+      border-top-color: #888;
+      margin: 0 0 .75em;
+      border-radius: 1px;
+      background-clip: padding-box;
+    }
+    textarea {
+      font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+      outline: 0;
+      padding: 4px;
+      border: 1px solid #ccc;
+      border-top-color: #888;
+      margin: 0 0 .75em;
+      border-radius: 1px;
+      background-clip: padding-box;
+      padding: 6px;
+    }
+    input:focus, textarea:focus {
+      border-color: #666 #aaa #aaa;
+      -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    .button {
+      font-weight: 700;
+      color: #444;
+      padding: 6px 12px;
+      background: padding-box #ececec;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      cursor: pointer;
+      margin: .3em 0 0;
+      &:hover {
+        background: #f3f3f3;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+  &.sceditor-font-picker, &.sceditor-fontsize-picker, &.sceditor-format {
+    padding: 6px 0;
+  }
+  &.sceditor-color-picker {
+    padding: 4px;
+  }
+  &.sceditor-emoticons, &.sceditor-more-emoticons {
+    padding: 0;
+  }
+}
+
+.sceditor-pastetext textarea {
+  border: 1px solid #bbb;
+  width: 20em;
+}
+
+.sceditor-emoticons img, .sceditor-more-emoticons img {
+  padding: 0;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.sceditor-more {
+  border-top: 1px solid #bbb;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 6px 0;
+}
+
+.sceditor-dropdown a:hover {
+  background: #eee;
+}
+
+.sceditor-font-option, .sceditor-fontsize-option, .sceditor-format a {
+  display: block;
+  padding: 7px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #222;
+}
+
+.sceditor-fontsize-option {
+  padding: 7px 13px;
+}
+
+.sceditor-color-column {
+  float: left;
+}
+
+.sceditor-color-option {
+  display: block;
+  border: 2px solid #fff;
+  height: 18px;
+  width: 18px;
+  overflow: hidden;
+  &:hover {
+    border: 1px solid #aaa;
+  }
+}
+
+div {
+  &.sceditor-toolbar {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding: 3px 5px 2px;
+    background: padding-box #f7f7f7;
+    border-bottom: 1px solid silver;
+    line-height: 0;
+    text-align: left;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 3px 3px 0 0;
+  }
+  &.sceditor-group {
+    display: inline-block;
+    background: padding-box #ddd;
+    margin: 1px 5px 1px 0;
+    padding: 1px;
+    border-bottom: 1px solid #aaa;
+    border-radius: 3px;
+  }
+}
+
+.sceditor-button {
+  float: left;
+  cursor: pointer;
+  padding: 3px 5px;
+  width: 16px;
+  height: 20px;
+  border-radius: 3px;
+  background-clip: padding-box;
+  &.active, &:active, &:hover {
+    background: #fff;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.3), inset -1px 0 rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.3), inset -1px 0 rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    background: #fff;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.3), inset -1px 0 rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 0 8px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.3), inset -1px 0 rgba(0, 0, 0, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2), inset 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+  &.disabled:hover {
+    background: inherit;
+    cursor: default;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  display: block;
+  div {
+    display: block;
+  }
+  svg {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 2px 0;
+    fill: #111;
+    text-decoration: none;
+    pointer-events: none;
+    line-height: 1;
+  }
+  &.disabled svg {
+    fill: #888;
+  }
+  div {
+    display: inline-block;
+    margin: 2px 0;
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+  }
+  &.has-icon div {
+    display: none;
+  }
+  &.disabled div {
+    opacity: .3;
+  }
+  &.text, &.text-icon {
+    display: inline-block;
+    width: auto;
+    line-height: 16px;
+    font-size: 1em;
+    color: inherit;
+    text-indent: 0;
+    div {
+      display: inline-block;
+      width: auto;
+      line-height: 16px;
+      font-size: 1em;
+      color: inherit;
+      text-indent: 0;
+    }
+  }
+}
+
+.text .sceditor-button, .text-icon .sceditor-button {
+  display: inline-block;
+  width: auto;
+  line-height: 16px;
+  font-size: 1em;
+  color: inherit;
+  text-indent: 0;
+  div {
+    display: inline-block;
+    width: auto;
+    line-height: 16px;
+    font-size: 1em;
+    color: inherit;
+    text-indent: 0;
+  }
+}
+
+.sceditor-button {
+  &.has-icon div, &.text div {
+    padding: 0 2px;
+    background: 0 0;
+  }
+}
+
+.text .sceditor-button div, .text-icon .sceditor-button.has-icon div {
+  padding: 0 2px;
+  background: 0 0;
+}
+
+.sceditor-button.text svg, .text .sceditor-button svg {
+  display: none;
+}
+
+.sceditor-button.text-icon div, .text-icon .sceditor-button div {
+  padding: 0 2px 0 20px;
+}
+
+.rtl {
+  div.sceditor-toolbar {
+    text-align: right;
+  }
+  .sceditor-button {
+    float: right;
+  }
+}

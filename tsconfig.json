@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./extension/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es2015",
+    "allowJs": true,
+    "jsx": "react"
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../../../variables';
+
+$video-item-height: 30px;
+
+.video {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $video-item-height;
+  overflow: hidden;
+
+  &__thumbnail {
+    height: $video-item-height;
+    display: inline-block;
+    width: 40px;
+  }
+
+  &__title {
+    display: block;
+    flex: 1 auto;
+    width: 100%;
+    font-size: 15px;
+    color: $theme-gray;
+    padding-left: $default-spacing;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: $default-transition;
+  }
+
+  &__play-button {
+    height: 10px;
+    width: 10px;
+    margin: 0 $default-spacing;
+
+    .play-button--active {
+      display: none;
+    }
+  }
+
+  &:hover {
+    background-color: darken(#F1F1F1, 5%);
+
+    .video__title {
+      color: $theme-black;
+    }
+
+    .play-button--disabled {
+      display: none;
+    }
+
+    .play-button--active {
+      display: inline-block;
+    }
+  }
+}

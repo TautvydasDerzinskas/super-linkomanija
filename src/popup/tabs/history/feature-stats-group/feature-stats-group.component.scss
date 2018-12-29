@@ -1,0 +1,34 @@
+@import '../../../variables';
+
+.feature-group {
+  background-color: $theme-silver-white;
+  padding: $default-spacing;
+
+  &:not(:last-child) {
+    margin-bottom: $default-spacing;
+  }
+
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+  }
+
+  &__sub-title {
+    text-align: right;
+    font-size: 10px;
+    color: $theme-light-gray;
+
+    strong {
+      color: $theme-red;
+    }
+  }
+
+  &__videos {
+    overflow: auto;
+    margin-top: $default-spacing;
+    max-height: 90px;
+  }
+}

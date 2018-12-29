@@ -1,0 +1,22 @@
+// Colors
+$theme-gray: #252525;
+$theme-light-gray: #a0a0a0;
+$theme-red: #eb1c24;
+$theme-white: #ffffff;
+$theme-silver-white: #F1F1F1;
+$theme-black: #000000;
+$theme-blue: #0079c2;
+$theme-green: #4CC790;
+$theme-yellow: #fef200;
+
+// Spacings
+$default-spacing: 8px;
+$small-spacing: $default-spacing / 2;
+$large-spacing: $default-spacing * 2;
+
+// Sizes
+$popup-max-width: 500px;
+$tab-content-width: $popup-max-width - ($large-spacing * 2);
+
+// Other
+$default-transition: all 0.3s ease-in-out;

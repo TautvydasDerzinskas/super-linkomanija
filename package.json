@@ -1,0 +1,80 @@
+{
+  "name": "super-linkomanija",
+  "version": "1.0.0",
+  "description": "Extension which improves UI/UX experience in Linkomanija.net website",
+  "homepage": "https://github.com/SlimDogs/super-linkomanija",
+  "scripts": {
+    "build": "webpack --config=config/webpack/webpack.config.js --mode=production && npm run zip",
+    "develop": "webpack --config=config/webpack/webpack.config.js --mode=development --watch --info-verbosity verbose",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "zip": "cd extension/ && bestzip ../sl.zip *"
+  },
+  "dependencies": {
+    "react": "16.7.0",
+    "react-dom": "16.7.0",
+    "react-router-dom": "4.3.1",
+    "sceditor": "2.1.3"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.76",
+    "@types/react": "16.7.17",
+    "@types/react-dom": "16.0.11",
+    "@types/react-router-dom": "^4.3.1",
+    "bestzip": "2.1.2",
+    "clean-webpack-plugin": "1.0.0",
+    "commitizen": "3.0.5",
+    "copy-webpack-plugin": "4.6.0",
+    "css-loader": "2.1.0",
+    "cz-customizable": "5.3.0",
+    "husky": "1.2.1",
+    "node-sass": "4.11.0",
+    "sass-loader": "7.1.0",
+    "string-replace-loader": "2.1.1",
+    "style-loader": "0.23.1",
+    "ts-loader": "5.3.2",
+    "tslint": "5.12.0",
+    "tslint-react": "3.6.0",
+    "typescript": "3.2.2",
+    "webpack": "4.28.2",
+    "webpack-cli": "3.1.2"
+  },
+  "keywords": [
+    "Chrome",
+    "Linkomanija",
+    "Extension",
+    "JavaScript",
+    "TypeScript",
+    "React"
+  ],
+  "author": {
+    "name": "Tautvydas Derzinskas",
+    "email": "tautvydasuk@gmail.com",
+    "url": "https://www.tautvydas.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SlimDogs/super-linkomanija.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SlimDogs/super-linkomanija/issues",
+    "email": "tautvydasuk+myga@gmail.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "config/cz-customizable/base.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}

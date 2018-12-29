@@ -1,0 +1,37 @@
+@import '../../variables';
+
+.layout {
+  &__header {
+    position: relative;
+
+    .header__close-button {
+      position: absolute;
+      top: $default-spacing;
+      right: $default-spacing;
+      cursor: pointer;
+
+      > svg {
+        fill: $theme-light-gray;
+        height: $large-spacing;
+        width: $large-spacing;
+        transition: $default-transition;
+      }
+
+      &:hover {
+        > svg {
+          fill: $theme-white;
+        }
+      }
+    }
+
+    .header__logo {
+      position: relative;
+
+      > img {
+        display: block;
+        width: $popup-max-width;
+        height: auto;
+      }
+    }
+  }
+}

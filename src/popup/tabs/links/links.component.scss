@@ -1,0 +1,15 @@
+@import '../../variables';
+
+$links-column-size: ($tab-content-width - $default-spacing) / 2;
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  &__column {
+    position: relative;
+    width: $links-column-size;
+    height: $links-column-size;
+  }
+}

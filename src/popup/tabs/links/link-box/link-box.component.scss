@@ -1,0 +1,78 @@
+@import '../../../variables';
+
+$link-box-size: ($tab-content-width - ($default-spacing * 3)) / 4;
+
+.link-box {
+  position: absolute;
+  height: $link-box-size;
+  width: $link-box-size;
+  background-color: $theme-silver-white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--top-left, &--top-left-right {
+    top: 0;
+    left: 0;
+  }
+  &--top-right, &--top-left-right {
+    top: 0;
+    right: 0;
+  }
+
+  &--bottom-left, &--bottom-left-right {
+    bottom: 0;
+    left: 0;
+  }
+  &--bottom-right, &--bottom-left-right {
+    bottom: 0;
+    right: 0;
+  }
+
+  &--top-left-right, &--bottom-left-right {
+    width: auto;
+  }
+
+  &__icon {
+    height: $link-box-size / 2;
+    width: $link-box-size / 2;
+    fill: $theme-light-gray;
+    transition: $default-transition;
+
+    &--image {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba($theme-red, .9);
+    transition: $default-transition;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > span {
+      color: white;
+    }
+  }
+
+  &:hover {
+    .link-box__icon {
+      fill: $theme-gray;
+      transform: scale(1.3);
+    }
+
+    .link-box__overlay {
+      top: 0px;
+    }
+  }
+}

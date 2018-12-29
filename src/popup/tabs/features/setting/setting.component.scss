@@ -1,0 +1,89 @@
+@import '../../../variables';
+
+$toggle-width: 38px;
+$toggle-height: 20px;
+$slider-size: 16px;
+$slider-spacing: ($toggle-height - $slider-size) / 2;
+$toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
+
+.setting {
+  display: flex;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: $default-spacing;
+  }
+
+  &__title {
+    font-weight: bold;
+    color: $theme-blue;
+  }
+
+  &__switch {
+    position: relative;
+    display: inline-block;
+    width: $toggle-width;
+    height: $toggle-height;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $theme-gray;
+    -webkit-transition: .4s;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: $slider-size;
+      width: $slider-size;
+      left: $slider-spacing;
+      bottom: $slider-spacing;
+      background-color: $theme-white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    &--round {
+      border-radius: $toggle-height;
+      &:before {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  input:checked + .slider {
+    background-color: $theme-red;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px $theme-red;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX($toggle-distance);
+    -ms-transform: translateX($toggle-distance);
+    transform: translateX($toggle-distance);
+  }
+
+  &:hover {
+    .slider {
+      background-color: darken($theme-gray, 15%);
+    }
+
+    input:checked + .slider {
+      background-color: darken($theme-red, 15%);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import '../../../variables';
+
+.link-box {
+  &--paypal {
+    input[type="image"] {
+      display: none;
+    }
+
+    .link-box__overlay {
+      font-size: 12px;
+      cursor: pointer;
+      border: 0;
+      outline: none;
+    }
+  }
+}

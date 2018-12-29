@@ -1,0 +1,24 @@
+@import './variables';
+
+/**
+ * Globals
+ */
+ body, html {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 12px;
+
+  margin: 0;
+  padding: 0;
+  width: $popup-max-width;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: $default-transition;
+}
+
+* {
+  box-sizing: border-box;
+}
+
