@@ -61,7 +61,8 @@ $link-box-size: ($tab-content-width - ($default-spacing * 3)) / 4;
     justify-content: center;
 
     > span {
-      color: white;
+      text-align: center;
+      color: $theme-white;
     }
   }
 

@@ -1,0 +1,90 @@
+{
+  "appName": {
+    "message": "Super Linkomanija",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Naršyklės priedas praplečiantis Linkomanija.net svetainės galimybes!",
+    "description":"The description of the application, displayed in the web store."
+  },
+  "popupCloseTitle": {
+    "message": "Uždaryti",
+    "description": "Title of the popup close button"
+  },
+  "tabsFeaturesLabel": {
+    "message": "Galimybių konfiguracija",
+    "description": "Popup navigation features tab label"
+  },
+  "tabsHistoryLabel": {
+    "message": "Istorija",
+    "description": "Popup navigation history tab label"
+  },
+  "tabsLinksLabel": {
+    "message": "Nuorodos",
+    "description": "Popup navigation links tab label"
+  },
+  "tabsExtensionVersionTitle": {
+    "message": "Naršyklės papildynio versija",
+    "description": "Popup version information tooltip"
+  },
+  "featureCommentsFormattingTitle": {
+    "message": "Komentarų formatavimas",
+    "description": "Features tab configuration setting title for comments formatting feature"
+  },
+  "featureCommentsFormattingDescription": {
+    "message": "Suteikia galimybę komentuoti torentus su stilingai formotuotu tekstu",
+    "description": "Features tab configuration setting description for comments formatting feature"
+  },
+  "featureHomePageRedirectTitle": {
+    "message": "Namų puslapio peradresavimas",
+    "description": "Features tab configuration setting title for homepage redirect feature"
+  },
+  "featureHomePageRedirectDescription": {
+    "message": "Užėjus į Linkomanijos namų puslapį būsite peradresuoti į torentų puslapį",
+    "description": "Features tab configuration setting description for homepage redirect feature"
+  },
+  "featureTorrentPreviewTitle": {
+    "message": "Išankstinė torento aprašymo peržiūra",
+    "description": "Features tab configuration setting title for torrent preview feature"
+  },
+  "featureTorrentPreviewDescription": {
+    "message": "Leis peržiūrėti torento aprašymą neįeinant į torento detalių puslapį",
+    "description": "Features tab configuration setting description for torrent preview feature"
+  },
+  "featureViewModesTitle": {
+    "message": "Peržiūros tipai",
+    "description": "Features tab configuration setting title for view modes feature"
+  },
+  "featureViewModesDescription": {
+    "message": "Suteiks galimybę peržiūrėti torentų sąrašus 'kortelių' pavidalu",
+    "description": "Features tab configuration setting description for view modes feature"
+  },
+  "tabsLinksGithubRepositoryLabel": {
+    "message": "GitHub saugykla",
+    "description": "Github repository link box overlay text"
+  },
+  "tabsLinksReportBugLabel": {
+    "message": "Pranešk apie rastą klaidą",
+    "description": "Report a bug link box overlay text"
+  },
+  "tabsLinksExtensionAuthorLabel": {
+    "message": "Papildinio autorius",
+    "description": "Extension author link box overlay text"
+  },
+  "tabsLinksBuyAuthorBeerLabel": {
+    "message": "Pastatyk autoriui bokalą alaus",
+    "description": "Buy author a beer link box overlay text"
+  },
+  "tabsLinksShareFacebookLabel": {
+    "message": "Dalintis Veidaknygėje",
+    "description": "Share to Facebook link box overlay text"
+  },
+  "tabsLinksShareTwitterLabel": {
+    "message": "Dalintis Twiteryje",
+    "description": "Share to Twitter link box overlay text"
+  },
+  "tabsLinksLeaveReviewLabel": {
+    "message": "Įvertinti papildinį",
+    "description": "Leave a review link box overlay text"
+  }
+}

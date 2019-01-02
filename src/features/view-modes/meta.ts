@@ -3,8 +3,8 @@ import { ViewModes } from '../../enums';
 
 const meta: IMeta = {
   id: 'sl-view-modes',
-  description: 'Switch between list and grid view modes while browsing torrents',
-  title: 'View modes',
+  description: 'featureViewModesDescription',
+  title: 'featureViewModesTitle',
   defaultStatus: true,
   defaultData: {
     mode: ViewModes.List,

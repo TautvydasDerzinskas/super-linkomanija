@@ -1,0 +1,90 @@
+{
+  "appName": {
+    "message": "Super Linkomanija",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Extension which improves UI/UX experience in Linkomanija.net website",
+    "description": "The description of the application, displayed in the web store."
+  },
+  "popupCloseTitle": {
+    "message": "Close",
+    "description": "Title of the popup close button"
+  },
+  "tabsFeaturesLabel": {
+    "message": "Features",
+    "description": "Popup navigation features tab label"
+  },
+  "tabsHistoryLabel": {
+    "message": "History",
+    "description": "Popup navigation history tab label"
+  },
+  "tabsLinksLabel": {
+    "message": "Links",
+    "description": "Popup navigation links tab label"
+  },
+  "tabsExtensionVersionTitle": {
+    "message": "Extension version",
+    "description": "Popup version information tooltip"
+  },
+  "featureCommentsFormattingTitle": {
+    "message": "Comments formatting",
+    "description": "Features tab configuration setting title for comments formatting feature"
+  },
+  "featureCommentsFormattingDescription": {
+    "message": "Adds text formatting options to comments form",
+    "description": "Features tab configuration setting description for comments formatting feature"
+  },
+  "featureHomePageRedirectTitle": {
+    "message": "Homepage redirect",
+    "description": "Features tab configuration setting title for homepage redirect feature"
+  },
+  "featureHomePageRedirectDescription": {
+    "message": "Skip homepage and redirect straight to torrents page",
+    "description": "Features tab configuration setting description for homepage redirect feature"
+  },
+  "featureTorrentPreviewTitle": {
+    "message": "Torrent details preview",
+    "description": "Features tab configuration setting title for torrent preview feature"
+  },
+  "featureTorrentPreviewDescription": {
+    "message": "Displays torrent details popup on mouse hover event",
+    "description": "Features tab configuration setting description for torrent preview feature"
+  },
+  "featureViewModesTitle": {
+    "message": "View modes",
+    "description": "Features tab configuration setting title for view modes feature"
+  },
+  "featureViewModesDescription": {
+    "message": "Switch between list and grid view modes while browsing torrents",
+    "description": "Features tab configuration setting description for view modes feature"
+  },
+  "tabsLinksGithubRepositoryLabel": {
+    "message": "GitHub repository",
+    "description": "Github repository link box overlay text"
+  },
+  "tabsLinksReportBugLabel": {
+    "message": "Report a bug",
+    "description": "Report a bug link box overlay text"
+  },
+  "tabsLinksExtensionAuthorLabel": {
+    "message": "Extension author",
+    "description": "Extension author link box overlay text"
+  },
+  "tabsLinksBuyAuthorBeerLabel": {
+    "message": "Buy author a beer",
+    "description": "Buy author a beer link box overlay text"
+  },
+  "tabsLinksShareFacebookLabel": {
+    "message": "Share to Facebook",
+    "description": "Share to Facebook link box overlay text"
+  },
+  "tabsLinksShareTwitterLabel": {
+    "message": "Share to Twitter",
+    "description": "Share to Twitter link box overlay text"
+  },
+  "tabsLinksLeaveReviewLabel": {
+    "message": "Love this extension? Leave a review!",
+    "description": "Leave a review link box overlay text"
+  }
+}

@@ -2,8 +2,8 @@ import IMeta from '../../interfaces/meta';
 
 const meta: IMeta = {
   id: 'sl-torrent-preview',
-  description: 'Displays torrent details popup on mouse hover event',
-  title: 'Torrent details preview',
+  description: 'featureTorrentPreviewDescription',
+  title: 'featureTorrentPreviewTitle',
   defaultStatus: true,
 };
 

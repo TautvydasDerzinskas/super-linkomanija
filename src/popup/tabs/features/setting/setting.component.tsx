@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage, injectIntl, InjectedIntlProps } from 'react-intl';
 
 import IMeta from '../../../../interfaces/meta';
 import { IMessageToggle } from '../../../../interfaces/communication';
@@ -12,8 +13,12 @@ interface ISettingComponentState {
   };
 }
 
-export default class SettingComponent extends React.Component<{ meta: IMeta }, ISettingComponentState> {
-  constructor(props: { meta: IMeta }) {
+interface ISettingComponentProps extends InjectedIntlProps {
+  meta: IMeta;
+}
+
+class SettingComponent extends React.Component<ISettingComponentProps, ISettingComponentState> {
+  constructor(props: ISettingComponentProps) {
     super(props);
     this.state = {
       data: {
@@ -62,8 +67,12 @@ export default class SettingComponent extends React.Component<{ meta: IMeta }, I
     return (
       <div className='setting'>
         <div className='setting__column'>
-          <div className='setting__title'>{this.props.meta.title}</div>
-          <div>{this.props.meta.description}</div>
+          <div className='setting__title'>
+            <FormattedMessage id={this.props.meta.title}></FormattedMessage>
+          </div>
+          <div>
+            <FormattedMessage id={this.props.meta.description}></FormattedMessage>
+          </div>
         </div>
         <div className='setting__column'>
           <label className='setting__switch'>
@@ -75,3 +84,5 @@ export default class SettingComponent extends React.Component<{ meta: IMeta }, I
     );
   }
 }
+
+export default injectIntl(SettingComponent);

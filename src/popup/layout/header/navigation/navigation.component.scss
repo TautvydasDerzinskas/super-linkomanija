@@ -22,7 +22,6 @@ $tb-default-spacing: $default-spacing / 2;
     color: $tb-border-color;
     margin-right: $tb-default-spacing;
     padding: $tb-default-spacing;
-    padding-bottom: 0;
     cursor: pointer;
 
     &:hover {
@@ -46,6 +45,6 @@ $tb-default-spacing: $default-spacing / 2;
     color: lighten($theme-yellow, 30%);
     float: right;
     font-size: 9px;
-    margin-top: $default-spacing;
+    margin-top: $small-spacing;
   }
 }

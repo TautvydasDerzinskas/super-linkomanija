@@ -2,8 +2,8 @@ import IMeta from '../../interfaces/meta';
 
 const meta: IMeta = {
   id: 'sl-comments-bbcode',
-  description: 'Adds text formatting options to comments form',
-  title: 'Comments formatting',
+  description: 'featureCommentsFormattingDescription',
+  title: 'featureCommentsFormattingTitle',
   defaultStatus: true,
 };
 
