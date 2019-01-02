@@ -32,13 +32,11 @@ export default class HistoryComponent extends React.Component<{}, HistoryCompone
     let allGroupsHtml;
     if (this.state.data != null) {
       allGroupsHtml = FeaturesMeta.map((featureMeta) => {
-        if (featureMeta.isInHistoryTab) {
-          return (<FeatureStatsGroupComponent
-            key={featureMeta.id}
-            meta={featureMeta}
-            data={this.state.data[featureMeta.id].data}>
-          </FeatureStatsGroupComponent>);
-        }
+        return (<FeatureStatsGroupComponent
+          key={featureMeta.id}
+          meta={featureMeta}
+          data={this.state.data[featureMeta.id].data}>
+        </FeatureStatsGroupComponent>);
       });
     }
 

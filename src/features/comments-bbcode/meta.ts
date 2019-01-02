@@ -5,9 +5,6 @@ const meta: IMeta = {
   description: 'Adds text formatting options to comments form',
   title: 'Comments formatting',
   defaultStatus: true,
-  videoPageOnly: true,
-  isInHistoryTab: false,
-  actionTitle: 'comments hidden',
 };
 
 export default meta;

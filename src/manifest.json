@@ -40,6 +40,13 @@
 			"js": ["sceditor.min.js", "bbcode.js"],
 			"run_at": "document_start",
 			"all_frames": true
+    },
+		{
+			"matches": ["*://*.linkomanija.net/browse.php*"],
+			"css": ["tippy.css"],
+			"js": ["tippy.js"],
+			"run_at": "document_start",
+			"all_frames": true
     }
   ],
 

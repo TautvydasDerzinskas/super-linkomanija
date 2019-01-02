@@ -45,33 +45,22 @@ class FeatureStorageService extends ChromeStorageService {
     });
   }
 
-  public trackVideo(featureId: string, videoId: string) {
-    this.getFeatureData(featureId).then(featureData => {
-      if (featureData.data.songs[0] !== videoId) {
-        if (featureData.data.songs.length === 25) {
-          featureData.data.songs.pop();
-        }
-        featureData.data.songs.unshift(videoId);
-        featureData.data.counter++;
-        this.storeFeatureData(featureId, featureData.data);
-      }
-    });
-  }
-
   public initialize(): void {
     this.getFeatures().then((features: IFeaturesStorageObject) => {
-      if (features == null) {
         const freshFeatures: IFeaturesStorageObject = {};
 
         FeaturesMeta.forEach(featureMeta => {
-          freshFeatures[featureMeta.id] = {
-            status: featureMeta.defaultStatus != null ? featureMeta.defaultStatus : true,
-            data: featureMeta.defaultData || {},
-          };
+          if (!features || !features[featureMeta.id]) {
+            freshFeatures[featureMeta.id] = {
+              status: featureMeta.defaultStatus != null ? featureMeta.defaultStatus : true,
+              data: featureMeta.defaultData || {},
+            };
+          } else {
+            freshFeatures[featureMeta.id] = features[featureMeta.id];
+          }
         });
 
         this.setItem(this.FEATURES_STORAGE_KEY, freshFeatures);
-      }
     });
   }
 }

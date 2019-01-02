@@ -30,8 +30,8 @@ export default class FeatureStatsGroupComponent extends React.Component<{ meta: 
     return (
       <div className='feature-group'>
         <div className='feature-group__heading'>
-          <div className='feature-group__title'>Recent video(s) {this.props.meta.actionTitle}:</div>
-          <div className='feature-group__sub-title'>Total <strong>{this.props.data.counter}</strong> video(s) {this.props.meta.actionTitle}</div>
+          <div className='feature-group__title'>Recent video(s):</div>
+          <div className='feature-group__sub-title'>Total <strong></strong> video(s)</div>
         </div>
       </div>
     );

@@ -1,0 +1,51 @@
+@import '../../../popup/variables';
+
+$torrents-table-selector: '#content form[action="browse.php"] > table:not(.bottom):not(.browse)';
+
+.view-modes {
+  margin-top: $large-spacing;
+  text-align: center;
+
+  &__option {
+    display: inline-block;
+    cursor: pointer;
+    padding: $default-spacing;
+    border: 1px $linkomanija-border-color solid;
+    background-color: $linkomanija-cell-bg-color;
+    outline: none;
+
+    &.active {
+      background-color: $linkomanija-link-color;
+      svg {
+        fill: $linkomanija-cell-bg-color;
+      }
+    }
+
+    svg {
+      display: inline-block;
+      height: $large-spacing;
+      width: $large-spacing;
+      fill: $linkomanija-link-color;
+    }
+  }
+}
+
+.sl-view-mode--list {
+  #{$torrents-table-selector} {
+    display: table;
+  }
+
+  .torrents {
+    display: none;
+  }
+}
+
+.sl-view-mode--grid {
+  .torrents {
+    display: flex;
+  }
+
+  #{$torrents-table-selector} {
+    display: none;
+  }
+}

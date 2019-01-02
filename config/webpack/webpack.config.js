@@ -78,7 +78,10 @@ module.exports = {
       }
     }]),
     new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../src/assets') }]),
+    // NPM dependencies
     new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../node_modules/sceditor/minified/sceditor.min.js') }]),
     new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../node_modules/sceditor/minified/formats/bbcode.js') }]),
+    new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../node_modules/tippy.js/dist/tippy.css') }]),
+    new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../node_modules/tippy.js/dist/tippy.js') }]),
   ],
 };

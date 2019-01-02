@@ -1,9 +1,9 @@
 import IMeta from './meta';
 import IContent from './content';
+import { ViewModes } from '../enums';
 
 export interface IFeatureData {
-  songs?: string[];
-  counter?: number;
+  mode?: ViewModes;
 }
 
 export interface IFeatureStoredData {

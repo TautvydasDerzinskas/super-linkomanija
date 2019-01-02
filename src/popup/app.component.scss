@@ -10,6 +10,11 @@
   margin: 0;
   padding: 0;
   width: $popup-max-width;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
 }
 
 a {
