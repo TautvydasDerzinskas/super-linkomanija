@@ -6,36 +6,49 @@ const ltLocale = require( '../../_locales/lt/messages.json');
 class LanguageService {
   private browserLocaleCode = chrome.i18n.getUILanguage();
   public defaultLocale = 'lt';
-  private availableLocales: { [index: string]: any; } = {
-    en: enLocale,
-    lt: ltLocale,
-  };
+  private availableLocales = [
+    {
+      codes: ['en-GB', 'en', 'en-US'],
+      locale: enLocale,
+    },
+    {
+      codes: ['lt', 'lt-LT'],
+      locale: ltLocale,
+    },
+  ];
 
   public localeMessages: any = {};
 
   public initialize() {
-    for (const localeKey in this.availableLocales) {
-      if (localeKey !== null) {
-        addLocaleData({ locale: localeKey, fields: this.convertLocaleToIntl(localeKey) });
+    this.availableLocales.forEach(localeObject => {
+      for (let i = 0, b = localeObject.codes.length; i < b; i += 1) {
+        const localeCode = localeObject.codes[i];
+        addLocaleData({ locale: localeCode, fields: this.convertLocaleToIntl(localeCode) });
       }
-    }
+    });
+
     this.localeMessages = this.convertLocaleToIntl(this.extensionLocale);
   }
 
-  private convertLocaleToIntl(locale: string) {
+  private convertLocaleToIntl(localeCode: string) {
     const transformedLocale: any = {};
-    Object.keys(this.availableLocales[locale]).forEach((key) => {
-      transformedLocale[key] = this.availableLocales[locale][key].message;
-    });
+    const locale = this.getLocaleByCode(localeCode);
+    if (locale) {
+      Object.keys(locale).forEach((key) => {
+        transformedLocale[key] = locale[key].message;
+      });
+    }
     return transformedLocale;
   }
 
+  private getLocaleByCode(localeCode: string) {
+    return this.availableLocales.filter((locale) => locale.codes.indexOf(localeCode) >= 0)[0].locale;
+  }
+
   get extensionLocale() {
-    if (this.availableLocales[this.browserLocaleCode]) {
-      return this.browserLocaleCode;
-    } else {
-      return this.defaultLocale;
-    }
+    const localeObject = this.getLocaleByCode(this.browserLocaleCode);
+    const extensionLocale = localeObject ? this.browserLocaleCode : this.defaultLocale;
+    return extensionLocale;
   }
 }
 

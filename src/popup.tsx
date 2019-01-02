@@ -15,7 +15,8 @@ ReactDOM.render(
   <IntlProvider
     locale={languageService.extensionLocale}
     messages={languageService.localeMessages}
-    defaultLocale={languageService.defaultLocale}>
+    defaultLocale={languageService.defaultLocale}
+  >
     <HashRouter>
       <AppComponent/>
     </HashRouter>
