@@ -5,6 +5,9 @@ import { Switch, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
 import languageService from '../services/common/language.service';
+import ChromeStorageService from '../services/common/chrome-storage.service';
+
+import { ChromeStorageKeys } from '../enums';
 
 // Layout components
 import HeaderComponent from './layout/header/header.component';
@@ -16,6 +19,8 @@ import LinksComponent from './tabs/links/links.component';
 
 import './app.component.scss';
 
+const chromeStorageService = new ChromeStorageService();
+
 interface IAppComponentState {
   locale: string;
   messages: { [index: string]: string; };
@@ -26,17 +31,28 @@ export default class AppComponent extends React.Component<{}, IAppComponentState
   constructor(props: {}) {
     super(props);
     this.state = {
-      locale: languageService.extensionLocale,
-      messages: languageService.localeMessages,
+      locale: languageService.defaultLocale,
+      messages: languageService.getMessagesForLocale(languageService.defaultLocale),
       defaultLocale: languageService.defaultLocale
     };
   }
 
+  componentDidMount() {
+    languageService.getActiveLocale().then((activeLocale: string) => {
+      this.setState({
+        locale: activeLocale,
+        messages: languageService.getMessagesForLocale(activeLocale),
+      });
+    });
+  }
+
   public updateLocale(localeCode: string) {
     if (localeCode !== this.state.locale) {
-      this.setState({
-        locale: localeCode,
-        messages: languageService.convertLocaleToIntl(localeCode),
+      chromeStorageService.setItem(ChromeStorageKeys.Locale, { value: localeCode }).then(() => {
+        this.setState({
+          locale: localeCode,
+          messages: languageService.getMessagesForLocale(localeCode),
+        });
       });
     }
   }

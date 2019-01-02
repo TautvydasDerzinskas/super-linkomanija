@@ -1,10 +1,14 @@
 import { addLocaleData } from 'react-intl';
+import ChromeStorageService from './chrome-storage.service';
+
+import { ChromeStorageKeys } from '../../enums';
+
+const chromeStorageService = new ChromeStorageService();
 
 const enLocale = require('../../_locales/en/messages.json');
 const ltLocale = require( '../../_locales/lt/messages.json');
 
 class LanguageService {
-  private browserLocaleCode = chrome.i18n.getUILanguage();
   public defaultLocale = 'lt';
   private availableLocales = [
     {
@@ -17,20 +21,16 @@ class LanguageService {
     },
   ];
 
-  public localeMessages: any = {};
-
   constructor() {
     this.availableLocales.forEach(localeObject => {
       for (let i = 0, b = localeObject.codes.length; i < b; i += 1) {
         const localeCode = localeObject.codes[i];
-        addLocaleData({ locale: localeCode, fields: this.convertLocaleToIntl(localeCode) });
+        addLocaleData({ locale: localeCode, fields: this.getMessagesForLocale(localeCode) });
       }
     });
-
-    this.localeMessages = this.convertLocaleToIntl(this.extensionLocale);
   }
 
-  public convertLocaleToIntl(localeCode: string) {
+  public getMessagesForLocale(localeCode: string) {
     const transformedLocale: any = {};
     const locale = this.getLocaleByCode(localeCode);
     if (locale) {
@@ -41,14 +41,23 @@ class LanguageService {
     return transformedLocale;
   }
 
-  private getLocaleByCode(localeCode: string) {
-    return this.availableLocales.filter((locale) => locale.codes.indexOf(localeCode) >= 0)[0].locale;
+  public getActiveLocale() {
+    return new Promise((resolve) => {
+      chromeStorageService.getItem(ChromeStorageKeys.Locale).then((localeData: { value: string; }) => {
+        if (localeData && localeData.value) {
+          resolve(localeData.value);
+        } else {
+          const browserLocaleCode = chrome.i18n.getUILanguage();
+          const localeObject = this.getLocaleByCode(browserLocaleCode);
+          const extensionLocale = localeObject ? browserLocaleCode : this.defaultLocale;
+          resolve(extensionLocale);
+        }
+      });
+    });
   }
 
-  get extensionLocale() {
-    const localeObject = this.getLocaleByCode(this.browserLocaleCode);
-    const extensionLocale = localeObject ? this.browserLocaleCode : this.defaultLocale;
-    return extensionLocale;
+  private getLocaleByCode(localeCode: string) {
+    return this.availableLocales.filter((locale) => locale.codes.indexOf(localeCode) >= 0)[0].locale;
   }
 }
 

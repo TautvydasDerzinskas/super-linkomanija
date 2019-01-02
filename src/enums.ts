@@ -26,3 +26,8 @@ export enum ViewModes {
   List,
   Grid,
 }
+
+export enum ChromeStorageKeys {
+  Locale = 'sm-locale',
+  Features = 'sm-features',
+}

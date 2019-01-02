@@ -1,18 +1,18 @@
 
 import ChromeStorageService from './chrome-storage.service';
 
+import { ChromeStorageKeys } from '../../enums';
+
 import { FeaturesMeta } from '../../features/features';
 import { IFeaturesStorageObject, IFeatureStoredData, IFeatureData } from '../../interfaces/feature';
 
 class FeatureStorageService extends ChromeStorageService {
-  private FEATURES_STORAGE_KEY = 'mygaFeatures';
-
   constructor() {
     super();
   }
 
   public getFeatures(): Promise<IFeaturesStorageObject> {
-    return this.getItem(this.FEATURES_STORAGE_KEY);
+    return this.getItem(ChromeStorageKeys.Features);
   }
 
   public getFeatureData<T>(featureId: string): Promise<IFeatureStoredData> {
@@ -27,7 +27,7 @@ class FeatureStorageService extends ChromeStorageService {
     return new Promise((resolve) => {
       this.getFeatures().then((features: IFeaturesStorageObject) => {
         features[featureId].status = typeof value === 'boolean' ? value : !features[featureId].status;
-        this.setItem(this.FEATURES_STORAGE_KEY, features).then(() => {
+        this.setItem(ChromeStorageKeys.Features, features).then(() => {
           resolve(features[featureId]);
         });
       });
@@ -38,7 +38,7 @@ class FeatureStorageService extends ChromeStorageService {
     return new Promise((resolve) => {
       this.getFeatures().then((features: IFeaturesStorageObject) => {
         features[featureId].data = data;
-        this.setItem(this.FEATURES_STORAGE_KEY, features).then(() => {
+        this.setItem(ChromeStorageKeys.Features, features).then(() => {
           resolve(features[featureId]);
         });
       });
@@ -60,7 +60,7 @@ class FeatureStorageService extends ChromeStorageService {
           }
         });
 
-        this.setItem(this.FEATURES_STORAGE_KEY, freshFeatures);
+        this.setItem(ChromeStorageKeys.Features, freshFeatures);
     });
   }
 }
