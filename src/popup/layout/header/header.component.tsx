@@ -1,12 +1,18 @@
 
 
 import * as React from 'react';
-import NavigationComponent from './navigation/navigation.component';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
+
+import NavigationComponent from './navigation/navigation.component';
+import LanguagePickerComponent from './language-picker/language-picker.component';
 
 import './header.component.scss';
 
-class HeaderComponent extends React.Component<InjectedIntlProps> {
+interface IHeaderComponentProps extends InjectedIntlProps {
+  updateLocale: (localeCode: string) => void;
+}
+
+class HeaderComponent extends React.Component<IHeaderComponentProps> {
   private closePopup() {
     window.close();
   }
@@ -31,6 +37,7 @@ class HeaderComponent extends React.Component<InjectedIntlProps> {
             </g>
           </svg>
         </div>
+        <LanguagePickerComponent updateLocale={this.props.updateLocale}></LanguagePickerComponent>
       </div>
     );
   }

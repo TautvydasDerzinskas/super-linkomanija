@@ -1,0 +1,28 @@
+@import '../../../variables';
+
+.language-picker {
+  position: absolute;
+  top: $default-spacing;
+  left: $default-spacing;
+
+  &__flag {
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    margin-right: $default-spacing;
+    padding: 0;
+    border: none;
+    opacity: .8;
+    transition: $default-transition;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    svg {
+      display: inline-block;
+      height: $large-spacing * 2;
+      width: $large-spacing * 2;
+    }
+  }
+}

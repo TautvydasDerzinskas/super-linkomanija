@@ -19,7 +19,7 @@ class LanguageService {
 
   public localeMessages: any = {};
 
-  public initialize() {
+  constructor() {
     this.availableLocales.forEach(localeObject => {
       for (let i = 0, b = localeObject.codes.length; i < b; i += 1) {
         const localeCode = localeObject.codes[i];
@@ -30,7 +30,7 @@ class LanguageService {
     this.localeMessages = this.convertLocaleToIntl(this.extensionLocale);
   }
 
-  private convertLocaleToIntl(localeCode: string) {
+  public convertLocaleToIntl(localeCode: string) {
     const transformedLocale: any = {};
     const locale = this.getLocaleByCode(localeCode);
     if (locale) {

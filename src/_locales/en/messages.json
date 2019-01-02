@@ -11,6 +11,14 @@
     "message": "Close",
     "description": "Title of the popup close button"
   },
+  "languagePickerEnglishFlagTitle": {
+    "message": "English",
+    "description": "Language picker english flag title"
+  },
+  "languagePickerLithuanianFlagTitle": {
+    "message": "Lithuanian",
+    "description": "Language picker lithuanian flag title"
+  },
   "tabsFeaturesLabel": {
     "message": "Features",
     "description": "Popup navigation features tab label"

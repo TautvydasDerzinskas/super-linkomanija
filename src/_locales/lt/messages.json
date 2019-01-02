@@ -4,15 +4,23 @@
     "description": "The title of the application, displayed in the web store."
   },
   "appDesc": {
-    "message": "Naršyklės priedas praplečiantis Linkomanija.net svetainės galimybes!",
+    "message": "Naršyklės papildinys praplečiantis Linkomanija.net internetinės svetainės galimybes",
     "description":"The description of the application, displayed in the web store."
   },
   "popupCloseTitle": {
     "message": "Uždaryti",
     "description": "Title of the popup close button"
   },
+  "languagePickerEnglishFlagTitle": {
+    "message": "Angliškai",
+    "description": "Language picker english flag title"
+  },
+  "languagePickerLithuanianFlagTitle": {
+    "message": "Lietuviškai",
+    "description": "Language picker lithuanian flag title"
+  },
   "tabsFeaturesLabel": {
-    "message": "Galimybių konfiguracija",
+    "message": "Nustatymai",
     "description": "Popup navigation features tab label"
   },
   "tabsHistoryLabel": {
@@ -32,7 +40,7 @@
     "description": "Features tab configuration setting title for comments formatting feature"
   },
   "featureCommentsFormattingDescription": {
-    "message": "Suteikia galimybę komentuoti torentus su stilingai formotuotu tekstu",
+    "message": "Leidžia lengvai formatuoti tekstą komentuojant torentus",
     "description": "Features tab configuration setting description for comments formatting feature"
   },
   "featureHomePageRedirectTitle": {
@@ -44,15 +52,15 @@
     "description": "Features tab configuration setting description for homepage redirect feature"
   },
   "featureTorrentPreviewTitle": {
-    "message": "Išankstinė torento aprašymo peržiūra",
+    "message": "Torento aprašymo apžvalga",
     "description": "Features tab configuration setting title for torrent preview feature"
   },
   "featureTorrentPreviewDescription": {
-    "message": "Leis peržiūrėti torento aprašymą neįeinant į torento detalių puslapį",
+    "message": "Peržiūrėkite torentų aprašymus neįeinant į jų detalių puslapius",
     "description": "Features tab configuration setting description for torrent preview feature"
   },
   "featureViewModesTitle": {
-    "message": "Peržiūros tipai",
+    "message": "Torentų išdėstymas",
     "description": "Features tab configuration setting title for view modes feature"
   },
   "featureViewModesDescription": {
