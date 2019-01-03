@@ -67,6 +67,14 @@
     "message": "Suteiks galimybę peržiūrėti torentų sąrašus 'kortelių' pavidalu",
     "description": "Features tab configuration setting description for view modes feature"
   },
+  "featureBackToTopTitle": {
+    "message": "Greitas slinkimas viršun",
+    "description": "Features tab configuration setting title for back to top feature"
+  },
+  "featureBackToTopDescription": {
+    "message": "Į visus puslapius pridės mygtuką, kurį paspaudus atsidursite puslapio viršuje",
+    "description": "Features tab configuration setting description for back to top feature"
+  },
   "tabsLinksGithubRepositoryLabel": {
     "message": "GitHub saugykla",
     "description": "Github repository link box overlay text"

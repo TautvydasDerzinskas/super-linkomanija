@@ -8,7 +8,8 @@ export enum SvgIcons {
   MaleArrowUp,
   MaleArrowDown,
   Grid,
-  List
+  List,
+  ArrowsTop,
 }
 
 export enum ShareLinks {

@@ -1,3 +1,5 @@
+declare let tippy: any;
+
 import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
 import svgIconsService from '../../services/content/svg-icons.service';
 import featureStorageService from '../../services/common/feature-storage.service';
@@ -14,15 +16,21 @@ class ContentViewModes implements IContent {
   private gridModeUiGenerated = false;
   private viewMode: ViewModes;
 
+  get tippyEnabled() {
+    return typeof tippy !== 'undefined';
+  }
+
   public extendPageUserInterface() {
-    featureStorageService.getFeatureData(meta.id).then((featureData) => {
-      this.viewMode = featureData.data.mode;
-      this.appendViewModeToggler();
-      this.setBodyClass();
-      if (this.viewMode === ViewModes.Grid) {
-        this.generateGridModeUi();
-      }
-    });
+    if (this.tippyEnabled) {
+      featureStorageService.getFeatureData(meta.id).then((featureData) => {
+        this.viewMode = featureData.data.mode;
+        this.appendViewModeToggler();
+        this.setBodyClass();
+        if (this.viewMode === ViewModes.Grid) {
+          this.generateGridModeUi();
+        }
+      });
+    }
   }
 
   private appendViewModeToggler() {
@@ -104,17 +112,19 @@ class ContentViewModes implements IContent {
   }
 
   public cleanUp() {
-    // Removing generated UI
-    const gridContainer = document.getElementsByClassName('torrents')[0];
-    if (gridContainer) { gridContainer.remove(); }
-    document.getElementsByClassName('view-modes')[0].remove();
-    // Removing body classes
-    const classPrefix = 'sl-view-mode--';
-    const bodyElement = document.getElementsByTagName('body')[0];
-    bodyElement.classList.remove(classPrefix + 'list');
-    bodyElement.classList.remove(classPrefix + 'grid');
+    if (this.tippyEnabled) {
+      // Removing generated UI
+      const gridContainer = document.getElementsByClassName('torrents')[0];
+      if (gridContainer) { gridContainer.remove(); }
+      document.getElementsByClassName('view-modes')[0].remove();
+      // Removing body classes
+      const classPrefix = 'sl-view-mode--';
+      const bodyElement = document.getElementsByTagName('body')[0];
+      bodyElement.classList.remove(classPrefix + 'list');
+      bodyElement.classList.remove(classPrefix + 'grid');
 
-    this.gridModeUiGenerated = false;
+      this.gridModeUiGenerated = false;
+    }
   }
 
   private getTorrentCard(details: ITorrentDetails) {

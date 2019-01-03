@@ -1,0 +1,35 @@
+@import '../../../popup/variables';
+
+$back-to-top-button-size: $large-spacing * 2;
+
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  text-align: center;
+  background-color: $linkomanija-border-color;
+  cursor: pointer;
+  border-radius: 360px;
+  outline: none;
+  display: none;
+  transition: $default-transition;
+  z-index: 9999;
+  border: 1px $linkomanija-link-color solid;
+  padding: 0;
+
+  svg {
+    display: inline-block;
+    fill: $linkomanija-link-color;
+    height: $back-to-top-button-size;
+    width: $back-to-top-button-size;
+    margin: $default-spacing;
+  }
+
+  &:hover {
+    background-color: $theme-white;
+  }
+
+  &--visible {
+    display: block;
+  }
+}

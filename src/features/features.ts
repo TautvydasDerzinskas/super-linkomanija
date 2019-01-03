@@ -6,7 +6,8 @@ import MetaViewModes from './view-modes/meta';
 import ContentViewModes from './view-modes/content';
 import MetaHomepageRedirect from './homepage-redirect/meta';
 import ContentHomepageRedirect from './homepage-redirect/content';
-
+import MetaBackToTop from './back-to-top/meta';
+import ContentBackToTop from './back-to-top/content';
 
 import IFeature from '../interfaces/feature';
 import IMeta from '../interfaces/meta';
@@ -27,6 +28,10 @@ export const Features: IFeature[] = [
   {
     meta: MetaHomepageRedirect,
     content: ContentHomepageRedirect,
+  },
+  {
+    meta: MetaBackToTop,
+    content: ContentBackToTop,
   },
 ];
 
