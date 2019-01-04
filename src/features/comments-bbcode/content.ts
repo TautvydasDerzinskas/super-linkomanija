@@ -1,29 +1,16 @@
 import urlService from '../../services/common/url.service';
 import IContent from '../../interfaces/content';
-import { LinkomanijaSelectors } from '../../enums';
+import { LinkomanijaSelectors, Locales } from '../../enums';
 
+import './locales/lt';
 import './styles/comments-bbcode.scss';
 
 class ContentCommentsBbcode implements IContent {
-
   public setupEventListeners() {
     if (urlService.isTorrentDetailsPage()) {
       this.fixYoutubeBbcode();
       this.setupReplyCommentBoxesTriggers();
     }
-  }
-
-  private fixYoutubeBbcode() {
-    console.log(sceditor);
-  }
-
-  private setupReplyCommentBoxesTriggers() {
-    const s = document.createElement('script');
-    s.src = chrome.extension.getURL('bbcode.bundle.js');
-    s.onload = function() {
-        (this as HTMLElement).remove();
-    };
-    (document.head || document.documentElement).appendChild(s);
   }
 
   public extendPageUserInterface() {
@@ -35,10 +22,12 @@ class ContentCommentsBbcode implements IContent {
         if (!scEditorInstance) {
           sceditor.create(textBoxes[i], {
             format: 'bbcode',
-            toolbar: 'bold,italic,underline,strike|font,size,color|quote,link,image,youtube,date,time|source',
-            emoticonsEnabled: false,
-            icons: 'monocons',
+            toolbar: 'bold,italic,underline,strike|font,size,color|quote,link,image,youtube,emoticon|date,time|source',
             style: null,
+            locale: Locales.Lithuanian,
+            emoticonsEnabled: true,
+            emoticonsRoot: '//static.linkomanija.net/pic/smilies/',
+            emoticons: require('./emoticons.json'),
           });
         }
       }
@@ -55,6 +44,19 @@ class ContentCommentsBbcode implements IContent {
         }
       }
     }
+  }
+
+  private fixYoutubeBbcode() {
+    console.log(sceditor);
+  }
+
+  private setupReplyCommentBoxesTriggers() {
+    const s = document.createElement('script');
+    s.src = chrome.extension.getURL('bbcode.bundle.js');
+    s.onload = function () {
+      (this as HTMLElement).remove();
+    };
+    (document.head || document.documentElement).appendChild(s);
   }
 }
 
