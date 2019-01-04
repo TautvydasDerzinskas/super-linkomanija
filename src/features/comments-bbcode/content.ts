@@ -23,7 +23,6 @@ class ContentCommentsBbcode implements IContent {
           sceditor.create(textBoxes[i], {
             format: 'bbcode',
             toolbar: 'bold,italic,underline,strike|font,size,color|quote,link,image,youtube,emoticon|date,time|source',
-            style: null,
             locale: Locales.Lithuanian,
             emoticonsEnabled: true,
             emoticonsRoot: '//static.linkomanija.net/pic/smilies/',

@@ -20,17 +20,17 @@ class LinksComponent extends React.Component<InjectedIntlProps> {
       <div className='links'>
         <div className='links__column'>
           <LinkBoxComponent
-            link={(window as any).myga.homepage}
+            link={(window as any).sl.homepage}
             position='top-left'
             icon='github.svg'
             label={intl.formatMessage({ id: 'tabsLinksGithubRepositoryLabel' })} />
           <LinkBoxComponent
-            link={(window as any).myga.bugs}
+            link={(window as any).sl.bugs}
             position='top-right'
             icon='report_bug.svg'
             label={intl.formatMessage({ id: 'tabsLinksReportBugLabel' })} />
           <LinkBoxComponent
-            link={(window as any).myga.authorPage}
+            link={(window as any).sl.authorPage}
             position='bottom-left'
             icon='author.jpg'
             label={intl.formatMessage({ id: 'tabsLinksExtensionAuthorLabel' })} />

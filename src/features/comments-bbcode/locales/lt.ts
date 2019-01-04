@@ -61,5 +61,5 @@ if (typeof sceditor !== 'undefined') {
     'Drop files here': 'Tempti failus čia',
 
     dateFormat: 'year-month-day',
-};
+  };
 }

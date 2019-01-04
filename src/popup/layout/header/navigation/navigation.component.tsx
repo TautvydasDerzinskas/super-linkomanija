@@ -41,7 +41,7 @@ class NavigationComponent extends React.Component<InjectedIntlProps> {
           className='tabs__version'
           title={intl.formatMessage({ id: 'tabsExtensionVersionTitle' })}
         >
-            v{(window as any).myga.version}
+            v{(window as any).sl.version}
           </div>
       </div>
     );
