@@ -1,8 +1,7 @@
-declare let tippy: any;
-
 import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
 import svgIconsService from '../../services/content/svg-icons.service';
 import featureStorageService from '../../services/common/feature-storage.service';
+import urlService from '../../services/common/url.service';
 
 import meta from './meta';
 import IContent from '../../interfaces/content';
@@ -16,12 +15,8 @@ class ContentViewModes implements IContent {
   private gridModeUiGenerated = false;
   private viewMode: ViewModes;
 
-  get tippyEnabled() {
-    return typeof tippy !== 'undefined';
-  }
-
   public extendPageUserInterface() {
-    if (this.tippyEnabled) {
+    if (urlService.isTorrentsListPage()) {
       featureStorageService.getFeatureData(meta.id).then((featureData) => {
         this.viewMode = featureData.data.mode;
         this.appendViewModeToggler();
@@ -93,7 +88,7 @@ class ContentViewModes implements IContent {
   }
 
   private generateGridModeUi() {
-    extractTorrentDetailsService.generateTorrentDetailsObject().then(torrentDetails => {
+    extractTorrentDetailsService.generateMultipleTorrentsData().then(torrentDetails => {
       let cardsHtml = '';
 
       for (let i = 0, b = torrentDetails.length; i < b; i += 1) {
@@ -112,7 +107,7 @@ class ContentViewModes implements IContent {
   }
 
   public cleanUp() {
-    if (this.tippyEnabled) {
+    if (urlService.isTorrentsListPage()) {
       // Removing generated UI
       const gridContainer = document.getElementsByClassName('torrents')[0];
       if (gridContainer) { gridContainer.remove(); }

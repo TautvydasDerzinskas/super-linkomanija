@@ -1,6 +1,5 @@
-declare let tippy: any;
 import apiService from '../../services/common/api.service';
-import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
+import urlService from '../../services/common/url.service';
 
 import IContent from '../../interfaces/content';
 import { LinkomanijaSelectors } from '../../enums';
@@ -8,12 +7,8 @@ import { LinkomanijaSelectors } from '../../enums';
 import './styles/torrent-preview.scss';
 
 class ContentTorrentPreview implements IContent {
-  get tippyEnabled() {
-    return typeof tippy !== 'undefined';
-  }
-
   public setupEventListeners() {
-    if (this.tippyEnabled) {
+    if (urlService.isTorrentsListPage()) {
       const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
       for (let i = 0, b = titleColumns.length; i < b; i += 1) {
         const torrentDetailsLink = titleColumns[i].children[0].getAttribute('href');
@@ -23,7 +18,7 @@ class ContentTorrentPreview implements IContent {
   }
 
   public cleanUp() {
-    if (this.tippyEnabled) {
+    if (urlService.isTorrentsListPage()) {
       const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
       for (let i = 0, b = titleColumns.length; i < b; i += 1) {
         (titleColumns[i].parentElement as any)._tippy.destroy();

@@ -1,13 +1,13 @@
-import './styles/comments-bbcode.scss';
-declare let sceditor: any;
-
+import urlService from '../../services/common/url.service';
 import IContent from '../../interfaces/content';
 import { LinkomanijaSelectors } from '../../enums';
+
+import './styles/comments-bbcode.scss';
 
 class ContentCommentsBbcode implements IContent {
 
   public setupEventListeners() {
-    if (this.scEditorAvailable) {
+    if (urlService.isTorrentDetailsPage()) {
       this.fixYoutubeBbcode();
       this.setupReplyCommentBoxesTriggers();
     }
@@ -27,7 +27,7 @@ class ContentCommentsBbcode implements IContent {
   }
 
   public extendPageUserInterface() {
-    if (this.scEditorAvailable) {
+    if (urlService.isTorrentDetailsPage()) {
       const textBoxes = document.querySelectorAll(LinkomanijaSelectors.CommentTextBoxes);
       for (let i = 0, b = textBoxes.length; i < b; i += 1) {
         const scEditorInstance = sceditor.instance(textBoxes[i]);
@@ -46,7 +46,7 @@ class ContentCommentsBbcode implements IContent {
   }
 
   public cleanUp() {
-    if (this.scEditorAvailable) {
+    if (urlService.isTorrentDetailsPage()) {
       const textBoxes = document.querySelectorAll(LinkomanijaSelectors.CommentTextBoxes);
       for (let i = 0, b = textBoxes.length; i < b; i += 1) {
         const scEditorInstance = sceditor.instance(textBoxes[i]);
@@ -56,11 +56,6 @@ class ContentCommentsBbcode implements IContent {
       }
     }
   }
-
-  get scEditorAvailable() {
-    return typeof sceditor !== 'undefined';
-  }
-
 }
 
 export default new ContentCommentsBbcode();

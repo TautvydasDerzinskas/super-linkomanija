@@ -3,7 +3,7 @@ import { LinkomanijaSelectors } from '../../enums';
 import { ITorrentDetails, ITorrentCategory } from '../../interfaces/torrent';
 
 class ExtractTorrentDetailsService {
-  public generateTorrentDetailsObject(): Promise<ITorrentDetails[]> {
+  public generateMultipleTorrentsData(): Promise<ITorrentDetails[]> {
     return new Promise((resolve) => {
       const torrentDetails: ITorrentDetails[] = [];
       const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);

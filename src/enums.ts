@@ -32,3 +32,8 @@ export enum ChromeStorageKeys {
   Locale = 'sm-locale',
   Features = 'sm-features',
 }
+
+export enum Locales {
+  English = 'en',
+  Lithuanian = 'lt',
+}

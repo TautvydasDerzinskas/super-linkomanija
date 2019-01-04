@@ -1,8 +1,5 @@
 class UrlService {
-  public getQueryParameterByName(name: string, url?: string) {
-    if (!url) {
-      url = window.location.href;
-    }
+  public getQueryParameterByName(name: string, url = window.location.href.toLowerCase()) {
     name = name.replace(/[\[\]]/g, '\\$&');
 
     const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
@@ -17,8 +14,20 @@ class UrlService {
     }
   }
 
-  public isLinkomanija(url: string) {
+  public isLinkomanija(url = window.location.href.toLowerCase()) {
     return url.toLowerCase().includes('linkomanija.net');
+  }
+
+  public isHomepage(url = window.location.href.toLowerCase()) {
+    return url.endsWith('.net') || url.endsWith('.net/') || url.endsWith('/index.php');
+  }
+
+  public isTorrentsListPage(url = window.location.href.toLowerCase()) {
+    return url.includes('browse.php');
+  }
+
+  public isTorrentDetailsPage(url = window.location.href.toLowerCase()) {
+    return url.includes('/details?');
   }
 }
 

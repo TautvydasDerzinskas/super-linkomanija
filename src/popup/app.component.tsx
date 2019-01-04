@@ -2,17 +2,17 @@
 
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import * as enLocale from 'react-intl/locale-data/en';
+import * as ltLocale from 'react-intl/locale-data/lt';
 
 import languageService from '../services/common/language.service';
 import ChromeStorageService from '../services/common/chrome-storage.service';
 
-import { ChromeStorageKeys } from '../enums';
+import { ChromeStorageKeys, Locales } from '../enums';
+import { ILocale, ILocaleMessages } from '../interfaces/locale';
 
-// Layout components
 import HeaderComponent from './layout/header/header.component';
-
-// Tab components
 import HistoryComponent from './tabs/history/history.component';
 import FeaturesComponent from './tabs/features/features.component';
 import LinksComponent from './tabs/links/links.component';
@@ -22,36 +22,42 @@ import './app.component.scss';
 const chromeStorageService = new ChromeStorageService();
 
 interface IAppComponentState {
-  locale: string;
-  messages: { [index: string]: string; };
-  defaultLocale: string;
+  locale: Locales;
+  messages: ILocaleMessages;
+  defaultLocale: Locales;
 }
 
 export default class AppComponent extends React.Component<{}, IAppComponentState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      locale: languageService.defaultLocale,
-      messages: languageService.getMessagesForLocale(languageService.defaultLocale),
-      defaultLocale: languageService.defaultLocale
+      locale: languageService.defaultLocaleCode,
+      messages: languageService.languages[languageService.defaultLocaleCode].messages,
+      defaultLocale: languageService.defaultLocaleCode,
     };
+    this.initializeLocales();
+  }
+
+  private initializeLocales() {
+    addLocaleData(enLocale);
+    addLocaleData(ltLocale);
   }
 
   componentDidMount() {
-    languageService.getActiveLocale().then((activeLocale: string) => {
+    languageService.getActiveLocale().then((locale: ILocale) => {
       this.setState({
-        locale: activeLocale,
-        messages: languageService.getMessagesForLocale(activeLocale),
+        locale: locale.code,
+        messages: locale.messages,
       });
     });
   }
 
-  public updateLocale(localeCode: string) {
+  public updateLocale(localeCode: Locales) {
     if (localeCode !== this.state.locale) {
       chromeStorageService.setItem(ChromeStorageKeys.Locale, { value: localeCode }).then(() => {
         this.setState({
           locale: localeCode,
-          messages: languageService.getMessagesForLocale(localeCode),
+          messages: languageService.languages[localeCode].messages,
         });
       });
     }

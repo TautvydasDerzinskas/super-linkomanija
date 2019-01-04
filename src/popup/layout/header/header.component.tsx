@@ -3,13 +3,15 @@
 import * as React from 'react';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
 
+import { Locales } from '../../../enums';
+
 import NavigationComponent from './navigation/navigation.component';
 import LanguagePickerComponent from './language-picker/language-picker.component';
 
 import './header.component.scss';
 
 interface IHeaderComponentProps extends InjectedIntlProps {
-  updateLocale: (localeCode: string) => void;
+  updateLocale: (localeCode: Locales) => void;
 }
 
 class HeaderComponent extends React.Component<IHeaderComponentProps> {

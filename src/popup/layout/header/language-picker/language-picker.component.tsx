@@ -2,15 +2,16 @@
 
 import * as React from 'react';
 import { injectIntl, InjectedIntlProps } from 'react-intl';
+import { Locales } from '../../../../enums';
 
 import './language-picker.component.scss';
 
 interface ILanguagePickerComponentProps extends InjectedIntlProps {
-  updateLocale: (localeCode: string) => void;
+  updateLocale: (localeCode: Locales) => void;
 }
 
 class LanguagePickerComponent extends React.Component<ILanguagePickerComponentProps> {
-  private pickLanguage(languageCode: string) {
+  private pickLanguage(languageCode: Locales) {
     this.props.updateLocale(languageCode);
   }
 
@@ -21,7 +22,7 @@ class LanguagePickerComponent extends React.Component<ILanguagePickerComponentPr
       <div className='language-picker'>
         <button
           className='language-picker__flag'
-          onClick={this.pickLanguage.bind(this, 'en')}
+          onClick={this.pickLanguage.bind(this, Locales.English)}
           title={intl.formatMessage({ id: 'languagePickerEnglishFlagTitle' })}
         >
           <svg>
@@ -30,7 +31,7 @@ class LanguagePickerComponent extends React.Component<ILanguagePickerComponentPr
         </button>
         <button
           className='language-picker__flag'
-          onClick={this.pickLanguage.bind(this, 'lt')}
+          onClick={this.pickLanguage.bind(this, Locales.Lithuanian)}
           title={intl.formatMessage({ id: 'languagePickerLithuanianFlagTitle' })}
         >
           <svg>

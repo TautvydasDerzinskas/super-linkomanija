@@ -35,7 +35,7 @@ const handleToggleRequest = (request: IMessageToggle) => {
         if (activeFeature.content.setupEventListeners) {
           activeFeature.content.setupEventListeners();
         }
-      } else {
+      } else if (activeFeature.content.cleanUp) {
         activeFeature.content.cleanUp();
       }
     }

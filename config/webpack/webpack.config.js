@@ -77,10 +77,6 @@ module.exports = {
       }
     }]),
     new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../src/assets') }]),
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../../src/_locales'),
-      to: '_locales',
-    }]),
     // NPM dependencies
     new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../node_modules/sceditor/minified/sceditor.min.js') }]),
     new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../../node_modules/sceditor/minified/formats/bbcode.js') }]),

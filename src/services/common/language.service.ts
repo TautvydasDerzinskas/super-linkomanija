@@ -1,63 +1,53 @@
-import { addLocaleData } from 'react-intl';
 import ChromeStorageService from './chrome-storage.service';
+import { ChromeStorageKeys, Locales } from '../../enums';
+import { ILocaleMessages, ILanguages, IChromeLocale } from '../../interfaces/locale';
 
-import { ChromeStorageKeys } from '../../enums';
-
+const enLocale: IChromeLocale = require('../../assets/_locales/en/messages.json');
+const ltLocale: IChromeLocale = require( '../../assets/_locales/lt/messages.json');
 const chromeStorageService = new ChromeStorageService();
 
-const enLocale = require('../../_locales/en/messages.json');
-const ltLocale = require( '../../_locales/lt/messages.json');
-
 class LanguageService {
-  public defaultLocale = 'lt';
-  private availableLocales = [
-    {
-      codes: ['en-GB', 'en', 'en-US'],
-      locale: enLocale,
-    },
-    {
-      codes: ['lt', 'lt-LT'],
-      locale: ltLocale,
-    },
-  ];
-
-  constructor() {
-    this.availableLocales.forEach(localeObject => {
-      for (let i = 0, b = localeObject.codes.length; i < b; i += 1) {
-        const localeCode = localeObject.codes[i];
-        addLocaleData({ locale: localeCode, fields: this.getMessagesForLocale(localeCode) });
+  public defaultLocaleCode = Locales.Lithuanian;
+  get languages(): ILanguages {
+    return {
+      en: {
+        messages: this.convertLocaleToMessages(enLocale),
+        code: Locales.English,
+      },
+      lt: {
+        messages: this.convertLocaleToMessages(ltLocale),
+        code: Locales.Lithuanian,
       }
-    });
+    };
   }
 
-  public getMessagesForLocale(localeCode: string) {
-    const transformedLocale: any = {};
-    const locale = this.getLocaleByCode(localeCode);
-    if (locale) {
-      Object.keys(locale).forEach((key) => {
-        transformedLocale[key] = locale[key].message;
-      });
-    }
+  private convertLocaleToMessages(locale: IChromeLocale) {
+    const transformedLocale: ILocaleMessages = {};
+    Object.keys(locale).forEach((key) => {
+      transformedLocale[key] = locale[key].message;
+    });
     return transformedLocale;
   }
 
   public getActiveLocale() {
     return new Promise((resolve) => {
-      chromeStorageService.getItem(ChromeStorageKeys.Locale).then((localeData: { value: string; }) => {
-        if (localeData && localeData.value) {
-          resolve(localeData.value);
+      chromeStorageService.getItem(ChromeStorageKeys.Locale).then((localeStoredData: { value: string; }) => {
+        if (localeStoredData && localeStoredData.value) {
+          const activeLocale = this.languages[localeStoredData.value];
+          if (activeLocale) {
+            resolve(activeLocale);
+          }
         } else {
-          const browserLocaleCode = chrome.i18n.getUILanguage();
-          const localeObject = this.getLocaleByCode(browserLocaleCode);
-          const extensionLocale = localeObject ? browserLocaleCode : this.defaultLocale;
-          resolve(extensionLocale);
+          const browserLocaleCode = chrome.i18n.getUILanguage().split('_')[0];
+          const browserLocaleObject = this.languages[browserLocaleCode];
+          if (browserLocaleObject) {
+            resolve(browserLocaleObject);
+          } else {
+            resolve(this.languages[this.defaultLocaleCode]);
+          }
         }
       });
     });
-  }
-
-  private getLocaleByCode(localeCode: string) {
-    return this.availableLocales.filter((locale) => locale.codes.indexOf(localeCode) >= 0)[0].locale;
   }
 }
 

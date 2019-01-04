@@ -1,16 +1,11 @@
+import urlService from '../../services/common/url.service';
 import IContent from '../../interfaces/content';
 
 class ContentHomepageRedirect implements IContent {
-
   public setupEventListeners() {
-    const activeUrl = window.location.href.toLowerCase();
-    if (activeUrl.endsWith('.net') || activeUrl.endsWith('.net/') || activeUrl.endsWith('/index.php')) {
+    if (urlService.isHomepage()) {
       window.location.assign('/browse.php');
     }
-  }
-
-  public cleanUp() {
-
   }
 }
 
