@@ -21,7 +21,7 @@ class ContentBackToTop implements IContent {
     window.addEventListener('scroll', this.calculateButtonAppearance.bind(this));
     this.calculateButtonAppearance();
     const backToTopButtonElement = document.getElementsByClassName('back-to-top')[0];
-    backToTopButtonElement.addEventListener('click', this.scrollToTop);
+    backToTopButtonElement.addEventListener('click', this.scrollToTop.bind(this, 500));
   }
 
   public cleanUp() {
@@ -44,10 +44,15 @@ class ContentBackToTop implements IContent {
     }
   }
 
-  private scrollToTop() {
-    if (window.pageYOffset > 0) {
-      window.scrollTo(0, 0);
-    }
+  private scrollToTop(scrollDuration: number) {
+    const scrollStep = -window.scrollY / (scrollDuration / 15);
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
   }
 }
 

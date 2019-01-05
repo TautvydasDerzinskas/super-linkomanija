@@ -4,18 +4,19 @@ $back-to-top-button-size: $large-spacing * 2;
 
 .back-to-top {
   position: fixed;
-  bottom: 80px;
-  right: 40px;
+  bottom: $large-spacing;
+  right: $large-spacing;
+  display: block;
   text-align: center;
   background-color: $theme-white;
   border-radius: 360px;
   outline: none;
-  display: none;
   transition: $default-transition;
   z-index: 9999;
   border: 1px $linkomanija-link-color solid;
   padding: 0;
-  opacity: .5;
+  visibility: hidden;
+  opacity: 0;
   cursor: pointer;
 
   svg {
@@ -31,6 +32,7 @@ $back-to-top-button-size: $large-spacing * 2;
   }
 
   &--visible {
-    display: block;
+    visibility: visible;
+    opacity: .5;
   }
 }
