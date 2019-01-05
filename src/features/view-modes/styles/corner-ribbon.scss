@@ -1,0 +1,51 @@
+@import '../../../popup/variables';
+
+.corner-ribbon {
+  width: 160px;
+  background-color: $theme-green;
+  position: absolute;
+  text-align: center;
+  line-height: $large-spacing;
+  font-size: 9px;
+  color: $theme-white;
+
+  &.top-left{
+    top: 15px;
+    left: -55px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  &.top-right{
+    top: 15px;
+    right: -55px;
+    left: auto;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  &.bottom-left{
+    top: auto;
+    bottom: 15px;
+    left: -55px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  &.bottom-right{
+    top: auto;
+    right: -55px;
+    bottom: 15px;
+    left: auto;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  &--red {
+    background-color: rgba($theme-red, .8);
+  }
+
+  &--green {
+    background-color: rgba($theme-green, .8);
+  }
+}

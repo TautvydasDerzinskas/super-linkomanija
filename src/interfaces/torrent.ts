@@ -9,6 +9,7 @@ export interface ITorrentDetails {
   title: string;
   isNew: boolean;
   isFavourite: boolean;
+  isFreeLeech: boolean;
   subTitle?: string;
   detailsLink: string;
   torrentLink: string;

@@ -10,6 +10,7 @@ import { LinkomanijaSelectors, SvgIcons, ViewModes } from '../../enums';
 
 import './styles/view-modes.scss';
 import './styles/grid-view.scss';
+import './styles/corner-ribbon.scss';
 
 class ContentViewModes implements IContent {
   private gridModeUiGenerated = false;
@@ -127,6 +128,10 @@ class ContentViewModes implements IContent {
     const seedersIcon = svgIconsService.getIcon(SvgIcons.MaleArrowUp);
     const leechersIcon = svgIconsService.getIcon(SvgIcons.MaleArrowDown);
 
+    const isNewCornerRibbon = details.isNew ? `<div class="corner-ribbon top-left corner-ribbon--red">Naujas</div>` : '';
+    const isFreeLeechRibbon = details.isFreeLeech ? `<div class="corner-ribbon top-right corner-ribbon--green">Free leech</div>` : '';
+    const subtitle = details.subTitle ? `<div class="torrent__subtitle">${details.subTitle}</div>` : '';
+
     return `
     <li class="torrents__card">
       <div class="torrent">
@@ -134,11 +139,14 @@ class ContentViewModes implements IContent {
           <a href="${details.category.link}" title="${details.category.title}" class="torrent__header__category">
             <img src="${details.category.imageLink}" />
           </a>
-          <div class="torrent__header__title">
+          <a href="${details.detailsLink}" class="torrent__header__title">
             ${details.title}
-          </div>
+          </a>
         </div>
         <div class="torrent__image" style="background-image: url(${details.imageLinks[0]})">
+          ${isNewCornerRibbon}
+          ${isFreeLeechRibbon}
+          ${subtitle}
           <div class="torrent__image__overlay">
             <div class="overlay__links">
               <a href="${details.detailsLink}">Atidaryti</a>

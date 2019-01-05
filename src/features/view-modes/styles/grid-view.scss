@@ -53,8 +53,10 @@
       }
 
       &__title {
+        display: block;
         width: 100%;
         color: $linkomanija-link-color;
+        font-weight: normal !important;
       }
     }
 
@@ -135,6 +137,21 @@
           fill: $theme-red;
         }
       }
+    }
+
+    &__subtitle {
+      position: absolute;
+      bottom: $small-spacing;
+      right: 0;
+      left: 0;
+      line-height: $large-spacing;
+      background-color: rgba($theme-black, .5);
+      font-size: 9px;
+      text-align: center;
+      color: $theme-white;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

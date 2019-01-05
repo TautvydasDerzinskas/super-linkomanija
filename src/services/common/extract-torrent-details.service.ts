@@ -20,19 +20,15 @@ class ExtractTorrentDetailsService {
         const seedersColumnElement = rowElement.children[7];
         const leechersColumnElement = rowElement.children[8];
 
-        const isNew = titleColumnElement.children[1].nodeName.toLowerCase() === 'b';
-        if (isNew) {
-          titleColumnElement.children[1].remove();
-        }
-
         const torrentDetail: ITorrentDetails = {
           id: this.getId(titleColumnElement),
           title: this.getTitle(titleColumnElement),
           subTitle: this.getSubTitle(titleColumnElement),
           detailsLink: this.getDetailsLink(titleColumnElement),
           torrentLink: this.getTorrentLink(titleColumnElement),
-          isNew: isNew,
+          isNew: this.getIfIsNew(titleColumnElement),
           isFavourite: this.getIfIsFavourite(titleColumnElement),
+          isFreeLeech: this.getIfIsFreeLeech(titleColumnElement),
           category: this.getCategoryDetails(categoryColumnElement),
           filesCount: this.getFilesCount(filesColumnElement),
           commentsCount: this.getCommentsCount(commentsColumnElement),
@@ -79,7 +75,7 @@ class ExtractTorrentDetailsService {
   }
 
   private getSubTitle(titleColumnElement: Element) {
-    return titleColumnElement.children[6].textContent;
+    return titleColumnElement.children[(titleColumnElement.children.length - 1)].textContent;
   }
 
   private getDetailsLink(titleColumnElement: Element) {
@@ -87,11 +83,21 @@ class ExtractTorrentDetailsService {
   }
 
   private getTorrentLink(titleColumnElement: Element) {
-    return titleColumnElement.children[1].getAttribute('href');
+    return titleColumnElement.children[(titleColumnElement.children.length - 6)].getAttribute('href');
+  }
+
+  private getIfIsNew(titleColumnElement: Element) {
+    return titleColumnElement.children[1].nodeName.toLowerCase() === 'b' ||
+           titleColumnElement.children[2].nodeName.toLowerCase() === 'b';
   }
 
   private getIfIsFavourite(titleColumnElement: Element) {
-    return (<HTMLElement>titleColumnElement.children[3]).style.display === 'none';
+    return (<HTMLElement>titleColumnElement.children[(titleColumnElement.children.length - 5)]).style.display === 'none';
+  }
+
+  private getIfIsFreeLeech(titleColumnElement: Element) {
+    return (<HTMLElement>titleColumnElement.children[1]).getAttribute('href') === 'faq.php#stat9' ||
+           (<HTMLElement>titleColumnElement.children[2]).getAttribute('href') === 'faq.php#stat9';
   }
 
   private getFilesCount(filesColumnElement: Element) {
