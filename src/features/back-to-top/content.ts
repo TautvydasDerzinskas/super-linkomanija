@@ -2,8 +2,6 @@ import svgIconsService from '../../services/content/svg-icons.service';
 
 import IContent from '../../interfaces/content';
 
-import { SvgIcons } from '../../enums';
-
 import './styles/back-to-top.scss';
 
 class ContentBackToTop implements IContent {
@@ -13,7 +11,7 @@ class ContentBackToTop implements IContent {
     const target = document.getElementsByTagName('body')[0];
     const backToTopButton = document.createElement('button');
     backToTopButton.setAttribute('class', 'back-to-top');
-    backToTopButton.innerHTML = svgIconsService.getIcon(SvgIcons.ArrowsTop);
+    backToTopButton.innerHTML = svgIconsService.iconArrowsUp;
     target.appendChild(backToTopButton);
   }
 

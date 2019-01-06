@@ -8,6 +8,10 @@
   padding: 0;
   box-sizing: border-box;
 
+  svg {
+    fill: $linkomanija-link-color;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -19,7 +23,16 @@
 
     &:hover {
       .torrent__image__overlay {
-        top: 0;
+        visibility: visible;
+        opacity: 1;
+
+        > div {
+          transform: scale(1);
+
+          a, span {
+            transform: rotate(0deg);
+          }
+        }
       }
     }
   }
@@ -76,25 +89,54 @@
       }
 
       &__overlay {
-        background-color: rgba($linkomanija-bg-color, .9);
         position: absolute;
-        top: 100%;
-        width: 100%;
-        height: 100%;
-        transition: $default-transition;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-wrap: wrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: $default-transition;
 
-        .overlay__links {
-          a {
-            display: block;
-            padding: $small-spacing;
-            border: 1px $linkomanija-border-color solid;
-            background-color: $linkomanija-cell-bg-color;
+        > div {
+          width: 50%;
+          height: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: $default-transition;
+          transform: scale(0);
 
-            &:not(:last-child) {
-              margin-bottom: $small-spacing;
+          > a, span {
+            background-color: $linkomanija-link-color;
+            height: 48px;
+            width: 48px;
+            border-radius: 360px;
+            transition: $default-transition;
+            transform: rotate(-360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: .7;
+            cursor: pointer;
+
+            &.torrent__favourite {
+              &.remove {
+                background-color: $theme-yellow;
+              }
+            }
+
+            svg {
+              display: inline-block;
+              height: 32px;
+              width: 32px;
+              fill: $theme-white;
+            }
+
+            &:hover {
+              opacity: 1;
             }
           }
         }
@@ -152,6 +194,18 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    &__comments {
+      color: $theme-black;
+      font-weight: bold;
+
+      svg {
+        vertical-align: middle;
+        display: inline-block;
+        height: $large-spacing;
+        width: $large-spacing;
+      }
     }
   }
 }

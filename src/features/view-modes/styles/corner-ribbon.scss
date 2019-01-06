@@ -7,16 +7,18 @@
   text-align: center;
   line-height: $large-spacing;
   font-size: 9px;
-  color: $theme-white;
+  color: $theme-white !important;
+  font-weight: normal !important;
+  text-decoration: none;
 
-  &.top-left{
+  &.top-left {
     top: 15px;
     left: -55px;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
   }
 
-  &.top-right{
+  &.top-right {
     top: 15px;
     right: -55px;
     left: auto;
@@ -24,7 +26,7 @@
     -webkit-transform: rotate(45deg);
   }
 
-  &.bottom-left{
+  &.bottom-left {
     top: auto;
     bottom: 15px;
     left: -55px;
@@ -32,7 +34,7 @@
     -webkit-transform: rotate(45deg);
   }
 
-  &.bottom-right{
+  &.bottom-right {
     top: auto;
     right: -55px;
     bottom: 15px;

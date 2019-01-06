@@ -2,15 +2,17 @@ import extractTorrentDetailsService from '../../services/common/extract-torrent-
 import svgIconsService from '../../services/content/svg-icons.service';
 import featureStorageService from '../../services/common/feature-storage.service';
 import urlService from '../../services/common/url.service';
+import previewService from '../../services/common/preview.service';
 
 import meta from './meta';
 import IContent from '../../interfaces/content';
 import { ITorrentDetails } from '../../interfaces/torrent';
-import { LinkomanijaSelectors, SvgIcons, ViewModes } from '../../enums';
+import { LinkomanijaSelectors, ViewModes } from '../../enums';
 
 import './styles/view-modes.scss';
 import './styles/grid-view.scss';
 import './styles/corner-ribbon.scss';
+import apiService from '../../services/common/api.service';
 
 class ContentViewModes implements IContent {
   private gridModeUiGenerated = false;
@@ -36,10 +38,10 @@ class ContentViewModes implements IContent {
     const modeSelector = document.createElement('div');
     modeSelector.innerHTML = `
       <button title="List view" class="view-modes__option${this.viewMode === ViewModes.List ? ' active' : ''}" data-mode="list" type="button">
-        ${svgIconsService.getIcon(SvgIcons.List)}
+        ${svgIconsService.iconList}
       </button>
       <button title="Grid view" class="view-modes__option${this.viewMode === ViewModes.Grid ? ' active' : ''}" data-mode="grid" type="button">
-        ${svgIconsService.getIcon(SvgIcons.Grid)}
+        ${svgIconsService.iconGrid}
       </button>
     `;
     modeSelector.className = 'view-modes';
@@ -103,6 +105,9 @@ class ContentViewModes implements IContent {
       const torrentsTable = document.querySelector(LinkomanijaSelectors.TorrentTable);
       torrentsTable.parentNode.insertBefore(cards, torrentsTable);
 
+      this.setupPreviewHover();
+      this.setupFavouriteClicks();
+
       this.gridModeUiGenerated = true;
     });
   }
@@ -124,23 +129,20 @@ class ContentViewModes implements IContent {
   }
 
   private getTorrentCard(details: ITorrentDetails) {
-    const downloadIcon = svgIconsService.getIcon(SvgIcons.Download);
-    const seedersIcon = svgIconsService.getIcon(SvgIcons.MaleArrowUp);
-    const leechersIcon = svgIconsService.getIcon(SvgIcons.MaleArrowDown);
-
-    const isNewCornerRibbon = details.isNew ? `<div class="corner-ribbon top-left corner-ribbon--red">Naujas</div>` : '';
-    const isFreeLeechRibbon = details.isFreeLeech ? `<div class="corner-ribbon top-right corner-ribbon--green">Free leech</div>` : '';
-    const subtitle = details.subTitle ? `<div class="torrent__subtitle">${details.subTitle}</div>` : '';
+    const isNewCornerRibbon = details.isNew ? `<div class="corner-ribbon top-left corner-ribbon--red" title="Naujas">Naujas</div>` : '';
+    const isFreeLeechRibbon = details.isFreeLeech ? `<a href="/faq.php#stat9" target="_blank" class="corner-ribbon top-right corner-ribbon--green" title="Free leech">Free leech</a>` : '';
+    const subtitle = details.subTitle ? `<div class="torrent__subtitle" title="${details.subTitle}">${details.subTitle}</div>` : '';
+    const comments = details.commentsCount !== 0 ? `<span class="torrent__comments" title="Komentarai">${svgIconsService.iconComments} ${details.commentsCount}</span>` : '';
 
     return `
     <li class="torrents__card">
       <div class="torrent">
-        <div class="torrent__header" title="${details.title}">
+        <div class="torrent__header">
           <a href="${details.category.link}" title="${details.category.title}" class="torrent__header__category">
             <img src="${details.category.imageLink}" />
           </a>
-          <a href="${details.detailsLink}" class="torrent__header__title">
-            ${details.title}
+          <a href="${details.detailsLink}" title="${details.title}" class="torrent__header__title">
+            ${details.title} ${comments}
           </a>
         </div>
         <div class="torrent__image" style="background-image: url(${details.imageLinks[0]})">
@@ -148,25 +150,104 @@ class ContentViewModes implements IContent {
           ${isFreeLeechRibbon}
           ${subtitle}
           <div class="torrent__image__overlay">
-            <div class="overlay__links">
-              <a href="${details.detailsLink}">Atidaryti</a>
-              <a href="${details.torrentLink}">Parsisiųsti</a>
-              <a href="javascript:void(0);" onClick="addBookmark(${details.id});">Žymėti</a>
-              <a class="sl-description-preview" href="javascript:void(0);">Žiūrėti aprašymą</a>
+            <div>
+              <a title="Atidaryti torento puslapį" href="${details.detailsLink}">
+                ${svgIconsService.iconOpen}
+              </a>
+            </div>
+            <div>
+              <a title="Parsisiųsti torentą" href="${details.torrentLink}">
+                ${svgIconsService.iconDownload}
+              </a>
+            </div>
+            <div>
+              <span title="Įtraukti/išimti iš žymų sąrašo" class="torrent__favourite ${details.isFavourite ? 'remove' : 'add'}" data-id="${details.id}">
+                ${svgIconsService.iconStar}
+              </span>
+            </div>
+            <div>
+              <span title="Peržiūrėti aprašymą" class="torrent-preview" data-details="${details.detailsLink}">
+                ${svgIconsService.iconEye}
+              </span>
             </div>
           </div>
         </div>
         <div class="torrent__footer">
-          <div class="footer__size">${details.size}</div>
+          <div class="footer__size">
+            <span title="Torrento dydis: ${details.size}">
+              ${svgIconsService.iconFileSize} ${details.size}
+            </span>
+          </div>
           <div class="footer__stats">
-            <span>${downloadIcon} ${details.downloadedTimes}</span>
-            <span class="sl-seeders">${seedersIcon} ${details.seedersCount}</span>
-            <span class="sl-leechers">${leechersIcon} ${details.leechersCount}</span>
+            <span title="Parsisiųsta ${details.downloadedTimes}">
+              ${svgIconsService.iconDownload} ${details.downloadedTimes}
+            </span>
+            <span title="Skledėjai ${details.seedersCount}" class="sl-seeders">
+              ${svgIconsService.iconMaleArrowUp} ${details.seedersCount}
+            </span>
+            <span title="Siurbelės ${details.leechersCount}" class="sl-leechers">
+              ${svgIconsService.iconMaleArrowDown} ${details.leechersCount}
+            </span>
           </div>
         </div>
       </div>
     </li>
     `;
+  }
+
+  private setupPreviewHover() {
+    const previewButtons = document.getElementsByClassName('torrent-preview');
+
+    for (let i = 0, b = previewButtons.length; i < b; i += 1) {
+      const button = previewButtons[i];
+      const detailsLink = button.getAttribute('data-details');
+      previewService.add(button as HTMLElement, detailsLink);
+    }
+  }
+
+  private setupFavouriteClicks() {
+    /**
+     * Setting up grid mode favourite button clicks
+     */
+    const self = this;
+    const favouriteButtons = document.querySelectorAll('.torrent__favourite');
+    for (let i = 0, b = favouriteButtons.length; i < b; i += 1) {
+      favouriteButtons[i].addEventListener('click', function () {
+        self.favouriteClickEvent(this as HTMLElement, i);
+      });
+    }
+
+    /**
+     * Sync list mode buttons with grid mode favourite buttons
+     */
+    const torrentListRows = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
+    for (let i = 0, b = torrentListRows.length; i < b; i += 1) {
+      const addFavouriteElement = torrentListRows[i].children[(torrentListRows[i].children.length - 5)];
+      const removeFavouriteElement = torrentListRows[i].children[(torrentListRows[i].children.length - 4)];
+      const id = parseInt((addFavouriteElement as HTMLElement).getAttribute('id').replace('ba_', ''), 10);
+      const element = document.querySelector(`.torrent__favourite[data-id="${id}"]`) as HTMLElement;
+
+      addFavouriteElement.addEventListener('click', () => { element.className = 'torrent__favourite remove'; });
+      removeFavouriteElement.addEventListener('click', () => { element.className = 'torrent__favourite add'; });
+    }
+  }
+
+  private favouriteClickEvent(element: HTMLElement, rowIndex: number) {
+    const id = element.getAttribute('data-id');
+    const isAdd = element.className.includes('add');
+    const method = isAdd ? 'addFavourite' : 'removeFavourite';
+    const className = isAdd ? 'remove' : 'add';
+
+    apiService[method](id).then((response: string) => {
+      if (parseInt(response, 10) === 1) {
+        element.className = `torrent__favourite ${className}`;
+        const torrentListRows = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
+        torrentListRows[rowIndex].children[(torrentListRows[rowIndex].children.length - 5)]
+          .setAttribute('style', `display: ${isAdd ? 'none' : 'inline'};`);
+        torrentListRows[rowIndex].children[(torrentListRows[rowIndex].children.length - 4)]
+          .setAttribute('style', `display: ${isAdd ? 'inline' : 'none'};`);
+      }
+    });
   }
 }
 
