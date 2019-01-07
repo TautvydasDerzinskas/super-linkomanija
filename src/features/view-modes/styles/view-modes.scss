@@ -14,10 +14,22 @@ $torrents-table-selector: '#content form[action="browse.php"] > table:not(.botto
     background-color: $linkomanija-cell-bg-color;
     outline: none;
 
+    .sl--theme-dark & {
+      border-color: $linkomanija-dark-border-color;
+      background-color: $linkomanija-dark-bg-color;
+    }
+
     &.active {
       background-color: $linkomanija-link-color;
       svg {
         fill: $linkomanija-cell-bg-color;
+      }
+
+      .sl--theme-dark & {
+        background-color: $linkomanija-dark-cell-bg-color;
+        svg {
+          fill: $linkomanija-dark-link-color;
+        }
       }
     }
 
@@ -26,6 +38,10 @@ $torrents-table-selector: '#content form[action="browse.php"] > table:not(.botto
       height: $large-spacing;
       width: $large-spacing;
       fill: $linkomanija-link-color;
+
+      .sl--theme-dark & {
+        fill: $linkomanija-dark-link-color;
+      }
     }
   }
 }

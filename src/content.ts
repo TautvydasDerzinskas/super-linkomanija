@@ -4,6 +4,17 @@ import { Features } from './features/features';
 import { IMessageToggle } from './interfaces/communication';
 
 /**
+ * Find out which theme is being used (light or dark)
+ */
+const decideTheme = () => {
+  const themeStyleSheet = document.querySelector('head link');
+  if (themeStyleSheet.getAttribute('href').includes('dark')) {
+    document.getElementsByTagName('body')[0].classList.add('sl--theme-dark');
+  }
+};
+decideTheme();
+
+/**
  * Initialize all the featues
  */
 const setupFeatureContents = () => {

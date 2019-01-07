@@ -10,6 +10,10 @@
 
   svg {
     fill: $linkomanija-link-color;
+
+    .sl--theme-dark & {
+      fill: $linkomanija-dark-link-color;
+    }
   }
 
   * {
@@ -45,6 +49,11 @@
     overflow: hidden;
     width: 100%;
 
+    .sl--theme-dark & {
+      background-color: $linkomanija-dark-cell-bg-color;
+      border-color: $linkomanija-dark-border-color;
+    }
+
     &__header {
       display: flex;
       align-items: center;
@@ -52,8 +61,14 @@
       border-bottom: 1px $linkomanija-border-color solid;
       background-image: url('https://static.linkomanija.net/images/shadow.gif');
       background-repeat: repeat-x;
-      background-color: #f2f7f8;
+      background-color: $linkomanija-cell-bg-color;
       padding: $default-spacing;
+
+      .sl--theme-dark & {
+        background-image: none;
+        background-color: $linkomanija-dark-cell-bg-color;
+        border-color: $linkomanija-dark-border-color;
+      }
 
       &__category {
         margin-right: $default-spacing;
@@ -68,8 +83,12 @@
       &__title {
         display: block;
         width: 100%;
-        color: $linkomanija-link-color;
+        color: $linkomanija-link-color !important;
         font-weight: normal !important;
+
+        .sl--theme-dark & {
+          color: $linkomanija-dark-link-color !important;
+        }
       }
     }
 
@@ -122,6 +141,10 @@
             opacity: .7;
             cursor: pointer;
 
+            .sl--theme-dark & {
+              background-color: $linkomanija-dark-cell-bg-color;
+            }
+
             &.torrent__favourite {
               &.remove {
                 background-color: $theme-yellow;
@@ -147,9 +170,15 @@
       border-top: 1px $linkomanija-border-color solid;
       background-image: url('https://static.linkomanija.net/images/shadow.gif');
       background-repeat: repeat-x;
-      background-color: #f2f7f8;
+      background-color: $linkomanija-cell-bg-color;
       padding: $default-spacing;
       display: flex;
+
+      .sl--theme-dark & {
+        border-color: $linkomanija-dark-border-color;
+        background-image: none;
+        background-color: $linkomanija-dark-cell-bg-color;
+      }
 
       .footer {
         &__size {
@@ -199,6 +228,11 @@
     &__comments {
       color: $theme-black;
       font-weight: bold;
+      white-space: nowrap;
+
+      .sl--theme-dark & {
+        color: $theme-yellow;
+      }
 
       svg {
         vertical-align: middle;

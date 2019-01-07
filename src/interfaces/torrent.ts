@@ -4,20 +4,23 @@ export interface ITorrentCategory {
   imageLink: string;
 }
 
-export interface ITorrentDetails {
+interface IBasicTorrentDetails {
   id: number;
   title: string;
-  isNew: boolean;
-  isFavourite: boolean;
-  isFreeLeech: boolean;
-  subTitle?: string;
   detailsLink: string;
   torrentLink: string;
   category: ITorrentCategory;
+  size: string;
+}
+
+export interface ITorrentDetails extends IBasicTorrentDetails {
+  subTitle?: string;
+  isNew: boolean;
+  isFavourite: boolean;
+  isFreeLeech: boolean;
   filesCount: number;
   commentsCount: number;
   addedDate: string;
-  size: string;
   downloadedTimes: number;
   seedersCount: number;
   leechersCount: number;

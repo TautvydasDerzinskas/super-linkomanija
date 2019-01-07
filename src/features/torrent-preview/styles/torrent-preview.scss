@@ -5,30 +5,81 @@ $max-popup-width: 600px;
 $max-popup-height: 250px;
 
 .torrent-preview {
-  width: auto;
-  max-width: $max-popup-width;
-  height: $max-popup-height;
-  color: $theme-gray;
-  font-size: 12px;
-  background-color: $linkomanija-bg-color;
-  overflow-x: hidden;
-  overflow-y: auto;
+  $header: header;
+  font-size: 11px;
+  font-family: Verdana,Geneva,'DejaVu Sans',sans-serif;
 
-  img {
+  &__#{$header} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px $linkomanija-border-color solid;
+    background-image: url('https://static.linkomanija.net/images/shadow.gif');
+    background-repeat: repeat-x;
+    background-color: $linkomanija-cell-bg-color;
+    padding: $default-spacing;
+
+    .sl--theme-dark & {
+      background-image: none;
+      background-color: $linkomanija-dark-cell-bg-color;
+      border-color: $linkomanija-dark-border-color;
+    }
+
+    .#{$header} {
+      &__category {
+        margin-right: $default-spacing;
+
+        img {
+          display: inline-block;
+          width: 41px;
+          height: auto;
+        }
+      }
+
+      &__title {
+        display: block;
+        width: 100%;
+        color: $linkomanija-link-color !important;
+        font-weight: normal !important;
+        text-decoration: none;
+
+        .sl--theme-dark & {
+          color: $linkomanija-dark-link-color !important;
+        }
+      }
+
+      &__actions {
+
+      }
+    }
+  }
+
+  &__content {
+    width: auto;
     max-width: $max-popup-width;
-    max-height: $max-popup-height;
-  }
+    height: $max-popup-height;
+    color: $theme-gray;
+    font-size: 12px;
+    background-color: $linkomanija-bg-color;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-  b {
-    color: $theme-blue;
-  }
+    img {
+      max-width: $max-popup-width;
+      max-height: $max-popup-height;
+    }
 
-  font {
-    color: $theme-red;
-  }
+    b {
+      color: $theme-blue;
+    }
 
-  a {
-    color: $linkomanija-link-color;
-    text-decoration: none;
+    font {
+      color: $theme-red;
+    }
+
+    a {
+      color: $linkomanija-link-color;
+      text-decoration: none;
+    }
   }
 }

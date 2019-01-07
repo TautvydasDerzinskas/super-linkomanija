@@ -9,36 +9,7 @@ class ExtractTorrentDetailsService {
       const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
       let promisesLeft = titleColumns.length;
       for (let i = 0, b = titleColumns.length; i < b; i += 1) {
-        const rowElement  = titleColumns[i].parentElement;
-        const categoryColumnElement = rowElement.children[0];
-        const titleColumnElement = rowElement.children[1];
-        const filesColumnElement = rowElement.children[2];
-        const commentsColumnElement = rowElement.children[3];
-        const dateColumnElement = rowElement.children[4];
-        const sizeColumnElement = rowElement.children[5];
-        const downloadsColumnElement = rowElement.children[6];
-        const seedersColumnElement = rowElement.children[7];
-        const leechersColumnElement = rowElement.children[8];
-
-        const torrentDetail: ITorrentDetails = {
-          id: this.getId(titleColumnElement),
-          title: this.getTitle(titleColumnElement),
-          subTitle: this.getSubTitle(titleColumnElement),
-          detailsLink: this.getDetailsLink(titleColumnElement),
-          torrentLink: this.getTorrentLink(titleColumnElement),
-          isNew: this.getIfIsNew(titleColumnElement),
-          isFavourite: this.getIfIsFavourite(titleColumnElement),
-          isFreeLeech: this.getIfIsFreeLeech(titleColumnElement),
-          category: this.getCategoryDetails(categoryColumnElement),
-          filesCount: this.getFilesCount(filesColumnElement),
-          commentsCount: this.getCommentsCount(commentsColumnElement),
-          addedDate: this.getAddedDate(dateColumnElement),
-          size: this.getSize(sizeColumnElement),
-          downloadedTimes: this.getDownloadedCount(downloadsColumnElement),
-          seedersCount: this.getSeedersCount(seedersColumnElement),
-          leechersCount: this.getLeechersCount(leechersColumnElement),
-          descriptionHtml: null,
-        };
+        const torrentDetail = this.getMainTorrentDetails(titleColumns[i].parentElement as HTMLElement);
 
         apiService.getTorrentDescription(torrentDetail.detailsLink).then((descriptionHtml: string) => {
           torrentDetail.descriptionHtml = descriptionHtml;
@@ -53,6 +24,37 @@ class ExtractTorrentDetailsService {
         });
       }
     });
+  }
+
+  public getMainTorrentDetails(rowElement: HTMLElement): ITorrentDetails {
+    const categoryColumnElement = rowElement.children[0];
+    const titleColumnElement = rowElement.children[1];
+    const filesColumnElement = rowElement.children[2];
+    const commentsColumnElement = rowElement.children[3];
+    const dateColumnElement = rowElement.children[4];
+    const sizeColumnElement = rowElement.children[5];
+    const downloadsColumnElement = rowElement.children[6];
+    const seedersColumnElement = rowElement.children[7];
+    const leechersColumnElement = rowElement.children[8];
+
+    return {
+      id: this.getId(titleColumnElement),
+      title: this.getTitle(titleColumnElement),
+      subTitle: this.getSubTitle(titleColumnElement),
+      detailsLink: this.getDetailsLink(titleColumnElement),
+      torrentLink: this.getTorrentLink(titleColumnElement),
+      isNew: this.getIfIsNew(titleColumnElement),
+      isFavourite: this.getIfIsFavourite(titleColumnElement),
+      isFreeLeech: this.getIfIsFreeLeech(titleColumnElement),
+      category: this.getCategoryDetails(categoryColumnElement),
+      filesCount: this.getFilesCount(filesColumnElement),
+      commentsCount: this.getCommentsCount(commentsColumnElement),
+      addedDate: this.getAddedDate(dateColumnElement),
+      size: this.getSize(sizeColumnElement),
+      downloadedTimes: this.getDownloadedCount(downloadsColumnElement),
+      seedersCount: this.getSeedersCount(seedersColumnElement),
+      leechersCount: this.getLeechersCount(leechersColumnElement),
+    };
   }
 
   private exractImagesFromHtmlString(htmlCode: string) {

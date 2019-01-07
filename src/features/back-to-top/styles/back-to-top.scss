@@ -35,4 +35,13 @@ $back-to-top-button-size: $large-spacing * 2;
     visibility: visible;
     opacity: .5;
   }
+
+  .sl--theme-dark & {
+    border-color: $linkomanija-dark-border-color;
+    background-color: $linkomanija-dark-bg-color;
+
+    svg {
+      fill: $linkomanija-dark-link-color;
+    }
+  }
 }

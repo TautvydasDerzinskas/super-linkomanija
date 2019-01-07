@@ -105,7 +105,7 @@ class ContentViewModes implements IContent {
       const torrentsTable = document.querySelector(LinkomanijaSelectors.TorrentTable);
       torrentsTable.parentNode.insertBefore(cards, torrentsTable);
 
-      this.setupPreviewHover();
+      this.setupPreviewHover(torrentDetails);
       this.setupFavouriteClicks();
 
       this.gridModeUiGenerated = true;
@@ -166,7 +166,7 @@ class ContentViewModes implements IContent {
               </span>
             </div>
             <div>
-              <span title="Peržiūrėti aprašymą" class="torrent-preview" data-details="${details.detailsLink}">
+              <span title="Peržiūrėti aprašymą" class="torrent-preview">
                 ${svgIconsService.iconEye}
               </span>
             </div>
@@ -195,13 +195,11 @@ class ContentViewModes implements IContent {
     `;
   }
 
-  private setupPreviewHover() {
+  private setupPreviewHover(torrentDetails: ITorrentDetails[]) {
     const previewButtons = document.getElementsByClassName('torrent-preview');
-
     for (let i = 0, b = previewButtons.length; i < b; i += 1) {
       const button = previewButtons[i];
-      const detailsLink = button.getAttribute('data-details');
-      previewService.add(button as HTMLElement, detailsLink);
+      previewService.add(button as HTMLElement, torrentDetails[i]);
     }
   }
 
