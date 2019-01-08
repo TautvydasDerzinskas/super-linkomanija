@@ -52,7 +52,7 @@
     "description": "Features tab configuration setting description for homepage redirect feature"
   },
   "featureTorrentPreviewTitle": {
-    "message": "Torento aprašymo apžvalga",
+    "message": "Išankstinė torento peržiūra",
     "description": "Features tab configuration setting title for torrent preview feature"
   },
   "featureTorrentPreviewDescription": {

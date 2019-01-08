@@ -36,11 +36,11 @@
     "description": "Popup version information tooltip"
   },
   "featureCommentsFormattingTitle": {
-    "message": "Comments formatting",
+    "message": "Formatted comments",
     "description": "Features tab configuration setting title for comments formatting feature"
   },
   "featureCommentsFormattingDescription": {
-    "message": "Adds text formatting options to comments form",
+    "message": "Adds text formatting options to torrents comment form",
     "description": "Features tab configuration setting description for comments formatting feature"
   },
   "featureHomePageRedirectTitle": {
@@ -52,11 +52,11 @@
     "description": "Features tab configuration setting description for homepage redirect feature"
   },
   "featureTorrentPreviewTitle": {
-    "message": "Torrent details preview",
+    "message": "Torrent preview",
     "description": "Features tab configuration setting title for torrent preview feature"
   },
   "featureTorrentPreviewDescription": {
-    "message": "Displays torrent details popup on mouse hover event",
+    "message": "See torrent details without opening the torrent page",
     "description": "Features tab configuration setting description for torrent preview feature"
   },
   "featureViewModesTitle": {
