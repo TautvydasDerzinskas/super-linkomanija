@@ -1,21 +1,18 @@
 
 import ChromeStorageService from './chrome-storage.service';
-import extractTorrentDetailsService from './extract-torrent-details.service';
-import urlService from './url.service';
 
+import { IHistory } from '../../interfaces/history';
 import { IBasicTorrentDetails } from '../../interfaces/torrent';
 import { ChromeStorageKeys } from '../../enums';
 
 const chromeStorageService = new ChromeStorageService();
 
-interface IStoredHistoryData {
-  viewed: IBasicTorrentDetails[];
-  downloaded: IBasicTorrentDetails[];
-  commented: IBasicTorrentDetails[];
-}
-
 class HistoryService {
   get maxStoredTorrentsPerCategory () { return 25; }
+
+  public getHistory() {
+    return chromeStorageService.getItem<IHistory>(ChromeStorageKeys.History);
+  }
 
   public addViewedTorrent(torrentDetails: IBasicTorrentDetails) {
     return this.performStorageProcess(torrentDetails, 'viewed');
@@ -26,13 +23,13 @@ class HistoryService {
   }
 
   public addCommentedTorrent(torrentDetails: IBasicTorrentDetails) {
-    return this.performStorageProcess(torrentDetails, 'viewed');
+    return this.performStorageProcess(torrentDetails, 'commented');
   }
 
   private performStorageProcess(torrentDetails: IBasicTorrentDetails, type: 'viewed' | 'downloaded' | 'commented') {
     return new Promise((resolve, reject) => {
       if (torrentDetails) {
-        chromeStorageService.getItem<IStoredHistoryData>(ChromeStorageKeys.History).then(data => {
+        chromeStorageService.getItem<IHistory>(ChromeStorageKeys.History).then(data => {
           if (!data) {
             data = {
               viewed: [],
@@ -41,11 +38,11 @@ class HistoryService {
             };
           }
 
-          data[type].push(torrentDetails);
+          data[type].unshift(torrentDetails);
           if (data[type].length > this.maxStoredTorrentsPerCategory) {
             data[type].pop();
           }
-          chromeStorageService.setItem<IStoredHistoryData>(ChromeStorageKeys.History, data).then(resolve);
+          chromeStorageService.setItem<IHistory>(ChromeStorageKeys.History, data).then(resolve);
         });
       } else {
         reject(null);

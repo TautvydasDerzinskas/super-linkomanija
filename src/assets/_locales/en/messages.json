@@ -102,5 +102,21 @@
   "tabsLinksLeaveReviewLabel": {
     "message": "Love this extension? Leave a review!",
     "description": "Leave a review link box overlay text"
+  },
+  "tabsHistoryRecentViewedLabel": {
+    "message": "Recently viewed torrents",
+    "description": "History tab recently viewed torrents group"
+  },
+  "tabsHistoryRecentDownloadedLabel": {
+    "message": "Recently downloaded torrents",
+    "description": "History tab recently downloaded torrents group"
+  },
+  "tabsHistoryRecentCommentedLabel": {
+    "message": "Recently commented torrents",
+    "description": "History tab recently commented torrents group"
+  },
+  "tabsHistoryNoTorrentEntriesLabel": {
+    "message": "No torrents tracked yet",
+    "description": "History tab label showed when gruop doesn't have any items tracked yet"
   }
 }

@@ -1,25 +1,28 @@
 @import '../../../../variables';
 
-$video-item-height: 30px;
+$torrent-item-height: 30px;
 
-.video {
+.torrent {
   display: flex;
   align-items: center;
   width: 100%;
-  height: $video-item-height;
+  height: $torrent-item-height;
   overflow: hidden;
 
-  &__thumbnail {
-    height: $video-item-height;
+  &__category {
+    height: $torrent-item-height;
     display: inline-block;
-    width: 40px;
+
+    img {
+      max-height: $torrent-item-height;
+    }
   }
 
   &__title {
     display: block;
     flex: 1 auto;
     width: 100%;
-    font-size: 15px;
+    font-size: 12px;
     color: $theme-gray;
     padding-left: $default-spacing;
     white-space: nowrap;
@@ -28,29 +31,11 @@ $video-item-height: 30px;
     transition: $default-transition;
   }
 
-  &__play-button {
-    height: 10px;
-    width: 10px;
-    margin: 0 $default-spacing;
-
-    .play-button--active {
-      display: none;
-    }
-  }
-
   &:hover {
     background-color: darken(#F1F1F1, 5%);
 
-    .video__title {
+    .torrent__title {
       color: $theme-black;
-    }
-
-    .play-button--disabled {
-      display: none;
-    }
-
-    .play-button--active {
-      display: inline-block;
     }
   }
 }

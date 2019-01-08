@@ -1,0 +1,21 @@
+@import '../../../variables';
+
+.torrent-group {
+  background-color: $theme-silver-white;
+  padding: $large-spacing;
+
+  &:not(:last-child) {
+    margin-bottom: $large-spacing;
+  }
+
+  &__title {
+    font-weight: bold;
+    color: $theme-blue;
+  }
+
+  &__torrents {
+    overflow: auto;
+    margin-top: $default-spacing;
+    max-height: 90px;
+  }
+}

@@ -102,5 +102,21 @@
   "tabsLinksLeaveReviewLabel": {
     "message": "Įvertinti papildinį",
     "description": "Leave a review link box overlay text"
+  },
+  "tabsHistoryRecentViewedLabel": {
+    "message": "Paskutiniai atidaryti",
+    "description": "History tab recently viewed torrents group"
+  },
+  "tabsHistoryRecentDownloadedLabel": {
+    "message": "Paskutiniai parsisiųsti",
+    "description": "History tab recently downloaded torrents group"
+  },
+  "tabsHistoryRecentCommentedLabel": {
+    "message": "Paskutiniai komentuoti",
+    "description": "History tab recently commented torrents group"
+  },
+  "tabsHistoryNoTorrentEntriesLabel": {
+    "message": "Ši grupė dar neturi užfiksuotų torentų",
+    "description": "History tab label showed when gruop doesn't have any items tracked yet"
   }
 }

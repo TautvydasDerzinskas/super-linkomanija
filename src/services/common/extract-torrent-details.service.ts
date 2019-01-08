@@ -33,7 +33,7 @@ class ExtractTorrentDetailsService {
     return {
       id: torrentId,
       title: document.querySelector('#content h1').textContent,
-      detailsLink: window.location.href.split('/')[1],
+      detailsLink: window.location.href.split('.net/')[1],
       torrentLink: document.querySelector('#content .rowhead a').getAttribute('href'),
       category: {
         title: cagegoryImage.getAttribute('alt'),

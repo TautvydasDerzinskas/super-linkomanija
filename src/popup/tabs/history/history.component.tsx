@@ -1,49 +1,45 @@
 
 
 import * as React from 'react';
-import FeatureStatsGroupComponent from './feature-stats-group/feature-stats-group.component';
-import featureStorageService from '../../../services/common/feature-storage.service';
-import { IFeaturesStorageObject } from '../../../interfaces/feature';
+import { injectIntl, InjectedIntlProps } from 'react-intl';
+import TorrentHistoryGroupComponent from './torrent-history-group/torrent-history-group.component';
+import historyService from '../../../services/common/history.service';
 
-import { FeaturesMeta } from '../../../features/features';
+import { IHistory } from '../../../interfaces/history';
 
 interface HistoryComponentState {
-  data: IFeaturesStorageObject;
+  data: IHistory;
 }
 
-export default class HistoryComponent extends React.Component<{}, HistoryComponentState> {
-  constructor(props: any) {
+class HistoryComponent extends React.Component<InjectedIntlProps, HistoryComponentState> {
+  constructor(props: InjectedIntlProps) {
     super(props);
-    this.state = {
-      data: null
-    };
+    this.state = { data: null };
   }
 
   componentDidMount() {
-    featureStorageService.getFeatures().then(featuresData => {
-      this.setState({
-        data: featuresData,
-      });
+    historyService.getHistory().then(historyData => {
+      this.setState({ data: historyData });
     });
   }
 
 
   render() {
-    let allGroupsHtml;
-    if (this.state.data != null) {
-      allGroupsHtml = FeaturesMeta.map((featureMeta) => {
-        return (<FeatureStatsGroupComponent
-          key={featureMeta.id}
-          meta={featureMeta}
-          data={this.state.data[featureMeta.id].data}>
-        </FeatureStatsGroupComponent>);
-      });
+    const { intl } = this.props;
+
+    let torrentGroupsHtml;
+    if (this.state.data) {
+      torrentGroupsHtml = (
+        <div className='history'>
+          <TorrentHistoryGroupComponent title={intl.formatMessage({ id: 'tabsHistoryRecentViewedLabel' })} torrents={this.state.data.viewed}></TorrentHistoryGroupComponent>
+          <TorrentHistoryGroupComponent title={intl.formatMessage({ id: 'tabsHistoryRecentDownloadedLabel' })} torrents={this.state.data.downloaded}></TorrentHistoryGroupComponent>
+          <TorrentHistoryGroupComponent title={intl.formatMessage({ id: 'tabsHistoryRecentCommentedLabel' })} torrents={this.state.data.commented}></TorrentHistoryGroupComponent>
+        </div>
+      );
     }
 
-    return (
-      <div className='history'>
-        {allGroupsHtml}
-      </div>
-    );
+    return torrentGroupsHtml || <div></div>;
   }
 }
+
+export default injectIntl(HistoryComponent);

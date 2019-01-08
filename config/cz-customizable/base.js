@@ -23,18 +23,9 @@ module.exports = {
     { name: 'homepage-redirect' },
     { name: 'torrent-preview' },
     { name: 'view-modes' },
+    { name: 'history' },
     { name: 'core' },
   ],
-
-  // it needs to match the value for field type. Eg.: 'feat'
-  scopeOverrides: {
-    feat: [
-      { name: 'config' },
-    ],
-    fix: [
-      { name: 'config' },
-    ]
-  },
 
   messages: {
     footer: 'List any JIRA ISSUES REFERENCED by this change (optional). E.g.: GGTWO-1234:\n',

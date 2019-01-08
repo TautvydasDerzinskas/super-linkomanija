@@ -51,14 +51,16 @@ const setupHistoryTracking = () => {
     const linkElement = findParent('a', (event.target || event.srcElement) as HTMLElement);
     if (linkElement) {
       const downloadLink = (linkElement as HTMLElement).getAttribute('href');
-      const isDownloadLink = downloadLink.includes('download.php?');
-      if (isDownloadLink) {
-        if (urlService.isTorrentsListPage()) {
-          const torrentDetails = extractTorrentDetailsService.getMainTorrentDetailsByDownloadLink(downloadLink);
-          this.addDownloadedTorrent(torrentDetails);
-        } else if (urlService.isTorrentDetailsPage()) {
-          const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
-          this.addDownloadedTorrent(torrentDetails);
+      if (downloadLink) {
+        const isDownloadLink = downloadLink.includes('download.php?');
+        if (isDownloadLink) {
+          if (urlService.isTorrentsListPage()) {
+            const torrentDetails = extractTorrentDetailsService.getMainTorrentDetailsByDownloadLink(downloadLink);
+            this.addDownloadedTorrent(torrentDetails);
+          } else if (urlService.isTorrentDetailsPage()) {
+            const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
+            this.addDownloadedTorrent(torrentDetails);
+          }
         }
       }
     }
