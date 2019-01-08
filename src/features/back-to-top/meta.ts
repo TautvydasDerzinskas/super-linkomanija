@@ -1,5 +1,4 @@
 import IMeta from '../../interfaces/meta';
-import { ViewModes } from '../../enums';
 
 const meta: IMeta = {
   id: 'sl-back-to-top',

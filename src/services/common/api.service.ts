@@ -5,6 +5,20 @@ class ApiService {
     }
   }
 
+  public getRelatedTorrents(title: string) {
+    return new Promise((resolve, reject) => {
+      this.get('/browse.php?search=' + title).then((responseHtml: string) => {
+        const data = responseHtml
+          .trim()
+          .split('Kitas&nbsp&raquo;</a></p>')[1]
+          .split('<p align="center"><span class="pageinactive">&laquo;&nbsp;Ankstesnis')[0]
+          .replace(/(?:\r\n|\r|\n)/g, '');
+
+          resolve(data);
+      });
+    });
+  }
+
   public getTorrentDescription(url: string) {
     return new Promise((resolve, reject) => {
       this.get(url).then((responseHtml: string) => {

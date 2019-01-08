@@ -75,6 +75,14 @@
     "message": "Į visus puslapius pridės mygtuką, kurį paspaudus atsidursite puslapio viršuje",
     "description": "Features tab configuration setting description for back to top feature"
   },
+  "featureRelatedTorrentsTitle": {
+    "message": "Susiję torentai",
+    "description": "Features tab configuration setting title for related torrents feature"
+  },
+  "featureRelatedTorrentsDescription": {
+    "message": "Torento puslapyje leis matyti susijusių torentų sąrašą",
+    "description": "Features tab configuration setting description for related torrents feature"
+  },
   "tabsLinksGithubRepositoryLabel": {
     "message": "GitHub saugykla",
     "description": "Github repository link box overlay text"

@@ -75,6 +75,14 @@
     "message": "Adds 'Back to top' button to each page so you could scroll up quickly!",
     "description": "Features tab configuration setting description for back to top feature"
   },
+  "featureRelatedTorrentsTitle": {
+    "message": "Related torrents",
+    "description": "Features tab configuration setting title for related torrents feature"
+  },
+  "featureRelatedTorrentsDescription": {
+    "message": "In torrent page show a list of other related torrents",
+    "description": "Features tab configuration setting description for related torrents feature"
+  },
   "tabsLinksGithubRepositoryLabel": {
     "message": "GitHub repository",
     "description": "Github repository link box overlay text"
