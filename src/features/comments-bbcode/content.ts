@@ -8,7 +8,6 @@ import './styles/comments-bbcode.scss';
 class ContentCommentsBbcode implements IContent {
   public setupEventListeners() {
     if (urlService.isTorrentDetailsPage()) {
-      this.fixYoutubeBbcode();
       this.setupReplyCommentBoxesTriggers();
     }
   }
@@ -22,7 +21,7 @@ class ContentCommentsBbcode implements IContent {
         if (!scEditorInstance) {
           sceditor.create(textBoxes[i], {
             format: 'bbcode',
-            toolbar: 'bold,italic,underline,strike|font,size,color|quote,link,image,youtube,emoticon|date,time|source',
+            toolbar: 'bold,italic,underline,strike|font,size,color|quote,link,image,emoticon|date,time|source',
             locale: Locales.Lithuanian,
             emoticonsEnabled: true,
             emoticonsRoot: '//static.linkomanija.net/pic/smilies/',
@@ -43,10 +42,6 @@ class ContentCommentsBbcode implements IContent {
         }
       }
     }
-  }
-
-  private fixYoutubeBbcode() {
-    console.log(sceditor);
   }
 
   private setupReplyCommentBoxesTriggers() {

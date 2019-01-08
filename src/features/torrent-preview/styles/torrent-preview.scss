@@ -1,9 +1,30 @@
 @import '../../../popup/variables';
 @import './tippy-js-linkomanija-theme';
 
-$max-popup-width: 600px;
-$max-popup-height: 250px;
+$max-popup-width: 350px;
+$max-popup-height: 170px;
 
+// Column button
+.sm--preview-torrent {
+  text-align: center;
+
+  button {
+    cursor: crosshair;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    svg {
+      fill: $linkomanija-link-color;
+      display: inline-block;
+      height: $large-spacing;
+      width: $large-spacing;
+    }
+  }
+}
+
+// Popup
 .torrent-preview {
   $header: header;
   font-size: 11px;
@@ -31,7 +52,7 @@ $max-popup-height: 250px;
 
         img {
           display: inline-block;
-          width: 41px;
+          width: 21px;
           height: auto;
         }
       }

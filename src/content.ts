@@ -6,6 +6,8 @@ import extractTorrentDetailsService from './services/common/extract-torrent-deta
 import { Features } from './features/features';
 import { IMessageToggle } from './interfaces/communication';
 
+import './content-styles.scss';
+
 /**
  * Find out which theme is being used (light or dark)
  */
@@ -56,10 +58,10 @@ const setupHistoryTracking = () => {
         if (isDownloadLink) {
           if (urlService.isTorrentsListPage()) {
             const torrentDetails = extractTorrentDetailsService.getMainTorrentDetailsByDownloadLink(downloadLink);
-            this.addDownloadedTorrent(torrentDetails);
+            historyService.addDownloadedTorrent(torrentDetails);
           } else if (urlService.isTorrentDetailsPage()) {
             const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
-            this.addDownloadedTorrent(torrentDetails);
+            historyService.addDownloadedTorrent(torrentDetails);
           }
         }
       }

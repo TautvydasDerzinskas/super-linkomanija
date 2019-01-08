@@ -91,6 +91,13 @@ class ContentViewModes implements IContent {
   }
 
   private generateGridModeUi() {
+    const cards = document.createElement('ul');
+    cards.innerHTML = `<div class="sl-loading">${svgIconsService.iconLoading}</div>`;
+    cards.className = 'torrents';
+
+    const torrentsTable = document.querySelector(LinkomanijaSelectors.TorrentTable);
+    torrentsTable.parentNode.insertBefore(cards, torrentsTable);
+
     extractTorrentDetailsService.generateMultipleTorrentsData().then(torrentDetails => {
       let cardsHtml = '';
 
@@ -98,12 +105,7 @@ class ContentViewModes implements IContent {
         cardsHtml += this.getTorrentCard(torrentDetails[i]);
       }
 
-      const cards = document.createElement('ul');
-      cards.innerHTML = cardsHtml;
-      cards.className = 'torrents';
-
-      const torrentsTable = document.querySelector(LinkomanijaSelectors.TorrentTable);
-      torrentsTable.parentNode.insertBefore(cards, torrentsTable);
+      document.querySelector('ul.torrents').innerHTML = cardsHtml;
 
       this.setupPreviewHover(torrentDetails);
       this.setupFavouriteClicks();

@@ -38,11 +38,15 @@ class HistoryService {
             };
           }
 
-          data[type].unshift(torrentDetails);
-          if (data[type].length > this.maxStoredTorrentsPerCategory) {
-            data[type].pop();
+          if (data[type][0].id !== torrentDetails.id) {
+            data[type].unshift(torrentDetails);
+            if (data[type].length > this.maxStoredTorrentsPerCategory) {
+              data[type].pop();
+            }
+            chromeStorageService.setItem<IHistory>(ChromeStorageKeys.History, data).then(resolve);
+          } else {
+            resolve();
           }
-          chromeStorageService.setItem<IHistory>(ChromeStorageKeys.History, data).then(resolve);
         });
       } else {
         reject(null);

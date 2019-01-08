@@ -1,0 +1,30 @@
+@import './popup/variables';
+
+/*
+* Loader spinning
+*/
+.sl-loading {
+  margin: ($large-spacing * 2) 0;
+  display: block;
+  flex: 1;
+  text-align: center;
+}
+.sl-spin-loader {
+  fill: $linkomanija-link-color;
+  display: inline-block;
+  height: $large-spacing * 2;
+  width: $large-spacing * 2;
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}

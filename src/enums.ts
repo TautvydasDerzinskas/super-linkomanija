@@ -10,6 +10,7 @@ export enum ShareLinks {
 export enum LinkomanijaSelectors {
   CommentTextBoxes = 'form > textarea',
   TorrentTable = '#content form[action="browse.php"] > table:not(.bottom)',
+  TorrentTableRows = '#content form[action="browse.php"] > table:not(.bottom) tr',
   TorrentTableTitleColumn = '#content form[action="browse.php"] > table tr td[align="left"]:not([class])',
 }
 

@@ -46,6 +46,10 @@ class SvgIconsService {
   get iconStar() {
     return require('../../assets/vectors/star.svg');
   }
+
+  get iconLoading() {
+    return require('../../assets/vectors/loading.svg');
+  }
 }
 
 export default new SvgIconsService();

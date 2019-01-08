@@ -1,26 +1,34 @@
 import apiService from './api.service';
 import { ITorrentDetails } from '../../interfaces/torrent';
+import svgIconsService from '../content/svg-icons.service';
 
 class PreviewService {
   public add(element: HTMLElement, details: ITorrentDetails) {
     let contentLoaded = false;
     const self = this;
     tippy(element, {
-      maxWidth: '600px',
+      maxWidth: '350px',
       theme: 'linkomanija',
       size: 'large',
       arrow: true,
       interactive: true,
       performance: true,
-      content: this.getPreviewWindowPopupHtml('Loading...', details),
+      content: this.getPreviewWindowPopupHtml(svgIconsService.iconLoading, details, true),
       animateFill: false,
       animation: 'scale',
       updateDuration: 0,
-      sticky: true,
+      interactiveBorder: 0,
+      interactiveDebounce: 100,
       async onShow(tip: any) {
         if (!contentLoaded) {
           const response = await apiService.getTorrentDescription(details.detailsLink);
-          tip.setContent(self.getPreviewWindowPopupHtml(response as string, details));
+          tip.setContent(
+            self.getPreviewWindowPopupHtml(
+              (response as string).replace('width="560" height="315"', 'width="350" height="213"'),
+              details,
+              false
+              )
+            );
           contentLoaded = true;
         }
       },
@@ -31,7 +39,7 @@ class PreviewService {
     (element as any)._tippy.destroy();
   }
 
-  private getPreviewWindowPopupHtml(content: string, details: ITorrentDetails) {
+  private getPreviewWindowPopupHtml(content: string, details: ITorrentDetails, isLoading: boolean) {
     return `
     <div class="torrent-preview">
       <div class="torrent-preview__header">
@@ -43,7 +51,7 @@ class PreviewService {
         </a>
         <div class="header__actions"></div>
       </div>
-      <div class="torrent-preview__content">${content}</div>
+      <div class="torrent-preview__content ${isLoading ? 'sl-loading' : ''}">${content}</div>
     </div>
     `;
   }

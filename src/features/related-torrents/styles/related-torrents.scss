@@ -1,5 +1,27 @@
 @import '../../../popup/variables';
 
-.related-comments {
+.related-torrents {
+  a[onClick], .colhead {
+    display: none;
+  }
 
+  &__torrents {
+    max-height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 90%;
+    max-width: 1000px;
+
+    table {
+      td {
+        &:nth-child(2) {
+          width: 100%;
+        }
+
+        &:nth-child(n+3) {
+          display: none;
+        }
+      }
+    }
+  }
 }
