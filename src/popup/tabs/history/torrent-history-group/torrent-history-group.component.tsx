@@ -1,24 +1,22 @@
 import * as React from 'react';
-import { injectIntl, InjectedIntlProps, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import TorrentComponent from './torrent/torrent.component';
 
 import { IBasicTorrentDetails } from '../../../../interfaces/torrent';
 
 import './torrent-history-group.component.scss';
 
-interface ITorrentHistoryGroupComponentProps extends InjectedIntlProps {
+interface ITorrentHistoryGroupComponentProps {
   title: string;
   torrents: IBasicTorrentDetails[];
 }
 
-class TorrentHistoryGroupComponent extends React.Component<ITorrentHistoryGroupComponentProps> {
+export default class TorrentHistoryGroupComponent extends React.Component<ITorrentHistoryGroupComponentProps> {
   constructor(props: ITorrentHistoryGroupComponentProps) {
     super(props);
   }
 
   render() {
-    const { intl } = this.props;
-
     let allTorrentItems: any = <FormattedMessage id='tabsHistoryNoTorrentEntriesLabel'></FormattedMessage>;
 
     if (this.props.torrents != null && this.props.torrents.length > 0) {
@@ -37,5 +35,3 @@ class TorrentHistoryGroupComponent extends React.Component<ITorrentHistoryGroupC
     );
   }
 }
-
-export default injectIntl(TorrentHistoryGroupComponent);
