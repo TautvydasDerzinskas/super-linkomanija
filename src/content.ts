@@ -1,4 +1,7 @@
 import featureStorageService from './services/common/feature-storage.service';
+import historyService from './services/common/history.service';
+import urlService from './services/common/url.service';
+import extractTorrentDetailsService from './services/common/extract-torrent-details.service';
 
 import { Features } from './features/features';
 import { IMessageToggle } from './interfaces/communication';
@@ -15,7 +18,56 @@ const decideTheme = () => {
 decideTheme();
 
 /**
- * Initialize all the featues
+ * Managing history
+ */
+const findParent = (tagName: string, element: HTMLElement) => {
+  while (element) {
+    if ((element.nodeName || element.tagName).toLowerCase() === tagName.toLowerCase()) {
+      return element;
+    }
+    element = element.parentNode as HTMLElement;
+  }
+  return null;
+};
+
+const setupHistoryTracking = () => {
+  if (urlService.isTorrentDetailsPage()) {
+    const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
+
+    // Tracking viewed torrents
+    historyService.addViewedTorrent(torrentDetails);
+
+    // Tracking commented torrents
+    const commentSubmitButton = document.getElementById('comment-post-submit');
+    if (commentSubmitButton) {
+      commentSubmitButton.addEventListener('click', () => {
+        historyService.addCommentedTorrent(torrentDetails);
+      });
+    }
+  }
+
+  // Tracking downloaded torrents
+  document.body.onclick = (event) => {
+    const linkElement = findParent('a', (event.target || event.srcElement) as HTMLElement);
+    if (linkElement) {
+      const downloadLink = (linkElement as HTMLElement).getAttribute('href');
+      const isDownloadLink = downloadLink.includes('download.php?');
+      if (isDownloadLink) {
+        if (urlService.isTorrentsListPage()) {
+          const torrentDetails = extractTorrentDetailsService.getMainTorrentDetailsByDownloadLink(downloadLink);
+          this.addDownloadedTorrent(torrentDetails);
+        } else if (urlService.isTorrentDetailsPage()) {
+          const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
+          this.addDownloadedTorrent(torrentDetails);
+        }
+      }
+    }
+  };
+};
+setupHistoryTracking();
+
+/**
+ * Initialize all the features
  */
 const setupFeatureContents = () => {
   Features.forEach((feature) => {
@@ -33,7 +85,7 @@ const setupFeatureContents = () => {
 };
 
 /**
- * Settup feature toggling listener
+ * Setup feature toggling listener
  */
 const handleToggleRequest = (request: IMessageToggle) => {
   if (request.toggle && request.toggle.featureId) {

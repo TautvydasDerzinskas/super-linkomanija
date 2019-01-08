@@ -12,7 +12,7 @@ class FeatureStorageService extends ChromeStorageService {
   }
 
   public getFeatures(): Promise<IFeaturesStorageObject> {
-    return this.getItem(ChromeStorageKeys.Features);
+    return this.getItem<IFeaturesStorageObject>(ChromeStorageKeys.Features);
   }
 
   public getFeatureData<T>(featureId: string): Promise<IFeatureStoredData> {
@@ -27,7 +27,7 @@ class FeatureStorageService extends ChromeStorageService {
     return new Promise((resolve) => {
       this.getFeatures().then((features: IFeaturesStorageObject) => {
         features[featureId].status = typeof value === 'boolean' ? value : !features[featureId].status;
-        this.setItem(ChromeStorageKeys.Features, features).then(() => {
+        this.setItem<IFeaturesStorageObject>(ChromeStorageKeys.Features, features).then(() => {
           resolve(features[featureId]);
         });
       });
@@ -38,7 +38,7 @@ class FeatureStorageService extends ChromeStorageService {
     return new Promise((resolve) => {
       this.getFeatures().then((features: IFeaturesStorageObject) => {
         features[featureId].data = data;
-        this.setItem(ChromeStorageKeys.Features, features).then(() => {
+        this.setItem<IFeaturesStorageObject>(ChromeStorageKeys.Features, features).then(() => {
           resolve(features[featureId]);
         });
       });
@@ -60,7 +60,7 @@ class FeatureStorageService extends ChromeStorageService {
           }
         });
 
-        this.setItem(ChromeStorageKeys.Features, freshFeatures);
+        this.setItem<IFeaturesStorageObject>(ChromeStorageKeys.Features, freshFeatures);
     });
   }
 }

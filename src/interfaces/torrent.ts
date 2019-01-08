@@ -4,17 +4,17 @@ export interface ITorrentCategory {
   imageLink: string;
 }
 
-interface IBasicTorrentDetails {
+export interface IBasicTorrentDetails {
   id: number;
   title: string;
   detailsLink: string;
   torrentLink: string;
   category: ITorrentCategory;
-  size: string;
 }
 
 export interface ITorrentDetails extends IBasicTorrentDetails {
   subTitle?: string;
+  size: string;
   isNew: boolean;
   isFavourite: boolean;
   isFreeLeech: boolean;

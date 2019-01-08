@@ -21,6 +21,7 @@ export enum ViewModes {
 export enum ChromeStorageKeys {
   Locale = 'sm-locale',
   Features = 'sm-features',
+  History = 'sm-history',
 }
 
 export enum Locales {

@@ -15,15 +15,15 @@ export default class ChromeStorageService {
     });
   }
 
-  public setItem(storageKey: string, data: object) {
+  public setItem<T>(storageKey: string, data: T) {
     return new Promise((resolve) => {
-      chrome.storage.sync.set({ [storageKey]: this.convertToString(data) }, () => {
+      chrome.storage.sync.set({ [storageKey]: this.convertToString<T>(data) }, () => {
         resolve(true);
       });
     });
   }
 
-  public convertToString(jsonItem: object) {
+  public convertToString<T>(jsonItem: T) {
     return JSON.stringify(jsonItem).trim();
   }
 

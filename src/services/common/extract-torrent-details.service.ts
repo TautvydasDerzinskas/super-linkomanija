@@ -1,6 +1,6 @@
 import apiService from './api.service';
 import { LinkomanijaSelectors } from '../../enums';
-import { ITorrentDetails, ITorrentCategory } from '../../interfaces/torrent';
+import { IBasicTorrentDetails, ITorrentDetails, ITorrentCategory } from '../../interfaces/torrent';
 
 class ExtractTorrentDetailsService {
   public generateMultipleTorrentsData(): Promise<ITorrentDetails[]> {
@@ -24,6 +24,36 @@ class ExtractTorrentDetailsService {
         });
       }
     });
+  }
+
+  public getBasicTorrentDetailsInDetailsPage(): IBasicTorrentDetails {
+    const cagegoryImage = document.querySelector('#content tr:not(.rowhead) td > img');
+    const categoryId = cagegoryImage.getAttribute('src').split('categories/')[1].split('/')[0];
+    const torrentId = parseInt(window.location.href.split('details?')[1].split('.')[0], 10);
+    return {
+      id: torrentId,
+      title: document.querySelector('#content h1').textContent,
+      detailsLink: window.location.href.split('/')[1],
+      torrentLink: document.querySelector('#content .rowhead a').getAttribute('href'),
+      category: {
+        title: cagegoryImage.getAttribute('alt'),
+        imageLink: cagegoryImage.getAttribute('src'),
+        link: `browse.php?cat=${categoryId}`,
+      },
+    };
+  }
+
+  public getBasicTorrentDetails(rowElement: HTMLElement): IBasicTorrentDetails {
+    const categoryColumnElement = rowElement.children[0];
+    const titleColumnElement = rowElement.children[1];
+
+    return {
+      id: this.getId(titleColumnElement),
+      title: this.getTitle(titleColumnElement),
+      detailsLink: this.getDetailsLink(titleColumnElement),
+      torrentLink: this.getTorrentLink(titleColumnElement),
+      category: this.getCategoryDetails(categoryColumnElement),
+    };
   }
 
   public getMainTorrentDetails(rowElement: HTMLElement): ITorrentDetails {
@@ -55,6 +85,17 @@ class ExtractTorrentDetailsService {
       seedersCount: this.getSeedersCount(seedersColumnElement),
       leechersCount: this.getLeechersCount(leechersColumnElement),
     };
+  }
+
+  public getMainTorrentDetailsByDownloadLink(downloadLink: string) {
+    const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
+    for (let i = 0, b = titleColumns.length; i < b; i += 1) {
+      const rowDownloadLink = this.getTorrentLink(titleColumns[i]);
+
+      if (rowDownloadLink.toLowerCase() === downloadLink.toLowerCase()) {
+        return this.getBasicTorrentDetails(titleColumns[i].parentElement as HTMLElement);
+      }
+    }
   }
 
   private exractImagesFromHtmlString(htmlCode: string) {

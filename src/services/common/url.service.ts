@@ -23,7 +23,7 @@ class UrlService {
   }
 
   public isTorrentsListPage(url = window.location.href.toLowerCase()) {
-    return url.includes('browse.php');
+    return url.includes('/browse.php');
   }
 
   public isTorrentDetailsPage(url = window.location.href.toLowerCase()) {
