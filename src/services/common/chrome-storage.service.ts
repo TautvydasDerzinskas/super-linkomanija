@@ -24,7 +24,7 @@ export default class ChromeStorageService {
   }
 
   public convertToString<T>(jsonItem: T) {
-    return JSON.stringify(jsonItem).trim();
+    return JSON.stringify(jsonItem, null, 0);
   }
 
   public convertToJson<T>(stringifiedObject: string): T {

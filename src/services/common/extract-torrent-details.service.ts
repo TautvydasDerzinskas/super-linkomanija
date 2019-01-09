@@ -28,17 +28,12 @@ class ExtractTorrentDetailsService {
 
   public getBasicTorrentDetailsInDetailsPage(): IBasicTorrentDetails {
     const cagegoryImage = document.querySelector('#content tr:not(.rowhead) td > img');
-    const categoryId = cagegoryImage.getAttribute('src').split('categories/')[1].split('/')[0];
     const torrentId = parseInt(window.location.href.split('details?')[1].split('.')[0], 10);
     return {
       id: torrentId,
       title: document.querySelector('#content h1').textContent,
-      detailsLink: window.location.href.split('.net/')[1],
-      torrentLink: document.querySelector('#content .rowhead a').getAttribute('href'),
       category: {
-        title: cagegoryImage.getAttribute('alt'),
         imageLink: cagegoryImage.getAttribute('src'),
-        link: `browse.php?cat=${categoryId}`,
       },
     };
   }
@@ -50,8 +45,6 @@ class ExtractTorrentDetailsService {
     return {
       id: this.getId(titleColumnElement),
       title: this.getTitle(titleColumnElement),
-      detailsLink: this.getDetailsLink(titleColumnElement),
-      torrentLink: this.getTorrentLink(titleColumnElement),
       category: this.getCategoryDetails(categoryColumnElement),
     };
   }

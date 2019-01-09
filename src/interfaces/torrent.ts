@@ -1,18 +1,18 @@
 export interface ITorrentCategory {
-  title: string;
-  link: string;
+  title?: string;
+  link?: string;
   imageLink: string;
 }
 
 export interface IBasicTorrentDetails {
   id: number;
   title: string;
-  detailsLink: string;
-  torrentLink: string;
   category: ITorrentCategory;
 }
 
 export interface ITorrentDetails extends IBasicTorrentDetails {
+  detailsLink: string;
+  torrentLink: string;
   subTitle?: string;
   size: string;
   isNew: boolean;

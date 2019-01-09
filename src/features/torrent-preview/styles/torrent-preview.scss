@@ -14,12 +14,16 @@ $max-popup-height: 170px;
     border: none;
     outline: none;
     background-color: transparent;
+  }
 
-    svg {
-      fill: $linkomanija-link-color;
-      display: inline-block;
-      height: $large-spacing;
-      width: $large-spacing;
+  svg {
+    fill: $linkomanija-link-color;
+    display: inline-block;
+    height: $large-spacing;
+    width: $large-spacing;
+
+    .sl--theme-dark & {
+      fill: $linkomanija-dark-link-color;
     }
   }
 }

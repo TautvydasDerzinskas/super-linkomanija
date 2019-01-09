@@ -361,9 +361,9 @@ div {
       box-sizing: border-box;
     }
     a {
-      color: #333;
+      color: #333 !important;
       &:link {
-        color: #333;
+        color: #333 !important;
       }
     }
     form {
