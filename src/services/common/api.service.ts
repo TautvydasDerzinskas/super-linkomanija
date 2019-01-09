@@ -1,3 +1,5 @@
+import { ITorrentComment } from '../../interfaces/torrent';
+
 class ApiService {
   constructor() {
     if (!(window as any).superLinkomanijaResponseTable) {
@@ -19,17 +21,20 @@ class ApiService {
     });
   }
 
-  public getTorrentDescription(url: string) {
+  public getTorrentDetails(url: string): Promise<{ descriptionHtml: string; comments: ITorrentComment[] }> {
     return new Promise((resolve, reject) => {
       this.get(url).then((responseHtml: string) => {
-        const data = responseHtml
+        const descriptionHtml = responseHtml
           .trim()
           .split('<td class="descr_text">')[1]
           .split('<td class="rowhead">Įdėjo</td>')[0]
           .replace(/(?:\r\n|\r|\n)/g, '')
           .replace('</td></tr><tr>', '');
 
-          resolve(data);
+        resolve({
+          descriptionHtml: descriptionHtml,
+          comments: this.extractComments(responseHtml),
+        });
       });
     });
   }
@@ -87,6 +92,36 @@ class ApiService {
         resolve((window as any).superLinkomanijaResponseTable[url]);
       }
     });
+  }
+
+  private extractComments(torrentPageHtml: string) {
+    const parser = new DOMParser();
+    const virtualDom = parser.parseFromString(torrentPageHtml, 'text/html');
+    const comments: ITorrentComment[] = [];
+    const commentElements = virtualDom.getElementsByClassName('comment');
+
+    for (let i = 0, b = commentElements.length; i < b; i++) {
+      const name = commentElements[i].querySelector('.comment-user a').textContent;
+      const id = commentElements[i].querySelector('.comment-user a').getAttribute('href').split('=')[1];
+      const imageLink = commentElements[i].getElementsByClassName('comment-avatarimg')[0].getAttribute('src');
+      const rating = commentElements[i].getElementsByClassName('comment-balance')[0].textContent;
+      const message = commentElements[i].getElementsByClassName('comment-text')[0].textContent;
+
+      const comment: ITorrentComment = {
+        author: {
+          name,
+          id: parseInt(id, 10),
+          imageLink,
+          title: null,
+        },
+        message,
+        rating,
+      };
+
+      comments.push(comment);
+    }
+
+    return comments;
   }
 }
 

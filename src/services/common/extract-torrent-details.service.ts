@@ -1,6 +1,6 @@
 import apiService from './api.service';
 import { LinkomanijaSelectors } from '../../enums';
-import { IBasicTorrentDetails, ITorrentDetails, ITorrentCategory } from '../../interfaces/torrent';
+import { IBasicTorrentDetails, ITorrentDetails, ITorrentCategory, ITorrentComment } from '../../interfaces/torrent';
 
 class ExtractTorrentDetailsService {
   public generateMultipleTorrentsData(): Promise<ITorrentDetails[]> {
@@ -11,9 +11,10 @@ class ExtractTorrentDetailsService {
       for (let i = 0, b = titleColumns.length; i < b; i += 1) {
         const torrentDetail = this.getMainTorrentDetails(titleColumns[i].parentElement as HTMLElement);
 
-        apiService.getTorrentDescription(torrentDetail.detailsLink).then((descriptionHtml: string) => {
-          torrentDetail.descriptionHtml = descriptionHtml;
-          torrentDetail.imageLinks = this.exractImagesFromHtmlString(descriptionHtml);
+        apiService.getTorrentDetails(torrentDetail.detailsLink).then((data: { descriptionHtml: string, comments: ITorrentComment[] }) => {
+          torrentDetail.descriptionHtml = data.descriptionHtml;
+          torrentDetail.comments = data.comments;
+          torrentDetail.imageLinks = this.exractImagesFromHtmlString(data.descriptionHtml);
           torrentDetails[i] = torrentDetail;
 
           promisesLeft--;

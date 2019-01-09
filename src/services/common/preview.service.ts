@@ -21,10 +21,10 @@ class PreviewService {
       interactiveDebounce: 100,
       async onShow(tip: any) {
         if (!contentLoaded) {
-          const response = await apiService.getTorrentDescription(details.detailsLink);
+          const response = await apiService.getTorrentDetails(details.detailsLink);
           tip.setContent(
             self.getPreviewWindowPopupHtml(
-              (response as string).replace('width="560" height="315"', 'width="350" height="213"'),
+              response.descriptionHtml.replace('width="560" height="315"', 'width="350" height="213"'),
               details,
               false
               )

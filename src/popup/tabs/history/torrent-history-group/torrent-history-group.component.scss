@@ -2,10 +2,10 @@
 
 .torrent-group {
   background-color: $theme-silver-white;
-  padding: $large-spacing;
+  padding: $default-spacing;
 
   &:not(:last-child) {
-    margin-bottom: $large-spacing;
+    margin-bottom: $default-spacing;
   }
 
   &__title {

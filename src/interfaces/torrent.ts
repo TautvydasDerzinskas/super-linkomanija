@@ -1,3 +1,14 @@
+export interface ITorrentComment {
+  author: {
+    name: string;
+    title: string;
+    id: number;
+    imageLink: string;
+  };
+  message: string;
+  rating: string;
+}
+
 export interface ITorrentCategory {
   title?: string;
   link?: string;
@@ -27,7 +38,7 @@ export interface ITorrentDetails extends IBasicTorrentDetails {
   /**
    * Data comming from torrent details page
    */
+  comments?: ITorrentComment[];
   descriptionHtml?: string;
-  commentsHtml?: string;
   imageLinks?: string[];
 }
