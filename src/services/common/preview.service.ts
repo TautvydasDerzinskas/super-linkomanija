@@ -22,11 +22,7 @@ class PreviewService {
         if (!contentLoaded) {
           const response = await apiService.getTorrentDetails(details.detailsLink);
           tip.setContent(
-            templateService.getTorrentPreviewPopup(
-              response.descriptionHtml.replace('width="560" height="315"', 'width="350" height="213"'),
-              details,
-              false
-              )
+            templateService.getTorrentPreviewPopup(response.descriptionHtml, details, false),
             );
           contentLoaded = true;
         }

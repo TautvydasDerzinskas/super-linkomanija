@@ -1,5 +1,7 @@
-import { ITorrentComment } from '../../interfaces/torrent';
 import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
+
+import { LinkomanijaSelectors } from '../../enums';
+import { ITorrentComment } from '../../interfaces/torrent';
 
 class ApiService {
   constructor() {
@@ -9,28 +11,25 @@ class ApiService {
   }
 
   public getRelatedTorrents(title: string) {
-    return new Promise((resolve, reject) => {
-      this.get('/browse.php?search=' + title).then((responseHtml: string) => {
-        const data = responseHtml
-          .trim()
-          .split('Kitas&nbsp&raquo;</a></p>')[1]
-          .split('<p align="center"><span class="pageinactive">&laquo;&nbsp;Ankstesnis')[0]
-          .replace(/(?:\r\n|\r|\n)/g, '');
-
-          resolve(data);
+    return new Promise((resolve) => {
+      this.get(`/browse.php?search=${title}`).then((responseHtml: string) => {
+        const virtualDom = this.htmlStringToVirtualDom(responseHtml);
+        const torrentsTable = virtualDom.querySelector(LinkomanijaSelectors.TorrentTable).outerHTML;
+        resolve(torrentsTable);
       });
     });
   }
 
   public getTorrentDetails(url: string): Promise<{ descriptionHtml: string; comments: ITorrentComment[] }> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.get(url).then((responseHtml: string) => {
-        const descriptionHtml = responseHtml
-          .trim()
-          .split('<td class="descr_text">')[1]
-          .split('<td class="rowhead">Įdėjo</td>')[0]
-          .replace(/(?:\r\n|\r|\n)/g, '')
-          .replace('</td></tr><tr>', '');
+        const virtualDom = this.htmlStringToVirtualDom(responseHtml);
+        const youtubeIframe = virtualDom.querySelector('.descr_text iframe');
+        if (youtubeIframe) {
+          youtubeIframe.setAttribute('width', '350');
+          youtubeIframe.setAttribute('height', '213');
+        }
+        const descriptionHtml = virtualDom.getElementsByClassName('descr_text')[0].innerHTML;
 
         resolve({
           descriptionHtml: descriptionHtml,
@@ -41,7 +40,7 @@ class ApiService {
   }
 
   public addFavourite(id: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.post('/ajax/bookmarks.php', { type: 'master', action: 'add', tid: id }).then(response => {
         resolve(response);
       });
@@ -49,7 +48,7 @@ class ApiService {
   }
 
   public removeFavourite(id: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.post('/ajax/bookmarks.php', { type: 'master', action: 'remove', tid: id }).then(response => {
         resolve(response);
       });
@@ -57,7 +56,7 @@ class ApiService {
   }
 
   private post(url: string, data: { [index: string]: string; }) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const xhr = new XMLHttpRequest();
 
       const urlEncodedDataPairs = [];
@@ -80,7 +79,7 @@ class ApiService {
   }
 
   private get(url: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       if (!(window as any).superLinkomanijaResponseTable[url]) {
         const xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
@@ -93,6 +92,11 @@ class ApiService {
         resolve((window as any).superLinkomanijaResponseTable[url]);
       }
     });
+  }
+
+  private htmlStringToVirtualDom(html: string) {
+    const parser = new DOMParser();
+    return parser.parseFromString(html, 'text/html');
   }
 }
 
