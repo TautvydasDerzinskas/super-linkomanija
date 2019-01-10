@@ -3,6 +3,7 @@ import svgIconsService from '../../services/content/svg-icons.service';
 import featureStorageService from '../../services/common/feature-storage.service';
 import urlService from '../../services/common/url.service';
 import previewService from '../../services/common/preview.service';
+import templateService from '../../services/content/template.service';
 
 import meta from './meta';
 import IContent from '../../interfaces/content';
@@ -36,14 +37,7 @@ class ContentViewModes implements IContent {
      * Append toggler UI
      */
     const modeSelector = document.createElement('div');
-    modeSelector.innerHTML = `
-      <button title="List view" class="view-modes__option${this.viewMode === ViewModes.List ? ' active' : ''}" data-mode="list" type="button">
-        ${svgIconsService.iconList}
-      </button>
-      <button title="Grid view" class="view-modes__option${this.viewMode === ViewModes.Grid ? ' active' : ''}" data-mode="grid" type="button">
-        ${svgIconsService.iconGrid}
-      </button>
-    `;
+    modeSelector.innerHTML = templateService.getViewModeToggler(this.viewMode === ViewModes.List);
     modeSelector.className = 'view-modes';
     const torrentsList = document.querySelector(LinkomanijaSelectors.TorrentTable);
     torrentsList.parentNode.insertBefore(modeSelector, torrentsList);
@@ -92,7 +86,7 @@ class ContentViewModes implements IContent {
 
   private generateGridModeUi() {
     const cards = document.createElement('ul');
-    cards.innerHTML = `<div class="sl-loading">${svgIconsService.iconLoading}</div>`;
+    cards.innerHTML = templateService.getLoadingSpinner();
     cards.className = 'torrents';
 
     const torrentsTable = document.querySelector(LinkomanijaSelectors.TorrentTable);
@@ -102,7 +96,7 @@ class ContentViewModes implements IContent {
       let cardsHtml = '';
 
       for (let i = 0, b = torrentDetails.length; i < b; i += 1) {
-        cardsHtml += this.getTorrentCard(torrentDetails[i]);
+        cardsHtml += templateService.getTorrentGridCard(torrentDetails[i]);
       }
 
       document.querySelector('ul.torrents').innerHTML = cardsHtml;
@@ -128,73 +122,6 @@ class ContentViewModes implements IContent {
 
       this.gridModeUiGenerated = false;
     }
-  }
-
-  private getTorrentCard(details: ITorrentDetails) {
-    const isNewCornerRibbon = details.isNew ? `<div class="corner-ribbon top-left corner-ribbon--red" title="Naujas">Naujas</div>` : '';
-    const isFreeLeechRibbon = details.isFreeLeech ? `<a href="/faq.php#stat9" target="_blank" class="corner-ribbon top-right corner-ribbon--green" title="Free leech">Free leech</a>` : '';
-    const subtitle = details.subTitle ? `<div class="torrent__subtitle" title="${details.subTitle}">${details.subTitle}</div>` : '';
-    const comments = details.commentsCount !== 0 ? `<span class="torrent__comments" title="Komentarai">${svgIconsService.iconComments} ${details.commentsCount}</span>` : '';
-
-    return `
-    <li class="torrents__card">
-      <div class="torrent">
-        <div class="torrent__header">
-          <a href="${details.category.link}" title="${details.category.title}" class="torrent__header__category">
-            <img src="${details.category.imageLink}" />
-          </a>
-          <a href="${details.detailsLink}" title="${details.title}" class="torrent__header__title">
-            ${details.title} ${comments}
-          </a>
-        </div>
-        <div class="torrent__image" style="background-image: url(${details.imageLinks[0]})">
-          ${isNewCornerRibbon}
-          ${isFreeLeechRibbon}
-          ${subtitle}
-          <div class="torrent__image__overlay">
-            <div>
-              <a title="Atidaryti torento puslapį" href="${details.detailsLink}">
-                ${svgIconsService.iconOpen}
-              </a>
-            </div>
-            <div>
-              <a title="Parsisiųsti torentą" href="${details.torrentLink}">
-                ${svgIconsService.iconDownload}
-              </a>
-            </div>
-            <div>
-              <span title="Įtraukti/išimti iš žymų sąrašo" class="torrent__favourite ${details.isFavourite ? 'remove' : 'add'}" data-id="${details.id}">
-                ${svgIconsService.iconStar}
-              </span>
-            </div>
-            <div>
-              <span title="Peržiūrėti aprašymą" class="torrent-preview">
-                ${svgIconsService.iconEye}
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="torrent__footer">
-          <div class="footer__size">
-            <span title="Torrento dydis: ${details.size}">
-              ${svgIconsService.iconFileSize} ${details.size}
-            </span>
-          </div>
-          <div class="footer__stats">
-            <span title="Parsisiųsta ${details.downloadedTimes}">
-              ${svgIconsService.iconDownload} ${details.downloadedTimes}
-            </span>
-            <span title="Skledėjai ${details.seedersCount}" class="sl-seeders">
-              ${svgIconsService.iconMaleArrowUp} ${details.seedersCount}
-            </span>
-            <span title="Siurbelės ${details.leechersCount}" class="sl-leechers">
-              ${svgIconsService.iconMaleArrowDown} ${details.leechersCount}
-            </span>
-          </div>
-        </div>
-      </div>
-    </li>
-    `;
   }
 
   private setupPreviewHover(torrentDetails: ITorrentDetails[]) {

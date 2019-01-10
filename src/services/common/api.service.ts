@@ -1,4 +1,5 @@
 import { ITorrentComment } from '../../interfaces/torrent';
+import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
 
 class ApiService {
   constructor() {
@@ -33,7 +34,7 @@ class ApiService {
 
         resolve({
           descriptionHtml: descriptionHtml,
-          comments: this.extractComments(responseHtml),
+          comments: extractTorrentDetailsService.extractComments(responseHtml),
         });
       });
     });
@@ -92,36 +93,6 @@ class ApiService {
         resolve((window as any).superLinkomanijaResponseTable[url]);
       }
     });
-  }
-
-  private extractComments(torrentPageHtml: string) {
-    const parser = new DOMParser();
-    const virtualDom = parser.parseFromString(torrentPageHtml, 'text/html');
-    const comments: ITorrentComment[] = [];
-    const commentElements = virtualDom.getElementsByClassName('comment');
-
-    for (let i = 0, b = commentElements.length; i < b; i++) {
-      const name = commentElements[i].querySelector('.comment-user a').textContent;
-      const id = commentElements[i].querySelector('.comment-user a').getAttribute('href').split('=')[1];
-      const imageLink = commentElements[i].getElementsByClassName('comment-avatarimg')[0].getAttribute('src');
-      const rating = commentElements[i].getElementsByClassName('comment-balance')[0].textContent;
-      const message = commentElements[i].getElementsByClassName('comment-text')[0].textContent;
-
-      const comment: ITorrentComment = {
-        author: {
-          name,
-          id: parseInt(id, 10),
-          imageLink,
-          title: null,
-        },
-        message,
-        rating,
-      };
-
-      comments.push(comment);
-    }
-
-    return comments;
   }
 }
 

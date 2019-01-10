@@ -3,10 +3,10 @@ import { LinkomanijaSelectors } from '../../enums';
 import { IBasicTorrentDetails, ITorrentDetails, ITorrentCategory, ITorrentComment } from '../../interfaces/torrent';
 
 class ExtractTorrentDetailsService {
-  public generateMultipleTorrentsData(): Promise<ITorrentDetails[]> {
+  public generateMultipleTorrentsData(customDocument?: Document): Promise<ITorrentDetails[]> {
     return new Promise((resolve) => {
       const torrentDetails: ITorrentDetails[] = [];
-      const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
+      const titleColumns = (customDocument || document).querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
       let promisesLeft = titleColumns.length;
       for (let i = 0, b = titleColumns.length; i < b; i += 1) {
         const torrentDetail = this.getMainTorrentDetails(titleColumns[i].parentElement as HTMLElement);
@@ -91,6 +91,36 @@ class ExtractTorrentDetailsService {
       }
     }
   }
+
+  public extractComments(torrentPageHtml: string) {
+    const parser = new DOMParser();
+    const virtualDom = parser.parseFromString(torrentPageHtml, 'text/html');
+    const comments: ITorrentComment[] = [];
+    const commentElements = virtualDom.getElementsByClassName('comment');
+
+    for (let i = 0, b = commentElements.length; i < b; i++) {
+      const name = commentElements[i].querySelector('.comment-user a').textContent;
+      const id = commentElements[i].querySelector('.comment-user a').getAttribute('href').split('=')[1];
+      const imageLink = commentElements[i].getElementsByClassName('comment-avatarimg')[0].getAttribute('src');
+      const rating = commentElements[i].getElementsByClassName('comment-balance')[0].textContent;
+      const message = commentElements[i].getElementsByClassName('comment-text')[0].textContent;
+
+      const comment: ITorrentComment = {
+        author: {
+          name,
+          id: parseInt(id, 10),
+          imageLink,
+          title: null,
+        },
+        message,
+        rating,
+      };
+
+      comments.push(comment);
+    }
+
+    return comments;
+}
 
   private exractImagesFromHtmlString(htmlCode: string) {
     const regex = new RegExp('<img .*?src="(.*?)"', 'gi');
