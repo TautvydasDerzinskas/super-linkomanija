@@ -126,5 +126,9 @@
   "tabsHistoryNoTorrentEntriesLabel": {
     "message": "No torrents tracked yet",
     "description": "History tab label showed when gruop doesn't have any items tracked yet"
+  },
+  "tabsHistoryTotalLabel": {
+    "message": "All time total:",
+    "description": "History tab label for totals"
   }
 }

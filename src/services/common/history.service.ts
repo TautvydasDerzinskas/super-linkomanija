@@ -35,14 +35,18 @@ class HistoryService {
         chromeStorageService.getItem<IHistory>(storageKey).then(data => {
           if (!data) {
             data = {
-              [type]: []
+              [type]: {
+                items: [],
+                total: 0,
+              }
             };
           }
 
-          if (data[type].length === 0 || data[type][0].id !== torrentDetails.id) {
-            data[type].unshift(torrentDetails);
-            if (data[type].length > this.maxStoredTorrentsPerCategory) {
-              data[type].pop();
+          if (data[type].items.length === 0 || data[type].items[0].id !== torrentDetails.id) {
+            data[type].items.unshift(torrentDetails);
+            data[type].total++;
+            if (data[type].items.length > this.maxStoredTorrentsPerCategory) {
+              data[type].items.pop();
             }
             chromeStorageService.setItem<IHistory>(storageKey, data).then(resolve);
           } else {

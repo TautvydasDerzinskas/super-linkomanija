@@ -8,9 +8,24 @@
     margin-bottom: $default-spacing;
   }
 
-  &__title {
-    font-weight: bold;
-    color: $theme-blue;
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+
+    .heading__title {
+      font-weight: bold;
+      color: $theme-blue;
+    }
+
+    .heading__sub-title {
+      text-align: right;
+      color: $theme-gray;
+      font-size: 10px;
+
+      strong {
+        color: $theme-red;
+      }
+    }
   }
 
   &__torrents {

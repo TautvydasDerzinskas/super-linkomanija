@@ -14,6 +14,7 @@ interface ITorrentHistoryGroupComponentProps {
 
 interface ITorrentHistoryGroupComponentState {
   torrents: IBasicTorrentDetails[];
+  total: number;
 }
 
 export default class TorrentHistoryGroupComponent extends React.Component<ITorrentHistoryGroupComponentProps, ITorrentHistoryGroupComponentState> {
@@ -21,6 +22,7 @@ export default class TorrentHistoryGroupComponent extends React.Component<ITorre
     super(props);
     this.state = {
       torrents: [],
+      total: 0,
     };
   }
 
@@ -28,7 +30,8 @@ export default class TorrentHistoryGroupComponent extends React.Component<ITorre
     historyService.getHistory(this.props.type).then(historyData => {
       if (historyData) {
         this.setState({
-          torrents: historyData[this.props.type],
+          torrents: historyData[this.props.type].items,
+          total: historyData[this.props.type].total,
         });
       }
     });
@@ -48,7 +51,12 @@ export default class TorrentHistoryGroupComponent extends React.Component<ITorre
 
     return (
       <div className='torrent-group'>
-        <div className='torrent-group__title'>{this.props.title}</div>
+        <div className='torrent-group__heading'>
+          <div className='heading__title'>{this.props.title}</div>
+          <div className='heading__sub-title'>
+            <FormattedMessage id='tabsHistoryTotalLabel'></FormattedMessage> <strong>{this.state.total}</strong>
+          </div>
+        </div>
         <div className='torrent-group__torrents'>{allTorrentItems}</div>
       </div>
     );

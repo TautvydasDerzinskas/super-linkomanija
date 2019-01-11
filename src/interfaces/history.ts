@@ -1,7 +1,12 @@
 import { IBasicTorrentDetails } from './torrent';
 
+export interface IHistoryItemData {
+  items: IBasicTorrentDetails[];
+  total: number;
+}
+
 export interface IHistory {
-  viewed?: IBasicTorrentDetails[];
-  downloaded?: IBasicTorrentDetails[];
-  commented?: IBasicTorrentDetails[];
+  viewed?: IHistoryItemData;
+  downloaded?: IHistoryItemData;
+  commented?: IHistoryItemData;
 }
