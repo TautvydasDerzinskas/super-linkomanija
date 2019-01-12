@@ -13,6 +13,7 @@
 - [About](#about)
 - [Installation](#installation)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Road map](#road-map)
 - [Development](#development)
 - [License](#license)
@@ -36,6 +37,10 @@ To install it please visit a Chrome web store page by clicking image below:
 4. Homepage redirect
 5. Quick back to top
 6. Related torrents
+
+## Screenshots
+
+<a href="docs/images/screenshot_01.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_01.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_02.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_02.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_03.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_03.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_04.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_04.jpg" alt="Screenshot" title="Screenshot" /></a>
 
 ## Road map
 * Port extension to browsers such as Firefox and Opera
