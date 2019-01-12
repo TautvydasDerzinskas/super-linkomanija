@@ -4,7 +4,7 @@ export enum ApiKeys {
 
 export enum ShareLinks {
   Facebook = 'https://www.facebook.com/sharer/sharer.php?u=',
-  Twitter = 'https://twitter.com/intent/tweet?text=Make%20YouTube%20great%20again&url=',
+  Twitter = 'https://twitter.com/intent/tweet?text=Super%20Linkomanija&url=',
 }
 
 export enum LinkomanijaSelectors {
