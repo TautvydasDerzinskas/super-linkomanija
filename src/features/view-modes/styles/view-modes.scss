@@ -1,7 +1,5 @@
 @import '../../../popup/variables';
 
-$torrents-table-selector: '#content form[action="browse.php"] > table:not(.bottom):not(.browse)';
-
 .view-modes {
   margin-top: $large-spacing;
   text-align: center;

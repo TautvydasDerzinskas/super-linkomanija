@@ -30,3 +30,4 @@ $tab-content-width: $popup-max-width - ($large-spacing * 2);
 
 // Other
 $default-transition: all 0.3s ease-in-out;
+$torrents-table-selector: '#content form[action="browse.php"] > table:not(.bottom):not(.browse)';

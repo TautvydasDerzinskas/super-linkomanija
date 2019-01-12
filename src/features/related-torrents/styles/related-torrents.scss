@@ -1,7 +1,7 @@
 @import '../../../popup/variables';
 
 .related-torrents {
-  a[onClick], .colhead {
+  a[onClick], .colhead, tr:nth-child(2) {
     display: none;
   }
 

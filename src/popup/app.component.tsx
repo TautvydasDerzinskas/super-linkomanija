@@ -6,7 +6,7 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import * as enLocale from 'react-intl/locale-data/en';
 import * as ltLocale from 'react-intl/locale-data/lt';
 
-import languageService from '../services/common/language.service';
+import languageService from '../services/popup/language.service';
 import ChromeStorageService from '../services/common/chrome-storage.service';
 
 import { ChromeStorageKeys, Locales } from '../enums';

@@ -1,4 +1,4 @@
-import ChromeStorageService from './chrome-storage.service';
+import ChromeStorageService from '../common/chrome-storage.service';
 import { ChromeStorageKeys, Locales } from '../../enums';
 import { ILocaleMessages, ILanguages, IChromeLocale } from '../../interfaces/locale';
 
