@@ -11,9 +11,9 @@
 
 ## Table of content
 - [About](#about)
-- [Installation](#installation)
 - [Features](#features)
 - [Screenshots](#screenshots)
+- [Installation](#installation)
 - [Road map](#road-map)
 - [Development](#development)
 - [License](#license)
@@ -21,16 +21,7 @@
 ## About
 Chrome extension with purpose to extend UX of oldest Lithuanian torrent web site http://www.linkomanija.net
 
-## Installation
-Currently you can only use this extension with Google Chrome web browser.
-To install it please visit a Chrome web store page by clicking image below:
-
-<a href="https://chrome.google.com/webstore/detail/super-linkomanija/geonnhfmhfjfkbbkjmbanmjommkjlnim" target="_blank">
-  <img src="docs/images/chrome_store.png" alt="Convert videos to mp3" />
-</a>
-
 ## Features
-
 1. Comment formatting
 2. Torrent preview
 3. Torrents view modes (list/grid)
@@ -39,8 +30,15 @@ To install it please visit a Chrome web store page by clicking image below:
 6. Related torrents
 
 ## Screenshots
-
 <a href="docs/images/screenshot_01.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_01.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_02.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_02.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_03.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_03.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_04.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_04.jpg" alt="Screenshot" title="Screenshot" /></a>
+
+## Installation
+Currently you can only use this extension with Google Chrome web browser.
+To install it please visit a Chrome web store page by clicking image below:
+
+<a href="https://chrome.google.com/webstore/detail/super-linkomanija/geonnhfmhfjfkbbkjmbanmjommkjlnim" target="_blank">
+  <img src="docs/images/chrome_store.png" alt="Convert videos to mp3" />
+</a>
 
 ## Road map
 * Port extension to browsers such as Firefox and Opera
