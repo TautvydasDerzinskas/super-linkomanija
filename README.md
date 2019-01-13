@@ -7,6 +7,7 @@
   <a href="https://greenkeeper.io" target="_blank"><img src="https://badges.greenkeeper.io/SlimDogs/super-linkomanija.svg" alt="Greenkeeper" title="Greenkeeper"></a>
   <a href="http://commitizen.github.io/cz-cli" target="_blank"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly" title="Commitizen friendly"></a>
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" title="MIT License"></a>
+  <a href="https://github.com/igrigorik/ga-beacon" target="_blank"><img src="https://ga-beacon.appspot.com/UA-131052445-2/SlimDogs/super-linkomanija" alt="Analytics" title="Analytics"></a>
 </p>
 
 ## Table of content
