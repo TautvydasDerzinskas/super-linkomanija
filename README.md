@@ -37,8 +37,8 @@ Chrome extension with purpose to extend UX of oldest Lithuanian torrent web site
 Currently you can only use this extension with Google Chrome web browser.
 To install it please visit a Chrome web store page by clicking image below:
 
-<a href="https://chrome.google.com/webstore/detail/super-linkomanija/geonnhfmhfjfkbbkjmbanmjommkjlnim" target="_blank">
-  <img src="docs/images/chrome_store.png" alt="Convert videos to mp3" />
+<a href="https://chrome.google.com/webstore/detail/super-linkomanija/gmdhkalbljdblbogfladannflinppnji" target="_blank">
+  <img src="docs/images/chrome_store.png" alt="Super Linkomanija" />
 </a>
 
 ## Road map
