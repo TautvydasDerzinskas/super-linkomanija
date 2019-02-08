@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.78",
-    "@types/node": "10.12.18",
+    "@types/node": "10.12.22",
     "@types/react": "16.7.21",
     "@types/react-dom": "16.0.11",
     "@types/react-intl": "2.3.15",
