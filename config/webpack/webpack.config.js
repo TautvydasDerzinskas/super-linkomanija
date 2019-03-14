@@ -59,10 +59,7 @@ module.exports = {
     path: OUTPUT_FOLDER,
   },
   plugins: [
-    new CleanWebpackPlugin(
-      [OUTPUT_FOLDER],
-      { root: path.resolve(__dirname, '../../') },
-    ),
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../../src/manifest.json'),
