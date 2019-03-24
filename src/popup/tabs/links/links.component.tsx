@@ -6,6 +6,8 @@ import { injectIntl, InjectedIntlProps } from 'react-intl';
 import LinkBoxComponent from './link-box/link-box.component';
 import PaypalLinkBoxComponent from './paypal-link-box/paypal-link-box.component';
 
+import browserService from '../../../services/common/browser.service';
+
 import { ShareLinks } from '../../../enums';
 
 import './links.component.scss';
@@ -14,7 +16,7 @@ class LinksComponent extends React.Component<InjectedIntlProps> {
 
   render() {
     const { intl } = this.props;
-    const chromeStoreLink = `https://chrome.google.com/webstore/detail/${chrome.runtime.id}`;
+    const browserStoreLink = browserService.browserExtensionWebStoreLink;
 
     return (
       <div className='links'>
@@ -41,17 +43,17 @@ class LinksComponent extends React.Component<InjectedIntlProps> {
         </div>
         <div className='links__column'>
           <LinkBoxComponent
-            link={ShareLinks.Facebook + chromeStoreLink}
+            link={ShareLinks.Facebook + browserStoreLink}
             position='top-left'
             icon='facebook.svg'
             label={intl.formatMessage({ id: 'tabsLinksShareFacebookLabel' })} />
           <LinkBoxComponent
-            link={ShareLinks.Twitter + chromeStoreLink}
+            link={ShareLinks.Twitter + browserStoreLink}
             position='top-right'
             icon='twitter.svg'
             label={intl.formatMessage({ id: 'tabsLinksShareTwitterLabel' })} />
           <LinkBoxComponent
-            link={chromeStoreLink + '/reviews'}
+            link={browserStoreLink + '/reviews'}
             position='bottom-left-right'
             icon='star.svg'
             label={intl.formatMessage({ id: 'tabsLinksLeaveReviewLabel' })} />

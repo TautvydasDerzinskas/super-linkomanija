@@ -1,12 +1,12 @@
 
-import ChromeStorageService from './chrome-storage.service';
+import BrowserStorageService from './browser-storage.service';
 
 import { ChromeStorageKeys } from '../../enums';
 
 import { FeaturesMeta } from '../../features/features';
 import { IFeaturesStorageObject, IFeatureStoredData, IFeatureData } from '../../interfaces/feature';
 
-class FeatureStorageService extends ChromeStorageService {
+class FeatureStorageService extends BrowserStorageService {
   constructor() {
     super();
   }

@@ -1,3 +1,4 @@
+import browserService from '../common/browser.service';
 import { ApiKeys } from '../../enums';
 
 class AnalyticsService {
@@ -20,7 +21,7 @@ class AnalyticsService {
   public trackPageView(pageName: string) {
     this.global._gaq.push([
       '_trackPageview',
-      `/${this.extensionName}?v=${this.version}&p=${pageName}`,
+      `/${this.extensionName}?v=${this.version}&p=${pageName}&b=${browserService.browserName}`,
     ]);
   }
 }

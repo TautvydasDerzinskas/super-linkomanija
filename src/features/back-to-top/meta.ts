@@ -5,6 +5,7 @@ const meta: IMeta = {
   description: 'featureBackToTopDescription',
   title: 'featureBackToTopTitle',
   defaultStatus: true,
+  excludedBrowsers: [],
 };
 
 export default meta;

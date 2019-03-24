@@ -7,7 +7,7 @@ import * as enLocale from 'react-intl/locale-data/en';
 import * as ltLocale from 'react-intl/locale-data/lt';
 
 import languageService from '../services/popup/language.service';
-import ChromeStorageService from '../services/common/chrome-storage.service';
+import BrowserStorageService from '../services/common/browser-storage.service';
 
 import { ChromeStorageKeys, Locales } from '../enums';
 import { ILocale, ILocaleMessages } from '../interfaces/locale';
@@ -19,7 +19,7 @@ import LinksComponent from './tabs/links/links.component';
 
 import './app.component.scss';
 
-const chromeStorageService = new ChromeStorageService();
+const browserStorageService = new BrowserStorageService();
 
 interface IAppComponentState {
   locale: Locales;
@@ -54,7 +54,7 @@ export default class AppComponent extends React.Component<{}, IAppComponentState
 
   public updateLocale(localeCode: Locales) {
     if (localeCode !== this.state.locale) {
-      chromeStorageService.setItem(ChromeStorageKeys.Locale, { value: localeCode }).then(() => {
+      browserStorageService.setItem(ChromeStorageKeys.Locale, { value: localeCode }).then(() => {
         this.setState({
           locale: localeCode,
           messages: languageService.languages[localeCode].messages,

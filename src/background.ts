@@ -15,7 +15,6 @@ chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason = 'install') {
     featureStorageService.initialize();
     analyticsService.trackPageView('install');
-    chrome.tabs.create({ url: gitRepoUrl });
   }
 });
 chrome.runtime.setUninstallURL(gitRepoUrl, () => {

@@ -5,6 +5,7 @@ const meta: IMeta = {
   description: 'featureHomePageRedirectDescription',
   title: 'featureHomePageRedirectTitle',
   defaultStatus: false,
+  excludedBrowsers: [],
 };
 
 export default meta;

@@ -9,6 +9,7 @@ const meta: IMeta = {
   defaultData: {
     mode: ViewModes.List,
   },
+  excludedBrowsers: [],
 };
 
 export default meta;

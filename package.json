@@ -10,24 +10,24 @@
     "zip": "cd extension/ && bestzip ../sl.zip *"
   },
   "dependencies": {
-    "react": "16.8.4",
-    "react-dom": "16.8.4",
+    "react": "16.8.5",
+    "react-dom": "16.8.5",
     "react-intl": "2.8.0",
-    "react-router-dom": "4.3.1",
+    "react-router-dom": "5.0.0",
     "sceditor": "2.1.3",
-    "tippy.js": "4.2.0"
+    "tippy.js": "3.4.1"
   },
   "devDependencies": {
     "@types/chrome": "0.0.81",
-    "@types/node": "11.11.3",
+    "@types/node": "11.11.6",
     "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.2",
+    "@types/react-dom": "16.8.3",
     "@types/react-intl": "2.3.17",
     "@types/react-router-dom": "4.3.1",
     "bestzip": "2.1.2",
-    "clean-webpack-plugin": "2.0.0",
+    "clean-webpack-plugin": "2.0.1",
     "commitizen": "3.0.7",
-    "copy-webpack-plugin": "5.0.1",
+    "copy-webpack-plugin": "5.0.2",
     "css-loader": "2.1.1",
     "cz-customizable": "5.5.3",
     "husky": "1.3.1",
@@ -39,14 +39,18 @@
     "ts-loader": "5.3.3",
     "tslint": "5.14.0",
     "tslint-react": "3.6.0",
-    "typescript": "3.3.3333",
+    "typescript": "3.3.4000",
     "webpack": "4.29.6",
-    "webpack-cli": "3.2.3"
+    "webpack-cli": "3.3.0"
   },
   "keywords": [
     "Chrome",
+    "FireFox",
+    "Vivaldi",
+    "Browser",
     "Linkomanija",
     "Extension",
+    "Add-on",
     "JavaScript",
     "TypeScript",
     "React"
@@ -81,5 +85,11 @@
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "greenkeeper": {
+    "ignore": [
+      "@types/node",
+      "tippy.js"
+    ]
   }
 }

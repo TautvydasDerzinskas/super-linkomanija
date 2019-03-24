@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/SlimDogs/super-linkomanija"><img src="docs/images/sl_promo_440x280.jpg" alt="Chrome extension: Super Linkomanija" title="Chrome extension: Super Linkomanija" width="250px" /></a>
+  <a href="https://github.com/SlimDogs/super-linkomanija"><img src="docs/images/sl_promo_440x280.jpg" alt="browser extension: Super Linkomanija" title="Browser extension: Super Linkomanija" width="250px" /></a>
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 - [License](#license)
 
 ## About
-Chrome extension with purpose to extend UX of oldest Lithuanian torrent web site http://www.linkomanija.net
+Browser extension with purpose to extend UX of oldest Lithuanian torrent web site http://www.linkomanija.net
 
 ## Features
 1. Comment formatting
@@ -34,15 +34,19 @@ Chrome extension with purpose to extend UX of oldest Lithuanian torrent web site
 <a href="docs/images/screenshot_01.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_01.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_02.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_02.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_03.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_03.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_04.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_04.jpg" alt="Screenshot" title="Screenshot" /></a>
 
 ## Installation
-Currently you can only use this extension with Google Chrome web browser.
-To install it please visit a Chrome web store page by clicking image below:
+Chrome & Vivaldi users please click below:
 
 <a href="https://chrome.google.com/webstore/detail/super-linkomanija/gmdhkalbljdblbogfladannflinppnji" target="_blank">
-  <img src="docs/images/chrome_store.png" alt="Super Linkomanija" />
+  <img src="docs/images/chrome_store.png" alt="Convert videos to mp3" />
+</a>
+
+Firefox users please head to link below:
+
+<a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/" target="_blank">
+  <img src="docs/images/firefox_store.png" width="206px" alt="Convert videos to mp3" />
 </a>
 
 ## Road map
-* Port extension to browsers such as Firefox and Opera
 * Add more features
 
 ## Development

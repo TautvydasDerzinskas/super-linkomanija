@@ -12,7 +12,7 @@ class ApiService {
 
   public getRelatedTorrents(title: string) {
     return new Promise((resolve) => {
-      this.get(`/browse.php?search=${title}`).then((responseHtml: string) => {
+      this.get(`browse.php?search=${title}`).then((responseHtml: string) => {
         const virtualDom = this.htmlStringToVirtualDom(responseHtml);
         const torrentsTable = virtualDom.querySelector(LinkomanijaSelectors.TorrentTable).outerHTML;
         resolve(torrentsTable);
@@ -41,7 +41,7 @@ class ApiService {
 
   public addFavourite(id: string) {
     return new Promise((resolve) => {
-      this.post('/ajax/bookmarks.php', { type: 'master', action: 'add', tid: id }).then(response => {
+      this.post('ajax/bookmarks.php', { type: 'master', action: 'add', tid: id }).then(response => {
         resolve(response);
       });
     });
@@ -49,7 +49,7 @@ class ApiService {
 
   public removeFavourite(id: string) {
     return new Promise((resolve) => {
-      this.post('/ajax/bookmarks.php', { type: 'master', action: 'remove', tid: id }).then(response => {
+      this.post('ajax/bookmarks.php', { type: 'master', action: 'remove', tid: id }).then(response => {
         resolve(response);
       });
     });
@@ -67,7 +67,7 @@ class ApiService {
       }
       const urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
 
-      xhr.open('POST', url);
+      xhr.open('POST', `https://www.linkomanija.net/${url}`);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function() {
         if (xhr.status === 200) {
@@ -86,7 +86,7 @@ class ApiService {
           (window as any).superLinkomanijaResponseTable[url] = xhr.response;
           resolve(xhr.response);
         }, false);
-        xhr.open('GET', url);
+        xhr.open('GET', `https://www.linkomanija.net/${url}`);
         xhr.send();
       } else {
         resolve((window as any).superLinkomanijaResponseTable[url]);

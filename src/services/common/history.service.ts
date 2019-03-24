@@ -1,11 +1,11 @@
 
-import ChromeStorageService from './chrome-storage.service';
+import BrowserStorageService from './browser-storage.service';
 
 import { IHistory } from '../../interfaces/history';
 import { IBasicTorrentDetails } from '../../interfaces/torrent';
 import { ChromeStorageKeys } from '../../enums';
 
-const chromeStorageService = new ChromeStorageService();
+const browserStorageService = new BrowserStorageService();
 
 type THistoryTypes = 'viewed' | 'downloaded' | 'commented';
 
@@ -13,7 +13,7 @@ class HistoryService {
   get maxStoredTorrentsPerCategory () { return 25; }
 
   public getHistory(type: THistoryTypes) {
-    return chromeStorageService.getItem<IHistory>(`${ChromeStorageKeys.History}_${type}`);
+    return browserStorageService.getItem<IHistory>(`${ChromeStorageKeys.History}_${type}`);
   }
 
   public addViewedTorrent(torrentDetails: IBasicTorrentDetails) {
@@ -32,7 +32,7 @@ class HistoryService {
     return new Promise((resolve, reject) => {
       if (torrentDetails) {
         const storageKey = `${ChromeStorageKeys.History}_${type}`;
-        chromeStorageService.getItem<IHistory>(storageKey).then(data => {
+        browserStorageService.getItem<IHistory>(storageKey).then(data => {
           if (!data) {
             data = {
               [type]: {
@@ -48,7 +48,7 @@ class HistoryService {
             if (data[type].items.length > this.maxStoredTorrentsPerCategory) {
               data[type].items.pop();
             }
-            chromeStorageService.setItem<IHistory>(storageKey, data).then(resolve);
+            browserStorageService.setItem<IHistory>(storageKey, data).then(resolve);
           } else {
             resolve();
           }

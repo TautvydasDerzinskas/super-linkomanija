@@ -5,6 +5,7 @@ const meta: IMeta = {
   description: 'featureTorrentPreviewDescription',
   title: 'featureTorrentPreviewTitle',
   defaultStatus: true,
+  excludedBrowsers: [],
 };
 
 export default meta;

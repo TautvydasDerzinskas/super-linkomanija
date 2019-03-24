@@ -29,3 +29,11 @@ export enum Locales {
   English = 'en',
   Lithuanian = 'lt',
 }
+
+export enum Browsers {
+  Chrome = 'chrome',
+  Firefox = 'firefox',
+  Opera = 'opera',
+  Vivaldi = 'vivaldi',
+  Other = 'other',
+}

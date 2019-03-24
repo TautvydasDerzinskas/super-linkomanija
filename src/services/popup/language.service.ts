@@ -1,10 +1,10 @@
-import ChromeStorageService from '../common/chrome-storage.service';
+import BrowserStorageService from '../common/browser-storage.service';
 import { ChromeStorageKeys, Locales } from '../../enums';
 import { ILocaleMessages, ILanguages, IChromeLocale } from '../../interfaces/locale';
 
 const enLocale: IChromeLocale = require('../../assets/_locales/en/messages.json');
 const ltLocale: IChromeLocale = require( '../../assets/_locales/lt/messages.json');
-const chromeStorageService = new ChromeStorageService();
+const browserStorageService = new BrowserStorageService();
 
 class LanguageService {
   public defaultLocaleCode = Locales.Lithuanian;
@@ -31,7 +31,7 @@ class LanguageService {
 
   public getActiveLocale() {
     return new Promise((resolve) => {
-      chromeStorageService.getItem(ChromeStorageKeys.Locale).then((localeStoredData: { value: string; }) => {
+      browserStorageService.getItem(ChromeStorageKeys.Locale).then((localeStoredData: { value: string; }) => {
         if (localeStoredData && localeStoredData.value) {
           const activeLocale = this.languages[localeStoredData.value];
           if (activeLocale) {

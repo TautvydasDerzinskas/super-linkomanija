@@ -2,6 +2,7 @@ import featureStorageService from './services/common/feature-storage.service';
 import historyService from './services/common/history.service';
 import urlService from './services/common/url.service';
 import extractTorrentDetailsService from './services/common/extract-torrent-details.service';
+import browserService from './services/common/browser.service';
 
 import { Features } from './features/features';
 import { IMessageToggle } from './interfaces/communication';
@@ -75,16 +76,18 @@ setupHistoryTracking();
  */
 const setupFeatureContents = () => {
   Features.forEach((feature) => {
-    featureStorageService.getFeatureData(feature.meta.id).then(featureData => {
-      if (featureData.status) {
-        if (feature.content.extendPageUserInterface) {
-          feature.content.extendPageUserInterface();
+    if (feature.meta.excludedBrowsers.indexOf(browserService.browserName) < 0) {
+      featureStorageService.getFeatureData(feature.meta.id).then(featureData => {
+        if (featureData.status) {
+          if (feature.content.extendPageUserInterface) {
+            feature.content.extendPageUserInterface();
+          }
+          if (feature.content.setupEventListeners) {
+            feature.content.setupEventListeners();
+          }
         }
-        if (feature.content.setupEventListeners) {
-          feature.content.setupEventListeners();
-        }
-      }
-    });
+      });
+    }
   });
 };
 
