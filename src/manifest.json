@@ -5,7 +5,7 @@
 	"short_name": "sl",
 	"description": "__MSG_appDesc__",
 	"default_locale": "lt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Tautvydas Derzinskas",
 	"homepage_url": "https://github.com/SlimDogs/super-linkomanija",
 
