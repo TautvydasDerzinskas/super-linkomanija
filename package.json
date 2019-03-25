@@ -4,7 +4,7 @@
   "description": "Extension which improves UI/UX experience in Linkomanija.net website",
   "homepage": "https://github.com/SlimDogs/super-linkomanija",
   "scripts": {
-    "build": "webpack --config=config/webpack/webpack.config.js --mode=production && npm run zip",
+    "build": "webpack --config=config/webpack/webpack.config.js --mode=production",
     "develop": "webpack --config=config/webpack/webpack.config.js --mode=development --watch --info-verbosity verbose",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "zip": "cd extension/ && bestzip ../sl.zip *",
