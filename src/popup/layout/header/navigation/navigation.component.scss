@@ -13,6 +13,7 @@ $tb-default-spacing: $default-spacing / 2;
   right: 0;
   overflow: auto;
   margin: 0 $default-spacing;
+  z-index: 999;
 
   &__tab {
     background-color: #eeeeee;

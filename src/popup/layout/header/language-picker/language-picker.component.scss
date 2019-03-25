@@ -4,6 +4,7 @@
   position: absolute;
   top: $default-spacing;
   left: $default-spacing;
+  z-index: 999;
 
   &__flag {
     cursor: pointer;

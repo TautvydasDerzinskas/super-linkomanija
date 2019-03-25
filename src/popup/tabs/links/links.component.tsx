@@ -34,7 +34,7 @@ class LinksComponent extends React.Component<InjectedIntlProps> {
           <LinkBoxComponent
             link={(window as any).sl.authorPage}
             position='bottom-left'
-            icon='author.jpg'
+            icon='author.webp'
             label={intl.formatMessage({ id: 'tabsLinksExtensionAuthorLabel' })} />
           <PaypalLinkBoxComponent
             position='bottom-right'

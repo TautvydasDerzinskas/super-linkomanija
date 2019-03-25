@@ -9,6 +9,7 @@
       top: $default-spacing;
       right: $default-spacing;
       cursor: pointer;
+      z-index: 999;
 
       svg {
         fill: $theme-light-gray;
@@ -25,12 +26,56 @@
     }
 
     .header__logo {
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
       position: relative;
 
-      > img {
-        display: block;
-        width: $popup-max-width;
-        height: auto;
+      &__image {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        &.image--background {
+          transition: all 0.5s;
+          z-index: 99;
+          filter: grayscale(100%);
+        }
+
+        &.image--logo {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: all 0.4s;
+          z-index: 999;
+          pointer-events: none;
+        }
+      }
+
+      .header__particles {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+
+        z-index: 111;
+      }
+
+      &:hover, &:focus {
+        .header__logo__image {
+          &.image--background {
+            transform: scale(1.1);
+          }
+
+          &.image--logo {
+            transform: scale(0.8);
+          }
+        }
       }
     }
   }
