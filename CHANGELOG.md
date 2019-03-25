@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/SlimDogs/super-linkomanija/compare/v1.0.1...v1.1.0) (2019-03-25)
+
+
+### Features
+
+* **header:** add animation effects to popup header ([056e193](https://github.com/SlimDogs/super-linkomanija/commit/056e193))
+* **tooltips:** add enhanced tooltips ([e5eb849](https://github.com/SlimDogs/super-linkomanija/commit/e5eb849))
+
 ## [1.0.1](https://github.com/SlimDogs/super-linkomanija/compare/v1.0.0...v1.0.1) (2019-03-25)
 
 
