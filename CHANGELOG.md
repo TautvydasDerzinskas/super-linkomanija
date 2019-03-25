@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/SlimDogs/super-linkomanija/compare/v1.0.0...v1.0.1) (2019-03-25)
+
+
+### Bug Fixes
+
+* **npm-scripts:** remove zip command ([2495f8f](https://github.com/SlimDogs/super-linkomanija/commit/2495f8f))
+
 # 1.0.0 (2019-03-25)
 
 
