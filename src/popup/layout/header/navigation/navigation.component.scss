@@ -17,8 +17,6 @@ $tb-default-spacing: $default-spacing / 2;
   &__tab {
     background-color: #eeeeee;
     display: inline-block;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     color: $tb-border-color;
     margin-right: $tb-default-spacing;
     padding: $tb-default-spacing;

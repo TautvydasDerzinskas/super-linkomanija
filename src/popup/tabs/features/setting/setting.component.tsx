@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage, injectIntl, InjectedIntlProps } from 'react-intl';
+import { Tooltip } from 'react-tippy';
 
 import IMeta from '../../../../interfaces/meta';
 import { IMessageToggle } from '../../../../interfaces/communication';
@@ -64,6 +65,8 @@ class SettingComponent extends React.Component<ISettingComponentProps, ISettingC
   }
 
   render() {
+    const { intl } = this.props;
+
     return (
       <div className='setting'>
         <div className='setting__column'>
@@ -75,10 +78,12 @@ class SettingComponent extends React.Component<ISettingComponentProps, ISettingC
           </div>
         </div>
         <div className='setting__column'>
-          <label className='setting__switch'>
-            <input type='checkbox' checked={this.state.data.value} onChange={this.toggleFeature.bind(this)} />
-            <span className='slider slider--round'></span>
-          </label>
+          <Tooltip title={intl.formatMessage({ id: (this.state.data.value ? 'settingTurnOff' : 'settingTurnOn') })} arrow={true} position='top'>
+            <label className='setting__switch'>
+              <input type='checkbox' checked={this.state.data.value} onChange={this.toggleFeature.bind(this)} />
+              <span className='slider slider--round'></span>
+            </label>
+          </Tooltip>
         </div>
       </div>
     );

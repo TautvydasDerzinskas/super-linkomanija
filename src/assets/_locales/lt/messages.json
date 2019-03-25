@@ -130,5 +130,17 @@
   "tabsHistoryTotalLabel": {
     "message": "Iš viso:",
     "description": "History tab label for totals"
+  },
+  "settingTurnOff": {
+    "message": "Išjungti",
+    "description": "Features configuration toggle title"
+  },
+  "settingTurnOn": {
+    "message": "Įjungti",
+    "description": "Features configuration toggle title"
+  },
+  "open": {
+    "message": "Atidaryti",
+    "description": "Generic (used in: torrents list)"
   }
 }

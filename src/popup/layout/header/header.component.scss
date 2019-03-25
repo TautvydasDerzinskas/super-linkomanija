@@ -10,7 +10,7 @@
       right: $default-spacing;
       cursor: pointer;
 
-      > svg {
+      svg {
         fill: $theme-light-gray;
         height: $large-spacing;
         width: $large-spacing;
@@ -18,7 +18,7 @@
       }
 
       &:hover {
-        > svg {
+        svg {
           fill: $theme-white;
         }
       }

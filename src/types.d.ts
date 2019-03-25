@@ -3,3 +3,4 @@
  */
 declare let tippy: any;
 declare let sceditor: any;
+declare module 'react-tippy';

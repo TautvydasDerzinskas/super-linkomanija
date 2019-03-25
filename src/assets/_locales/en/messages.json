@@ -130,5 +130,17 @@
   "tabsHistoryTotalLabel": {
     "message": "All time total:",
     "description": "History tab label for totals"
+  },
+  "settingTurnOff": {
+    "message": "Turn Off",
+    "description": "Features configuration toggle title"
+  },
+  "settingTurnOn": {
+    "message": "Turn On",
+    "description": "Features configuration toggle title"
+  },
+  "open": {
+    "message": "Open",
+    "description": "Generic (used in: torrents list)"
   }
 }

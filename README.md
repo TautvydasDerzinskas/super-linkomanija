@@ -4,8 +4,10 @@
 
 <p align="center">
   <a href="#" target="_blank"><img src="https://travis-ci.org/SlimDogs/super-linkomanija.svg?branch=master" alt="Latest CI build status" title="Latest CI build status"></a>
+  <a href="https://github.com/SlimDogs/super-linkomanija" target="_blank"><img src="https://img.shields.io/chrome-web-store/users/gmdhkalbljdblbogfladannflinppnji.svg?label=users" alt="Active users" title="Active users"></a>
   <a href="https://greenkeeper.io" target="_blank"><img src="https://badges.greenkeeper.io/SlimDogs/super-linkomanija.svg" alt="Greenkeeper" title="Greenkeeper"></a>
   <a href="http://commitizen.github.io/cz-cli" target="_blank"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly" title="Commitizen friendly"></a>
+  <a href="https://github.com/semantic-release/semantic-release" target="_blank"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="Semantic release" title="Semantic release"></a>
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" title="MIT License"></a>
   <a href="https://github.com/igrigorik/ga-beacon" target="_blank"><img src="https://ga-beacon.appspot.com/UA-131052445-2/SlimDogs/super-linkomanija" alt="Analytics" title="Analytics"></a>
 </p>
