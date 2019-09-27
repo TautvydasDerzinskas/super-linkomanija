@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "react": "16.10.0",
-    "react-dom": "16.8.5",
+    "react-dom": "16.10.0",
     "react-intl": "2.8.0",
     "react-router-dom": "5.0.0",
     "react-tippy": "1.2.3",
