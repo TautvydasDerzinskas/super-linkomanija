@@ -11,7 +11,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "react": "16.8.5",
+    "react": "16.10.1",
     "react-dom": "16.8.5",
     "react-intl": "2.8.0",
     "react-router-dom": "5.0.0",
