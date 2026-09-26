@@ -1,7 +1,7 @@
 @use '../../../variables';
 
 .torrent-group {
-  background-color: variables.$theme-silver-white;
+  background-color: var(--sl-card);
   padding: variables.$default-spacing;
 
   &:not(:last-child) {
@@ -14,12 +14,12 @@
 
     .heading__title {
       font-weight: bold;
-      color: variables.$theme-blue;
+      color: var(--sl-accent);
     }
 
     .heading__sub-title {
       text-align: right;
-      color: variables.$theme-gray;
+      color: var(--sl-text);
       font-size: 10px;
 
       strong {

@@ -6,7 +6,7 @@ $link-box-size: (variables.$tab-content-width - (variables.$default-spacing * 3)
   position: absolute;
   height: $link-box-size;
   width: $link-box-size;
-  background-color: variables.$theme-silver-white;
+  background-color: var(--sl-card);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@ $link-box-size: (variables.$tab-content-width - (variables.$default-spacing * 3)
   &__icon {
     height: $link-box-size * 0.5;
     width: $link-box-size * 0.5;
-    fill: variables.$theme-light-gray;
+    fill: var(--sl-text-muted);
     transition: variables.$default-transition;
 
     &--image {
@@ -68,7 +68,7 @@ $link-box-size: (variables.$tab-content-width - (variables.$default-spacing * 3)
 
   &:hover {
     .link-box__icon {
-      fill: variables.$theme-gray;
+      fill: var(--sl-text);
       transform: scale(1.3);
     }
 

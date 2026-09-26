@@ -1,9 +1,45 @@
+@use "sass:color";
 @use 'variables';
+
+/**
+ * Theme, follows the system light/dark preference
+ */
+:root {
+  color-scheme: light dark;
+
+  --sl-surface: #{variables.$theme-white};
+  --sl-card: #{variables.$theme-silver-white};
+  --sl-card-hover: #{color.adjust(variables.$theme-silver-white, $lightness: -5%)};
+  --sl-text: #{variables.$theme-gray};
+  --sl-text-strong: #{variables.$theme-black};
+  --sl-text-muted: #{variables.$theme-light-gray};
+  --sl-accent: #{variables.$theme-blue};
+  --sl-tab: #eeeeee;
+  --sl-switch-off: #{variables.$theme-gray};
+  --sl-switch-off-hover: #{color.adjust(variables.$theme-gray, $lightness: -15%)};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sl-surface: #{variables.$linkomanija-dark-bg-color};
+    --sl-card: #1c3440;
+    --sl-card-hover: #25434f;
+    --sl-text: #dce6ea;
+    --sl-text-strong: #{variables.$theme-white};
+    --sl-text-muted: #8fa5ae;
+    --sl-accent: #5cb3ea;
+    --sl-tab: #1c3440;
+    --sl-switch-off: #4a6470;
+    --sl-switch-off-hover: #5b7784;
+  }
+}
 
 /**
  * Globals
  */
  body, html {
+  background-color: var(--sl-surface);
+  color: var(--sl-text);
   font-family: "Segoe UI", Tahoma, sans-serif;
   font-size: 12px;
 

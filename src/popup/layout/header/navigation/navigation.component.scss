@@ -2,9 +2,6 @@
 @use '../../../variables';
 
 // $tb = Tab Bar
-$tb-background-color: variables.$theme-gray;
-$tb-content-background-color: variables.$theme-white;
-$tb-border-color: variables.$theme-light-gray;
 $tb-default-spacing: variables.$default-spacing * 0.5;
 
 .tabs {
@@ -17,27 +14,27 @@ $tb-default-spacing: variables.$default-spacing * 0.5;
   z-index: 999;
 
   &__tab {
-    background-color: #eeeeee;
+    background-color: var(--sl-tab);
     display: inline-block;
-    color: $tb-border-color;
+    color: var(--sl-text-muted);
     margin-right: $tb-default-spacing;
     padding: $tb-default-spacing;
     cursor: pointer;
 
     &:hover {
-      color: variables.$theme-gray;
+      color: var(--sl-text);
     }
 
     &.tab--active {
       color: variables.$theme-red;
       font-weight: bold;
-      background-color: variables.$theme-white;
+      background-color: var(--sl-surface);
       cursor: default;
     }
   }
 
   &-content {
-    background-color: variables.$theme-white;
+    background-color: var(--sl-surface);
     padding: variables.$large-spacing;
   }
 

@@ -17,7 +17,7 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
 
   &__title {
     font-weight: bold;
-    color: variables.$theme-blue;
+    color: var(--sl-accent);
   }
 
   &__switch {
@@ -40,7 +40,7 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: variables.$theme-gray;
+    background-color: var(--sl-switch-off);
     -webkit-transition: .4s;
     transition: .4s;
 
@@ -80,7 +80,7 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
 
   &:hover {
     .slider {
-      background-color: color.adjust(variables.$theme-gray, $lightness: -15%);
+      background-color: var(--sl-switch-off-hover);
     }
 
     input:checked + .slider {
