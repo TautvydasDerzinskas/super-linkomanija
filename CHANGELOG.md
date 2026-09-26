@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/TautvydasDerzinskas/super-linkomanija/compare/v1.1.0...v2.0.0) (2026-09-26)
+
+
+### Features
+
+* **core:** migrate to Manifest V3 ([2e4dcda](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/2e4dcda))
+* **core:** upgrade to React 19, react-intl 12, react-router 8, tippy.js 6, sceditor 3 and tsParticles 4 ([2e4dcda](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/2e4dcda))
+
+
+### Bug Fixes
+
+* **core:** use browser language for the popup when no language is chosen ([2e4dcda](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/2e4dcda))
+
+
+### BREAKING CHANGES
+
+* **core:** requires a browser with Manifest V3 support; Google Analytics tracking was removed
+
 # [1.1.0](https://github.com/SlimDogs/super-linkomanija/compare/v1.0.1...v1.1.0) (2019-03-25)
 
 
