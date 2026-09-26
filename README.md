@@ -54,8 +54,8 @@ Everyone is welcomed to contribute to the project or use the code for their own 
 
 To contribute you need to perform these steps:
 1. Use Node.js 24 (see `.nvmrc`) and run `npm install` to install npm dependencies
-2. Run `npm run develop` to build in watch mode (or `npm run build` for a production build) into the `extension` folder
-3. In your browser extensions window enable developer mode and load the unpacked extension from the `extension` folder (Manifest V3)
+2. Run `npm run develop` to build in watch mode (or `npm run build` for a production build) into the `extension` folder. For Firefox use `npm run develop:firefox` / `npm run build:firefox`, which build into `extension-firefox`
+3. In Chrome enable developer mode on the extensions page and load the unpacked `extension` folder. In Firefox open `about:debugging#/runtime/this-firefox` and load `extension-firefox/manifest.json` as a temporary add-on
 4. Run `npm run lint` (oxlint) and `npm run typecheck` to make sure code is valid, both also run on pre-commit
 5. Commit with `npm run commit`, messages must follow [Conventional Commits](https://www.conventionalcommits.org) since releases are generated from them
 

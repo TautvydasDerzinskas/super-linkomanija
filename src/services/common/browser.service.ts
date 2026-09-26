@@ -1,5 +1,4 @@
 declare let opr: any;
-declare let InstallTrigger: any;
 
 import { Browsers } from '../../enums';
 
@@ -9,7 +8,7 @@ class BrowserService {
   get browserName() {
     if ((!!this.window.opr && !!opr.addons) || !!this.window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
       return Browsers.Opera;
-    } else if (typeof InstallTrigger !== 'undefined') {
+    } else if (chrome.runtime.getURL('').startsWith('moz-extension://')) {
       return Browsers.Firefox;
     } else if (navigator.userAgent.toLowerCase().indexOf('vivaldi') >= 0) {
       return Browsers.Vivaldi;

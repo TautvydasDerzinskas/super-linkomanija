@@ -5,10 +5,14 @@
   "homepage": "https://github.com/TautvydasDerzinskas/super-linkomanija",
   "scripts": {
     "build": "webpack --config=config/webpack/webpack.config.js --mode=production",
+    "build:firefox": "webpack --config=config/webpack/webpack.config.js --mode=production --env target=firefox",
     "develop": "webpack --config=config/webpack/webpack.config.js --mode=development --watch",
+    "develop:firefox": "webpack --config=config/webpack/webpack.config.js --mode=development --watch --env target=firefox",
     "lint": "oxlint",
     "typecheck": "tsc --noEmit",
     "zip": "cd extension/ && bestzip ../sl.zip *",
+    "zip:firefox": "cd extension-firefox/ && bestzip ../sl-firefox.zip *",
+    "zip:source": "git archive --format=zip --output=sl-source.zip HEAD",
     "semantic-release": "semantic-release",
     "prepare": "husky",
     "commit": "cz"

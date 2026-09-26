@@ -1,0 +1,146 @@
+{
+  "appName": {
+    "message": "Super Linkomanija",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Extension which improves UI/UX experience in Linkomanija.net website",
+    "description": "The description of the application, displayed in the web store."
+  },
+  "popupCloseTitle": {
+    "message": "Close",
+    "description": "Title of the popup close button"
+  },
+  "languagePickerEnglishFlagTitle": {
+    "message": "English",
+    "description": "Language picker english flag title"
+  },
+  "languagePickerLithuanianFlagTitle": {
+    "message": "Lithuanian",
+    "description": "Language picker lithuanian flag title"
+  },
+  "tabsFeaturesLabel": {
+    "message": "Features",
+    "description": "Popup navigation features tab label"
+  },
+  "tabsHistoryLabel": {
+    "message": "History",
+    "description": "Popup navigation history tab label"
+  },
+  "tabsLinksLabel": {
+    "message": "Links",
+    "description": "Popup navigation links tab label"
+  },
+  "tabsExtensionVersionTitle": {
+    "message": "Extension version",
+    "description": "Popup version information tooltip"
+  },
+  "featureCommentsFormattingTitle": {
+    "message": "Formatted comments",
+    "description": "Features tab configuration setting title for comments formatting feature"
+  },
+  "featureCommentsFormattingDescription": {
+    "message": "Adds text formatting options to torrents comment form",
+    "description": "Features tab configuration setting description for comments formatting feature"
+  },
+  "featureHomePageRedirectTitle": {
+    "message": "Homepage redirect",
+    "description": "Features tab configuration setting title for homepage redirect feature"
+  },
+  "featureHomePageRedirectDescription": {
+    "message": "Skip homepage and redirect straight to torrents page",
+    "description": "Features tab configuration setting description for homepage redirect feature"
+  },
+  "featureTorrentPreviewTitle": {
+    "message": "Torrent preview",
+    "description": "Features tab configuration setting title for torrent preview feature"
+  },
+  "featureTorrentPreviewDescription": {
+    "message": "See torrent details without opening the torrent page",
+    "description": "Features tab configuration setting description for torrent preview feature"
+  },
+  "featureViewModesTitle": {
+    "message": "View modes",
+    "description": "Features tab configuration setting title for view modes feature"
+  },
+  "featureViewModesDescription": {
+    "message": "Switch between list and grid view modes while browsing torrents",
+    "description": "Features tab configuration setting description for view modes feature"
+  },
+  "featureBackToTopTitle": {
+    "message": "Back to top",
+    "description": "Features tab configuration setting title for back to top feature"
+  },
+  "featureBackToTopDescription": {
+    "message": "Adds 'Back to top' button to each page so you could scroll up quickly!",
+    "description": "Features tab configuration setting description for back to top feature"
+  },
+  "featureRelatedTorrentsTitle": {
+    "message": "Related torrents",
+    "description": "Features tab configuration setting title for related torrents feature"
+  },
+  "featureRelatedTorrentsDescription": {
+    "message": "In torrent page show a list of other related torrents",
+    "description": "Features tab configuration setting description for related torrents feature"
+  },
+  "tabsLinksGithubRepositoryLabel": {
+    "message": "GitHub repository",
+    "description": "Github repository link box overlay text"
+  },
+  "tabsLinksReportBugLabel": {
+    "message": "Report a bug",
+    "description": "Report a bug link box overlay text"
+  },
+  "tabsLinksExtensionAuthorLabel": {
+    "message": "Extension author",
+    "description": "Extension author link box overlay text"
+  },
+  "tabsLinksBuyAuthorBeerLabel": {
+    "message": "Buy author a beer",
+    "description": "Buy author a beer link box overlay text"
+  },
+  "tabsLinksShareFacebookLabel": {
+    "message": "Share to Facebook",
+    "description": "Share to Facebook link box overlay text"
+  },
+  "tabsLinksShareTwitterLabel": {
+    "message": "Share to Twitter",
+    "description": "Share to Twitter link box overlay text"
+  },
+  "tabsLinksLeaveReviewLabel": {
+    "message": "Love this extension? Leave a review!",
+    "description": "Leave a review link box overlay text"
+  },
+  "tabsHistoryRecentViewedLabel": {
+    "message": "Recently viewed torrents",
+    "description": "History tab recently viewed torrents group"
+  },
+  "tabsHistoryRecentDownloadedLabel": {
+    "message": "Recently downloaded torrents",
+    "description": "History tab recently downloaded torrents group"
+  },
+  "tabsHistoryRecentCommentedLabel": {
+    "message": "Recently commented torrents",
+    "description": "History tab recently commented torrents group"
+  },
+  "tabsHistoryNoTorrentEntriesLabel": {
+    "message": "No torrents tracked yet",
+    "description": "History tab label showed when gruop doesn't have any items tracked yet"
+  },
+  "tabsHistoryTotalLabel": {
+    "message": "All time total:",
+    "description": "History tab label for totals"
+  },
+  "settingTurnOff": {
+    "message": "Turn Off",
+    "description": "Features configuration toggle title"
+  },
+  "settingTurnOn": {
+    "message": "Turn On",
+    "description": "Features configuration toggle title"
+  },
+  "open": {
+    "message": "Open",
+    "description": "Generic (used in: torrents list)"
+  }
+}

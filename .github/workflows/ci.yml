@@ -25,10 +25,15 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build
+      - run: npm run build:firefox
       - uses: actions/upload-artifact@v7
         with:
           name: extension
           path: extension/
+      - uses: actions/upload-artifact@v7
+        with:
+          name: extension-firefox
+          path: extension-firefox/
 
   release:
     needs: build
