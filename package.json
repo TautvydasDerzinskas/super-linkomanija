@@ -33,6 +33,7 @@
     "@commitlint/config-conventional": "^21.2.3",
     "@commitlint/cz-commitlint": "^21.2.3",
     "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^11.0.1",
     "@semantic-release/github": "^12.0.10",
     "@types/chrome": "^0.3.0",
@@ -49,10 +50,10 @@
     "sass": "^1.105.0",
     "sass-loader": "^17.0.1",
     "semantic-release": "^25.0.9",
-    "semantic-release-chrome": "^3.2.0",
     "string-replace-loader": "^3.3.0",
     "style-loader": "^4.0.0",
     "typescript": "^7.0.2",
+    "web-ext": "^10.7.0",
     "webpack": "^5.111.1",
     "webpack-cli": "^7.2.3"
   },
@@ -103,13 +104,27 @@
           "changelogFile": "CHANGELOG.md"
         }
       ],
-      "@semantic-release/git",
       [
-        "semantic-release-chrome",
+        "@semantic-release/exec",
         {
-          "asset": "super-linkomanija_chrome.zip",
-          "distFolder": "extension",
-          "extensionId": "gmdhkalbljdblbogfladannflinppnji"
+          "verifyConditionsCmd": "node config/release/chrome.js verify && node config/release/firefox.js verify",
+          "prepareCmd": "npm version ${nextRelease.version} --no-git-tag-version --allow-same-version && npm run build && npm run build:firefox && npm run zip && npm run zip:firefox"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "package-lock.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "node config/release/chrome.js publish && node config/release/firefox.js publish"
         }
       ],
       [
@@ -117,7 +132,12 @@
         {
           "assets": [
             {
-              "path": "super-linkomanija_chrome.zip"
+              "path": "sl.zip",
+              "label": "Chrome extension (sl.zip)"
+            },
+            {
+              "path": "sl-firefox.zip",
+              "label": "Firefox add-on (sl-firefox.zip)"
             }
           ]
         }

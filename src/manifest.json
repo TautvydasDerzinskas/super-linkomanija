@@ -5,7 +5,6 @@
   "short_name": "sl",
   "description": "__MSG_appDesc__",
   "default_locale": "lt",
-  "version": "2.0.0",
   "author": "Tautvydas Derzinskas",
   "homepage_url": "https://github.com/TautvydasDerzinskas/super-linkomanija",
 

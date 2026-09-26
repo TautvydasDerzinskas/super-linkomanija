@@ -7,6 +7,7 @@ const ROOT = path.resolve(import.meta.dirname, '../..');
 const FIREFOX_ADDON_ID = '{52665c48-f9ad-4fdc-8729-1f7e35244a25}';
 
 function transformManifest(manifest, isFirefox) {
+  // package.json is the only source of the version, semantic-release bumps it on release
   manifest.version = pkg.version;
 
   if (isFirefox) {

@@ -2,6 +2,7 @@
 /.tmp
 /.vscode
 /extension
-sl.zip/extension-firefox
+/extension-firefox
+sl.zip
 sl-firefox.zip
 sl-source.zip
