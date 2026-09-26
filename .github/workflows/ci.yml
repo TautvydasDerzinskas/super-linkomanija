@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Runs a release on demand, for example after unpausing releases
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,7 +39,8 @@ jobs:
 
   release:
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Set the repository variable RELEASE_PAUSED to "true" to keep merging to main without publishing
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.RELEASE_PAUSED != 'true'
     runs-on: ubuntu-latest
     # Never run two releases at once, they would compete for the same version
     concurrency:
