@@ -57,6 +57,7 @@ function head(page, { title, description }) {
   return `<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="y4GVVvIBxmNQEKnAO3zzxa-eARxy0kimDkY0uIiSyHc">
   <title>${title}</title>
   <meta name="description" content="${escapeAttribute(description)}">
   ${page.kind === 'not-found' ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${pageUrl}">
