@@ -87,6 +87,10 @@
     "message": "GitHub repository",
     "description": "Github repository link box overlay text"
   },
+  "tabsLinksWebsiteLabel": {
+    "message": "Visit the website",
+    "description": "Extension website link box overlay text"
+  },
   "tabsLinksReportBugLabel": {
     "message": "Report a bug",
     "description": "Report a bug link box overlay text"

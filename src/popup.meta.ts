@@ -4,6 +4,7 @@
 (window as any).sl = {
   title: '{{title}}',
   homepage: '{{homepage}}',
+  repository: '{{repository}}',
   author: '{{author}}',
   authorPage: '{{authorPage}}',
   version: '{{version}}',

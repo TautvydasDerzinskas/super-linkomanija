@@ -10,6 +10,7 @@ Everyone is welcome to contribute to the project or use the code for their own p
 - [Adding a feature](#adding-a-feature)
 - [Code quality](#code-quality)
 - [Commits](#commits)
+- [Website](#website)
 - [Releases](#releases)
 
 ## Prerequisites
@@ -51,6 +52,7 @@ src/
 config/
 ├── webpack/             Build configuration for both browser targets
 └── release/             Store publishing scripts used by semantic-release
+site/                    The website, see below
 ```
 
 ## Adding a feature
@@ -80,6 +82,22 @@ fix(torrent-preview): show the preview for torrents without a description
 ```
 
 Common scopes are the feature names (`view-modes`, `torrent-preview`, `comments-bbcode`, `related-torrents`, `back-to-top`, `homepage-redirect`), plus `history` and `core`.
+
+## Website
+The [website](https://tautvydasderzinskas.github.io/super-linkomanija/) is built from `site/` and deployed to GitHub Pages by the `Website` workflow. That happens on every push to `main` that changes the site or the images it uses, and after every release so it shows the new version.
+
+- `site/content/en.json` and `site/content/lt.json` hold all texts. Both files must have the same structure, and the build fails when a translation is missing.
+- `site/templates.js` holds the page markup, `site/public/` the stylesheet, script and social preview image.
+- Screenshots come from `docs/images/`, and icons and header images from `src/assets/`.
+
+English is served from the root and Lithuanian from `/lt/`, each page linking the other as its translation. To preview locally:
+
+```sh
+npm run build:site
+cd _site && python3 -m http.server 8000
+```
+
+Then open http://localhost:8000. Page links work locally, but the 404 page expects the `/super-linkomanija/` path it has on GitHub Pages.
 
 ## Releases
 Releases are fully automated with [semantic-release](https://github.com/semantic-release/semantic-release). Every push to `main` is checked. When it contains releasable commits, a new version is published:

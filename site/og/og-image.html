@@ -1,0 +1,101 @@
+<!doctype html>
+<!--
+  Source of the website's social preview images (site/public/og-image.jpg and og-image-lt.jpg).
+  To regenerate: serve the repository root, open site/og/og-image.html (add ?lang=lt for Lithuanian)
+  in a 1200x630 window, take a screenshot and save it as JPEG.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Super Linkomanija social preview</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: 560px 1fr;
+      gap: 40px;
+      padding: 56px 0 56px 64px;
+      background: #13242d;
+      color: #ffffff;
+      font-family: "Segoe UI", Tahoma, system-ui, -apple-system, sans-serif;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: url("../../src/assets/images/header_0.webp") center / cover;
+      filter: grayscale(1) brightness(0.35);
+    }
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(19, 36, 45, 0.95) 0%, rgba(19, 36, 45, 0.75) 50%, rgba(19, 36, 45, 0.2) 100%);
+    }
+    .brand { display: flex; align-items: center; gap: 14px; font-size: 22px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #dce6ea; }
+    .brand img { width: 52px; height: 52px; }
+    h1 { margin: 26px 0 28px; font-size: 54px; line-height: 1.1; font-weight: 800; }
+    .accent { color: #ff3b42; }
+    ul { list-style: none; padding: 0; display: grid; gap: 12px; font-size: 25px; color: #e3eaed; }
+    li { display: flex; align-items: center; gap: 14px; }
+    li::before {
+      content: "";
+      flex: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #eb1c24 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E") center / 18px no-repeat;
+    }
+    .browsers { display: flex; gap: 12px; margin-top: 34px; }
+    .pill { padding: 8px 18px; border-radius: 999px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.25); font-size: 20px; font-weight: 700; }
+    .pill--free { background: #d3141c; border-color: #d3141c; }
+    .shot { align-self: center; position: relative; }
+    .shot img {
+      width: 640px;
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+      transform: perspective(1400px) rotateY(-10deg);
+      transform-origin: left center;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="brand"><img src="../../src/assets/icons/icon_128x128.png" alt="">Super Linkomanija</div>
+    <h1 data-text="title"></h1>
+    <ul data-list="features"></ul>
+    <div class="browsers">
+      <span class="pill">Chrome</span>
+      <span class="pill">Edge</span>
+      <span class="pill">Firefox</span>
+      <span class="pill pill--free" data-text="free"></span>
+    </div>
+  </div>
+  <div class="shot"><img src="../../docs/images/screenshot_02.jpg" alt=""></div>
+
+  <script>
+    const texts = {
+      en: {
+        title: 'Linkomanija.net, <span class="accent">made better</span>',
+        features: ['Torrent previews', 'Grid view with posters', 'Related torrents', 'Comment formatting', 'Viewed & downloaded history'],
+        free: 'Free',
+      },
+      lt: {
+        title: 'Linkomanija.net – <span class="accent">dar patogiau</span>',
+        features: ['Torentų peržiūra', 'Kortelių vaizdas su plakatais', 'Susiję torentai', 'Komentarų formatavimas', 'Peržiūrų ir parsisiuntimų istorija'],
+        free: 'Nemokamas',
+      },
+    };
+    const lang = new URLSearchParams(location.search).get('lang') === 'lt' ? 'lt' : 'en';
+    document.documentElement.lang = lang;
+    document.querySelector('[data-text="title"]').innerHTML = texts[lang].title;
+    document.querySelector('[data-text="free"]').textContent = texts[lang].free;
+    document.querySelector('[data-list="features"]').innerHTML = texts[lang].features.map(text => `<li>${text}</li>`).join('');
+  </script>
+</body>
+</html>

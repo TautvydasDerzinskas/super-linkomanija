@@ -3,12 +3,14 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import pkg from '../../package.json' with { type: 'json' };
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
+const REPOSITORY = pkg.repository.url.replace(/^git\+/, '').replace(/\.git$/, '');
 
 const FIREFOX_ADDON_ID = '{52665c48-f9ad-4fdc-8729-1f7e35244a25}';
 
 function transformManifest(manifest, isFirefox) {
-  // package.json is the only source of the version, semantic-release bumps it on release
+  // package.json is the only source of the version (semantic-release bumps it on release) and of the website
   manifest.version = pkg.version;
+  manifest.homepage_url = pkg.homepage;
 
   if (isFirefox) {
     // Firefox runs MV3 backgrounds as event pages, service workers are not supported
@@ -50,6 +52,7 @@ export default (env = {}) => {
             multiple: [
               { search: '{{title}}', replace: pkg.name, flags: 'gi' },
               { search: '{{homepage}}', replace: pkg.homepage, flags: 'gi' },
+              { search: '{{repository}}', replace: REPOSITORY, flags: 'gi' },
               { search: '{{author}}', replace: pkg.author.name, flags: 'gi' },
               { search: '{{authorPage}}', replace: pkg.author.url, flags: 'gi' },
               { search: '{{version}}', replace: pkg.version, flags: 'gi' },

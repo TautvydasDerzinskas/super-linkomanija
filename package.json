@@ -2,10 +2,11 @@
   "name": "super-linkomanija",
   "version": "2.0.0",
   "description": "Extension which improves UI/UX experience in Linkomanija.net website",
-  "homepage": "https://github.com/TautvydasDerzinskas/super-linkomanija",
+  "homepage": "https://tautvydasderzinskas.github.io/super-linkomanija/",
   "scripts": {
     "build": "webpack --config=config/webpack/webpack.config.js --mode=production",
     "build:firefox": "webpack --config=config/webpack/webpack.config.js --mode=production --env target=firefox",
+    "build:site": "node site/build.js",
     "develop": "webpack --config=config/webpack/webpack.config.js --mode=development --watch",
     "develop:firefox": "webpack --config=config/webpack/webpack.config.js --mode=development --watch --env target=firefox",
     "lint": "oxlint",

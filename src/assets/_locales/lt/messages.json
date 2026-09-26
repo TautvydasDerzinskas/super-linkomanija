@@ -87,6 +87,10 @@
     "message": "GitHub saugykla",
     "description": "Github repository link box overlay text"
   },
+  "tabsLinksWebsiteLabel": {
+    "message": "Aplankyti svetainę",
+    "description": "Extension website link box overlay text"
+  },
   "tabsLinksReportBugLabel": {
     "message": "Pranešk apie rastą klaidą",
     "description": "Report a bug link box overlay text"

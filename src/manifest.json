@@ -6,7 +6,6 @@
   "description": "__MSG_appDesc__",
   "default_locale": "lt",
   "author": "Tautvydas Derzinskas",
-  "homepage_url": "https://github.com/TautvydasDerzinskas/super-linkomanija",
 
   "action": {
     "default_icon": {

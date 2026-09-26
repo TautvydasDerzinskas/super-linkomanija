@@ -28,6 +28,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
       - run: npm run build:firefox
+      - run: npm run build:site
       - uses: actions/upload-artifact@v7
         with:
           name: extension
@@ -50,6 +51,8 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+      # Starting the website workflow after a release
+      actions: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -59,6 +62,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - id: before
+        run: echo "tag=$(git describe --tags --abbrev=0)" >> "$GITHUB_OUTPUT"
       # Builds happen inside semantic-release, after it sets the release version
       - run: npm run semantic-release
         env:
@@ -70,3 +75,11 @@ jobs:
           EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+      # The release commit skips CI, so the website is redeployed here to show the new version
+      - name: Update the website after a release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "$(git describe --tags --abbrev=0)" != "${{ steps.before.outputs.tag }}" ]; then
+            gh workflow run pages.yml --ref main
+          fi

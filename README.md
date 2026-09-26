@@ -9,10 +9,12 @@
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" title="MIT License"></a>
 </p>
 
-<p align="center"><a href="https://chromewebstore.google.com/detail/gmdhkalbljdblbogfladannflinppnji">Chrome Web Store</a> · <a href="https://microsoftedge.microsoft.com/addons/detail/dhmdmhhmpkhafcffhbihnpnfeknnnmlk">Edge Add-ons</a> · <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/">Firefox Add-ons</a> · <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/releases/latest">Latest release</a></p>
+<p align="center"><strong><a href="https://tautvydasderzinskas.github.io/super-linkomanija/">Website</a></strong> · <a href="https://chromewebstore.google.com/detail/gmdhkalbljdblbogfladannflinppnji">Chrome Web Store</a> · <a href="https://microsoftedge.microsoft.com/addons/detail/dhmdmhhmpkhafcffhbihnpnfeknnnmlk">Edge Add-ons</a> · <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/">Firefox Add-ons</a> · <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/releases/latest">Latest release</a></p>
 
 ## About
 Browser extension with purpose to extend UX of oldest Lithuanian torrent web site http://www.linkomanija.net
+
+Features, screenshots and install instructions in English and Lithuanian are on the [website](https://tautvydasderzinskas.github.io/super-linkomanija/).
 
 ## Features
 1. Comment formatting

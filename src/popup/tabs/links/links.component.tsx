@@ -13,23 +13,25 @@ import './links.component.scss';
 
 export default function LinksComponent() {
   const intl = useIntl();
-  const browserStoreLink = browserService.browserExtensionWebStoreLink;
+  const { homepage, repository, bugs, authorPage } = (window as any).sl;
+  // Sharing the website instead of one store, so it works for friends on any browser
+  const shareLink = encodeURIComponent(homepage);
 
   return (
     <div className='links'>
       <div className='links__column'>
         <LinkBoxComponent
-          link={(window as any).sl.homepage}
+          link={repository}
           position='top-left'
           icon='github.svg'
           label={intl.formatMessage({ id: 'tabsLinksGithubRepositoryLabel' })} />
         <LinkBoxComponent
-          link={(window as any).sl.bugs}
+          link={bugs}
           position='top-right'
           icon='report_bug.svg'
           label={intl.formatMessage({ id: 'tabsLinksReportBugLabel' })} />
         <LinkBoxComponent
-          link={(window as any).sl.authorPage}
+          link={authorPage}
           position='bottom-left'
           icon='author.webp'
           label={intl.formatMessage({ id: 'tabsLinksExtensionAuthorLabel' })} />
@@ -40,18 +42,23 @@ export default function LinksComponent() {
       </div>
       <div className='links__column'>
         <LinkBoxComponent
-          link={ShareLinks.Facebook + browserStoreLink}
+          link={ShareLinks.Facebook + shareLink}
           position='top-left'
           icon='facebook.svg'
           label={intl.formatMessage({ id: 'tabsLinksShareFacebookLabel' })} />
         <LinkBoxComponent
-          link={ShareLinks.Twitter + browserStoreLink}
+          link={ShareLinks.Twitter + shareLink}
           position='top-right'
           icon='twitter.svg'
           label={intl.formatMessage({ id: 'tabsLinksShareTwitterLabel' })} />
         <LinkBoxComponent
+          link={homepage}
+          position='bottom-left'
+          icon='website.svg'
+          label={intl.formatMessage({ id: 'tabsLinksWebsiteLabel' })} />
+        <LinkBoxComponent
           link={browserService.browserExtensionReviewLink}
-          position='bottom-left-right'
+          position='bottom-right'
           icon='star.svg'
           label={intl.formatMessage({ id: 'tabsLinksLeaveReviewLabel' })} />
       </div>

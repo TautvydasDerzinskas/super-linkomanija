@@ -1,0 +1,191 @@
+{
+  "lang": "lt",
+  "locale": "lt_LT",
+  "meta": {
+    "title": "Super Linkomanija – Linkomanija.net naršyklės papildinys (Chrome, Edge, Firefox)",
+    "description": "Nemokamas Linkomanija.net papildinys: torentų peržiūra, kortelių vaizdas su plakatais, susiję torentai, komentarų formatavimas ir istorija. Chrome, Edge ir Firefox.",
+    "ogImageAlt": "Super Linkomanija – Linkomanija.net naršyklės papildinys"
+  },
+  "skipLink": "Pereiti prie turinio",
+  "nav": {
+    "label": "Skiltys",
+    "features": "Funkcijos",
+    "screenshots": "Nuotraukos",
+    "install": "Įdiegimas",
+    "faq": "DUK",
+    "support": "Parama"
+  },
+  "langSwitch": {
+    "short": "EN",
+    "label": "English",
+    "title": "Read in English"
+  },
+  "hero": {
+    "title": "Linkomanija.net – <span class=\"accent\">dar patogiau</span>",
+    "tagline": "Super Linkomanija – nemokamas Linkomanija.net naršyklės papildinys. Peržiūrėkite torentus jų neatidarydami, naršykite sąrašą kortelių su plakatais pavidalu, raskite susijusius torentus ir formatuokite komentarus. Kiekvieną funkciją galite įjungti arba išjungti – palikite tik tai, ką naudojate.",
+    "chrome": "Įdiegti į Chrome",
+    "edge": "Įdiegti į Edge",
+    "firefox": "Įdiegti į Firefox",
+    "allWays": "Visi įdiegimo būdai",
+    "version": "Versija {version}",
+    "logoAlt": "Super Linkomanija"
+  },
+  "features": {
+    "title": "Funkcijos",
+    "intro": "Viskas veikia pačiuose Linkomanijos puslapiuose – tiek šviesioje, tiek tamsioje temoje. Kiekvieną funkciją galite įjungti arba išjungti papildinio lange, o pakeitimai atidarytuose skirtukuose pritaikomi iškart.",
+    "items": [
+      {
+        "icon": "eye",
+        "title": "Išankstinė torento peržiūra",
+        "text": "Torentų sąraše užveskite pelę ant akies ikonėlės ir pamatysite torento aprašymą, plakatą bei informaciją neatidarę jo puslapio."
+      },
+      {
+        "icon": "grid",
+        "title": "Sąrašo ir kortelių vaizdas",
+        "text": "Perjunkite torentų sąrašą iš įprastos lentelės į korteles su plakatais, dydžiu, siuntėjų ir siunčiančiųjų skaičiumi. Pasirinktas vaizdas įsimenamas."
+      },
+      {
+        "icon": "list",
+        "title": "Susiję torentai",
+        "text": "Torento puslapyje matysite susijusių torentų sąrašą, tad kitos versijos ir leidimai pasiekiami vienu paspaudimu, nieko neieškant."
+      },
+      {
+        "icon": "comments",
+        "title": "Komentarų formatavimas",
+        "text": "Patogus komentarų redaktorius: pusjuodis, kursyvas, spalvos, nuorodos, paveikslėliai, citatos ir Linkomanijos šypsenėlės. BBCode kodas parašomas už jus.",
+        "note": "Tik Chrome ir Edge"
+      },
+      {
+        "icon": "arrows_up",
+        "title": "Greitas slinkimas viršun",
+        "text": "Kiekviename puslapyje – mygtukas, kuriuo vienu paspaudimu grįšite į puslapio viršų."
+      },
+      {
+        "icon": "open",
+        "title": "Namų puslapio peradresavimas",
+        "text": "Atidarius Linkomanijos namų puslapį, būsite iškart nukreipti į torentų sąrašą. Pagal nutylėjimą išjungta."
+      },
+      {
+        "icon": "download",
+        "title": "Istorija",
+        "text": "Papildinio lange rasite paskutinius atidarytus, parsisiųstus ir komentuotus torentus bei bendrą jų skaičių."
+      }
+    ]
+  },
+  "screenshots": {
+    "title": "Nuotraukos",
+    "items": [
+      "Papildinio langas: funkcijų jungikliai, torentų istorija ir nuorodos",
+      "Torentų sąrašas lentelės ir kortelių su plakatais vaizdu",
+      "Išankstinė torento peržiūra: aprašymas atsidaro paspaudus akies ikonėlę sąraše",
+      "Susiję torentai ir komentarų formatavimo redaktorius torento puslapyje"
+    ]
+  },
+  "install": {
+    "title": "Įdiegimas",
+    "intro": "Įdiekite iš savo naršyklės parduotuvės: vienas paspaudimas, o atnaujinimai įdiegiami automatiškai.",
+    "chrome": {
+      "title": "Chrome",
+      "text": "Iš Chrome Web Store. Iš ten jį įdiegia ir Opera, Vivaldi bei Brave.",
+      "button": "Įdiegti į Chrome"
+    },
+    "edge": {
+      "title": "Microsoft Edge",
+      "text": "Iš Microsoft Edge Add-ons.",
+      "button": "Įdiegti į Edge"
+    },
+    "firefox": {
+      "title": "Firefox",
+      "text": "Iš Firefox Add-ons, Firefox 142 ar naujesnei versijai.",
+      "button": "Įdiegti į Firefox"
+    },
+    "afterTitle": "Įdiegus",
+    "after": [
+      "Atidarykite <a href=\"https://www.linkomanija.net\">Linkomanija.net</a> ir prisijunkite kaip įprastai. Funkcijos atsiras svetainės puslapiuose.",
+      "Paspaudę papildinio ikonėlę įrankių juostoje galite įjungti ar išjungti funkcijas, peržiūrėti istoriją ir pakeisti lango kalbą.",
+      "Prisekite ikonėlę prie įrankių juostos, kad ji visada būtų po ranka: paspauskite dėlionės ikonėlę, tada smeigtuką šalia Super Linkomanija."
+    ],
+    "manualTitle": "Be parduotuvės",
+    "manual": "Kiekviena versija skelbiama ir <a href=\"{releases}\">GitHub leidimuose</a>. Norėdami ją įkelti į Chrome ar Edge, išarchyvuokite Chrome paketą, atidarykite <code>chrome://extensions</code> arba <code>edge://extensions</code>, įjunkite <strong>Kūrėjo režimą</strong> ir pasirinkite <strong>Įkelti išpakuotą</strong>. Taip įdiegtas papildinys pats neatsinaujins."
+  },
+  "faq": {
+    "title": "Dažniausiai užduodami klausimai",
+    "items": [
+      {
+        "q": "Ar papildinys nemokamas?",
+        "a": "Taip. Jis nemokamas ir atvirojo kodo (MIT licencija), be reklamų ir mokamų funkcijų."
+      },
+      {
+        "q": "Ar jis renka mano duomenis?",
+        "a": "Ne. Nustatymai ir istorija lieka jūsų naršyklėje, jokios analitikos ar sekimo nėra. Plačiau – <a href=\"{privacy}\">privatumo politikoje</a>."
+      },
+      {
+        "q": "Ar tai oficialus Linkomanijos papildinys?",
+        "a": "Ne. Tai nepriklausomas projektas, nesusijęs su Linkomanija.net."
+      },
+      {
+        "q": "Ar papildiniui reikia mano Linkomanijos slaptažodžio?",
+        "a": "Ne. Prie Linkomanija.net prisijungiate kaip įprastai, o papildinys tik patobulina atidaromus puslapius. Jūsų slaptažodžio jis niekada nemato."
+      },
+      {
+        "q": "Kokias naršykles jis palaiko?",
+        "a": "Chrome, Microsoft Edge ir Firefox, o per Chrome Web Store – ir Opera, Vivaldi bei Brave."
+      },
+      {
+        "q": "Radote klaidą ar turite idėją?",
+        "a": "Praneškite apie ją <a href=\"{issues}\">GitHub</a> puslapyje. Prisidėti prie kūrimo taip pat kviečiame."
+      }
+    ]
+  },
+  "support": {
+    "title": "Parama",
+    "text": "Jei Super Linkomanija jums naudinga, galite paremti jos kūrimą.",
+    "sponsors": "GitHub Sponsors",
+    "coffee": "Buy Me a Coffee"
+  },
+  "footer": {
+    "privacy": "Privatumo politika",
+    "source": "Išeities kodas",
+    "changelog": "Pakeitimų istorija",
+    "license": "Atvirasis kodas, MIT licencija.",
+    "disclaimer": "Nesusijęs su Linkomanija.net."
+  },
+  "privacy": {
+    "title": "Privatumo politika",
+    "metaTitle": "Privatumo politika – Super Linkomanija",
+    "description": "Super Linkomanija nerenka jokių asmens duomenų: nustatymai ir istorija lieka jūsų naršyklėje, be analitikos ir sekimo.",
+    "updated": "Atnaujinta: {date}",
+    "back": "Grįžti į pagrindinį puslapį",
+    "sections": [
+      {
+        "title": "Trumpai",
+        "body": "<p>Super Linkomanija nerenka, neparduoda ir niekam neperduoda jokių asmens duomenų. Joje nėra analitikos, sekimo ir jokių savų serverių.</p>"
+      },
+      {
+        "title": "Ką papildinys saugo",
+        "body": "<p>Papildinys jūsų naršyklės papildinių saugykloje išsaugo:</p><ul><li>kurios funkcijos įjungtos ar išjungtos ir pasirinktą torentų sąrašo vaizdą</li><li>papildinio lango kalbą</li><li>istoriją: po 25 paskutinius atidarytus, parsisiųstus ir komentuotus torentus, kiekvieno ID, pavadinimą ir kategorijos paveikslėlio adresą</li></ul><p>Jei naudojate naršyklės sinchronizavimą, naršyklė šiuos duomenis gali sinchronizuoti tarp jūsų įrenginių per jūsų naršyklės paskyrą. Kūrėjui jie niekada nesiunčiami.</p>"
+      },
+      {
+        "title": "Tinklo užklausos",
+        "body": "<p>Papildinys bendrauja tik su Linkomanija.net. Jūsų vardu ir naudodamas jūsų esamą prisijungimą jis įkelia torentų puslapius peržiūrai ir susijusiems torentams, o paspaudus – prideda ar pašalina žymes. Komentarų redaktoriaus šypsenėlės įkeliamos iš Linkomanijos paveikslėlių serverio. Jokios kitos svetainės nepasiekiamos.</p><p>Pašalinus papildinį, naršyklė atidaro šią svetainę. Jokie duomenys kartu nesiunčiami.</p>"
+      },
+      {
+        "title": "Leidimai",
+        "body": "<ul><li><strong>Prieiga prie linkomanija.net</strong> – kad funkcijos atsirastų svetainės puslapiuose</li><li><strong>Saugykla</strong> – kad būtų išsaugoti nustatymai ir istorija</li><li><strong>Skirtukai</strong> – kad įrankių juostos ikonėlė būtų aktyvi Linkomanija.net svetainėje, o nustatymų pakeitimai iškart būtų pritaikyti atidarytuose Linkomanijos skirtukuose</li></ul>"
+      },
+      {
+        "title": "Duomenų ištrynimas",
+        "body": "<p>Pašalinus papildinį, visi jo išsaugoti duomenys ištrinami.</p>"
+      },
+      {
+        "title": "Kontaktai",
+        "body": "<p>Klausimus apie privatumą galite užduoti <a href=\"{issues}\">GitHub</a> puslapyje.</p>"
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Puslapis nerastas",
+    "text": "Tokio puslapio nėra.",
+    "home": "Eiti į pagrindinį puslapį"
+  }
+}

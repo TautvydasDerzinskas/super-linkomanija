@@ -1,0 +1,191 @@
+{
+  "lang": "en",
+  "locale": "en_US",
+  "meta": {
+    "title": "Super Linkomanija – browser extension for Linkomanija.net (Chrome, Edge, Firefox)",
+    "description": "Free extension for Linkomanija.net: torrent previews, a grid view with posters, related torrents, comment formatting and history. For Chrome, Edge and Firefox.",
+    "ogImageAlt": "Super Linkomanija, the browser extension for Linkomanija.net"
+  },
+  "skipLink": "Skip to content",
+  "nav": {
+    "label": "Sections",
+    "features": "Features",
+    "screenshots": "Screenshots",
+    "install": "Install",
+    "faq": "FAQ",
+    "support": "Support"
+  },
+  "langSwitch": {
+    "short": "LT",
+    "label": "Lietuviškai",
+    "title": "Skaityti lietuviškai"
+  },
+  "hero": {
+    "title": "Linkomanija.net, <span class=\"accent\">made better</span>",
+    "tagline": "Super Linkomanija is a free browser extension for Linkomanija.net. Preview torrents without opening them, browse the list as a grid of posters, find related torrents and format your comments. Switch each feature on or off, keep only what you use.",
+    "chrome": "Add to Chrome",
+    "edge": "Add to Edge",
+    "firefox": "Add to Firefox",
+    "allWays": "All ways to install",
+    "version": "Version {version}",
+    "logoAlt": "Super Linkomanija"
+  },
+  "features": {
+    "title": "Features",
+    "intro": "Everything works on Linkomanija's own pages, in both its light and dark themes. Every feature can be switched on or off in the extension's popup, and changes apply to open tabs straight away.",
+    "items": [
+      {
+        "icon": "eye",
+        "title": "Torrent preview",
+        "text": "Hover the eye icon in the torrent list to see a torrent's description, poster and details in a popup, without opening its page."
+      },
+      {
+        "icon": "grid",
+        "title": "List and grid view",
+        "text": "Switch the torrent list between the classic table and a grid of cards with posters, size, seeders and leechers. Your choice is remembered."
+      },
+      {
+        "icon": "list",
+        "title": "Related torrents",
+        "text": "Torrent pages list related torrents, so other versions and releases are one click away, without searching."
+      },
+      {
+        "icon": "comments",
+        "title": "Comment formatting",
+        "text": "A rich-text editor for comments: bold, italic, colours, links, images, quotes and Linkomanija's own smileys, written as BBCode for you.",
+        "note": "Chrome and Edge only"
+      },
+      {
+        "icon": "arrows_up",
+        "title": "Back to top",
+        "text": "A button on every page that takes you back to the top in one click."
+      },
+      {
+        "icon": "open",
+        "title": "Homepage redirect",
+        "text": "Opening Linkomanija's homepage takes you straight to the torrent list. Off by default."
+      },
+      {
+        "icon": "download",
+        "title": "History",
+        "text": "The popup lists your last viewed, downloaded and commented torrents, with all-time totals."
+      }
+    ]
+  },
+  "screenshots": {
+    "title": "Screenshots",
+    "items": [
+      "The extension's popup: feature switches, torrent history and links",
+      "The torrent list in list view and in grid view with posters",
+      "Torrent preview: the description opens from the eye icon in the list",
+      "Related torrents and the comment formatting editor on a torrent page"
+    ]
+  },
+  "install": {
+    "title": "Install",
+    "intro": "Install from your browser's store: one click, and it updates automatically.",
+    "chrome": {
+      "title": "Chrome",
+      "text": "From the Chrome Web Store. Opera, Vivaldi and Brave install it from there too.",
+      "button": "Add to Chrome"
+    },
+    "edge": {
+      "title": "Microsoft Edge",
+      "text": "From Microsoft Edge Add-ons.",
+      "button": "Add to Edge"
+    },
+    "firefox": {
+      "title": "Firefox",
+      "text": "From Firefox Add-ons, Firefox 142 or newer.",
+      "button": "Add to Firefox"
+    },
+    "afterTitle": "After installing",
+    "after": [
+      "Open <a href=\"https://www.linkomanija.net\">Linkomanija.net</a> and log in as usual. The features appear on the site's pages.",
+      "Click the extension's icon in the toolbar to switch features on or off, see your history and change the popup's language.",
+      "Pin the icon to the toolbar to keep it at hand: the puzzle piece icon, then the pin next to Super Linkomanija."
+    ],
+    "manualTitle": "Without the store",
+    "manual": "Every version is also on <a href=\"{releases}\">GitHub releases</a>. To load it in Chrome or Edge, unzip the Chrome package, open <code>chrome://extensions</code> or <code>edge://extensions</code>, switch on <strong>Developer mode</strong> and choose <strong>Load unpacked</strong>. It won't update on its own."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "Is it free?",
+        "a": "Yes. It's free and open source under the MIT license, with no ads and no paid features."
+      },
+      {
+        "q": "Does it collect my data?",
+        "a": "No. Your settings and history stay in your browser, and there are no analytics or tracking. See the <a href=\"{privacy}\">privacy policy</a>."
+      },
+      {
+        "q": "Is it an official Linkomanija extension?",
+        "a": "No. It's an independent project and isn't affiliated with Linkomanija.net."
+      },
+      {
+        "q": "Does it need my Linkomanija password?",
+        "a": "No. You log in to Linkomanija.net as usual, and the extension only improves the pages you open. It never sees your password."
+      },
+      {
+        "q": "Which browsers does it support?",
+        "a": "Chrome, Microsoft Edge and Firefox, plus Opera, Vivaldi and Brave through the Chrome Web Store."
+      },
+      {
+        "q": "Found a bug or have an idea?",
+        "a": "Open an issue on <a href=\"{issues}\">GitHub</a>. Contributions are welcome too."
+      }
+    ]
+  },
+  "support": {
+    "title": "Support",
+    "text": "If Super Linkomanija is useful to you, consider supporting its development.",
+    "sponsors": "GitHub Sponsors",
+    "coffee": "Buy Me a Coffee"
+  },
+  "footer": {
+    "privacy": "Privacy policy",
+    "source": "Source code",
+    "changelog": "Changelog",
+    "license": "Open source under the MIT license.",
+    "disclaimer": "Not affiliated with Linkomanija.net."
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "metaTitle": "Privacy policy – Super Linkomanija",
+    "description": "Super Linkomanija collects no personal data: settings and history stay in your browser, with no analytics or tracking.",
+    "updated": "Last updated: {date}",
+    "back": "Back to the home page",
+    "sections": [
+      {
+        "title": "Summary",
+        "body": "<p>Super Linkomanija doesn't collect, sell or share any personal data. It has no analytics, no tracking and no servers of its own.</p>"
+      },
+      {
+        "title": "What it stores",
+        "body": "<p>The extension saves the following in your browser's extension storage:</p><ul><li>which features are switched on or off, and the chosen torrent list view</li><li>the popup's language</li><li>your history: the last 25 viewed, downloaded and commented torrents per group, each with its ID, title and category image address</li></ul><p>If you use your browser's sync, the browser can sync this data between your own devices through your browser account. It is never sent to the developer.</p>"
+      },
+      {
+        "title": "Network requests",
+        "body": "<p>The extension only talks to Linkomanija.net. On your behalf and with your existing login it loads torrent pages for previews and related torrents, and adds or removes bookmarks when you click them. Smileys in the comment editor load from Linkomanija's own image server. No other websites are contacted.</p><p>When you uninstall the extension, the browser opens this website. No data is sent with it.</p>"
+      },
+      {
+        "title": "Permissions",
+        "body": "<ul><li><strong>Access to linkomanija.net</strong>: to add the features to the site's pages</li><li><strong>Storage</strong>: to save your settings and history</li><li><strong>Tabs</strong>: to show the toolbar icon as active on Linkomanija.net, and to apply setting changes to open Linkomanija tabs straight away</li></ul>"
+      },
+      {
+        "title": "Removing your data",
+        "body": "<p>Uninstalling the extension deletes everything it stored.</p>"
+      },
+      {
+        "title": "Contact",
+        "body": "<p>Questions about privacy can be asked on <a href=\"{issues}\">GitHub</a>.</p>"
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist.",
+    "home": "Go to the home page"
+  }
+}
