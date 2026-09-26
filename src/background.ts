@@ -11,4 +11,4 @@ chrome.runtime.onInstalled.addListener(() => {
   featureStorageService.initialize();
 });
 
-chrome.runtime.setUninstallURL('https://github.com/SlimDogs/super-linkomanija');
+chrome.runtime.setUninstallURL('https://github.com/TautvydasDerzinskas/super-linkomanija');

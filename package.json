@@ -2,7 +2,7 @@
   "name": "super-linkomanija",
   "version": "1.0.1",
   "description": "Extension which improves UI/UX experience in Linkomanija.net website",
-  "homepage": "https://github.com/SlimDogs/super-linkomanija",
+  "homepage": "https://github.com/TautvydasDerzinskas/super-linkomanija",
   "scripts": {
     "build": "webpack --config=config/webpack/webpack.config.js --mode=production",
     "develop": "webpack --config=config/webpack/webpack.config.js --mode=development --watch",
@@ -71,10 +71,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SlimDogs/super-linkomanija.git"
+    "url": "https://github.com/TautvydasDerzinskas/super-linkomanija.git"
   },
   "bugs": {
-    "url": "https://github.com/SlimDogs/super-linkomanija/issues",
+    "url": "https://github.com/TautvydasDerzinskas/super-linkomanija/issues",
     "email": "tautvydasuk+sl@gmail.com"
   },
   "license": "MIT",
