@@ -28,6 +28,7 @@ export enum Locales {
 
 export enum Browsers {
   Chrome = 'chrome',
+  Edge = 'edge',
   Firefox = 'firefox',
   Opera = 'opera',
   Vivaldi = 'vivaldi',

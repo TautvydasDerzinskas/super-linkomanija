@@ -3,21 +3,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/actions/workflows/ci.yml" target="_blank"><img src="https://github.com/TautvydasDerzinskas/super-linkomanija/actions/workflows/ci.yml/badge.svg?branch=main" alt="Latest CI build status" title="Latest CI build status"></a>
-  <a href="https://github.com/TautvydasDerzinskas/super-linkomanija" target="_blank"><img src="https://img.shields.io/chrome-web-store/users/gmdhkalbljdblbogfladannflinppnji.svg?label=users" alt="Active users" title="Active users"></a>
-  <a href="http://commitizen.github.io/cz-cli" target="_blank"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly" title="Commitizen friendly"></a>
-  <a href="https://github.com/semantic-release/semantic-release" target="_blank"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="Semantic release" title="Semantic release"></a>
+  <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/actions/workflows/ci.yml" target="_blank"><img src="https://github.com/TautvydasDerzinskas/super-linkomanija/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI workflow status" title="CI: checks, builds & publishes every push to main"></a>
+  <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/releases/latest" target="_blank"><img src="https://img.shields.io/github/v/release/TautvydasDerzinskas/super-linkomanija?label=release" alt="Latest release" title="Latest release"></a>
+  <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/" target="_blank"><img src="https://img.shields.io/amo/v/super-linkomanija?label=firefox%20add-ons" alt="Firefox Add-ons version" title="Version on Firefox Add-ons"></a>
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" title="MIT License"></a>
 </p>
 
-## Table of content
-- [About](#about)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Installation](#installation)
-- [Road map](#road-map)
-- [Development](#development)
-- [License](#license)
+<p align="center"><a href="https://chromewebstore.google.com/detail/gmdhkalbljdblbogfladannflinppnji">Chrome Web Store</a> · <a href="https://microsoftedge.microsoft.com/addons/detail/dhmdmhhmpkhafcffhbihnpnfeknnnmlk">Edge Add-ons</a> · <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/">Firefox Add-ons</a> · <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/releases/latest">Latest release</a></p>
 
 ## About
 Browser extension with purpose to extend UX of oldest Lithuanian torrent web site http://www.linkomanija.net
@@ -40,24 +32,27 @@ Chrome & Vivaldi users please click below:
   <img src="docs/images/chrome_store.png" alt="Available in the Chrome Web Store" />
 </a>
 
+Microsoft Edge users please click below:
+
+<a href="https://microsoftedge.microsoft.com/addons/detail/dhmdmhhmpkhafcffhbihnpnfeknnnmlk" target="_blank">
+  <img src="docs/images/edge_store.png" width="206px" alt="Get it from Microsoft Edge" />
+</a>
+
 Firefox users please head to link below:
 
 <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/" target="_blank">
   <img src="docs/images/firefox_store.png" width="206px" alt="Get the add-on for Firefox" />
 </a>
 
-## Road map
-* Add more features
 
-## Development
-Everyone is welcomed to contribute to the project or use the code for their own projects
+## Contributing
+Contributions are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
-To contribute you need to perform these steps:
-1. Use Node.js 24 (see `.nvmrc`) and run `npm install` to install npm dependencies
-2. Run `npm run develop` to build in watch mode (or `npm run build` for a production build) into the `extension` folder. For Firefox use `npm run develop:firefox` / `npm run build:firefox`, which build into `extension-firefox`
-3. In Chrome enable developer mode on the extensions page and load the unpacked `extension` folder. In Firefox open `about:debugging#/runtime/this-firefox` and load `extension-firefox/manifest.json` as a temporary add-on
-4. Run `npm run lint` (oxlint) and `npm run typecheck` to make sure code is valid, both also run on pre-commit
-5. Commit with `npm run commit`, messages must follow [Conventional Commits](https://www.conventionalcommits.org) since releases are generated from them
+## Support
+If Super Linkomanija is useful to you, consider supporting its development:
+
+- [GitHub Sponsors](https://github.com/sponsors/TautvydasDerzinskas)
+- [Buy Me a Coffee](https://buymeacoffee.com/TautvydasDerzinskas)
 
 ## License
 The repository code is open-sourced software licensed under the [MIT license](https://github.com/TautvydasDerzinskas/super-linkomanija/blob/main/LICENSE?raw=true).

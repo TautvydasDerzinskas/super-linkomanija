@@ -50,7 +50,7 @@ export default function LinksComponent() {
           icon='twitter.svg'
           label={intl.formatMessage({ id: 'tabsLinksShareTwitterLabel' })} />
         <LinkBoxComponent
-          link={browserStoreLink + '/reviews'}
+          link={browserService.browserExtensionReviewLink}
           position='bottom-left-right'
           icon='star.svg'
           label={intl.formatMessage({ id: 'tabsLinksLeaveReviewLabel' })} />

@@ -107,7 +107,7 @@
       [
         "@semantic-release/exec",
         {
-          "verifyConditionsCmd": "node config/release/chrome.js verify && node config/release/firefox.js verify",
+          "verifyConditionsCmd": "node config/release/chrome.js verify && node config/release/edge.js verify && node config/release/firefox.js verify",
           "prepareCmd": "npm version ${nextRelease.version} --no-git-tag-version --allow-same-version && npm run build && npm run build:firefox && npm run zip && npm run zip:firefox"
         }
       ],
@@ -124,7 +124,7 @@
       [
         "@semantic-release/exec",
         {
-          "publishCmd": "node config/release/chrome.js publish && node config/release/firefox.js publish"
+          "publishCmd": "node config/release/chrome.js publish && node config/release/edge.js publish && node config/release/firefox.js publish"
         }
       ],
       [
