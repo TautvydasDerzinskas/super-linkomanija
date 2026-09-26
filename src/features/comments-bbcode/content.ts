@@ -2,6 +2,7 @@ import urlService from '../../services/common/url.service';
 import IContent from '../../interfaces/content';
 import { LinkomanijaSelectors, Locales } from '../../enums';
 
+import emoticons from './emoticons.json';
 import './locales/lt';
 import './styles/comments-bbcode.scss';
 
@@ -25,7 +26,7 @@ class ContentCommentsBbcode implements IContent {
             locale: Locales.Lithuanian,
             emoticonsEnabled: true,
             emoticonsRoot: '//static.linkomanija.net/pic/smilies/',
-            emoticons: require('./emoticons.json'),
+            emoticons,
           });
         }
       }
@@ -46,7 +47,7 @@ class ContentCommentsBbcode implements IContent {
 
   private setupReplyCommentBoxesTriggers() {
     const s = document.createElement('script');
-    s.src = chrome.extension.getURL('bbcode.bundle.js');
+    s.src = chrome.runtime.getURL('bbcode.bundle.js');
     s.onload = function () {
       (this as HTMLElement).remove();
     };

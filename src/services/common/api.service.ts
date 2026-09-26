@@ -10,88 +10,53 @@ class ApiService {
     }
   }
 
-  public getRelatedTorrents(title: string) {
-    return new Promise((resolve) => {
-      this.get(`browse.php?search=${title}`).then((responseHtml: string) => {
-        const virtualDom = this.htmlStringToVirtualDom(responseHtml);
-        const torrentsTable = virtualDom.querySelector(LinkomanijaSelectors.TorrentTable).outerHTML;
-        resolve(torrentsTable);
-      });
-    });
+  public async getRelatedTorrents(title: string): Promise<string> {
+    const responseHtml = await this.get(`browse.php?search=${title}`);
+    const virtualDom = this.htmlStringToVirtualDom(responseHtml);
+    return virtualDom.querySelector(LinkomanijaSelectors.TorrentTable).outerHTML;
   }
 
-  public getTorrentDetails(url: string): Promise<{ descriptionHtml: string; comments: ITorrentComment[] }> {
-    return new Promise((resolve) => {
-      this.get(url).then((responseHtml: string) => {
-        const virtualDom = this.htmlStringToVirtualDom(responseHtml);
-        const youtubeIframe = virtualDom.querySelector('.descr_text iframe');
-        if (youtubeIframe) {
-          youtubeIframe.setAttribute('width', '350');
-          youtubeIframe.setAttribute('height', '213');
-        }
-        const descriptionHtml = virtualDom.getElementsByClassName('descr_text')[0].innerHTML;
+  public async getTorrentDetails(url: string): Promise<{ descriptionHtml: string; comments: ITorrentComment[] }> {
+    const responseHtml = await this.get(url);
+    const virtualDom = this.htmlStringToVirtualDom(responseHtml);
+    const youtubeIframe = virtualDom.querySelector('.descr_text iframe');
+    if (youtubeIframe) {
+      youtubeIframe.setAttribute('width', '350');
+      youtubeIframe.setAttribute('height', '213');
+    }
 
-        resolve({
-          descriptionHtml: descriptionHtml,
-          comments: extractTorrentDetailsService.extractComments(responseHtml),
-        });
-      });
-    });
+    return {
+      descriptionHtml: virtualDom.getElementsByClassName('descr_text')[0].innerHTML,
+      comments: extractTorrentDetailsService.extractComments(responseHtml),
+    };
   }
 
   public addFavourite(id: string) {
-    return new Promise((resolve) => {
-      this.post('ajax/bookmarks.php', { type: 'master', action: 'add', tid: id }).then(response => {
-        resolve(response);
-      });
-    });
+    return this.post('ajax/bookmarks.php', { type: 'master', action: 'add', tid: id });
   }
 
   public removeFavourite(id: string) {
-    return new Promise((resolve) => {
-      this.post('ajax/bookmarks.php', { type: 'master', action: 'remove', tid: id }).then(response => {
-        resolve(response);
-      });
-    });
+    return this.post('ajax/bookmarks.php', { type: 'master', action: 'remove', tid: id });
   }
 
-  private post(url: string, data: { [index: string]: string; }) {
-    return new Promise((resolve) => {
-      const xhr = new XMLHttpRequest();
-
-      const urlEncodedDataPairs = [];
-      for (const name in data) {
-        if (data[name] !== null) {
-          urlEncodedDataPairs.push(encodeURIComponent(name) + '=' + encodeURIComponent(data[name]));
-        }
-      }
-      const urlEncodedData = urlEncodedDataPairs.join('&').replace(/%20/g, '+');
-
-      xhr.open('POST', `https://www.linkomanija.net/${url}`);
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          resolve(xhr.responseText);
-        }
-      };
-      xhr.send(urlEncodedData);
+  private async post(url: string, data: Record<string, string>) {
+    const response = await fetch(`https://www.linkomanija.net/${url}`, {
+      method: 'POST',
+      body: new URLSearchParams(data),
     });
+    if (!response.ok) {
+      throw new Error(`POST ${url} failed with status ${response.status}`);
+    }
+    return response.text();
   }
 
-  private get(url: string) {
-    return new Promise((resolve) => {
-      if (!(window as any).superLinkomanijaResponseTable[url]) {
-        const xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', () => {
-          (window as any).superLinkomanijaResponseTable[url] = xhr.response;
-          resolve(xhr.response);
-        }, false);
-        xhr.open('GET', `https://www.linkomanija.net/${url}`);
-        xhr.send();
-      } else {
-        resolve((window as any).superLinkomanijaResponseTable[url]);
-      }
-    });
+  private async get(url: string): Promise<string> {
+    const responseTable = (window as any).superLinkomanijaResponseTable;
+    if (!responseTable[url]) {
+      const response = await fetch(`https://www.linkomanija.net/${url}`);
+      responseTable[url] = await response.text();
+    }
+    return responseTable[url];
   }
 
   private htmlStringToVirtualDom(html: string) {

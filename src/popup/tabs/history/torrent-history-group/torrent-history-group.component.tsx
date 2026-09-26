@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import TorrentComponent from './torrent/torrent.component';
 
@@ -12,53 +12,34 @@ interface ITorrentHistoryGroupComponentProps {
   type: 'viewed' | 'downloaded' | 'commented';
 }
 
-interface ITorrentHistoryGroupComponentState {
-  torrents: IBasicTorrentDetails[];
-  total: number;
-}
+export default function TorrentHistoryGroupComponent({ title, type }: ITorrentHistoryGroupComponentProps) {
+  const [torrents, setTorrents] = useState<IBasicTorrentDetails[]>([]);
+  const [total, setTotal] = useState(0);
 
-export default class TorrentHistoryGroupComponent extends React.Component<ITorrentHistoryGroupComponentProps, ITorrentHistoryGroupComponentState> {
-  constructor(props: ITorrentHistoryGroupComponentProps) {
-    super(props);
-    this.state = {
-      torrents: [],
-      total: 0,
-    };
-  }
-
-  componentDidMount() {
-    historyService.getHistory(this.props.type).then(historyData => {
+  useEffect(() => {
+    historyService.getHistory(type).then(historyData => {
       if (historyData) {
-        this.setState({
-          torrents: historyData[this.props.type].items,
-          total: historyData[this.props.type].total,
-        });
+        setTorrents(historyData[type].items);
+        setTotal(historyData[type].total);
       }
     });
-  }
+  }, [type]);
 
+  const validTorrents = torrents.filter(Boolean);
 
-  render() {
-    let allTorrentItems: any = <FormattedMessage id='tabsHistoryNoTorrentEntriesLabel'></FormattedMessage>;
-
-    if (this.state.torrents.length > 0) {
-      allTorrentItems = this.state.torrents.map((torrentDetails) => {
-        if (torrentDetails) {
-          return <TorrentComponent key={torrentDetails.id} torrent={torrentDetails}></TorrentComponent>;
-        }
-      });
-    }
-
-    return (
-      <div className='torrent-group'>
-        <div className='torrent-group__heading'>
-          <div className='heading__title'>{this.props.title}</div>
-          <div className='heading__sub-title'>
-            <FormattedMessage id='tabsHistoryTotalLabel'></FormattedMessage> <strong>{this.state.total}</strong>
-          </div>
+  return (
+    <div className='torrent-group'>
+      <div className='torrent-group__heading'>
+        <div className='heading__title'>{title}</div>
+        <div className='heading__sub-title'>
+          <FormattedMessage id='tabsHistoryTotalLabel'></FormattedMessage> <strong>{total}</strong>
         </div>
-        <div className='torrent-group__torrents'>{allTorrentItems}</div>
       </div>
-    );
-  }
+      <div className='torrent-group__torrents'>
+        {validTorrents.length > 0
+          ? validTorrents.map(torrentDetails => <TorrentComponent key={torrentDetails.id} torrent={torrentDetails}></TorrentComponent>)
+          : <FormattedMessage id='tabsHistoryNoTorrentEntriesLabel'></FormattedMessage>}
+      </div>
+    </div>
+  );
 }

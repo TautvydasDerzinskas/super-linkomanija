@@ -1,13 +1,13 @@
-@import '../../../popup/variables';
+@use '../../../popup/variables';
 
 .corner-ribbon {
   width: 160px;
-  background-color: $theme-green;
+  background-color: variables.$theme-green;
   position: absolute;
   text-align: center;
-  line-height: $large-spacing;
+  line-height: variables.$large-spacing;
   font-size: 9px;
-  color: $theme-white !important;
+  color: variables.$theme-white !important;
   font-weight: normal !important;
   text-decoration: none;
 
@@ -44,10 +44,10 @@
   }
 
   &--red {
-    background-color: rgba($theme-red, .8);
+    background-color: rgba(variables.$theme-red, .8);
   }
 
   &--green {
-    background-color: rgba($theme-green, .8);
+    background-color: rgba(variables.$theme-green, .8);
   }
 }

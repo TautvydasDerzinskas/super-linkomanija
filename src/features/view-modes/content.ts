@@ -1,5 +1,4 @@
 import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
-import svgIconsService from '../../services/content/svg-icons.service';
 import featureStorageService from '../../services/common/feature-storage.service';
 import urlService from '../../services/common/url.service';
 import previewService from '../../services/common/preview.service';

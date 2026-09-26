@@ -1,4 +1,4 @@
-@import './variables';
+@use 'variables';
 
 /**
  * Globals
@@ -9,7 +9,7 @@
 
   margin: 0;
   padding: 0;
-  width: $popup-max-width;
+  width: variables.$popup-max-width;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -20,7 +20,7 @@
 a {
   color: inherit;
   text-decoration: none;
-  transition: $default-transition;
+  transition: variables.$default-transition;
 }
 
 * {

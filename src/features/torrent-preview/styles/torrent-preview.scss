@@ -1,5 +1,5 @@
-@import '../../../popup/variables';
-@import './tippy-js-linkomanija-theme';
+@use '../../../popup/variables';
+@use 'tippy-js-linkomanija-theme';
 
 $max-popup-width: 350px;
 $max-popup-height: 170px;
@@ -17,13 +17,13 @@ $max-popup-height: 170px;
   }
 
   svg {
-    fill: $linkomanija-link-color;
+    fill: variables.$linkomanija-link-color;
     display: inline-block;
-    height: $large-spacing;
-    width: $large-spacing;
+    height: variables.$large-spacing;
+    width: variables.$large-spacing;
 
     .sl--theme-dark & {
-      fill: $linkomanija-dark-link-color;
+      fill: variables.$linkomanija-dark-link-color;
     }
   }
 }
@@ -38,21 +38,21 @@ $max-popup-height: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px $linkomanija-border-color solid;
+    border-bottom: 1px variables.$linkomanija-border-color solid;
     background-image: url('https://static.linkomanija.net/images/shadow.gif');
     background-repeat: repeat-x;
-    background-color: $linkomanija-cell-bg-color;
-    padding: $default-spacing;
+    background-color: variables.$linkomanija-cell-bg-color;
+    padding: variables.$default-spacing;
 
     .sl--theme-dark & {
       background-image: none;
-      background-color: $linkomanija-dark-cell-bg-color;
-      border-color: $linkomanija-dark-border-color;
+      background-color: variables.$linkomanija-dark-cell-bg-color;
+      border-color: variables.$linkomanija-dark-border-color;
     }
 
     .#{$header} {
       &__category {
-        margin-right: $default-spacing;
+        margin-right: variables.$default-spacing;
 
         img {
           display: inline-block;
@@ -64,12 +64,12 @@ $max-popup-height: 170px;
       &__title {
         display: block;
         width: 100%;
-        color: $linkomanija-link-color !important;
+        color: variables.$linkomanija-link-color !important;
         font-weight: normal !important;
         text-decoration: none;
 
         .sl--theme-dark & {
-          color: $linkomanija-dark-link-color !important;
+          color: variables.$linkomanija-dark-link-color !important;
         }
       }
 
@@ -83,9 +83,9 @@ $max-popup-height: 170px;
     width: auto;
     max-width: $max-popup-width;
     height: $max-popup-height;
-    color: $theme-gray;
+    color: variables.$theme-gray;
     font-size: 12px;
-    background-color: $linkomanija-bg-color;
+    background-color: variables.$linkomanija-bg-color;
     overflow-x: hidden;
     overflow-y: auto;
 
@@ -95,15 +95,15 @@ $max-popup-height: 170px;
     }
 
     b {
-      color: $theme-blue;
+      color: variables.$theme-blue;
     }
 
     font {
-      color: $theme-red;
+      color: variables.$theme-red;
     }
 
     a {
-      color: $linkomanija-link-color;
+      color: variables.$linkomanija-link-color;
       text-decoration: none;
     }
   }

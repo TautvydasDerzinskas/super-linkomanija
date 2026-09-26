@@ -3,13 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="#" target="_blank"><img src="https://travis-ci.org/SlimDogs/super-linkomanija.svg?branch=master" alt="Latest CI build status" title="Latest CI build status"></a>
+  <a href="https://github.com/SlimDogs/super-linkomanija/actions/workflows/ci.yml" target="_blank"><img src="https://github.com/SlimDogs/super-linkomanija/actions/workflows/ci.yml/badge.svg?branch=master" alt="Latest CI build status" title="Latest CI build status"></a>
   <a href="https://github.com/SlimDogs/super-linkomanija" target="_blank"><img src="https://img.shields.io/chrome-web-store/users/gmdhkalbljdblbogfladannflinppnji.svg?label=users" alt="Active users" title="Active users"></a>
-  <a href="https://greenkeeper.io" target="_blank"><img src="https://badges.greenkeeper.io/SlimDogs/super-linkomanija.svg" alt="Greenkeeper" title="Greenkeeper"></a>
   <a href="http://commitizen.github.io/cz-cli" target="_blank"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen friendly" title="Commitizen friendly"></a>
   <a href="https://github.com/semantic-release/semantic-release" target="_blank"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="Semantic release" title="Semantic release"></a>
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" title="MIT License"></a>
-  <a href="https://github.com/igrigorik/ga-beacon" target="_blank"><img src="https://ga-beacon.appspot.com/UA-131052445-2/SlimDogs/super-linkomanija" alt="Analytics" title="Analytics"></a>
 </p>
 
 ## Table of content
@@ -38,14 +36,14 @@ Browser extension with purpose to extend UX of oldest Lithuanian torrent web sit
 ## Installation
 Chrome & Vivaldi users please click below:
 
-<a href="https://chrome.google.com/webstore/detail/super-linkomanija/gmdhkalbljdblbogfladannflinppnji" target="_blank">
-  <img src="docs/images/chrome_store.png" alt="Convert videos to mp3" />
+<a href="https://chromewebstore.google.com/detail/gmdhkalbljdblbogfladannflinppnji" target="_blank">
+  <img src="docs/images/chrome_store.png" alt="Available in the Chrome Web Store" />
 </a>
 
 Firefox users please head to link below:
 
 <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/" target="_blank">
-  <img src="docs/images/firefox_store.png" width="206px" alt="Convert videos to mp3" />
+  <img src="docs/images/firefox_store.png" width="206px" alt="Get the add-on for Firefox" />
 </a>
 
 ## Road map
@@ -55,11 +53,11 @@ Firefox users please head to link below:
 Everyone is welcomed to contribute to the project or use the code for their own projects
 
 To contribute you need to perform these steps:
-1. Run `npm install` to install npm dependencies
-2. Apply your changes and modifications
-3. Run `npm run lint` to make sure code is well formatted
-4. Run `npm run build` to compile the code and generate extension source folder
-5. In your browser extensions window enable development mode and load MYGA extension from folder `extension` to test your changes
+1. Use Node.js 24 (see `.nvmrc`) and run `npm install` to install npm dependencies
+2. Run `npm run develop` to build in watch mode (or `npm run build` for a production build) into the `extension` folder
+3. In your browser extensions window enable developer mode and load the unpacked extension from the `extension` folder (Manifest V3)
+4. Run `npm run lint` (oxlint) and `npm run typecheck` to make sure code is valid, both also run on pre-commit
+5. Commit with `npm run commit`, messages must follow [Conventional Commits](https://www.conventionalcommits.org) since releases are generated from them
 
 ## License
 The repository code is open-sourced software licensed under the [MIT license](https://github.com/SlimDogs/super-linkomanija/blob/master/LICENSE?raw=true).

@@ -1,9 +1,12 @@
 import BrowserStorageService from '../common/browser-storage.service';
 import { ChromeStorageKeys, Locales } from '../../enums';
-import { ILocaleMessages, ILanguages, IChromeLocale } from '../../interfaces/locale';
+import { ILocale, ILocaleMessages, ILanguages, IChromeLocale } from '../../interfaces/locale';
 
-const enLocale: IChromeLocale = require('../../assets/_locales/en/messages.json');
-const ltLocale: IChromeLocale = require( '../../assets/_locales/lt/messages.json');
+import enMessages from '../../assets/_locales/en/messages.json';
+import ltMessages from '../../assets/_locales/lt/messages.json';
+
+const enLocale: IChromeLocale = enMessages;
+const ltLocale: IChromeLocale = ltMessages;
 const browserStorageService = new BrowserStorageService();
 
 class LanguageService {
@@ -29,25 +32,15 @@ class LanguageService {
     return transformedLocale;
   }
 
-  public getActiveLocale() {
-    return new Promise((resolve) => {
-      browserStorageService.getItem(ChromeStorageKeys.Locale).then((localeStoredData: { value: string; }) => {
-        if (localeStoredData && localeStoredData.value) {
-          const activeLocale = this.languages[localeStoredData.value];
-          if (activeLocale) {
-            resolve(activeLocale);
-          }
-        } else {
-          const browserLocaleCode = chrome.i18n.getUILanguage().split('_')[0];
-          const browserLocaleObject = this.languages[browserLocaleCode];
-          if (browserLocaleObject) {
-            resolve(browserLocaleObject);
-          } else {
-            resolve(this.languages[this.defaultLocaleCode]);
-          }
-        }
-      });
-    });
+  public async getActiveLocale(): Promise<ILocale> {
+    const localeStoredData = await browserStorageService.getItem<{ value: string; }>(ChromeStorageKeys.Locale);
+    const storedLocale = this.languages[localeStoredData?.value];
+    if (storedLocale) {
+      return storedLocale;
+    }
+
+    const browserLocaleCode = chrome.i18n.getUILanguage().split(/[-_]/)[0];
+    return this.languages[browserLocaleCode] ?? this.languages[this.defaultLocaleCode];
   }
 }
 

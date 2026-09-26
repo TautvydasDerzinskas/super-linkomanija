@@ -1,4 +1,4 @@
-@import '../../../popup/variables';
+@use '../../../popup/variables';
 
 .torrents {
   display: none;
@@ -9,10 +9,10 @@
   box-sizing: border-box;
 
   svg {
-    fill: $linkomanija-link-color;
+    fill: variables.$linkomanija-link-color;
 
     .sl--theme-dark & {
-      fill: $linkomanija-dark-link-color;
+      fill: variables.$linkomanija-dark-link-color;
     }
   }
 
@@ -22,7 +22,7 @@
 
   &__card {
     display: flex;
-    padding: $default-spacing;
+    padding: variables.$default-spacing;
     width: 25%;
 
     &:hover {
@@ -42,36 +42,36 @@
   }
 
   .torrent {
-    background-color: $linkomanija-bg-color;
-    border: 1px solid $linkomanija-border-color;
+    background-color: variables.$linkomanija-bg-color;
+    border: 1px solid variables.$linkomanija-border-color;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     width: 100%;
 
     .sl--theme-dark & {
-      background-color: $linkomanija-dark-cell-bg-color;
-      border-color: $linkomanija-dark-border-color;
+      background-color: variables.$linkomanija-dark-cell-bg-color;
+      border-color: variables.$linkomanija-dark-border-color;
     }
 
     &__header {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px $linkomanija-border-color solid;
+      border-bottom: 1px variables.$linkomanija-border-color solid;
       background-image: url('https://static.linkomanija.net/images/shadow.gif');
       background-repeat: repeat-x;
-      background-color: $linkomanija-cell-bg-color;
-      padding: $default-spacing;
+      background-color: variables.$linkomanija-cell-bg-color;
+      padding: variables.$default-spacing;
 
       .sl--theme-dark & {
         background-image: none;
-        background-color: $linkomanija-dark-cell-bg-color;
-        border-color: $linkomanija-dark-border-color;
+        background-color: variables.$linkomanija-dark-cell-bg-color;
+        border-color: variables.$linkomanija-dark-border-color;
       }
 
       &__category {
-        margin-right: $default-spacing;
+        margin-right: variables.$default-spacing;
 
         img {
           display: inline-block;
@@ -83,11 +83,11 @@
       &__title {
         display: block;
         width: 100%;
-        color: $linkomanija-link-color !important;
+        color: variables.$linkomanija-link-color !important;
         font-weight: normal !important;
 
         .sl--theme-dark & {
-          color: $linkomanija-dark-link-color !important;
+          color: variables.$linkomanija-dark-link-color !important;
         }
       }
     }
@@ -97,7 +97,7 @@
       background-position: center center;
       background-repeat: no-repeat;
       background-size: contain;
-      background-color: $theme-black;
+      background-color: variables.$theme-black;
       overflow: hidden;
       position: relative;
 
@@ -117,7 +117,7 @@
         flex-wrap: wrap;
         opacity: 0;
         visibility: hidden;
-        transition: $default-transition;
+        transition: variables.$default-transition;
 
         > div {
           width: 50%;
@@ -125,15 +125,15 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: $default-transition;
+          transition: variables.$default-transition;
           transform: scale(0);
 
           > a, span {
-            background-color: $linkomanija-link-color;
+            background-color: variables.$linkomanija-link-color;
             height: 48px;
             width: 48px;
             border-radius: 360px;
-            transition: $default-transition;
+            transition: variables.$default-transition;
             transform: rotate(-360deg);
             display: flex;
             align-items: center;
@@ -142,12 +142,12 @@
             cursor: pointer;
 
             .sl--theme-dark & {
-              background-color: $linkomanija-dark-cell-bg-color;
+              background-color: variables.$linkomanija-dark-cell-bg-color;
             }
 
             &.torrent__favourite {
               &.remove {
-                background-color: $theme-yellow;
+                background-color: variables.$theme-yellow;
               }
             }
 
@@ -155,7 +155,7 @@
               display: inline-block;
               height: 32px;
               width: 32px;
-              fill: $theme-white;
+              fill: variables.$theme-white;
             }
 
             &:hover {
@@ -167,17 +167,17 @@
     }
 
     &__footer {
-      border-top: 1px $linkomanija-border-color solid;
+      border-top: 1px variables.$linkomanija-border-color solid;
       background-image: url('https://static.linkomanija.net/images/shadow.gif');
       background-repeat: repeat-x;
-      background-color: $linkomanija-cell-bg-color;
-      padding: $default-spacing;
+      background-color: variables.$linkomanija-cell-bg-color;
+      padding: variables.$default-spacing;
       display: flex;
 
       .sl--theme-dark & {
-        border-color: $linkomanija-dark-border-color;
+        border-color: variables.$linkomanija-dark-border-color;
         background-image: none;
-        background-color: $linkomanija-dark-cell-bg-color;
+        background-color: variables.$linkomanija-dark-cell-bg-color;
       }
 
       .footer {
@@ -191,54 +191,54 @@
       }
 
       svg {
-        height: $large-spacing;
-        width: $large-spacing;
+        height: variables.$large-spacing;
+        width: variables.$large-spacing;
         display: inline-block;
         vertical-align: bottom;
       }
 
       .sl-seeders {
         svg {
-          fill: $theme-green;
+          fill: variables.$theme-green;
         }
       }
 
       .sl-leechers {
         svg {
-          fill: $theme-red;
+          fill: variables.$theme-red;
         }
       }
     }
 
     &__subtitle {
       position: absolute;
-      bottom: $small-spacing;
+      bottom: variables.$small-spacing;
       right: 0;
       left: 0;
-      line-height: $large-spacing;
-      background-color: rgba($theme-black, .5);
+      line-height: variables.$large-spacing;
+      background-color: rgba(variables.$theme-black, .5);
       font-size: 9px;
       text-align: center;
-      color: $theme-white;
+      color: variables.$theme-white;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     &__comments {
-      color: $theme-black;
+      color: variables.$theme-black;
       font-weight: bold;
       white-space: nowrap;
 
       .sl--theme-dark & {
-        color: $theme-yellow;
+        color: variables.$theme-yellow;
       }
 
       svg {
         vertical-align: middle;
         display: inline-block;
-        height: $large-spacing;
-        width: $large-spacing;
+        height: variables.$large-spacing;
+        width: variables.$large-spacing;
       }
     }
   }

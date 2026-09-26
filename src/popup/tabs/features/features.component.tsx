@@ -1,22 +1,15 @@
-
-
-import * as React from 'react';
-import SettingCompoent from './setting/setting.component';
-import { FeaturesMeta } from '../../../features/features';
+import SettingComponent from './setting/setting.component';
+import { FeaturesMeta } from '../../../features/features-meta';
 import browserService from '../../../services/common/browser.service';
 
-export default class FeaturesComponent extends React.Component {
-  render() {
-    const allSettingsHtml = FeaturesMeta.map((featureMeta) => {
-      if (featureMeta.excludedBrowsers.indexOf(browserService.browserName) < 0) {
-        return (<SettingCompoent key={featureMeta.id} meta={featureMeta}></SettingCompoent>);
-      }
-    });
+export default function FeaturesComponent() {
+  const availableFeatures = FeaturesMeta.filter(featureMeta => !featureMeta.excludedBrowsers.includes(browserService.browserName));
 
-    return (
-      <div className='settings'>
-        {allSettingsHtml}
-      </div>
-    );
-  }
+  return (
+    <div className='settings'>
+      {availableFeatures.map(featureMeta => (
+        <SettingComponent key={featureMeta.id} meta={featureMeta}></SettingComponent>
+      ))}
+    </div>
+  );
 }

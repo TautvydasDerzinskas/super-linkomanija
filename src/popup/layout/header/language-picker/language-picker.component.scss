@@ -1,20 +1,20 @@
-@import '../../../variables';
+@use '../../../variables';
 
 .language-picker {
   position: absolute;
-  top: $default-spacing;
-  left: $default-spacing;
+  top: variables.$default-spacing;
+  left: variables.$default-spacing;
   z-index: 999;
 
   &__flag {
     cursor: pointer;
     outline: none;
     background-color: transparent;
-    margin-right: $default-spacing;
+    margin-right: variables.$default-spacing;
     padding: 0;
     border: none;
     opacity: .8;
-    transition: $default-transition;
+    transition: variables.$default-transition;
 
     &:hover {
       opacity: 1;
@@ -22,8 +22,8 @@
 
     svg {
       display: inline-block;
-      height: $large-spacing * 2;
-      width: $large-spacing * 2;
+      height: variables.$large-spacing * 2;
+      width: variables.$large-spacing * 2;
     }
   }
 }

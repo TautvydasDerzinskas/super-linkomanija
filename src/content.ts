@@ -51,7 +51,7 @@ const setupHistoryTracking = () => {
 
   // Tracking downloaded torrents
   document.body.onclick = (event) => {
-    const linkElement = findParent('a', (event.target || event.srcElement) as HTMLElement);
+    const linkElement = findParent('a', event.target as HTMLElement);
     if (linkElement) {
       const downloadLink = (linkElement as HTMLElement).getAttribute('href');
       if (downloadLink) {

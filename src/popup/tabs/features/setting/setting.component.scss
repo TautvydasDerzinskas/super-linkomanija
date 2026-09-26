@@ -1,9 +1,10 @@
-@import '../../../variables';
+@use "sass:color";
+@use '../../../variables';
 
 $toggle-width: 38px;
 $toggle-height: 20px;
 $slider-size: 16px;
-$slider-spacing: ($toggle-height - $slider-size) / 2;
+$slider-spacing: ($toggle-height - $slider-size) * 0.5;
 $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
 
 .setting {
@@ -11,12 +12,12 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
   justify-content: space-between;
 
   &:not(:last-child) {
-    margin-bottom: $default-spacing;
+    margin-bottom: variables.$default-spacing;
   }
 
   &__title {
     font-weight: bold;
-    color: $theme-blue;
+    color: variables.$theme-blue;
   }
 
   &__switch {
@@ -39,7 +40,7 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $theme-gray;
+    background-color: variables.$theme-gray;
     -webkit-transition: .4s;
     transition: .4s;
 
@@ -50,7 +51,7 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
       width: $slider-size;
       left: $slider-spacing;
       bottom: $slider-spacing;
-      background-color: $theme-white;
+      background-color: variables.$theme-white;
       -webkit-transition: .4s;
       transition: .4s;
     }
@@ -64,11 +65,11 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
   }
 
   input:checked + .slider {
-    background-color: $theme-red;
+    background-color: variables.$theme-red;
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px $theme-red;
+    box-shadow: 0 0 1px variables.$theme-red;
   }
 
   input:checked + .slider:before {
@@ -79,11 +80,11 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
 
   &:hover {
     .slider {
-      background-color: darken($theme-gray, 15%);
+      background-color: color.adjust(variables.$theme-gray, $lightness: -15%);
     }
 
     input:checked + .slider {
-      background-color: darken($theme-red, 15%);
+      background-color: color.adjust(variables.$theme-red, $lightness: -15%);
     }
   }
 }

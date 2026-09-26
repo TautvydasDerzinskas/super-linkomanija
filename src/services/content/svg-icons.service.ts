@@ -1,55 +1,31 @@
-class SvgIconsService {
-  get iconList() {
-    return require('../../assets/vectors/list.svg');
-  }
+import iconListSvg from '../../assets/vectors/list.svg';
+import iconGridSvg from '../../assets/vectors/grid.svg';
+import iconDownloadSvg from '../../assets/vectors/download.svg';
+import iconMaleArrowUpSvg from '../../assets/vectors/male_arrow_up.svg';
+import iconMaleArrowDownSvg from '../../assets/vectors/male_arrow_down.svg';
+import iconProgressSvg from '../../assets/vectors/progress.svg';
+import iconArrowsUpSvg from '../../assets/vectors/arrows_up.svg';
+import iconFileSizeSvg from '../../assets/vectors/file_size.svg';
+import iconOpenSvg from '../../assets/vectors/open.svg';
+import iconEyeSvg from '../../assets/vectors/eye.svg';
+import iconCommentsSvg from '../../assets/vectors/comments.svg';
+import iconStarSvg from '../../assets/vectors/star.svg';
+import iconLoadingSvg from '../../assets/vectors/loading.svg';
 
-  get iconGrid() {
-    return require('../../assets/vectors/grid.svg');
-  }
+const svgIconsService = {
+  iconList: iconListSvg,
+  iconGrid: iconGridSvg,
+  iconDownload: iconDownloadSvg,
+  iconMaleArrowUp: iconMaleArrowUpSvg,
+  iconMaleArrowDown: iconMaleArrowDownSvg,
+  iconProgress: iconProgressSvg,
+  iconArrowsUp: iconArrowsUpSvg,
+  iconFileSize: iconFileSizeSvg,
+  iconOpen: iconOpenSvg,
+  iconEye: iconEyeSvg,
+  iconComments: iconCommentsSvg,
+  iconStar: iconStarSvg,
+  iconLoading: iconLoadingSvg,
+};
 
-  get iconDownload() {
-    return require('../../assets/vectors/download.svg');
-  }
-
-  get iconMaleArrowUp() {
-    return require('../../assets/vectors/male_arrow_up.svg');
-  }
-
-  get iconMaleArrowDown() {
-    return require('../../assets/vectors/male_arrow_down.svg');
-  }
-
-  get iconProgress() {
-    return require('../../assets/vectors/progress.svg');
-  }
-
-  get iconArrowsUp() {
-    return require('../../assets/vectors/arrows_up.svg');
-  }
-
-  get iconFileSize() {
-    return require('../../assets/vectors/file_size.svg');
-  }
-
-  get iconOpen() {
-    return require('../../assets/vectors/open.svg');
-  }
-
-  get iconEye() {
-    return require('../../assets/vectors/eye.svg');
-  }
-
-  get iconComments() {
-    return require('../../assets/vectors/comments.svg');
-  }
-
-  get iconStar() {
-    return require('../../assets/vectors/star.svg');
-  }
-
-  get iconLoading() {
-    return require('../../assets/vectors/loading.svg');
-  }
-}
-
-export default new SvgIconsService();
+export default svgIconsService;

@@ -1,51 +1,51 @@
-@import '../../../popup/variables';
+@use '../../../popup/variables';
 
 .view-modes {
-  margin-top: $large-spacing;
+  margin-top: variables.$large-spacing;
   text-align: center;
 
   &__option {
     display: inline-block;
     cursor: pointer;
-    padding: $default-spacing;
-    border: 1px $linkomanija-border-color solid;
-    background-color: $linkomanija-cell-bg-color;
+    padding: variables.$default-spacing;
+    border: 1px variables.$linkomanija-border-color solid;
+    background-color: variables.$linkomanija-cell-bg-color;
     outline: none;
 
     .sl--theme-dark & {
-      border-color: $linkomanija-dark-border-color;
-      background-color: $linkomanija-dark-bg-color;
+      border-color: variables.$linkomanija-dark-border-color;
+      background-color: variables.$linkomanija-dark-bg-color;
     }
 
     &.active {
-      background-color: $linkomanija-link-color;
+      background-color: variables.$linkomanija-link-color;
       svg {
-        fill: $linkomanija-cell-bg-color;
+        fill: variables.$linkomanija-cell-bg-color;
       }
 
       .sl--theme-dark & {
-        background-color: $linkomanija-dark-cell-bg-color;
+        background-color: variables.$linkomanija-dark-cell-bg-color;
         svg {
-          fill: $linkomanija-dark-link-color;
+          fill: variables.$linkomanija-dark-link-color;
         }
       }
     }
 
     svg {
       display: inline-block;
-      height: $large-spacing;
-      width: $large-spacing;
-      fill: $linkomanija-link-color;
+      height: variables.$large-spacing;
+      width: variables.$large-spacing;
+      fill: variables.$linkomanija-link-color;
 
       .sl--theme-dark & {
-        fill: $linkomanija-dark-link-color;
+        fill: variables.$linkomanija-dark-link-color;
       }
     }
   }
 }
 
 .sl-view-mode--list {
-  #{$torrents-table-selector} {
+  #{variables.$torrents-table-selector} {
     display: table;
   }
 
@@ -59,7 +59,7 @@
     display: flex;
   }
 
-  #{$torrents-table-selector} {
+  #{variables.$torrents-table-selector} {
     display: none;
   }
 }

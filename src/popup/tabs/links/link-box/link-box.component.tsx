@@ -1,7 +1,3 @@
-
-
-import * as React from 'react';
-
 import './link-box.component.scss';
 
 interface ILinkBoxComponentProps {
@@ -11,37 +7,25 @@ interface ILinkBoxComponentProps {
   label: string;
 }
 
-export default class LinkBoxComponent extends React.Component<ILinkBoxComponentProps, {}> {
-  constructor(props: ILinkBoxComponentProps) {
-    super(props);
-  }
-
-  private getIcon() {
-    let icon;
-
-    if (this.props.icon.indexOf('.svg') > 0) {
-      icon = (
-        <svg className='link-box__icon'>
-          <use xlinkHref={`vectors/${this.props.icon}#icon`}></use>
-        </svg>
-      );
-    } else {
-      icon = (
-        <img src={`images/${this.props.icon}`} className='link-box__icon link-box__icon--image' />
-      );
-    }
-
-    return icon;
-  }
-
-  render() {
+export function LinkBoxIcon({ icon }: { icon: string }) {
+  if (icon.endsWith('.svg')) {
     return (
-      <a href={this.props.link} target='_blank' title={this.props.label} className={`link-box link-box--${this.props.position}`}>
-        {this.getIcon()}
-        <div className='link-box__overlay'>
-          <span>{this.props.label}</span>
-        </div>
-      </a>
+      <svg className='link-box__icon'>
+        <use xlinkHref={`vectors/${icon}#icon`}></use>
+      </svg>
     );
   }
+
+  return <img src={`images/${icon}`} className='link-box__icon link-box__icon--image' />;
+}
+
+export default function LinkBoxComponent({ link, position, icon, label }: ILinkBoxComponentProps) {
+  return (
+    <a href={link} target='_blank' title={label} className={`link-box link-box--${position}`}>
+      <LinkBoxIcon icon={icon} />
+      <div className='link-box__overlay'>
+        <span>{label}</span>
+      </div>
+    </a>
+  );
 }

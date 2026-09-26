@@ -1,6 +1,6 @@
-@import '../../variables';
+@use '../../variables';
 
-$links-column-size: ($tab-content-width - $default-spacing) / 2;
+$links-column-size: (variables.$tab-content-width - variables.$default-spacing) * 0.5;
 
 .links {
   display: flex;

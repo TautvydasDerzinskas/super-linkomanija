@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "oxc"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "browser": true,
+    "webextensions": true
+  },
+  "ignorePatterns": ["extension/**", "config/**"],
+  "rules": {
+    "curly": "error",
+    "eqeqeq": ["error", "smart"],
+    "guard-for-in": "error",
+    "no-bitwise": "error",
+    "no-caller": "error",
+    "no-console": ["error", { "allow": ["log", "warn", "error"] }],
+    "no-eval": "error",
+    "no-fallthrough": "error",
+    "no-labels": "error",
+    "no-new-wrappers": "error",
+    "no-shadow": "error",
+    "no-throw-literal": "error",
+    "no-unused-expressions": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "radix": "error",
+    "typescript/consistent-type-definitions": ["error", "interface"],
+    "typescript/no-empty-interface": "error",
+    "typescript/no-inferrable-types": ["error", { "ignoreParameters": true }],
+    "typescript/no-misused-new": "error",
+    "typescript/no-this-alias": "off",
+    "typescript/no-non-null-assertion": "error",
+    "typescript/prefer-function-type": "error",
+    "typescript/unified-signatures": "error"
+  }
+}

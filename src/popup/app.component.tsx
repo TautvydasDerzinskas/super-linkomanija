@@ -1,16 +1,11 @@
-
-
-import * as React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import * as enLocale from 'react-intl/locale-data/en';
-import * as ltLocale from 'react-intl/locale-data/lt';
+import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router';
+import { IntlProvider } from 'react-intl';
 
 import languageService from '../services/popup/language.service';
 import BrowserStorageService from '../services/common/browser-storage.service';
 
 import { ChromeStorageKeys, Locales } from '../enums';
-import { ILocale, ILocaleMessages } from '../interfaces/locale';
 
 import HeaderComponent from './layout/header/header.component';
 import HistoryComponent from './tabs/history/history.component';
@@ -21,67 +16,37 @@ import './app.component.scss';
 
 const browserStorageService = new BrowserStorageService();
 
-interface IAppComponentState {
-  locale: Locales;
-  messages: ILocaleMessages;
-  defaultLocale: Locales;
-}
+export default function AppComponent() {
+  const [locale, setLocale] = useState<Locales>(languageService.defaultLocaleCode);
 
-export default class AppComponent extends React.Component<{}, IAppComponentState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      locale: languageService.defaultLocaleCode,
-      messages: languageService.languages[languageService.defaultLocaleCode].messages,
-      defaultLocale: languageService.defaultLocaleCode,
-    };
-    this.initializeLocales();
-  }
+  useEffect(() => {
+    languageService.getActiveLocale().then(activeLocale => setLocale(activeLocale.code));
+  }, []);
 
-  private initializeLocales() {
-    addLocaleData(enLocale);
-    addLocaleData(ltLocale);
-  }
-
-  componentDidMount() {
-    languageService.getActiveLocale().then((locale: ILocale) => {
-      this.setState({
-        locale: locale.code,
-        messages: locale.messages,
-      });
-    });
-  }
-
-  public updateLocale(localeCode: Locales) {
-    if (localeCode !== this.state.locale) {
-      browserStorageService.setItem(ChromeStorageKeys.Locale, { value: localeCode }).then(() => {
-        this.setState({
-          locale: localeCode,
-          messages: languageService.languages[localeCode].messages,
-        });
-      });
+  const updateLocale = async (localeCode: Locales) => {
+    if (localeCode !== locale) {
+      await browserStorageService.setItem(ChromeStorageKeys.Locale, { value: localeCode });
+      setLocale(localeCode);
     }
-  }
+  };
 
-  render() {
-    return (
-      <IntlProvider
-        key={this.state.locale}
-        locale={this.state.locale}
-        messages={this.state.messages}
-        defaultLocale={this.state.defaultLocale}
-      >
-        <div>
-          <HeaderComponent updateLocale={this.updateLocale.bind(this)} />
-          <div className='tabs-content'>
-            <Switch>
-              <Route exact path='/' component={FeaturesComponent} />
-              <Route exact path='/history' component={HistoryComponent} />
-              <Route exact path='/links' component={LinksComponent} />
-            </Switch>
-          </div>
+  return (
+    <IntlProvider
+      key={locale}
+      locale={locale}
+      messages={languageService.languages[locale].messages}
+      defaultLocale={languageService.defaultLocaleCode}
+    >
+      <div>
+        <HeaderComponent updateLocale={updateLocale} />
+        <div className='tabs-content'>
+          <Routes>
+            <Route path='/' element={<FeaturesComponent />} />
+            <Route path='/history' element={<HistoryComponent />} />
+            <Route path='/links' element={<LinksComponent />} />
+          </Routes>
         </div>
-      </IntlProvider>
-    );
-  }
+      </div>
+    </IntlProvider>
+  );
 }

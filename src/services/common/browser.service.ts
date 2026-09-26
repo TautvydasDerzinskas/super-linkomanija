@@ -33,7 +33,7 @@ class BrowserService {
       case Browsers.Chrome:
       case Browsers.Other:
       case Browsers.Vivaldi:
-        link = `https://chrome.google.com/webstore/detail/${chrome.runtime.id}`;
+        link = `https://chromewebstore.google.com/detail/${chrome.runtime.id}`;
         break;
     }
 

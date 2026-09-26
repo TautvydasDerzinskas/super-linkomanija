@@ -28,35 +28,27 @@ class HistoryService {
     return this.performStorageProcess(torrentDetails, 'commented');
   }
 
-  private performStorageProcess(torrentDetails: IBasicTorrentDetails, type: THistoryTypes) {
-    return new Promise((resolve, reject) => {
-      if (torrentDetails) {
-        const storageKey = `${ChromeStorageKeys.History}_${type}`;
-        browserStorageService.getItem<IHistory>(storageKey).then(data => {
-          if (!data) {
-            data = {
-              [type]: {
-                items: [],
-                total: 0,
-              }
-            };
-          }
+  private async performStorageProcess(torrentDetails: IBasicTorrentDetails, type: THistoryTypes) {
+    if (!torrentDetails) {
+      return;
+    }
 
-          if (data[type].items.length === 0 || data[type].items[0].id !== torrentDetails.id) {
-            data[type].items.unshift(torrentDetails);
-            data[type].total++;
-            if (data[type].items.length > this.maxStoredTorrentsPerCategory) {
-              data[type].items.pop();
-            }
-            browserStorageService.setItem<IHistory>(storageKey, data).then(resolve);
-          } else {
-            resolve();
-          }
-        });
-      } else {
-        reject(null);
+    const storageKey = `${ChromeStorageKeys.History}_${type}`;
+    const data = await browserStorageService.getItem<IHistory>(storageKey) ?? {
+      [type]: {
+        items: [],
+        total: 0,
       }
-    });
+    };
+
+    if (data[type].items.length === 0 || data[type].items[0].id !== torrentDetails.id) {
+      data[type].items.unshift(torrentDetails);
+      data[type].total++;
+      if (data[type].items.length > this.maxStoredTorrentsPerCategory) {
+        data[type].items.pop();
+      }
+      await browserStorageService.setItem<IHistory>(storageKey, data);
+    }
   }
 }
 

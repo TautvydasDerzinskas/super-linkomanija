@@ -1,12 +1,12 @@
-@import '../../../variables';
+@use '../../../variables';
 
-$link-box-size: ($tab-content-width - ($default-spacing * 3)) / 4;
+$link-box-size: (variables.$tab-content-width - (variables.$default-spacing * 3)) * 0.25;
 
 .link-box {
   position: absolute;
   height: $link-box-size;
   width: $link-box-size;
-  background-color: $theme-silver-white;
+  background-color: variables.$theme-silver-white;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -35,10 +35,10 @@ $link-box-size: ($tab-content-width - ($default-spacing * 3)) / 4;
   }
 
   &__icon {
-    height: $link-box-size / 2;
-    width: $link-box-size / 2;
-    fill: $theme-light-gray;
-    transition: $default-transition;
+    height: $link-box-size * 0.5;
+    width: $link-box-size * 0.5;
+    fill: variables.$theme-light-gray;
+    transition: variables.$default-transition;
 
     &--image {
       height: 100%;
@@ -54,21 +54,21 @@ $link-box-size: ($tab-content-width - ($default-spacing * 3)) / 4;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: rgba($theme-red, .9);
-    transition: $default-transition;
+    background-color: rgba(variables.$theme-red, .9);
+    transition: variables.$default-transition;
     display: flex;
     align-items: center;
     justify-content: center;
 
     > span {
       text-align: center;
-      color: $theme-white;
+      color: variables.$theme-white;
     }
   }
 
   &:hover {
     .link-box__icon {
-      fill: $theme-gray;
+      fill: variables.$theme-gray;
       transform: scale(1.3);
     }
 

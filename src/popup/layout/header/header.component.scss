@@ -1,4 +1,4 @@
-@import '../../variables';
+@use '../../variables';
 
 .layout {
   &__header {
@@ -6,21 +6,21 @@
 
     .header__close-button {
       position: absolute;
-      top: $default-spacing;
-      right: $default-spacing;
+      top: variables.$default-spacing;
+      right: variables.$default-spacing;
       cursor: pointer;
       z-index: 999;
 
       svg {
-        fill: $theme-light-gray;
-        height: $large-spacing;
-        width: $large-spacing;
-        transition: $default-transition;
+        fill: variables.$theme-light-gray;
+        height: variables.$large-spacing;
+        width: variables.$large-spacing;
+        transition: variables.$default-transition;
       }
 
       &:hover {
         svg {
-          fill: $theme-white;
+          fill: variables.$theme-white;
         }
       }
     }

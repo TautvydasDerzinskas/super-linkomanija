@@ -1,26 +1,12 @@
 export default class BrowserStorageService {
-  public getItem<T>(storageKey: string): Promise<T> {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.get([storageKey], (result) => {
-        let jsonData = null;
-
-        try {
-          jsonData = this.convertToJson<T>(result[storageKey]);
-        } catch (e) {
-          reject(e);
-        }
-
-        resolve(jsonData);
-      });
-    });
+  public async getItem<T>(storageKey: string): Promise<T> {
+    const result = await chrome.storage.sync.get(storageKey);
+    return this.convertToJson<T>(result[storageKey] as string);
   }
 
-  public setItem<T>(storageKey: string, data: T) {
-    return new Promise((resolve) => {
-      chrome.storage.sync.set({ [storageKey]: this.convertToString<T>(data) }, () => {
-        resolve(true);
-      });
-    });
+  public async setItem<T>(storageKey: string, data: T) {
+    await chrome.storage.sync.set({ [storageKey]: this.convertToString<T>(data) });
+    return true;
   }
 
   public convertToString<T>(jsonItem: T) {
@@ -30,7 +16,7 @@ export default class BrowserStorageService {
   public convertToJson<T>(stringifiedObject: string): T {
     try {
       return JSON.parse(stringifiedObject);
-    } catch (exception) {
+    } catch {
       return null;
     }
   }

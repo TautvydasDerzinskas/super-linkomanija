@@ -1,19 +1,19 @@
-@import '../../../popup/variables';
+@use '../../../popup/variables';
 
-$back-to-top-button-size: $large-spacing * 2;
+$back-to-top-button-size: variables.$large-spacing * 2;
 
 .back-to-top {
   position: fixed;
-  bottom: $large-spacing;
-  right: $large-spacing;
+  bottom: variables.$large-spacing;
+  right: variables.$large-spacing;
   display: block;
   text-align: center;
-  background-color: $theme-white;
+  background-color: variables.$theme-white;
   border-radius: 360px;
   outline: none;
-  transition: $default-transition;
+  transition: variables.$default-transition;
   z-index: 9999;
-  border: 1px $linkomanija-link-color solid;
+  border: 1px variables.$linkomanija-link-color solid;
   padding: 0;
   visibility: hidden;
   opacity: 0;
@@ -21,10 +21,10 @@ $back-to-top-button-size: $large-spacing * 2;
 
   svg {
     display: inline-block;
-    fill: $linkomanija-link-color;
+    fill: variables.$linkomanija-link-color;
     height: $back-to-top-button-size;
     width: $back-to-top-button-size;
-    margin: $default-spacing;
+    margin: variables.$default-spacing;
   }
 
   &:hover {
@@ -37,11 +37,11 @@ $back-to-top-button-size: $large-spacing * 2;
   }
 
   .sl--theme-dark & {
-    border-color: $linkomanija-dark-border-color;
-    background-color: $linkomanija-dark-bg-color;
+    border-color: variables.$linkomanija-dark-border-color;
+    background-color: variables.$linkomanija-dark-bg-color;
 
     svg {
-      fill: $linkomanija-dark-link-color;
+      fill: variables.$linkomanija-dark-link-color;
     }
   }
 }

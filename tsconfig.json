@@ -1,10 +1,17 @@
 {
   "compilerOptions": {
-    "outDir": "./extension/",
+    "target": "es2022",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "es2022"],
+    "jsx": "react-jsx",
+    "types": ["chrome"],
+    "strict": false,
     "noImplicitAny": true,
-    "module": "es6",
-    "target": "es2015",
     "allowJs": true,
-    "jsx": "react"
-  }
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src"]
 }

@@ -1,11 +1,11 @@
-@import '../../../variables';
+@use '../../../variables';
 
 .torrent-group {
-  background-color: $theme-silver-white;
-  padding: $default-spacing;
+  background-color: variables.$theme-silver-white;
+  padding: variables.$default-spacing;
 
   &:not(:last-child) {
-    margin-bottom: $default-spacing;
+    margin-bottom: variables.$default-spacing;
   }
 
   &__heading {
@@ -14,23 +14,23 @@
 
     .heading__title {
       font-weight: bold;
-      color: $theme-blue;
+      color: variables.$theme-blue;
     }
 
     .heading__sub-title {
       text-align: right;
-      color: $theme-gray;
+      color: variables.$theme-gray;
       font-size: 10px;
 
       strong {
-        color: $theme-red;
+        color: variables.$theme-red;
       }
     }
   }
 
   &__torrents {
     overflow: auto;
-    margin-top: $default-spacing;
+    margin-top: variables.$default-spacing;
     max-height: 90px;
   }
 }
