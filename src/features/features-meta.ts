@@ -5,6 +5,7 @@ import MetaHomepageRedirect from './homepage-redirect/meta';
 import MetaBackToTop from './back-to-top/meta';
 import MetaRelatedTorrents from './related-torrents/meta';
 import MetaReleaseTracker from './release-tracker/meta';
+import MetaAutoLogin from './auto-login/meta';
 
 import IMeta from '../interfaces/meta';
 
@@ -17,4 +18,5 @@ export const FeaturesMeta: IMeta[] = [
   MetaBackToTop,
   MetaRelatedTorrents,
   MetaReleaseTracker,
+  MetaAutoLogin,
 ];

@@ -26,6 +26,10 @@ class UrlService {
     return url.includes('/browse.php');
   }
 
+  public isLoginPage(url = window.location.href.toLowerCase()) {
+    return url.includes('/login.php');
+  }
+
   public isTorrentDetailsPage(url = window.location.href.toLowerCase()) {
     return url.includes('/details?');
   }

@@ -5,6 +5,7 @@ import ContentHomepageRedirect from './homepage-redirect/content';
 import ContentBackToTop from './back-to-top/content';
 import ContentRelatedTorrents from './related-torrents/content';
 import ContentReleaseTracker from './release-tracker/content';
+import ContentAutoLogin from './auto-login/content';
 import { FeaturesMeta } from './features-meta';
 
 import IFeature from '../interfaces/feature';
@@ -18,6 +19,7 @@ const contents: IContent[] = [
   ContentBackToTop,
   ContentRelatedTorrents,
   ContentReleaseTracker,
+  ContentAutoLogin,
 ];
 
 export const Features: IFeature[] = FeaturesMeta.map((meta, index) => ({ meta, content: contents[index] }));

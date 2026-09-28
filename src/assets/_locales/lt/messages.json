@@ -290,5 +290,17 @@
   "releaseTrackerNotificationTitle": {
     "message": "Rastas laukiamas torrentas",
     "description": "Release tracker system notification title"
+  },
+  "featureAutoLoginTitle": {
+    "message": "Automatinis prisijungimas",
+    "description": "Features tab configuration setting title for auto login feature"
+  },
+  "featureAutoLoginDescription": {
+    "message": "Prisijungia visose su jūsų paskyra sinchronizuotose naršyklėse. Atsijungus vienoje, atsijungiama visose",
+    "description": "Features tab configuration setting description for auto login feature"
+  },
+  "autoLoginExpiredNotice": {
+    "message": "Išsaugotas prisijungimas nebegalioja, prisijunkite iš naujo.",
+    "description": "Auto login notice on the login page when the saved login stopped working"
   }
 }

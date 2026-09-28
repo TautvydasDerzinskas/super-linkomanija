@@ -42,6 +42,9 @@ chrome.storage.onChanged.addListener((changes) => {
   if (Object.keys(changes).some(key => trackedKeys.includes(key))) {
     extensionService.updateReleaseTrackerBadge();
   }
+  if (changes[ChromeStorageKeys.Features]) {
+    extensionService.clearAutoLoginWhenDisabled();
+  }
 });
 
 extensionService.listenToNotificationClicks();

@@ -21,6 +21,8 @@ export enum ChromeStorageKeys {
   History = 'sm-history',
   ReleaseTracker = 'sm-release-tracker',
   ReleaseTrackerState = 'sm-release-tracker-state',
+  AutoLogin = 'sm-auto-login',
+  AutoLoginDevice = 'sm-auto-login-device',
 }
 
 export enum Locales {

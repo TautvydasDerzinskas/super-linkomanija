@@ -2,7 +2,9 @@ import urlService from '../common/url.service';
 import featureStorageService from '../common/feature-storage.service';
 import releaseTrackerService, { IFoundRelease } from '../common/release-tracker.service';
 import languageService from '../popup/language.service';
+import autoLoginService from '../common/auto-login.service';
 import releaseTrackerMeta from '../../features/release-tracker/meta';
+import autoLoginMeta from '../../features/auto-login/meta';
 
 const releaseTrackerAlarm = 'sl-release-tracker';
 const releaseTrackerCheckInterval = 6 * 60;
@@ -67,6 +69,14 @@ class ExtensionService {
     if (notificationId.startsWith(releaseTrackerNotificationPrefix)) {
       chrome.tabs.create({ url: notificationId.slice(releaseTrackerNotificationPrefix.length) });
       chrome.notifications.clear(notificationId);
+    }
+  }
+
+  // Turning auto login off must not leave the token synced between browsers
+  public async clearAutoLoginWhenDisabled() {
+    const featureData = await featureStorageService.getFeatureData(autoLoginMeta.id);
+    if (featureData && !featureData.status && (await autoLoginService.getLogin()).token) {
+      await autoLoginService.clear();
     }
   }
 

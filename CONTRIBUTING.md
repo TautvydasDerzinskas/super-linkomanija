@@ -81,7 +81,7 @@ feat(view-modes): remember the grid size
 fix(torrent-preview): show the preview for torrents without a description
 ```
 
-Common scopes are the feature names (`view-modes`, `torrent-preview`, `comments-bbcode`, `related-torrents`, `back-to-top`, `homepage-redirect`, `release-tracker`), plus `history` and `core`.
+Common scopes are the feature names (`view-modes`, `torrent-preview`, `comments-bbcode`, `related-torrents`, `back-to-top`, `homepage-redirect`, `release-tracker`, `auto-login`), plus `history` and `core`.
 
 ## Website
 The [website](https://tautvydasderzinskas.github.io/super-linkomanija/) is built from `site/` and deployed to GitHub Pages by the `Website` workflow. That happens on every push to `main` that changes the site or the images it uses, and after every release so it shows the new version.

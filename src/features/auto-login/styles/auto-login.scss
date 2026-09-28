@@ -1,0 +1,9 @@
+@use '../../../popup/variables';
+
+.auto-login-notice {
+  margin: variables.$default-spacing 0;
+  padding: variables.$default-spacing;
+  color: variables.$theme-white;
+  background-color: variables.$theme-red;
+  text-align: center;
+}
