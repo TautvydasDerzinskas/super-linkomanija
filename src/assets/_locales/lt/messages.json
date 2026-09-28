@@ -148,11 +148,11 @@
     "description": "Generic (used in: torrents list)"
   },
   "featureReleaseTrackerTitle": {
-    "message": "Laukiami torrentai",
+    "message": "Laukiami torentai",
     "description": "Features tab configuration setting title for release tracker feature"
   },
   "featureReleaseTrackerDescription": {
-    "message": "Praneša, kai pasirodo laukiamas torrentas",
+    "message": "Praneša, kai pasirodo laukiamas torentas",
     "description": "Features tab configuration setting description for release tracker feature"
   },
   "settingConfigure": {
@@ -180,7 +180,7 @@
     "description": "Release tracker status before the first check"
   },
   "releaseTrackerLoggedOut": {
-    "message": "Esate atsijungę nuo Linkomanijos, todėl laukiamų torrentų patikrinti negalima.",
+    "message": "Esate atsijungę nuo Linkomanijos, todėl laukiamų torentų patikrinti negalima.",
     "description": "Release tracker warning when the user is logged out"
   },
   "releaseTrackerLogIn": {
@@ -188,7 +188,7 @@
     "description": "Release tracker log in link"
   },
   "releaseTrackerNoAccess": {
-    "message": "Papildinys neturi prieigos prie Linkomanijos, todėl laukiamų torrentų patikrinti negalima.",
+    "message": "Papildinys neturi prieigos prie Linkomanijos, todėl laukiamų torentų patikrinti negalima.",
     "description": "Release tracker warning when the host permission is missing"
   },
   "releaseTrackerGrantAccess": {
@@ -248,7 +248,7 @@
     "description": "Release tracker delete button"
   },
   "releaseTrackerEmpty": {
-    "message": "Kol kas nieko nesekate. Pridėkite laukiamo torrento paieškos frazę.",
+    "message": "Kol kas nieko nesekate. Pridėkite laukiamo torento paieškos frazę.",
     "description": "Release tracker empty list message"
   },
   "releaseTrackerWaiting": {
@@ -276,11 +276,11 @@
     "description": "Release tracker notice after accepting on the website"
   },
   "releaseTrackerPageMatch": {
-    "message": "Šis torrentas atitinka laukiamą",
+    "message": "Šis torentas atitinka laukiamą",
     "description": "Release tracker bar text on the matched torrent page, followed by the search term"
   },
   "releaseTrackerToastTitle": {
-    "message": "Rasti laukiami torrentai",
+    "message": "Rasti laukiami torentai",
     "description": "Release tracker toast title on the website"
   },
   "releaseTrackerDismiss": {
@@ -288,7 +288,7 @@
     "description": "Release tracker toast dismiss button title"
   },
   "releaseTrackerNotificationTitle": {
-    "message": "Rastas laukiamas torrentas",
+    "message": "Rastas laukiamas torentas",
     "description": "Release tracker system notification title"
   },
   "featureAutoLoginTitle": {

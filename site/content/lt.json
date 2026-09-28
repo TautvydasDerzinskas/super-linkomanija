@@ -3,7 +3,7 @@
   "locale": "lt_LT",
   "meta": {
     "title": "Super Linkomanija – Linkomanija.net naršyklės papildinys (Chrome, Edge, Firefox)",
-    "description": "Nemokamas Linkomanija.net papildinys: torentų peržiūra, kortelių vaizdas su plakatais, susiję torentai, komentarų formatavimas ir istorija. Chrome, Edge ir Firefox.",
+    "description": "Nemokamas Linkomanija.net papildinys: torentų peržiūra, kortelių vaizdas su plakatais, susiję torentai, pranešimai apie laukiamus torentus, automatinis prisijungimas, komentarų formatavimas ir istorija. Chrome, Edge ir Firefox.",
     "ogImageAlt": "Super Linkomanija – Linkomanija.net naršyklės papildinys"
   },
   "skipLink": "Pereiti prie turinio",
@@ -22,7 +22,7 @@
   },
   "hero": {
     "title": "Linkomanija.net – <span class=\"accent\">dar patogiau</span>",
-    "tagline": "Super Linkomanija – nemokamas Linkomanija.net naršyklės papildinys. Peržiūrėkite torentus jų neatidarydami, naršykite sąrašą kortelių su plakatais pavidalu, raskite susijusius torentus ir formatuokite komentarus. Kiekvieną funkciją galite įjungti arba išjungti – palikite tik tai, ką naudojate.",
+    "tagline": "Super Linkomanija – nemokamas Linkomanija.net naršyklės papildinys. Peržiūrėkite torentus jų neatidarydami, naršykite sąrašą kortelių su plakatais pavidalu, gaukite pranešimą, kai pasirodo laukiamas torentas, ir likite prisijungę visuose įrenginiuose. Kiekvieną funkciją galite įjungti arba išjungti – palikite tik tai, ką naudojate.",
     "chrome": "Įdiegti į Chrome",
     "edge": "Įdiegti į Edge",
     "firefox": "Įdiegti į Firefox",
@@ -64,6 +64,16 @@
         "icon": "open",
         "title": "Namų puslapio peradresavimas",
         "text": "Atidarius Linkomanijos namų puslapį, būsite iškart nukreipti į torentų sąrašą. Pagal nutylėjimą išjungta."
+      },
+      {
+        "icon": "bell",
+        "title": "Laukiami torentai",
+        "text": "Laukiate filmo ar serialo? Įrašykite pavadinimą ir atmetamus (pvz., CAM) ar pageidaujamus (pvz., WEBRip) žodžius. Papildinys kas 6 valandas tikrina Linkomanijoje ir praneša, kai torentas pasirodo – skaičiumi ant ikonėlės ir pranešimu svetainėje. Pagal nutylėjimą išjungta."
+      },
+      {
+        "icon": "key",
+        "title": "Automatinis prisijungimas",
+        "text": "Prisijunkite vieną kartą ir būsite prisijungę visose su jūsų naršyklės paskyra sinchronizuotose naršyklėse. Atsijungus vienoje, atsijungiama ir kitose. Jei to nenorite, funkciją išjunkite."
       },
       {
         "icon": "download",
@@ -117,7 +127,7 @@
       },
       {
         "q": "Ar jis renka mano duomenis?",
-        "a": "Ne. Nustatymai ir istorija lieka jūsų naršyklėje, jokios analitikos ar sekimo nėra. Plačiau – <a href=\"{privacy}\">privatumo politikoje</a>."
+        "a": "Ne. Nustatymai ir istorija lieka jūsų naršyklėje, jokios analitikos ar sekimo nėra. Kūrėjui niekas nesiunčiama. Plačiau – <a href=\"{privacy}\">privatumo politikoje</a>."
       },
       {
         "q": "Ar tai oficialus Linkomanijos papildinys?",
@@ -125,7 +135,7 @@
       },
       {
         "q": "Ar papildiniui reikia mano Linkomanijos slaptažodžio?",
-        "a": "Ne. Prie Linkomanija.net prisijungiate kaip įprastai, o papildinys tik patobulina atidaromus puslapius. Jūsų slaptažodžio jis niekada nemato."
+        "a": "Ne. Prie Linkomanija.net prisijungiate kaip įprastai, o jūsų slaptažodžio papildinys niekada nemato. Automatinis prisijungimas saugo tik svetainės „Prisiminti mane“ prisijungimo slapuką, sinchronizuojamą per jūsų naršyklės paskyrą, ir jį ištrina, kai atsijungiate ar funkciją išjungiate."
       },
       {
         "q": "Kokias naršykles jis palaiko?",
@@ -163,19 +173,19 @@
       },
       {
         "title": "Ką papildinys saugo",
-        "body": "<p>Papildinys jūsų naršyklės papildinių saugykloje išsaugo:</p><ul><li>kurios funkcijos įjungtos ar išjungtos ir pasirinktą torentų sąrašo vaizdą</li><li>papildinio lango kalbą</li><li>istoriją: po 25 paskutinius atidarytus, parsisiųstus ir komentuotus torentus, kiekvieno ID, pavadinimą ir kategorijos paveikslėlio adresą</li></ul><p>Jei naudojate naršyklės sinchronizavimą, naršyklė šiuos duomenis gali sinchronizuoti tarp jūsų įrenginių per jūsų naršyklės paskyrą. Kūrėjui jie niekada nesiunčiami.</p>"
+        "body": "<p>Papildinys jūsų naršyklės papildinių saugykloje išsaugo:</p><ul><li>kurios funkcijos įjungtos ar išjungtos ir pasirinktą torentų sąrašo vaizdą</li><li>papildinio lango kalbą</li><li>istoriją: po 25 paskutinius atidarytus, parsisiųstus ir komentuotus torentus, kiekvieno ID, pavadinimą ir kategorijos paveikslėlio adresą</li><li>laukiamiems torentams: jūsų paieškos frazes ir žodžius, atmestus torentus bei rastus torentus su paskutinio tikrinimo laiku</li><li>automatiniam prisijungimui: Linkomanijos „Prisiminti mane“ prisijungimo slapuką ir paskutinio atsijungimo laiką</li></ul><p>Jei naudojate naršyklės sinchronizavimą, naršyklė šiuos duomenis gali sinchronizuoti tarp jūsų įrenginių per jūsų naršyklės paskyrą. Rasti torentai saugomi tik kiekviename įrenginyje atskirai. Kūrėjui niekas niekada nesiunčiama.</p><p>Prisijungimo slapukas, kaip ir slaptažodis, suteikia prieigą prie jūsų Linkomanijos paskyros. Jis saugomas, kol atsijungiate svetainėje arba išjungiate automatinį prisijungimą. Atsijungimas jau nukopijuoto slapuko negaliojančiu nepadaro – tai padaro tik Linkomanijos slaptažodžio pakeitimas.</p>"
       },
       {
         "title": "Tinklo užklausos",
-        "body": "<p>Papildinys bendrauja tik su Linkomanija.net. Jūsų vardu ir naudodamas jūsų esamą prisijungimą jis įkelia torentų puslapius peržiūrai ir susijusiems torentams, o paspaudus – prideda ar pašalina žymes. Komentarų redaktoriaus šypsenėlės įkeliamos iš Linkomanijos paveikslėlių serverio. Jokios kitos svetainės nepasiekiamos.</p><p>Pašalinus papildinį, naršyklė atidaro šią svetainę. Jokie duomenys kartu nesiunčiami.</p>"
+        "body": "<p>Papildinys bendrauja tik su Linkomanija.net. Jūsų vardu ir naudodamas jūsų esamą prisijungimą jis įkelia torentų puslapius peržiūrai ir susijusiems torentams, o paspaudus – prideda ar pašalina žymes. Įjungus laukiamus torentus, jis taip pat ieško jūsų laukiamų torentų Linkomanijoje paleidus naršyklę, kas 6 valandas ir jūsų paprašius. Komentarų redaktoriaus šypsenėlės įkeliamos iš Linkomanijos paveikslėlių serverio. Jokios kitos svetainės nepasiekiamos.</p><p>Pašalinus papildinį, naršyklė atidaro šią svetainę. Jokie duomenys kartu nesiunčiami.</p>"
       },
       {
         "title": "Leidimai",
-        "body": "<ul><li><strong>Prieiga prie linkomanija.net</strong> – kad funkcijos atsirastų svetainės puslapiuose</li><li><strong>Saugykla</strong> – kad būtų išsaugoti nustatymai ir istorija</li><li><strong>Skirtukai</strong> – kad įrankių juostos ikonėlė būtų aktyvi Linkomanija.net svetainėje, o nustatymų pakeitimai iškart būtų pritaikyti atidarytuose Linkomanijos skirtukuose</li></ul>"
+        "body": "<ul><li><strong>Prieiga prie linkomanija.net</strong> – kad funkcijos atsirastų svetainės puslapiuose ir būtų galima ieškoti laukiamų torentų</li><li><strong>Saugykla</strong> – kad būtų išsaugoti nustatymai, istorija, laukiami torentai ir prisijungimas</li><li><strong>Skirtukai</strong> – kad įrankių juostos ikonėlė būtų aktyvi Linkomanija.net svetainėje, o nustatymų pakeitimai iškart būtų pritaikyti atidarytuose Linkomanijos skirtukuose</li><li><strong>Signalai (alarms)</strong> – kad laukiami torentai būtų tikrinami kas 6 valandas</li><li><strong>Pranešimai</strong> (nebūtina) – prašoma tik įjungus sistemos pranešimus apie laukiamus torentus</li></ul>"
       },
       {
         "title": "Duomenų ištrynimas",
-        "body": "<p>Pašalinus papildinį, visi jo išsaugoti duomenys ištrinami.</p>"
+        "body": "<p>Išjungus automatinį prisijungimą, išsaugotas prisijungimo slapukas ištrinamas. Pašalinus papildinį, visi jo išsaugoti duomenys ištrinami.</p>"
       },
       {
         "title": "Kontaktai",

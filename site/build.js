@@ -13,7 +13,7 @@ const pkg = JSON.parse(readFileSync(path.resolve(ROOT, 'package.json'), 'utf8'))
 const SITE_URL = pkg.homepage.endsWith('/') ? pkg.homepage : `${pkg.homepage}/`;
 const REPOSITORY = pkg.repository.url.replace(/^git\+/, '').replace(/\.git$/, '');
 // Date shown on the privacy policy, change it together with the policy's text
-const PRIVACY_UPDATED = { en: 'September 26, 2026', lt: '2026 m. rugsėjo 26 d.' };
+const PRIVACY_UPDATED = { en: 'September 28, 2026', lt: '2026 m. rugsėjo 28 d.' };
 
 const links = {
   chrome: 'https://chromewebstore.google.com/detail/gmdhkalbljdblbogfladannflinppnji',
