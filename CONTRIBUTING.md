@@ -100,7 +100,11 @@ cd _site && python3 -m http.server 8000
 Then open http://localhost:8000. Page links work locally, but the 404 page expects the `/super-linkomanija/` path it has on GitHub Pages.
 
 ## Releases
-Releases are fully automated with [semantic-release](https://github.com/semantic-release/semantic-release). Every push to `main` is checked. When it contains releasable commits, a new version is published:
+Releases are made with [semantic-release](https://github.com/semantic-release/semantic-release) by the `CI` workflow. Pushing to `main` does not release, a release runs only:
+- every Friday at 13:00 Polish time, automatically
+- when the maintainer starts the `CI` workflow on `main` by hand (Actions → CI → Run workflow)
+
+Each release publishes everything merged since the previous one. When there are no releasable commits, nothing is published. The version depends on the commits:
 
 | Commit | Version change |
 | --- | --- |
@@ -116,7 +120,7 @@ A release:
 4. publishes to the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons (with the source code Mozilla requires for review)
 5. creates a GitHub release with both packages attached
 
-Each store still reviews the new version before users get it. A store refuses a new upload while it's reviewing the previous one, so avoid releasing again until the pending reviews are finished.
+Each store still reviews the new version before users get it. A store refuses a new upload while it's reviewing the previous one, so avoid releasing again until the pending reviews are finished. To skip the Friday releases meanwhile, set the repository variable `RELEASE_PAUSED` to `true`; releases started by hand still run.
 
 Publishing uses these repository secrets, which only the maintainer can manage:
 

@@ -4,8 +4,12 @@ on:
   push:
     branches: [main]
   pull_request:
-  # Runs a release on demand, for example after unpausing releases
+  # Releases only happen from these two: on demand, and every Friday at 13:00 Polish time
   workflow_dispatch:
+  schedule:
+    # Cron runs in UTC, 13:00 in Poland is 11:00 UTC in summer and 12:00 UTC in winter, see the release-time job
+    - cron: '0 11 * * 5'
+    - cron: '0 12 * * 5'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -38,10 +42,27 @@ jobs:
           name: extension-firefox
           path: extension-firefox/
 
+  release-time:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    outputs:
+      due: ${{ steps.check.outputs.due }}
+    steps:
+      # Checks which schedule started the run instead of the current time, as scheduled runs can start late
+      - id: check
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          if [ "$(TZ=Europe/Warsaw date +%z)" = "+0200" ]; then expected='0 11 * * 5'; else expected='0 12 * * 5'; fi
+          echo "due=$([ "$SCHEDULE" = "$expected" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
   release:
-    needs: build
-    # Set the repository variable RELEASE_PAUSED to "true" to keep merging to main without publishing
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.RELEASE_PAUSED != 'true'
+    needs: [build, release-time]
+    # Set the repository variable RELEASE_PAUSED to "true" to skip the Friday releases, e.g. while stores review a version
+    if: >-
+      !cancelled() && needs.build.result == 'success' && github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'schedule' && needs.release-time.outputs.due == 'true' && vars.RELEASE_PAUSED != 'true'))
     runs-on: ubuntu-latest
     # Never run two releases at once, they would compete for the same version
     concurrency:
