@@ -50,6 +50,15 @@
 
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "alarms"
+  ],
+
+  "optional_permissions": [
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "*://*.linkomanija.net/*"
   ]
 }

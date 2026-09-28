@@ -1,0 +1,99 @@
+@use '../../../variables';
+
+.tracked-release {
+  padding: variables.$default-spacing;
+  background-color: var(--sl-card);
+  border-left: 3px solid transparent;
+
+  &--found {
+    border-left-color: variables.$theme-red;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    gap: variables.$default-spacing;
+  }
+
+  &__term {
+    flex: 1;
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--sl-text-strong);
+  }
+
+  &__keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: variables.$small-spacing;
+    margin-top: variables.$small-spacing;
+  }
+
+  &__keyword {
+    font-size: 10px;
+    padding: 0 variables.$small-spacing;
+    border-radius: variables.$small-spacing;
+
+    &--excluded {
+      color: variables.$theme-red;
+      border: 1px solid variables.$theme-red;
+    }
+
+    &--preferred {
+      color: var(--sl-accent);
+      border: 1px solid var(--sl-accent);
+    }
+  }
+
+  &__waiting {
+    margin-top: variables.$small-spacing;
+    color: var(--sl-text-muted);
+  }
+
+  &__matches {
+    list-style: none;
+    margin: variables.$default-spacing 0 0;
+    padding: 0;
+  }
+
+  &__match {
+    padding: variables.$small-spacing 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--sl-card-hover);
+    }
+
+    a {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--sl-accent);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__match-footer {
+    display: flex;
+    align-items: center;
+    gap: variables.$small-spacing;
+    margin-top: variables.$small-spacing;
+  }
+
+  &__match-details {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    color: var(--sl-text-muted);
+
+    strong {
+      color: variables.$theme-red;
+      margin-right: variables.$small-spacing;
+    }
+  }
+}

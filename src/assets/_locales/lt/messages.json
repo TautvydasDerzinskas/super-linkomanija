@@ -5,7 +5,7 @@
   },
   "appDesc": {
     "message": "Naršyklės papildinys praplečiantis Linkomanija.net internetinės svetainės galimybes",
-    "description":"The description of the application, displayed in the web store."
+    "description": "The description of the application, displayed in the web store."
   },
   "popupCloseTitle": {
     "message": "Uždaryti",
@@ -146,5 +146,149 @@
   "open": {
     "message": "Atidaryti",
     "description": "Generic (used in: torrents list)"
+  },
+  "featureReleaseTrackerTitle": {
+    "message": "Laukiami torrentai",
+    "description": "Features tab configuration setting title for release tracker feature"
+  },
+  "featureReleaseTrackerDescription": {
+    "message": "Praneša, kai pasirodo laukiamas torrentas",
+    "description": "Features tab configuration setting description for release tracker feature"
+  },
+  "settingConfigure": {
+    "message": "Nustatymai",
+    "description": "Features configuration cog title"
+  },
+  "releaseTrackerBack": {
+    "message": "Atgal",
+    "description": "Release tracker back to features link"
+  },
+  "releaseTrackerCheckNow": {
+    "message": "Tikrinti dabar",
+    "description": "Release tracker check button"
+  },
+  "releaseTrackerChecking": {
+    "message": "Tikrinama…",
+    "description": "Release tracker check button while checking"
+  },
+  "releaseTrackerLastCheck": {
+    "message": "Paskutinį kartą tikrinta {time}, tikrinama kas 6 valandas",
+    "description": "Release tracker last check time"
+  },
+  "releaseTrackerNeverChecked": {
+    "message": "Dar netikrinta, tikrinama kas 6 valandas",
+    "description": "Release tracker status before the first check"
+  },
+  "releaseTrackerLoggedOut": {
+    "message": "Esate atsijungę nuo Linkomanijos, todėl laukiamų torrentų patikrinti negalima.",
+    "description": "Release tracker warning when the user is logged out"
+  },
+  "releaseTrackerLogIn": {
+    "message": "Prisijungti",
+    "description": "Release tracker log in link"
+  },
+  "releaseTrackerNoAccess": {
+    "message": "Papildinys neturi prieigos prie Linkomanijos, todėl laukiamų torrentų patikrinti negalima.",
+    "description": "Release tracker warning when the host permission is missing"
+  },
+  "releaseTrackerGrantAccess": {
+    "message": "Suteikti prieigą",
+    "description": "Release tracker host permission request button"
+  },
+  "releaseTrackerSystemNotifications": {
+    "message": "Rodyti sistemos pranešimus",
+    "description": "Release tracker system notifications checkbox"
+  },
+  "releaseTrackerSearchTerm": {
+    "message": "Paieškos frazė",
+    "description": "Release tracker form search term label"
+  },
+  "releaseTrackerSearchTermPlaceholder": {
+    "message": "pvz. The Odyssey",
+    "description": "Release tracker form search term placeholder"
+  },
+  "releaseTrackerExcluded": {
+    "message": "Atmetami žodžiai",
+    "description": "Release tracker form excluded keywords label"
+  },
+  "releaseTrackerExcludedPlaceholder": {
+    "message": "pvz. CAM, TS",
+    "description": "Release tracker form excluded keywords placeholder"
+  },
+  "releaseTrackerPreferred": {
+    "message": "Pageidaujami žodžiai",
+    "description": "Release tracker form preferred keywords label"
+  },
+  "releaseTrackerPreferredPlaceholder": {
+    "message": "pvz. WEBRip, BDRip",
+    "description": "Release tracker form preferred keywords placeholder"
+  },
+  "releaseTrackerKeywordsHint": {
+    "message": "Žodžius atskirkite Enter arba kableliu",
+    "description": "Release tracker form keywords input hint"
+  },
+  "releaseTrackerAdd": {
+    "message": "Pradėti sekti",
+    "description": "Release tracker form add button"
+  },
+  "releaseTrackerSave": {
+    "message": "Išsaugoti",
+    "description": "Release tracker form save button"
+  },
+  "releaseTrackerCancel": {
+    "message": "Atšaukti",
+    "description": "Release tracker form cancel button"
+  },
+  "releaseTrackerEdit": {
+    "message": "Redaguoti",
+    "description": "Release tracker edit button"
+  },
+  "releaseTrackerDelete": {
+    "message": "Nebesekti",
+    "description": "Release tracker delete button"
+  },
+  "releaseTrackerEmpty": {
+    "message": "Kol kas nieko nesekate. Pridėkite laukiamo torrento paieškos frazę.",
+    "description": "Release tracker empty list message"
+  },
+  "releaseTrackerWaiting": {
+    "message": "Laukiama…",
+    "description": "Release tracker item without matches"
+  },
+  "releaseTrackerPreferredMatch": {
+    "message": "Pageidaujamas",
+    "description": "Release tracker preferred match label"
+  },
+  "releaseTrackerReject": {
+    "message": "Atmesti ir sekti toliau",
+    "description": "Release tracker reject button"
+  },
+  "releaseTrackerAccept": {
+    "message": "Priimti ir nebesekti",
+    "description": "Release tracker accept button"
+  },
+  "releaseTrackerRejectedNotice": {
+    "message": "Atmesta, sekimas tęsiamas.",
+    "description": "Release tracker notice after rejecting on the website"
+  },
+  "releaseTrackerAcceptedNotice": {
+    "message": "Priimta, daugiau nebesekama.",
+    "description": "Release tracker notice after accepting on the website"
+  },
+  "releaseTrackerPageMatch": {
+    "message": "Šis torrentas atitinka laukiamą",
+    "description": "Release tracker bar text on the matched torrent page, followed by the search term"
+  },
+  "releaseTrackerToastTitle": {
+    "message": "Rasti laukiami torrentai",
+    "description": "Release tracker toast title on the website"
+  },
+  "releaseTrackerDismiss": {
+    "message": "Paslėpti",
+    "description": "Release tracker toast dismiss button title"
+  },
+  "releaseTrackerNotificationTitle": {
+    "message": "Rastas laukiamas torrentas",
+    "description": "Release tracker system notification title"
   }
 }

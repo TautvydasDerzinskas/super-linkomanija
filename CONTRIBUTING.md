@@ -57,7 +57,7 @@ site/                    The website, see below
 
 ## Adding a feature
 1. Create `src/features/<feature-name>/` with:
-   - `meta.ts`: the feature's ID, title and description keys, whether it's on by default and the browsers it's excluded from
+   - `meta.ts`: the feature's ID, title and description keys, whether it's on by default and the browsers it's excluded from. A `settingsRoute` adds a cog next to the switch, leading to that popup route
    - `content.ts`: a class implementing `IContent`, which adds the feature to the page (`extendPageUserInterface`, `setupEventListeners`) and removes it again (`cleanUp`)
    - `styles/` for its SCSS, imported from `content.ts`
 2. Register the meta in `src/features/features-meta.ts` and the content in `src/features/features.ts`, keeping the same order in both.
@@ -81,7 +81,7 @@ feat(view-modes): remember the grid size
 fix(torrent-preview): show the preview for torrents without a description
 ```
 
-Common scopes are the feature names (`view-modes`, `torrent-preview`, `comments-bbcode`, `related-torrents`, `back-to-top`, `homepage-redirect`), plus `history` and `core`.
+Common scopes are the feature names (`view-modes`, `torrent-preview`, `comments-bbcode`, `related-torrents`, `back-to-top`, `homepage-redirect`, `release-tracker`), plus `history` and `core`.
 
 ## Website
 The [website](https://tautvydasderzinskas.github.io/super-linkomanija/) is built from `site/` and deployed to GitHub Pages by the `Website` workflow. That happens on every push to `main` that changes the site or the images it uses, and after every release so it shows the new version.

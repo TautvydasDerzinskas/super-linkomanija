@@ -1,0 +1,52 @@
+@use '../../../variables';
+
+.release-form {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$small-spacing;
+  padding: variables.$default-spacing;
+  background-color: var(--sl-card);
+
+  label {
+    font-weight: bold;
+    color: var(--sl-accent);
+  }
+
+  &__term {
+    padding: variables.$small-spacing;
+    background-color: var(--sl-surface);
+    border: 1px solid var(--sl-card-hover);
+    outline: none;
+    color: var(--sl-text);
+    font: inherit;
+
+    &:focus {
+      border-color: var(--sl-accent);
+    }
+  }
+
+  &__keywords {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: variables.$default-spacing;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: variables.$small-spacing;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: variables.$default-spacing;
+    margin-top: variables.$small-spacing;
+  }
+
+  &__hint {
+    flex: 1;
+    font-size: 10px;
+    color: var(--sl-text-muted);
+  }
+}

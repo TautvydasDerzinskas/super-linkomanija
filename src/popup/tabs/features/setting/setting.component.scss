@@ -15,6 +15,25 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
     margin-bottom: variables.$default-spacing;
   }
 
+  &__column--controls {
+    display: flex;
+    align-items: flex-start;
+    gap: variables.$default-spacing;
+  }
+
+  &__configure {
+    display: flex;
+    color: var(--sl-text-muted);
+
+    svg {
+      fill: currentColor;
+    }
+
+    &:hover {
+      color: var(--sl-accent);
+    }
+  }
+
   &__title {
     font-weight: bold;
     color: var(--sl-accent);

@@ -1,11 +1,13 @@
 export default class BrowserStorageService {
+  constructor(private area: 'sync' | 'local' = 'sync') {}
+
   public async getItem<T>(storageKey: string): Promise<T> {
-    const result = await chrome.storage.sync.get(storageKey);
+    const result = await chrome.storage[this.area].get(storageKey);
     return this.convertToJson<T>(result[storageKey] as string);
   }
 
   public async setItem<T>(storageKey: string, data: T) {
-    await chrome.storage.sync.set({ [storageKey]: this.convertToString<T>(data) });
+    await chrome.storage[this.area].set({ [storageKey]: this.convertToString<T>(data) });
     return true;
   }
 

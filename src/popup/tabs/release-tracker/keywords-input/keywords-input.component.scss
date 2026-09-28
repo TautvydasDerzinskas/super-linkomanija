@@ -1,0 +1,52 @@
+@use '../../../variables';
+
+.keywords-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: variables.$small-spacing;
+  padding: variables.$small-spacing;
+  background-color: var(--sl-surface);
+  border: 1px solid var(--sl-card-hover);
+
+  &:focus-within {
+    border-color: var(--sl-accent);
+  }
+
+  input {
+    flex: 1;
+    min-width: 80px;
+    padding: 2px;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--sl-text);
+    font: inherit;
+  }
+
+  &__keyword {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px variables.$small-spacing 1px variables.$default-spacing;
+    border-radius: variables.$default-spacing;
+    color: variables.$theme-white;
+
+    &--excluded {
+      background-color: variables.$theme-red;
+    }
+
+    &--preferred {
+      background-color: variables.$theme-blue;
+    }
+
+    button {
+      cursor: pointer;
+      margin-left: 2px;
+      padding: 0 2px;
+      border: none;
+      background: none;
+      color: inherit;
+      font-size: 14px;
+      line-height: 1;
+    }
+  }
+}

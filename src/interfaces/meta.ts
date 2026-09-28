@@ -7,4 +7,6 @@ export default interface IMeta {
   defaultStatus?: boolean;
   defaultData?: any;
   excludedBrowsers: Browsers[];
+  // Popup route with the feature's settings, reachable through a cog while the feature is on
+  settingsRoute?: string;
 }

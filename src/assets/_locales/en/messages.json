@@ -146,5 +146,149 @@
   "open": {
     "message": "Open",
     "description": "Generic (used in: torrents list)"
+  },
+  "featureReleaseTrackerTitle": {
+    "message": "Release tracker",
+    "description": "Features tab configuration setting title for release tracker feature"
+  },
+  "featureReleaseTrackerDescription": {
+    "message": "Get notified when a torrent you are waiting for appears",
+    "description": "Features tab configuration setting description for release tracker feature"
+  },
+  "settingConfigure": {
+    "message": "Settings",
+    "description": "Features configuration cog title"
+  },
+  "releaseTrackerBack": {
+    "message": "Back",
+    "description": "Release tracker back to features link"
+  },
+  "releaseTrackerCheckNow": {
+    "message": "Check now",
+    "description": "Release tracker check button"
+  },
+  "releaseTrackerChecking": {
+    "message": "Checking…",
+    "description": "Release tracker check button while checking"
+  },
+  "releaseTrackerLastCheck": {
+    "message": "Last checked {time}, checked every 6 hours",
+    "description": "Release tracker last check time"
+  },
+  "releaseTrackerNeverChecked": {
+    "message": "Not checked yet, checked every 6 hours",
+    "description": "Release tracker status before the first check"
+  },
+  "releaseTrackerLoggedOut": {
+    "message": "You are logged out of Linkomanija, so tracked releases can't be checked.",
+    "description": "Release tracker warning when the user is logged out"
+  },
+  "releaseTrackerLogIn": {
+    "message": "Log in",
+    "description": "Release tracker log in link"
+  },
+  "releaseTrackerNoAccess": {
+    "message": "The extension has no access to Linkomanija, so tracked releases can't be checked.",
+    "description": "Release tracker warning when the host permission is missing"
+  },
+  "releaseTrackerGrantAccess": {
+    "message": "Allow access",
+    "description": "Release tracker host permission request button"
+  },
+  "releaseTrackerSystemNotifications": {
+    "message": "Show system notifications",
+    "description": "Release tracker system notifications checkbox"
+  },
+  "releaseTrackerSearchTerm": {
+    "message": "Search term",
+    "description": "Release tracker form search term label"
+  },
+  "releaseTrackerSearchTermPlaceholder": {
+    "message": "e.g. The Odyssey",
+    "description": "Release tracker form search term placeholder"
+  },
+  "releaseTrackerExcluded": {
+    "message": "Excluded keywords",
+    "description": "Release tracker form excluded keywords label"
+  },
+  "releaseTrackerExcludedPlaceholder": {
+    "message": "e.g. CAM, TS",
+    "description": "Release tracker form excluded keywords placeholder"
+  },
+  "releaseTrackerPreferred": {
+    "message": "Preferred keywords",
+    "description": "Release tracker form preferred keywords label"
+  },
+  "releaseTrackerPreferredPlaceholder": {
+    "message": "e.g. WEBRip, BDRip",
+    "description": "Release tracker form preferred keywords placeholder"
+  },
+  "releaseTrackerKeywordsHint": {
+    "message": "Separate keywords with Enter or a comma",
+    "description": "Release tracker form keywords input hint"
+  },
+  "releaseTrackerAdd": {
+    "message": "Start tracking",
+    "description": "Release tracker form add button"
+  },
+  "releaseTrackerSave": {
+    "message": "Save",
+    "description": "Release tracker form save button"
+  },
+  "releaseTrackerCancel": {
+    "message": "Cancel",
+    "description": "Release tracker form cancel button"
+  },
+  "releaseTrackerEdit": {
+    "message": "Edit",
+    "description": "Release tracker edit button"
+  },
+  "releaseTrackerDelete": {
+    "message": "Stop tracking",
+    "description": "Release tracker delete button"
+  },
+  "releaseTrackerEmpty": {
+    "message": "Nothing is tracked yet. Add a search term of a release you are waiting for.",
+    "description": "Release tracker empty list message"
+  },
+  "releaseTrackerWaiting": {
+    "message": "Waiting for a release…",
+    "description": "Release tracker item without matches"
+  },
+  "releaseTrackerPreferredMatch": {
+    "message": "Preferred",
+    "description": "Release tracker preferred match label"
+  },
+  "releaseTrackerReject": {
+    "message": "Reject & keep tracking",
+    "description": "Release tracker reject button"
+  },
+  "releaseTrackerAccept": {
+    "message": "Accept & stop tracking",
+    "description": "Release tracker accept button"
+  },
+  "releaseTrackerRejectedNotice": {
+    "message": "Rejected, tracking continues.",
+    "description": "Release tracker notice after rejecting on the website"
+  },
+  "releaseTrackerAcceptedNotice": {
+    "message": "Accepted, no longer tracking.",
+    "description": "Release tracker notice after accepting on the website"
+  },
+  "releaseTrackerPageMatch": {
+    "message": "This torrent matches tracked release",
+    "description": "Release tracker bar text on the matched torrent page, followed by the search term"
+  },
+  "releaseTrackerToastTitle": {
+    "message": "Tracked releases found",
+    "description": "Release tracker toast title on the website"
+  },
+  "releaseTrackerDismiss": {
+    "message": "Hide",
+    "description": "Release tracker toast dismiss button title"
+  },
+  "releaseTrackerNotificationTitle": {
+    "message": "Tracked release found",
+    "description": "Release tracker system notification title"
   }
 }

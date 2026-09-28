@@ -23,6 +23,7 @@ Features, screenshots and install instructions in English and Lithuanian are on 
 4. Homepage redirect
 5. Quick back to top
 6. Related torrents
+7. Release tracker
 
 ## Screenshots
 <a href="docs/images/screenshot_01.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_01.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_02.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_02.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_03.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_03.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_04.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_04.jpg" alt="Screenshot" title="Screenshot" /></a>

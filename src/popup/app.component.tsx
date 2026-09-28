@@ -11,6 +11,7 @@ import HeaderComponent from './layout/header/header.component';
 import HistoryComponent from './tabs/history/history.component';
 import FeaturesComponent from './tabs/features/features.component';
 import LinksComponent from './tabs/links/links.component';
+import ReleaseTrackerComponent from './tabs/release-tracker/release-tracker.component';
 
 import './app.component.scss';
 
@@ -44,6 +45,7 @@ export default function AppComponent() {
             <Route path='/' element={<FeaturesComponent />} />
             <Route path='/history' element={<HistoryComponent />} />
             <Route path='/links' element={<LinksComponent />} />
+            <Route path='/release-tracker' element={<ReleaseTrackerComponent />} />
           </Routes>
         </div>
       </div>
