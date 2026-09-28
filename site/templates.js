@@ -6,6 +6,11 @@
 // Replaces {name} placeholders with values, used for links inside translated text
 export const fill = (text, values) => text.replace(/\{(\w+)\}/g, (match, name) => values[name] ?? match);
 
+// Full size screenshots from docs/images, in the order of the screenshots' captions, each with an 800px wide
+// JPEG thumbnail named <name>-800.jpg in site/public/images
+export const SCREENSHOTS = ['screenshot_01.jpg', 'screenshot_02.jpg', 'screenshot_03.jpg', 'screenshot_04.jpg', 'screenshot_05.png'];
+const thumbnail = (file) => file.replace(/\.\w+$/, '-800.jpg');
+
 const escapeAttribute = (text) => text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const stripTags = (html) => html.replace(/<[^>]+>/g, '');
 
@@ -24,7 +29,7 @@ function structuredData(page) {
     inLanguage: t.lang,
     url: pageUrl,
     image: ogImage(page),
-    screenshot: [1, 2, 3, 4].map(number => `${siteUrl}images/screenshot_0${number}.jpg`),
+    screenshot: SCREENSHOTS.map(file => `${siteUrl}images/${file}`),
     softwareVersion: version,
     applicationCategory: 'BrowserApplication',
     applicationSubCategory: 'Browser extension',
@@ -199,7 +204,7 @@ export function homePage(page) {
         <div class="section__intro"><h2>${t.screenshots.title}</h2></div>
         <div class="shots">
           ${t.screenshots.items.map((alt, index) => `<figure>
-            <a href="${root}images/screenshot_0${index + 1}.jpg"><img src="${root}images/screenshot_0${index + 1}-800.jpg" alt="${escapeAttribute(alt)}" width="800" height="500" loading="lazy" decoding="async"></a>
+            <a href="${root}images/${SCREENSHOTS[index]}"><img src="${root}images/${thumbnail(SCREENSHOTS[index])}" alt="${escapeAttribute(alt)}" width="800" height="500" loading="lazy" decoding="async"></a>
             <figcaption>${alt}</figcaption>
           </figure>`).join('\n          ')}
         </div>

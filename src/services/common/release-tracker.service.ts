@@ -132,7 +132,8 @@ class ReleaseTrackerService {
         torrentId: parseInt(title[2], 10),
         title: this.decodeHtmlEntities(title[3]).trim(),
         detailsLink: linkomanijaUrl + title[1],
-        addedDate: added ? `${added[1]} ${added[2]}` : '',
+        // Seconds are left out, so the date fits next to the match buttons in the popup
+        addedDate: added ? `${added[1]} ${added[2].slice(0, 5)}` : '',
         size: size ? `${size[1]} ${size[2]}` : '',
       }];
     });

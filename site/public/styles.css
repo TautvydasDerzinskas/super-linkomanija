@@ -162,6 +162,8 @@ p { margin: 0 0 12px; }
 .shots img { border-radius: var(--radius); box-shadow: 0 8px 28px var(--shadow); transition: transform 0.2s; }
 .shots a:hover img { transform: scale(1.01); }
 .shots figcaption { margin-top: 10px; color: var(--muted); font-size: 15px; }
+/* An odd last screenshot is centred in its row */
+.shots figure:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 12px); }
 
 .install { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .install__card { display: flex; flex-direction: column; align-items: flex-start; }
@@ -195,6 +197,7 @@ p { margin: 0 0 12px; }
 
 @media (max-width: 640px) {
   .shots { grid-template-columns: 1fr; }
+  .shots figure:last-child:nth-child(odd) { width: auto; }
   .section { padding: 56px 0; }
   .brand span { display: none; }
   .site-header .button span { display: none; }

@@ -4,7 +4,7 @@
  */
 import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { homePage, notFoundPage, privacyPage } from './templates.js';
+import { SCREENSHOTS, homePage, notFoundPage, privacyPage } from './templates.js';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUT = path.resolve(ROOT, '_site');
@@ -125,8 +125,8 @@ write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}sitemap.xml\
 // Static files and images shared with the extension and the README
 const copy = (from, to) => cpSync(path.resolve(ROOT, from), path.resolve(OUT, to), { recursive: true });
 copy('site/public', '.');
-for (const number of [1, 2, 3, 4]) {
-  copy(`docs/images/screenshot_0${number}.jpg`, `images/screenshot_0${number}.jpg`);
+for (const file of SCREENSHOTS) {
+  copy(`docs/images/${file}`, `images/${file}`);
 }
 for (const icon of ['icon_48x48.png', 'icon_128x128.png']) {
   copy(`src/assets/icons/${icon}`, `images/${icon}`);

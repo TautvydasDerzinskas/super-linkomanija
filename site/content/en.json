@@ -88,7 +88,8 @@
       "The extension's popup: feature switches, torrent history and links",
       "The torrent list in list view and in grid view with posters",
       "Torrent preview: the description opens from the eye icon in the list",
-      "Related torrents and the comment formatting editor on a torrent page"
+      "Related torrents and the comment formatting editor on a torrent page",
+      "Release tracker: tracked releases in the popup, the notice on Linkomanija's pages and accepting or rejecting a found torrent"
     ]
   },
   "install": {
