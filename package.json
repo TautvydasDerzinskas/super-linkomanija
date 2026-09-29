@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config=config/webpack/webpack.config.js --mode=production",
     "build:firefox": "webpack --config=config/webpack/webpack.config.js --mode=production --env target=firefox",
+    "build:dist": "node config/build/dist.js",
     "build:site": "node site/build.js",
     "develop": "webpack --config=config/webpack/webpack.config.js --mode=development --watch",
     "develop:firefox": "webpack --config=config/webpack/webpack.config.js --mode=development --watch --env target=firefox",
@@ -13,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "zip": "cd extension/ && bestzip ../sl.zip *",
     "zip:firefox": "cd extension-firefox/ && bestzip ../sl-firefox.zip *",
+    "zip:dist": "node config/build/zip.js",
     "zip:source": "git archive --format=zip --output=sl-source.zip HEAD",
     "semantic-release": "semantic-release",
     "prepare": "husky",
