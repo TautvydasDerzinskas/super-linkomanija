@@ -1,7 +1,7 @@
 @use '../../../popup/variables';
 
 .related-torrents {
-  a[onClick], .colhead, tr:nth-child(2) {
+  a[onClick], .colhead {
     display: none;
   }
 
@@ -11,6 +11,10 @@
     overflow-x: hidden;
     width: 90%;
     max-width: 1000px;
+
+    .related-torrents__empty {
+      margin: 0;
+    }
 
     table {
       td {

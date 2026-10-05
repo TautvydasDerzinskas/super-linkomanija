@@ -10,10 +10,13 @@ class ApiService {
     }
   }
 
-  public async getRelatedTorrents(title: string): Promise<string> {
-    const responseHtml = await this.get(`browse.php?search=${title}`);
+  /**
+   * Resolves to null when the search found nothing
+   */
+  public async getRelatedTorrents(title: string): Promise<HTMLTableElement> {
+    const responseHtml = await this.get(`browse.php?search=${encodeURIComponent(title)}`);
     const virtualDom = this.htmlStringToVirtualDom(responseHtml);
-    return virtualDom.querySelector(LinkomanijaSelectors.TorrentTable).outerHTML;
+    return virtualDom.querySelector<HTMLTableElement>(LinkomanijaSelectors.TorrentTable);
   }
 
   public async getTorrentDetails(url: string): Promise<{ descriptionHtml: string; comments: ITorrentComment[] }> {
