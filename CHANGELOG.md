@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/TautvydasDerzinskas/super-linkomanija/compare/v2.0.0...v2.1.0) (2026-10-05)
+
+
+### Bug Fixes
+
+* do not show inaccurate suggested torrents ([f5b498d](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/f5b498dd441902d53a5a5cdb89f84d2f294a068f))
+
+
+### Features
+
+* auto login ([0b10f5b](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/0b10f5b410319d445935df0da579ca522d0c119f))
+* **core:** adapt popup to system light and dark theme ([8e76dd5](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/8e76dd5181a1c9d3143f6837327579f03824fc1f))
+* **core:** add project website with English and Lithuanian pages ([e44faa6](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/e44faa6e8d220a3bc04374b5cef8fe047e281035))
+* future release tracking ([4a53c01](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/4a53c010685ae3526db116f44a8448e2fdc84c26))
+* redesign dark theme with new palette, starry night header, and particle effects ([34d0f32](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/34d0f3217a98a2b497eae0caf75568018e493a88))
+* **system-theme:** sync theme with system ([fe797c8](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/fe797c8fa1fb61d61d9d11ef10de8386b30aee92))
+
 # [2.0.0](https://github.com/TautvydasDerzinskas/super-linkomanija/compare/v1.1.0...v2.0.0) (2026-09-26)
 
 
