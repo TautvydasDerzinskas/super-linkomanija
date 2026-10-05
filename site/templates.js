@@ -87,11 +87,13 @@ function head(page, { title, description }) {
   <meta name="twitter:description" content="${escapeAttribute(description)}">
   <meta name="twitter:image" content="${image}">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#13242d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/png" sizes="48x48" href="${root}images/icon_48x48.png">
   <link rel="apple-touch-icon" href="${root}images/icon_128x128.png">
+  <link rel="preload" as="font" type="font/woff2" href="${root}fonts/inter-latin.woff2" crossorigin>
   <link rel="stylesheet" href="${root}styles.css">
-  ${page.kind === 'home' ? `<link rel="preload" as="image" href="${root}images/header_0.webp" fetchpriority="high">` : ''}
+  ${page.kind === 'home' ? `<link rel="preload" as="image" href="${root}images/header_0.webp" media="(prefers-color-scheme: light)" fetchpriority="high">
+  <link rel="preload" as="image" href="${root}images/header_night.webp" media="(prefers-color-scheme: dark)" fetchpriority="high">` : ''}
   <script src="${root}main.js" defer></script>
   ${page.kind === 'home' && t.lang === 'en' ? `<script>
     // First visit with a Lithuanian browser: open the Lithuanian page, unless a language was picked before
@@ -170,9 +172,9 @@ export function homePage(page) {
 
   return layout(page, { title: t.meta.title, description: t.meta.description }, `
     <section class="hero">
+      <canvas class="hero__particles" aria-hidden="true"></canvas>
       <div class="container">
-        <img class="hero__logo" src="${root}images/header_1.webp" alt="${t.hero.logoAlt}" width="1000" height="333" fetchpriority="high">
-        <h1><span class="hero__brand">Super Linkomanija</span> ${t.hero.title}</h1>
+        <h1 class="hero__heading"><img class="hero__logo" src="${root}images/header_1.webp" alt="${t.hero.logoAlt}" width="1000" height="333" fetchpriority="high"></h1>
         <p class="hero__tagline">${t.hero.tagline}</p>
         <div class="hero__actions">
           ${storeButtons}

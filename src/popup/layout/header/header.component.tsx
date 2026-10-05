@@ -15,6 +15,9 @@ interface IHeaderComponentProps {
   updateLocale: (localeCode: Locales) => void;
 }
 
+// Dark theme: sky blue constellations over the night sky, otherwise the brand red and blue
+const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 // Both must be stable references, otherwise particles get re-initialised on every render
 const initParticlesEngine = async (engine: Engine) => {
   await loadSlim(engine);
@@ -35,11 +38,11 @@ const particlesOptions: ISourceOptions = {
     paint: {
       fill: {
         enable: true,
-        color: { value: '#eb1c24' },
+        color: { value: isDarkTheme ? '#bae6fd' : '#eb1c24' },
       },
       stroke: {
         width: 1,
-        color: { value: '#000000' },
+        color: { value: isDarkTheme ? '#020617' : '#000000' },
       },
     },
     shape: {
@@ -54,8 +57,8 @@ const particlesOptions: ISourceOptions = {
     links: {
       enable: true,
       distance: 150,
-      color: '#0079c2',
-      opacity: 0.4,
+      color: isDarkTheme ? '#7dd3fc' : '#0079c2',
+      opacity: isDarkTheme ? 0.25 : 0.4,
       width: 1,
     },
     move: {
@@ -101,7 +104,8 @@ export default function HeaderComponent({ updateLocale }: IHeaderComponentProps)
   return (
     <div className='layout__header'>
       <div className='header__logo'>
-        <div className='header__logo__image image--background' style={{ backgroundImage: 'url(./images/header_0.webp)' }}></div>
+        <div className='header__logo__image image--background image--light' style={{ backgroundImage: 'url(./images/header_0.webp)' }}></div>
+        <div className='header__logo__image image--background image--dark' style={{ backgroundImage: 'url(./images/header_night.webp)' }}></div>
         <ParticlesProvider init={initParticlesEngine}>
           <Particles
             id='header-particles'

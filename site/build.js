@@ -131,8 +131,10 @@ for (const file of SCREENSHOTS) {
 for (const icon of ['icon_48x48.png', 'icon_128x128.png']) {
   copy(`src/assets/icons/${icon}`, `images/${icon}`);
 }
+copy('src/assets/fonts', 'fonts');
 copy('src/assets/images/header_0.webp', 'images/header_0.webp');
 copy('src/assets/images/header_1.webp', 'images/header_1.webp');
+copy('src/assets/images/header_night.webp', 'images/header_night.webp');
 for (const flag of ['flag_english', 'flag_lithuanian']) {
   copy(`src/assets/vectors/${flag}.svg`, `images/${flag}.svg`);
 }

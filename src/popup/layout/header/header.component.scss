@@ -45,6 +45,26 @@
           filter: grayscale(100%);
         }
 
+        // Rain photo in the light theme, starry night in the dark one
+        &.image--dark {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          filter: none;
+          background-position: center bottom;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          &.image--light {
+            display: none;
+          }
+
+          &.image--dark {
+            display: block;
+          }
+        }
+
         &.image--logo {
           position: absolute;
           top: 0;

@@ -18,7 +18,9 @@ $tb-default-spacing: variables.$default-spacing * 0.5;
     display: inline-block;
     color: var(--sl-text-muted);
     margin-right: $tb-default-spacing;
-    padding: $tb-default-spacing;
+    padding: variables.$default-spacing + 2px variables.$large-spacing;
+    font-size: 13px;
+    border-radius: $tb-default-spacing $tb-default-spacing 0 0;
     cursor: pointer;
 
     &:hover {
@@ -39,9 +41,10 @@ $tb-default-spacing: variables.$default-spacing * 0.5;
   }
 
   &__version {
-    color: color.adjust(variables.$theme-yellow, $lightness: 30%);
-    float: right;
+    position: absolute;
+    right: 0;
+    bottom: variables.$small-spacing;
+    color: var(--sl-version);
     font-size: 9px;
-    margin-top: variables.$small-spacing;
   }
 }

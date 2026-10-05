@@ -21,7 +21,6 @@
     "title": "Skaityti lietuviškai"
   },
   "hero": {
-    "title": "Linkomanija.net, <span class=\"accent\">made better</span>",
     "tagline": "Super Linkomanija is a free browser extension for Linkomanija.net. Preview torrents without opening them, browse the list as a grid of posters, get notified when a release you're waiting for appears and stay logged in on all your devices. Switch each feature on or off, keep only what you use.",
     "chrome": "Add to Chrome",
     "edge": "Add to Edge",

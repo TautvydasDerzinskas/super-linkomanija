@@ -1,29 +1,79 @@
 @use '../../../variables';
 
+$flag-size: variables.$large-spacing * 2;
+
 .language-picker {
   position: absolute;
   top: variables.$default-spacing;
   left: variables.$default-spacing;
   z-index: 999;
+  display: flex;
+  align-items: center;
 
   &__flag {
+    display: flex;
     cursor: pointer;
     outline: none;
     background-color: transparent;
-    margin-right: variables.$default-spacing;
     padding: 0;
     border: none;
     opacity: .8;
     transition: variables.$default-transition;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      opacity: 1;
+    }
+
+    &.flag--current {
       opacity: 1;
     }
 
     svg {
       display: inline-block;
-      height: variables.$large-spacing * 2;
-      width: variables.$large-spacing * 2;
+      height: $flag-size;
+      width: $flag-size;
+    }
+  }
+
+  // Other languages, folded behind the current flag until the picker is hovered or focused
+  &__options {
+    display: flex;
+    gap: variables.$default-spacing;
+    max-width: 0;
+    overflow: hidden;
+    padding-left: 0;
+    transition: max-width 0.3s ease-in-out, padding-left 0.3s ease-in-out;
+
+    .language-picker__flag {
+      opacity: 0;
+      transform: translateX(-$flag-size);
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    .language-picker__options {
+      max-width: 200px;
+      padding-left: variables.$default-spacing;
+
+      .language-picker__flag {
+        opacity: .8;
+        transform: none;
+
+        &:hover,
+        &:focus-visible {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__options,
+    &__options .language-picker__flag {
+      transition: none;
     }
   }
 }

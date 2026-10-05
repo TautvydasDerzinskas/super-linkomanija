@@ -84,11 +84,11 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
   }
 
   input:checked + .slider {
-    background-color: variables.$theme-red;
+    background-color: var(--sl-toggle-on);
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px variables.$theme-red;
+    box-shadow: 0 0 1px var(--sl-toggle-on);
   }
 
   input:checked + .slider:before {
@@ -103,7 +103,7 @@ $toggle-distance: $toggle-width - ($slider-spacing * 2) - $slider-size;
     }
 
     input:checked + .slider {
-      background-color: color.adjust(variables.$theme-red, $lightness: -15%);
+      background-color: var(--sl-toggle-on-hover);
     }
   }
 }
