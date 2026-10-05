@@ -1,6 +1,7 @@
 /node_modules
 /.tmp
-/.vscode
+/.vscode/*
+!/.vscode/settings.json
 /extension
 /extension-firefox
 sl.zip
