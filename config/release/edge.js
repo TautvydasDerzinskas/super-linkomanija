@@ -1,5 +1,5 @@
 /**
- * Publishes the Chrome build to Microsoft Edge Add-ons (Update REST API v1.1), used by semantic-release:
+ * Publishes the Chrome build to Microsoft Edge Add-ons (Update REST API v1.1), used by the publish job of the CI workflow:
  *   node config/release/edge.js verify   - checks credentials against the API
  *   node config/release/edge.js publish  - uploads sl.zip to the draft submission and publishes it
  *

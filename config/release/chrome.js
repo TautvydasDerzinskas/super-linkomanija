@@ -1,5 +1,5 @@
 /**
- * Publishes the Chrome build to the Chrome Web Store (API v2), used by semantic-release:
+ * Publishes the Chrome build to the Chrome Web Store (API v2), used by the publish job of the CI workflow:
  *   node config/release/chrome.js verify   - checks credentials and access to the store item
  *   node config/release/chrome.js publish  - uploads sl.zip and submits it for publishing
  *

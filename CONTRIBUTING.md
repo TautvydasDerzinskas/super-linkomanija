@@ -51,7 +51,7 @@ src/
 └── assets/_locales/     English and Lithuanian texts, used by both the manifest and the popup
 config/
 ├── webpack/             Build configuration for both browser targets
-└── release/             Store publishing scripts used by semantic-release
+└── release/             Store publishing scripts used by the CI publish job
 site/                    The website, see below
 ```
 
@@ -117,8 +117,10 @@ A release:
 1. updates the version in `package.json` and adds the changes to `CHANGELOG.md`
 2. builds the Chrome/Edge and Firefox packages
 3. commits the version bump and tags it
-4. publishes to the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons (with the source code Mozilla requires for review)
-5. creates a GitHub release with both packages attached
+4. creates a GitHub release with both packages attached
+5. publishes the packages to the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons (with the source code Mozilla requires for review), each store in its own job, so one store failing does not stop the others
+
+If a store refuses a version, fix the problem in that store's dashboard and publish the same release again: Actions → CI → Run workflow, with the release tag (for example `v2.1.0`) in "Existing release tag to publish again" and the store picked. This makes no new release.
 
 Each store still reviews the new version before users get it. A store refuses a new upload while it's reviewing the previous one, so avoid releasing again until the pending reviews are finished. To skip the Friday releases meanwhile, set the repository variable `RELEASE_PAUSED` to `true`; releases started by hand still run.
 

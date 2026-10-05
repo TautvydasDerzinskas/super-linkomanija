@@ -6,6 +6,17 @@ on:
   pull_request:
   # Releases only happen from these two: on demand, and every Friday at 13:00 Polish time
   workflow_dispatch:
+    inputs:
+      # Uploads an existing release to the stores again instead of making a new one, e.g. after a store refused it
+      republish-tag:
+        description: Existing release tag to publish again (leave empty to make a new release)
+        required: false
+        default: ''
+      store:
+        description: Store to publish to
+        type: choice
+        options: [all, chrome, edge, firefox]
+        default: all
   schedule:
     # Cron runs in UTC, 13:00 in Poland is 11:00 UTC in summer and 12:00 UTC in winter, see the release-time job
     - cron: '0 11 * * 5'
@@ -61,9 +72,11 @@ jobs:
     # Set the repository variable RELEASE_PAUSED to "true" to skip the Friday releases, e.g. while stores review a version
     if: >-
       !cancelled() && needs.build.result == 'success' && github.ref == 'refs/heads/main' &&
-      (github.event_name == 'workflow_dispatch' ||
+      ((github.event_name == 'workflow_dispatch' && inputs.republish-tag == '') ||
       (github.event_name == 'schedule' && needs.release-time.outputs.due == 'true' && vars.RELEASE_PAUSED != 'true'))
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.after.outputs.tag }}
     # Never run two releases at once, they would compete for the same version
     concurrency:
       group: release
@@ -89,18 +102,52 @@ jobs:
       - run: npm run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CWS_SERVICE_ACCOUNT_KEY: ${{ secrets.CWS_SERVICE_ACCOUNT_KEY }}
-          CWS_PUBLISHER_ID: ${{ secrets.CWS_PUBLISHER_ID }}
-          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
-          EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
-          EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
-          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
-          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+      # Empty when there was nothing to release
+      - id: after
+        run: |
+          tag="$(git describe --tags --abbrev=0)"
+          if [ "$tag" != "${{ steps.before.outputs.tag }}" ]; then echo "tag=$tag" >> "$GITHUB_OUTPUT"; fi
       # The release commit skips CI, so the website is redeployed here to show the new version
       - name: Update the website after a release
+        if: steps.after.outputs.tag != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "$(git describe --tags --abbrev=0)" != "${{ steps.before.outputs.tag }}" ]; then
-            gh workflow run pages.yml --ref main
-          fi
+        run: gh workflow run pages.yml --ref main
+
+  # One job per store, so a store refusing a version does not stop the others
+  publish:
+    needs: [release]
+    if: >-
+      !cancelled() && github.ref == 'refs/heads/main' &&
+      (needs.release.outputs.tag != '' || (github.event_name == 'workflow_dispatch' && inputs.republish-tag != ''))
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        store: ${{ fromJSON((inputs.store == '' || inputs.store == 'all') && '["chrome","edge","firefox"]' || format('["{0}"]', inputs.store)) }}
+    env:
+      TAG: ${{ needs.release.outputs.tag || inputs.republish-tag }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.TAG }}
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      # Built from the release tag, which holds the bumped version, so it also works for a release whose
+      # GitHub release is missing
+      - run: npm ci
+      - if: matrix.store == 'firefox'
+        run: npm run build:firefox
+      - if: matrix.store != 'firefox'
+        run: npm run build && npm run zip
+      - run: node config/release/${{ matrix.store }}.js publish
+        env:
+          CWS_SERVICE_ACCOUNT_KEY: ${{ matrix.store == 'chrome' && secrets.CWS_SERVICE_ACCOUNT_KEY || '' }}
+          CWS_PUBLISHER_ID: ${{ matrix.store == 'chrome' && secrets.CWS_PUBLISHER_ID || '' }}
+          EDGE_PRODUCT_ID: ${{ matrix.store == 'edge' && secrets.EDGE_PRODUCT_ID || '' }}
+          EDGE_CLIENT_ID: ${{ matrix.store == 'edge' && secrets.EDGE_CLIENT_ID || '' }}
+          EDGE_API_KEY: ${{ matrix.store == 'edge' && secrets.EDGE_API_KEY || '' }}
+          WEB_EXT_API_KEY: ${{ matrix.store == 'firefox' && secrets.WEB_EXT_API_KEY || '' }}
+          WEB_EXT_API_SECRET: ${{ matrix.store == 'firefox' && secrets.WEB_EXT_API_SECRET || '' }}

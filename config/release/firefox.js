@@ -1,5 +1,5 @@
 /**
- * Publishes the Firefox build to addons.mozilla.org, used by semantic-release:
+ * Publishes the Firefox build to addons.mozilla.org, used by the publish job of the CI workflow:
  *   node config/release/firefox.js verify   - checks that AMO credentials are set
  *   node config/release/firefox.js publish  - uploads extension-firefox/ with its source code
  *
@@ -50,7 +50,7 @@ function verify() {
 function publish() {
   mkdirSync(TMP, { recursive: true });
 
-  // Runs after @semantic-release/git committed the release, so HEAD matches the uploaded build
+  // Runs on a checkout of the release tag, so HEAD matches the uploaded build
   execFileSync('npm', ['run', 'zip:source'], { cwd: ROOT, stdio: 'inherit' });
 
   const metadataPath = path.resolve(TMP, 'amo-metadata.json');
