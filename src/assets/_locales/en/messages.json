@@ -299,6 +299,14 @@
     "message": "Logs you in on every browser synced with your account. Logging out in one logs out all of them",
     "description": "Features tab configuration setting description for auto login feature"
   },
+  "featureThemeSyncTitle": {
+    "message": "Theme follows system",
+    "description": "Features tab configuration setting title for theme follows system feature"
+  },
+  "featureThemeSyncDescription": {
+    "message": "Switches Linkomanija between its light and dark themes with your system, without changing your profile",
+    "description": "Features tab configuration setting description for theme follows system feature"
+  },
   "autoLoginExpiredNotice": {
     "message": "Saved login is no longer valid, please log in again.",
     "description": "Auto login notice on the login page when the saved login stopped working"

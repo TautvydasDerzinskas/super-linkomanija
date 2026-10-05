@@ -75,6 +75,11 @@
         "text": "Prisijunkite vieną kartą ir būsite prisijungę visose su jūsų naršyklės paskyra sinchronizuotose naršyklėse. Atsijungus vienoje, atsijungiama ir kitose. Jei to nenorite, funkciją išjunkite."
       },
       {
+        "icon": "theme",
+        "title": "Tema pagal sistemą",
+        "text": "Linkomanija persijungia tarp šviesios ir tamsios temos pagal sistemos nustatymus, kartu su kategorijų ikonomis, nekeičiant profilio. Pagal nutylėjimą išjungta."
+      },
+      {
         "icon": "download",
         "title": "Istorija",
         "text": "Papildinio lange rasite paskutinius atidarytus, parsisiųstus ir komentuotus torentus bei bendrą jų skaičių."

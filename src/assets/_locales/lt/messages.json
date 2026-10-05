@@ -299,6 +299,14 @@
     "message": "Prisijungia visose su jūsų paskyra sinchronizuotose naršyklėse. Atsijungus vienoje, atsijungiama visose",
     "description": "Features tab configuration setting description for auto login feature"
   },
+  "featureThemeSyncTitle": {
+    "message": "Tema pagal sistemą",
+    "description": "Features tab configuration setting title for theme follows system feature"
+  },
+  "featureThemeSyncDescription": {
+    "message": "Perjungia šviesią ir tamsią Linkomanijos temą pagal sistemos nustatymus, nekeičiant profilio",
+    "description": "Features tab configuration setting description for theme follows system feature"
+  },
   "autoLoginExpiredNotice": {
     "message": "Išsaugotas prisijungimas nebegalioja, prisijunkite iš naujo.",
     "description": "Auto login notice on the login page when the saved login stopped working"

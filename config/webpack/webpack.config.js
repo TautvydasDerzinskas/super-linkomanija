@@ -35,6 +35,8 @@ export default (env = {}) => {
     entry: {
       background: path.resolve(ROOT, 'src/background.ts'),
       content: path.resolve(ROOT, 'src/content.ts'),
+      // Runs at document start, before the page is drawn
+      theme: path.resolve(ROOT, 'src/features/theme-sync/theme.ts'),
       popup: path.resolve(ROOT, 'src/popup.tsx'),
       // Functions
       bbcode: path.resolve(ROOT, 'src/features/comments-bbcode/inject/bbcode.ts'),

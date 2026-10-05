@@ -75,6 +75,11 @@
         "text": "Log in once and you're logged in on every browser synced with your browser account. Logging out in one logs out the others. Switch it off if you don't want that."
       },
       {
+        "icon": "theme",
+        "title": "Theme follows system",
+        "text": "Linkomanija switches between its light and dark themes with your system, category icons included, without changing your profile. Off by default."
+      },
+      {
         "icon": "download",
         "title": "History",
         "text": "The popup lists your last viewed, downloaded and commented torrents, with all-time totals."

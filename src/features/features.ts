@@ -6,6 +6,7 @@ import ContentBackToTop from './back-to-top/content';
 import ContentRelatedTorrents from './related-torrents/content';
 import ContentReleaseTracker from './release-tracker/content';
 import ContentAutoLogin from './auto-login/content';
+import ContentThemeSync from './theme-sync/content';
 import { FeaturesMeta } from './features-meta';
 
 import IFeature from '../interfaces/feature';
@@ -20,6 +21,7 @@ const contents: IContent[] = [
   ContentRelatedTorrents,
   ContentReleaseTracker,
   ContentAutoLogin,
+  ContentThemeSync,
 ];
 
 export const Features: IFeature[] = FeaturesMeta.map((meta, index) => ({ meta, content: contents[index] }));

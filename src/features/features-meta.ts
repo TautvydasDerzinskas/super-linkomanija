@@ -6,6 +6,7 @@ import MetaBackToTop from './back-to-top/meta';
 import MetaRelatedTorrents from './related-torrents/meta';
 import MetaReleaseTracker from './release-tracker/meta';
 import MetaAutoLogin from './auto-login/meta';
+import MetaThemeSync from './theme-sync/meta';
 
 import IMeta from '../interfaces/meta';
 
@@ -19,4 +20,5 @@ export const FeaturesMeta: IMeta[] = [
   MetaRelatedTorrents,
   MetaReleaseTracker,
   MetaAutoLogin,
+  MetaThemeSync,
 ];
