@@ -1,4 +1,4 @@
-export interface ITorrentComment {
+export interface IReleaseComment {
   author: {
     name: string;
     title: string;
@@ -9,21 +9,21 @@ export interface ITorrentComment {
   rating: string;
 }
 
-export interface ITorrentCategory {
+export interface IReleaseCategory {
   title?: string;
   link?: string;
   imageLink: string;
 }
 
-export interface IBasicTorrentDetails {
+export interface IBasicReleaseDetails {
   id: number;
   title: string;
-  category: ITorrentCategory;
+  category: IReleaseCategory;
 }
 
-export interface ITorrentDetails extends IBasicTorrentDetails {
+export interface IReleaseDetails extends IBasicReleaseDetails {
   detailsLink: string;
-  torrentLink: string;
+  downloadLink: string;
   subTitle?: string;
   size: string;
   isNew: boolean;
@@ -36,9 +36,9 @@ export interface ITorrentDetails extends IBasicTorrentDetails {
   seedersCount: number;
   leechersCount: number;
   /**
-   * Data comming from torrent details page
+   * Data comming from release details page
    */
-  comments?: ITorrentComment[];
+  comments?: IReleaseComment[];
   descriptionHtml?: string;
   imageLinks?: string[];
 }

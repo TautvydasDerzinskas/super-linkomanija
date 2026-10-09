@@ -1,6 +1,6 @@
 @use '../../../popup/variables';
 
-.torrents {
+.releases {
   display: none;
   flex-wrap: wrap;
   list-style: none;
@@ -26,7 +26,7 @@
     width: 25%;
 
     &:hover {
-      .torrent__image__overlay {
+      .release__image__overlay {
         visibility: visible;
         opacity: 1;
 
@@ -41,7 +41,7 @@
     }
   }
 
-  .torrent {
+  .release {
     background-color: variables.$linkomanija-bg-color;
     border: 1px solid variables.$linkomanija-border-color;
     display: flex;
@@ -145,7 +145,7 @@
               background-color: variables.$linkomanija-dark-cell-bg-color;
             }
 
-            &.torrent__favourite {
+            &.release__favourite {
               &.remove {
                 background-color: variables.$theme-yellow;
               }

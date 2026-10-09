@@ -2,7 +2,7 @@
 import BrowserStorageService from './browser-storage.service';
 
 import { IHistory } from '../../interfaces/history';
-import { IBasicTorrentDetails } from '../../interfaces/torrent';
+import { IBasicReleaseDetails } from '../../interfaces/release';
 import { ChromeStorageKeys } from '../../enums';
 
 const browserStorageService = new BrowserStorageService();
@@ -10,26 +10,26 @@ const browserStorageService = new BrowserStorageService();
 type THistoryTypes = 'viewed' | 'downloaded' | 'commented';
 
 class HistoryService {
-  get maxStoredTorrentsPerCategory () { return 25; }
+  get maxStoredReleasesPerCategory () { return 25; }
 
   public getHistory(type: THistoryTypes) {
     return browserStorageService.getItem<IHistory>(`${ChromeStorageKeys.History}_${type}`);
   }
 
-  public addViewedTorrent(torrentDetails: IBasicTorrentDetails) {
-    return this.performStorageProcess(torrentDetails, 'viewed');
+  public addViewedRelease(releaseDetails: IBasicReleaseDetails) {
+    return this.performStorageProcess(releaseDetails, 'viewed');
   }
 
-  public addDownloadedTorrent(torrentDetails: IBasicTorrentDetails) {
-    return this.performStorageProcess(torrentDetails, 'downloaded');
+  public addDownloadedRelease(releaseDetails: IBasicReleaseDetails) {
+    return this.performStorageProcess(releaseDetails, 'downloaded');
   }
 
-  public addCommentedTorrent(torrentDetails: IBasicTorrentDetails) {
-    return this.performStorageProcess(torrentDetails, 'commented');
+  public addCommentedRelease(releaseDetails: IBasicReleaseDetails) {
+    return this.performStorageProcess(releaseDetails, 'commented');
   }
 
-  private async performStorageProcess(torrentDetails: IBasicTorrentDetails, type: THistoryTypes) {
-    if (!torrentDetails) {
+  private async performStorageProcess(releaseDetails: IBasicReleaseDetails, type: THistoryTypes) {
+    if (!releaseDetails) {
       return;
     }
 
@@ -41,10 +41,10 @@ class HistoryService {
       }
     };
 
-    if (data[type].items.length === 0 || data[type].items[0].id !== torrentDetails.id) {
-      data[type].items.unshift(torrentDetails);
+    if (data[type].items.length === 0 || data[type].items[0].id !== releaseDetails.id) {
+      data[type].items.unshift(releaseDetails);
       data[type].total++;
-      if (data[type].items.length > this.maxStoredTorrentsPerCategory) {
+      if (data[type].items.length > this.maxStoredReleasesPerCategory) {
         data[type].items.pop();
       }
       await browserStorageService.setItem<IHistory>(storageKey, data);

@@ -1,9 +1,9 @@
 import ContentCommentsBbcode from './comments-bbcode/content';
-import ContentTorrentPreview from './torrent-preview/content';
+import ContentReleasePreview from './release-preview/content';
 import ContentViewModes from './view-modes/content';
 import ContentHomepageRedirect from './homepage-redirect/content';
 import ContentBackToTop from './back-to-top/content';
-import ContentRelatedTorrents from './related-torrents/content';
+import ContentRelatedReleases from './related-releases/content';
 import ContentReleaseNotifier from './release-notifier/content';
 import ContentAutoLogin from './auto-login/content';
 import ContentThemeSync from './theme-sync/content';
@@ -14,11 +14,11 @@ import IContent from '../interfaces/content';
 
 const contents: IContent[] = [
   ContentCommentsBbcode,
-  ContentTorrentPreview,
+  ContentReleasePreview,
   ContentViewModes,
   ContentHomepageRedirect,
   ContentBackToTop,
-  ContentRelatedTorrents,
+  ContentRelatedReleases,
   ContentReleaseNotifier,
   ContentAutoLogin,
   ContentThemeSync,

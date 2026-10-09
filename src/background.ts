@@ -11,7 +11,7 @@ chrome.tabs.onActivated.addListener(() => { extensionService.updateToolbarIcon()
 
 chrome.runtime.onInstalled.addListener(async () => {
   // Runs on updates too, so newly added features get their default settings
-  await extensionService.migrateLegacyReleaseNotifier();
+  await extensionService.migrateLegacyStorage();
   await featureStorageService.initialize();
   await extensionService.scheduleReleaseNotifierChecks();
   await extensionService.updateReleaseNotifierBadge();

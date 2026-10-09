@@ -8,7 +8,7 @@ export const fill = (text, values) => text.replace(/\{(\w+)\}/g, (match, name) =
 
 // Full size screenshots from docs/images, in the order of the screenshots' captions, each with an 800px wide
 // JPEG thumbnail named <name>-800.jpg in site/public/images
-export const SCREENSHOTS = ['screenshot_01.jpg', 'screenshot_02.jpg', 'screenshot_03.jpg', 'screenshot_04.jpg', 'screenshot_05.png'];
+export const SCREENSHOTS = ['screenshot_01.png', 'screenshot_02.png', 'screenshot_03.png', 'screenshot_04.png', 'screenshot_05.png'];
 const thumbnail = (file) => file.replace(/\.\w+$/, '-800.jpg');
 
 const escapeAttribute = (text) => text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

@@ -40,7 +40,7 @@
     "description": "Features tab configuration setting title for comments formatting feature"
   },
   "featureCommentsFormattingDescription": {
-    "message": "Adds text formatting options to torrents comment form",
+    "message": "Adds text formatting options to the release comment form",
     "description": "Features tab configuration setting description for comments formatting feature"
   },
   "featureHomePageRedirectTitle": {
@@ -48,23 +48,23 @@
     "description": "Features tab configuration setting title for homepage redirect feature"
   },
   "featureHomePageRedirectDescription": {
-    "message": "Skip homepage and redirect straight to torrents page",
+    "message": "Skip homepage and redirect straight to the releases page",
     "description": "Features tab configuration setting description for homepage redirect feature"
   },
-  "featureTorrentPreviewTitle": {
-    "message": "Torrent preview",
-    "description": "Features tab configuration setting title for torrent preview feature"
+  "featureReleasePreviewTitle": {
+    "message": "Release preview",
+    "description": "Features tab configuration setting title for release preview feature"
   },
-  "featureTorrentPreviewDescription": {
-    "message": "See torrent details without opening the torrent page",
-    "description": "Features tab configuration setting description for torrent preview feature"
+  "featureReleasePreviewDescription": {
+    "message": "See release details without opening the release page",
+    "description": "Features tab configuration setting description for release preview feature"
   },
   "featureViewModesTitle": {
     "message": "View modes",
     "description": "Features tab configuration setting title for view modes feature"
   },
   "featureViewModesDescription": {
-    "message": "Switch between list and grid view modes while browsing torrents",
+    "message": "Switch between list and grid view modes while browsing releases",
     "description": "Features tab configuration setting description for view modes feature"
   },
   "featureBackToTopTitle": {
@@ -75,13 +75,13 @@
     "message": "Adds 'Back to top' button to each page so you could scroll up quickly!",
     "description": "Features tab configuration setting description for back to top feature"
   },
-  "featureRelatedTorrentsTitle": {
-    "message": "Related torrents",
-    "description": "Features tab configuration setting title for related torrents feature"
+  "featureRelatedReleasesTitle": {
+    "message": "Related releases",
+    "description": "Features tab configuration setting title for related releases feature"
   },
-  "featureRelatedTorrentsDescription": {
-    "message": "In torrent page show a list of other related torrents",
-    "description": "Features tab configuration setting description for related torrents feature"
+  "featureRelatedReleasesDescription": {
+    "message": "Show a list of other related releases on the release page",
+    "description": "Features tab configuration setting description for related releases feature"
   },
   "tabsLinksGithubRepositoryLabel": {
     "message": "GitHub repository",
@@ -116,19 +116,19 @@
     "description": "Leave a review link box overlay text"
   },
   "tabsHistoryRecentViewedLabel": {
-    "message": "Recently viewed torrents",
-    "description": "History tab recently viewed torrents group"
+    "message": "Recently viewed releases",
+    "description": "History tab recently viewed releases group"
   },
   "tabsHistoryRecentDownloadedLabel": {
-    "message": "Recently downloaded torrents",
-    "description": "History tab recently downloaded torrents group"
+    "message": "Recently downloaded releases",
+    "description": "History tab recently downloaded releases group"
   },
   "tabsHistoryRecentCommentedLabel": {
-    "message": "Recently commented torrents",
-    "description": "History tab recently commented torrents group"
+    "message": "Recently commented releases",
+    "description": "History tab recently commented releases group"
   },
-  "tabsHistoryNoTorrentEntriesLabel": {
-    "message": "No torrents tracked yet",
+  "tabsHistoryNoReleaseEntriesLabel": {
+    "message": "No releases recorded yet",
     "description": "History tab label showed when gruop doesn't have any items tracked yet"
   },
   "tabsHistoryTotalLabel": {
@@ -145,7 +145,7 @@
   },
   "open": {
     "message": "Open",
-    "description": "Generic (used in: torrents list)"
+    "description": "Generic (used in: releases list)"
   },
   "featureReleaseNotifierTitle": {
     "message": "Release notifier",
@@ -277,7 +277,7 @@
   },
   "releaseNotifierPageMatch": {
     "message": "This page matches watched release",
-    "description": "Release notifier bar text on the matched torrent page, followed by the search term"
+    "description": "Release notifier bar text on the matched release page, followed by the search term"
   },
   "releaseNotifierToastTitle": {
     "message": "Watched releases found",

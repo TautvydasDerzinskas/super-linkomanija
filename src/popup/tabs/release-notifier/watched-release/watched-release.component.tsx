@@ -9,7 +9,7 @@ interface IWatchedReleaseComponentProps {
   matches: IReleaseMatch[];
   onEdit: () => void;
   onDelete: () => void;
-  onReject: (torrentId: number) => void;
+  onReject: (entryId: number) => void;
   onAccept: () => void;
 }
 
@@ -44,7 +44,7 @@ export default function WatchedReleaseComponent({ release, matches, onEdit, onDe
       ) : (
         <ul className='watched-release__matches'>
           {matches.map(match => (
-            <li key={match.torrentId} className='watched-release__match'>
+            <li key={match.entryId} className='watched-release__match'>
               <a href={match.detailsLink} target='_blank' title={match.title}>{match.title}</a>
               <div className='watched-release__match-footer'>
                 <span className='watched-release__match-details'>
@@ -53,7 +53,7 @@ export default function WatchedReleaseComponent({ release, matches, onEdit, onDe
                   )}
                   {[match.addedDate, match.size].filter(Boolean).join(' · ')}
                 </span>
-                <button type='button' className='sl-button' onClick={() => onReject(match.torrentId)}>
+                <button type='button' className='sl-button' onClick={() => onReject(match.entryId)}>
                   <FormattedMessage id='releaseNotifierReject' />
                 </button>
                 <button type='button' className='sl-button sl-button--primary' onClick={onAccept}>

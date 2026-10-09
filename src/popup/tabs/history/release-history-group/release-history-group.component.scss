@@ -1,6 +1,6 @@
 @use '../../../variables';
 
-.torrent-group {
+.release-group {
   background-color: var(--sl-card);
   padding: variables.$default-spacing;
 
@@ -28,7 +28,7 @@
     }
   }
 
-  &__torrents {
+  &__releases {
     overflow: auto;
     margin-top: variables.$default-spacing;
     max-height: 90px;

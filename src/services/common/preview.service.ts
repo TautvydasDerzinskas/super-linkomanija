@@ -3,11 +3,11 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 
 import apiService from './api.service';
-import { ITorrentDetails } from '../../interfaces/torrent';
+import { IReleaseDetails } from '../../interfaces/release';
 import templateService from '../content/template.service';
 
 class PreviewService {
-  public add(element: HTMLElement, details: ITorrentDetails) {
+  public add(element: HTMLElement, details: IReleaseDetails) {
     let contentLoaded = false;
     tippy(element, {
       maxWidth: 350,
@@ -16,15 +16,15 @@ class PreviewService {
       interactive: true,
       allowHTML: true,
       appendTo: () => document.body,
-      content: templateService.getTorrentPreviewPopup(null, details, true),
+      content: templateService.getReleasePreviewPopup(null, details, true),
       animation: 'scale',
       interactiveBorder: 0,
       interactiveDebounce: 100,
       onShow(tip) {
         if (!contentLoaded) {
-          apiService.getTorrentDetails(details.detailsLink).then(response => {
+          apiService.getReleaseDetails(details.detailsLink).then(response => {
             tip.setContent(
-              templateService.getTorrentPreviewPopup(response.descriptionHtml, details, false),
+              templateService.getReleasePreviewPopup(response.descriptionHtml, details, false),
             );
             contentLoaded = true;
           });

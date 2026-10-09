@@ -8,13 +8,13 @@ import './styles/comments-bbcode.scss';
 
 class ContentCommentsBbcode implements IContent {
   public setupEventListeners() {
-    if (urlService.isTorrentDetailsPage()) {
+    if (urlService.isReleaseDetailsPage()) {
       this.setupReplyCommentBoxesTriggers();
     }
   }
 
   public extendPageUserInterface() {
-    if (urlService.isTorrentDetailsPage()) {
+    if (urlService.isReleaseDetailsPage()) {
       const textBoxes = document.querySelectorAll(LinkomanijaSelectors.CommentTextBoxes);
       for (let i = 0, b = textBoxes.length; i < b; i += 1) {
         const scEditorInstance = sceditor.instance(textBoxes[i]);
@@ -34,7 +34,7 @@ class ContentCommentsBbcode implements IContent {
   }
 
   public cleanUp() {
-    if (urlService.isTorrentDetailsPage()) {
+    if (urlService.isReleaseDetailsPage()) {
       const textBoxes = document.querySelectorAll(LinkomanijaSelectors.CommentTextBoxes);
       for (let i = 0, b = textBoxes.length; i < b; i += 1) {
         const scEditorInstance = sceditor.instance(textBoxes[i]);

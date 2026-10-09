@@ -1,9 +1,9 @@
 import IMeta from '../../interfaces/meta';
 
 const meta: IMeta = {
-  id: 'sl-related-torrents',
-  description: 'featureRelatedTorrentsDescription',
-  title: 'featureRelatedTorrentsTitle',
+  id: 'sl-related-releases',
+  description: 'featureRelatedReleasesDescription',
+  title: 'featureRelatedReleasesTitle',
   defaultStatus: true,
   excludedBrowsers: [],
 };

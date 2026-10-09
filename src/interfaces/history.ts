@@ -1,7 +1,7 @@
-import { IBasicTorrentDetails } from './torrent';
+import { IBasicReleaseDetails } from './release';
 
 export interface IHistoryItemData {
-  items: IBasicTorrentDetails[];
+  items: IBasicReleaseDetails[];
   total: number;
 }
 

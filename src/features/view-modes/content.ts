@@ -1,4 +1,4 @@
-import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
+import extractReleaseDetailsService from '../../services/common/extract-release-details.service';
 import featureStorageService from '../../services/common/feature-storage.service';
 import urlService from '../../services/common/url.service';
 import previewService from '../../services/common/preview.service';
@@ -6,7 +6,7 @@ import templateService from '../../services/content/template.service';
 
 import meta from './meta';
 import IContent from '../../interfaces/content';
-import { ITorrentDetails } from '../../interfaces/torrent';
+import { IReleaseDetails } from '../../interfaces/release';
 import { LinkomanijaSelectors, ViewModes } from '../../enums';
 
 import './styles/view-modes.scss';
@@ -19,7 +19,7 @@ class ContentViewModes implements IContent {
   private viewMode: ViewModes;
 
   public extendPageUserInterface() {
-    if (urlService.isTorrentsListPage()) {
+    if (urlService.isReleasesListPage()) {
       featureStorageService.getFeatureData(meta.id).then((featureData) => {
         this.viewMode = featureData.data.mode;
         this.appendViewModeToggler();
@@ -38,8 +38,8 @@ class ContentViewModes implements IContent {
     const modeSelector = document.createElement('div');
     modeSelector.innerHTML = templateService.getViewModeToggler(this.viewMode === ViewModes.List);
     modeSelector.className = 'view-modes';
-    const torrentsList = document.querySelector(LinkomanijaSelectors.TorrentTable);
-    torrentsList.parentNode.insertBefore(modeSelector, torrentsList);
+    const releasesList = document.querySelector(LinkomanijaSelectors.ReleaseTable);
+    releasesList.parentNode.insertBefore(modeSelector, releasesList);
     this.setUpViewModeButtonsClickEvent();
   }
 
@@ -86,21 +86,21 @@ class ContentViewModes implements IContent {
   private generateGridModeUi() {
     const cards = document.createElement('ul');
     cards.innerHTML = templateService.getLoadingSpinner();
-    cards.className = 'torrents';
+    cards.className = 'releases';
 
-    const torrentsTable = document.querySelector(LinkomanijaSelectors.TorrentTable);
-    torrentsTable.parentNode.insertBefore(cards, torrentsTable);
+    const releasesTable = document.querySelector(LinkomanijaSelectors.ReleaseTable);
+    releasesTable.parentNode.insertBefore(cards, releasesTable);
 
-    extractTorrentDetailsService.generateMultipleTorrentsData().then(torrentDetails => {
+    extractReleaseDetailsService.generateMultipleReleasesData().then(releaseDetails => {
       let cardsHtml = '';
 
-      for (let i = 0, b = torrentDetails.length; i < b; i += 1) {
-        cardsHtml += templateService.getTorrentGridCard(torrentDetails[i]);
+      for (let i = 0, b = releaseDetails.length; i < b; i += 1) {
+        cardsHtml += templateService.getReleaseGridCard(releaseDetails[i]);
       }
 
-      document.querySelector('ul.torrents').innerHTML = cardsHtml;
+      document.querySelector('ul.releases').innerHTML = cardsHtml;
 
-      this.setupPreviewHover(torrentDetails);
+      this.setupPreviewHover(releaseDetails);
       this.setupFavouriteClicks();
 
       this.gridModeUiGenerated = true;
@@ -108,9 +108,9 @@ class ContentViewModes implements IContent {
   }
 
   public cleanUp() {
-    if (urlService.isTorrentsListPage()) {
+    if (urlService.isReleasesListPage()) {
       // Removing generated UI
-      const gridContainer = document.getElementsByClassName('torrents')[0];
+      const gridContainer = document.getElementsByClassName('releases')[0];
       if (gridContainer) { gridContainer.remove(); }
       document.getElementsByClassName('view-modes')[0].remove();
       // Removing body classes
@@ -123,11 +123,11 @@ class ContentViewModes implements IContent {
     }
   }
 
-  private setupPreviewHover(torrentDetails: ITorrentDetails[]) {
-    const previewButtons = document.getElementsByClassName('torrent-preview');
+  private setupPreviewHover(releaseDetails: IReleaseDetails[]) {
+    const previewButtons = document.getElementsByClassName('release-preview');
     for (let i = 0, b = previewButtons.length; i < b; i += 1) {
       const button = previewButtons[i];
-      previewService.add(button as HTMLElement, torrentDetails[i]);
+      previewService.add(button as HTMLElement, releaseDetails[i]);
     }
   }
 
@@ -136,7 +136,7 @@ class ContentViewModes implements IContent {
      * Setting up grid mode favourite button clicks
      */
     const self = this;
-    const favouriteButtons = document.querySelectorAll('.torrent__favourite');
+    const favouriteButtons = document.querySelectorAll('.release__favourite');
     for (let i = 0, b = favouriteButtons.length; i < b; i += 1) {
       favouriteButtons[i].addEventListener('click', function () {
         self.favouriteClickEvent(this as HTMLElement, i);
@@ -146,15 +146,15 @@ class ContentViewModes implements IContent {
     /**
      * Sync list mode buttons with grid mode favourite buttons
      */
-    const torrentListRows = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
-    for (let i = 0, b = torrentListRows.length; i < b; i += 1) {
-      const addFavouriteElement = torrentListRows[i].children[(torrentListRows[i].children.length - 5)];
-      const removeFavouriteElement = torrentListRows[i].children[(torrentListRows[i].children.length - 4)];
+    const releaseListRows = document.querySelectorAll(LinkomanijaSelectors.ReleaseTableTitleColumn);
+    for (let i = 0, b = releaseListRows.length; i < b; i += 1) {
+      const addFavouriteElement = releaseListRows[i].children[(releaseListRows[i].children.length - 5)];
+      const removeFavouriteElement = releaseListRows[i].children[(releaseListRows[i].children.length - 4)];
       const id = parseInt((addFavouriteElement as HTMLElement).getAttribute('id').replace('ba_', ''), 10);
-      const element = document.querySelector(`.torrent__favourite[data-id="${id}"]`) as HTMLElement;
+      const element = document.querySelector(`.release__favourite[data-id="${id}"]`) as HTMLElement;
 
-      addFavouriteElement.addEventListener('click', () => { element.className = 'torrent__favourite remove'; });
-      removeFavouriteElement.addEventListener('click', () => { element.className = 'torrent__favourite add'; });
+      addFavouriteElement.addEventListener('click', () => { element.className = 'release__favourite remove'; });
+      removeFavouriteElement.addEventListener('click', () => { element.className = 'release__favourite add'; });
     }
   }
 
@@ -166,11 +166,11 @@ class ContentViewModes implements IContent {
 
     apiService[method](id).then((response: string) => {
       if (parseInt(response, 10) === 1) {
-        element.className = `torrent__favourite ${className}`;
-        const torrentListRows = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
-        torrentListRows[rowIndex].children[(torrentListRows[rowIndex].children.length - 5)]
+        element.className = `release__favourite ${className}`;
+        const releaseListRows = document.querySelectorAll(LinkomanijaSelectors.ReleaseTableTitleColumn);
+        releaseListRows[rowIndex].children[(releaseListRows[rowIndex].children.length - 5)]
           .setAttribute('style', `display: ${isAdd ? 'none' : 'inline'};`);
-        torrentListRows[rowIndex].children[(torrentListRows[rowIndex].children.length - 4)]
+        releaseListRows[rowIndex].children[(releaseListRows[rowIndex].children.length - 4)]
           .setAttribute('style', `display: ${isAdd ? 'inline' : 'none'};`);
       }
     });

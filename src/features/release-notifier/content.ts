@@ -22,16 +22,16 @@ class ContentReleaseNotifier implements IContent {
       languageService.getActiveLocale(),
     ]);
 
-    if (urlService.isTorrentDetailsPage()) {
-      const torrentId = parseInt(window.location.href.split('details?')[1], 10);
-      const openedMatch = pendingMatches.find(({ match }) => match.torrentId === torrentId);
+    if (urlService.isReleaseDetailsPage()) {
+      const entryId = parseInt(window.location.href.split('details?')[1], 10);
+      const openedMatch = pendingMatches.find(({ match }) => match.entryId === entryId);
       if (openedMatch) {
         this.insertDecisionBar(openedMatch, locale.messages);
         return;
       }
     }
 
-    const undismissedMatches = pendingMatches.filter(({ match }) => !state.dismissedTorrentIds.includes(match.torrentId));
+    const undismissedMatches = pendingMatches.filter(({ match }) => !state.dismissedEntryIds.includes(match.entryId));
     if (undismissedMatches.length > 0) {
       this.insertToast(undismissedMatches, locale.messages);
     }
@@ -64,7 +64,7 @@ class ContentReleaseNotifier implements IContent {
       setTimeout(() => bar.remove(), noticeDuration);
     };
     rejectButton.addEventListener('click', async () => {
-      await releaseNotifierService.rejectMatch(release.id, match.torrentId);
+      await releaseNotifierService.rejectMatch(release.id, match.entryId);
       showNotice(messages.releaseNotifierRejectedNotice);
     });
     acceptButton.addEventListener('click', async () => {
@@ -82,7 +82,7 @@ class ContentReleaseNotifier implements IContent {
     const dismissButton = this.createElement('button', 'release-notifier-toast__dismiss', '×');
     dismissButton.title = messages.releaseNotifierDismiss;
     dismissButton.addEventListener('click', () => {
-      releaseNotifierService.dismissMatches(foundReleases.map(({ match }) => match.torrentId));
+      releaseNotifierService.dismissMatches(foundReleases.map(({ match }) => match.entryId));
       toast.remove();
     });
     header.append(this.createElement('strong', '', messages.releaseNotifierToastTitle), dismissButton);
@@ -100,7 +100,7 @@ class ContentReleaseNotifier implements IContent {
     document.body.appendChild(toast);
   }
 
-  // Text is set through textContent, as search terms and torrent titles must not be treated as HTML
+  // Text is set through textContent, as search terms and result titles must not be treated as HTML
   private createElement(tagName: string, className: string, text?: string) {
     const element = document.createElement(tagName);
     if (className) {

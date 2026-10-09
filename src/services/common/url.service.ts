@@ -22,7 +22,7 @@ class UrlService {
     return url.endsWith('.net') || url.endsWith('.net/') || url.endsWith('/index.php');
   }
 
-  public isTorrentsListPage(url = window.location.href.toLowerCase()) {
+  public isReleasesListPage(url = window.location.href.toLowerCase()) {
     return url.includes('/browse.php');
   }
 
@@ -30,7 +30,7 @@ class UrlService {
     return url.includes('/login.php');
   }
 
-  public isTorrentDetailsPage(url = window.location.href.toLowerCase()) {
+  public isReleaseDetailsPage(url = window.location.href.toLowerCase()) {
     return url.includes('/details?');
   }
 }

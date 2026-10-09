@@ -1,15 +1,15 @@
 export interface IWatchedRelease {
   id: string;
   searchTerm: string;
-  // A torrent is never matched when its title contains any of these
+  // A result is never matched when its title contains any of these
   excluded: string[];
   // Not required for a match, matches containing any of these are marked and listed first
   preferred: string[];
-  rejectedTorrentIds: number[];
+  rejectedEntryIds: number[];
 }
 
 export interface IReleaseMatch {
-  torrentId: number;
+  entryId: number;
   title: string;
   detailsLink: string;
   addedDate: string;
@@ -24,7 +24,7 @@ export interface IReleaseNotifierState {
   lastCheck?: number;
   loggedOut?: boolean;
   // Matches hidden from the page toast, they stay pending until accepted or rejected
-  dismissedTorrentIds: number[];
+  dismissedEntryIds: number[];
 }
 
 export interface IMessageReleaseNotifier {

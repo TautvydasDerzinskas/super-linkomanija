@@ -4,63 +4,63 @@ import svgIconsService from '../../services/content/svg-icons.service';
 
 import IContent from '../../interfaces/content';
 
-import './styles/related-torrents.scss';
+import './styles/related-releases.scss';
 
-// How similar a found torrent's name has to be to the current one, from 0 to 1
+// How similar a found release's name has to be to the current one, from 0 to 1
 const minNameSimilarity = 0.7;
 // Release details start at the year, season or episode, or resolution, e.g. "2023", "S01E02", "1080p"
 const releaseDetailsWord = /^((19|20)\d{2}|s\d{1,2}(e\d{1,3})?|\d{3,4}p)$/;
 
-class ContentRelatedTorrents implements IContent {
+class ContentRelatedReleases implements IContent {
   public extendPageUserInterface() {
-    if (urlService.isTorrentDetailsPage()) {
-      this.insertRelatedTorrentsContainer();
-      const torrentTitle = document.querySelector('#content h1').textContent;
-      apiService.getRelatedTorrents(torrentTitle).then((torrentsTable) => {
-        this.insertRelatedTorrents(torrentTitle, torrentsTable);
+    if (urlService.isReleaseDetailsPage()) {
+      this.insertRelatedReleasesContainer();
+      const releaseTitle = document.querySelector('#content h1').textContent;
+      apiService.getRelatedReleases(releaseTitle).then((releasesTable) => {
+        this.insertRelatedReleases(releaseTitle, releasesTable);
       });
     }
   }
 
-  private insertRelatedTorrentsContainer() {
+  private insertRelatedReleasesContainer() {
     const target = document.querySelector('#content table');
-    const relatedTorrents = document.createElement('div');
-    relatedTorrents.setAttribute('class', 'related-torrents');
-    relatedTorrents.innerHTML = `
-      <h1>Susiję torrentai</h1>
-      <div class="related-torrents__torrents sl-loading">${svgIconsService.iconLoading}</div>
+    const relatedReleases = document.createElement('div');
+    relatedReleases.setAttribute('class', 'related-releases');
+    relatedReleases.innerHTML = `
+      <h1>Susiję leidimai</h1>
+      <div class="related-releases__releases sl-loading">${svgIconsService.iconLoading}</div>
     `;
-    target.after(relatedTorrents);
+    target.after(relatedReleases);
   }
 
-  private insertRelatedTorrents(torrentTitle: string, torrentsTable: HTMLTableElement) {
-    const target = document.getElementsByClassName('related-torrents__torrents')[0];
+  private insertRelatedReleases(releaseTitle: string, releasesTable: HTMLTableElement) {
+    const target = document.getElementsByClassName('related-releases__releases')[0];
     target.classList.remove('sl-loading');
 
-    const matchingRows = torrentsTable ? this.filterMatchingRows(torrentTitle, torrentsTable) : 0;
+    const matchingRows = releasesTable ? this.filterMatchingRows(releaseTitle, releasesTable) : 0;
     if (matchingRows === 0) {
-      target.innerHTML = '<p class="related-torrents__empty">Susijusių torrentų nerasta</p>';
+      target.innerHTML = '<p class="related-releases__empty">Susijusių leidimų nerasta</p>';
       return;
     }
-    target.innerHTML = torrentsTable.outerHTML;
+    target.innerHTML = releasesTable.outerHTML;
   }
 
   /**
-   * Removes the current torrent and the ones with a different title, returns how many are left
+   * Removes the current release and the ones with a different title, returns how many are left
    */
-  private filterMatchingRows(torrentTitle: string, torrentsTable: HTMLTableElement) {
-    const currentTorrentId = /details\?(\d+)/.exec(window.location.href)?.[1];
+  private filterMatchingRows(releaseTitle: string, releasesTable: HTMLTableElement) {
+    const currentReleaseId = /details\?(\d+)/.exec(window.location.href)?.[1];
     let matchingRows = 0;
 
-    for (const row of Array.from(torrentsTable.rows)) {
+    for (const row of Array.from(releasesTable.rows)) {
       const link = row.querySelector<HTMLAnchorElement>('a[href^="details?"]');
       // Heading row
       if (!link) {
         continue;
       }
 
-      const torrentId = /details\?(\d+)/.exec(link.getAttribute('href'))?.[1];
-      if (torrentId === currentTorrentId || this.getNameSimilarity(torrentTitle, link.textContent) < minNameSimilarity) {
+      const releaseId = /details\?(\d+)/.exec(link.getAttribute('href'))?.[1];
+      if (releaseId === currentReleaseId || this.getNameSimilarity(releaseTitle, link.textContent) < minNameSimilarity) {
         row.remove();
       } else {
         matchingRows++;
@@ -118,13 +118,13 @@ class ContentRelatedTorrents implements IContent {
   }
 
   public cleanUp() {
-    if (urlService.isTorrentDetailsPage()) {
-      const relatedTorrents = document.getElementsByClassName('related-torrents')[0];
-      if (relatedTorrents) {
-        relatedTorrents.remove();
+    if (urlService.isReleaseDetailsPage()) {
+      const relatedReleases = document.getElementsByClassName('related-releases')[0];
+      if (relatedReleases) {
+        relatedReleases.remove();
       }
     }
   }
 }
 
-export default new ContentRelatedTorrents();
+export default new ContentRelatedReleases();

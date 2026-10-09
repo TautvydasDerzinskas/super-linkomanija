@@ -8,13 +8,13 @@ const releasesStorage = new BrowserStorageService();
 const stateStorage = new BrowserStorageService('local');
 
 const linkomanijaUrl = 'https://www.linkomanija.net/';
-const maxRejectedTorrentIds = 100;
-// Only the most relevant results are considered, so a broad search term does not match old torrents
+const maxRejectedEntryIds = 100;
+// Only the most relevant results are considered, so a broad search term does not match old releases
 const maxCheckedResults = 5;
 const delayBetweenSearches = 1000;
 
 export interface ISearchResult {
-  torrentId: number;
+  entryId: number;
   title: string;
   detailsLink: string;
   addedDate: string;
@@ -35,11 +35,11 @@ class ReleaseNotifierService {
 
   public async getState(): Promise<IReleaseNotifierState> {
     const state = await stateStorage.getItem<IReleaseNotifierState>(ChromeStorageKeys.ReleaseNotifierState);
-    return { matches: {}, dismissedTorrentIds: [], ...state };
+    return { matches: {}, dismissedEntryIds: [], ...state };
   }
 
   public createRelease(searchTerm: string, excluded: string[], preferred: string[]): IWatchedRelease {
-    return { id: crypto.randomUUID(), searchTerm, excluded, preferred, rejectedTorrentIds: [] };
+    return { id: crypto.randomUUID(), searchTerm, excluded, preferred, rejectedEntryIds: [] };
   }
 
   public async saveRelease(release: IWatchedRelease) {
@@ -71,22 +71,22 @@ class ReleaseNotifierService {
     return this.removeRelease(releaseId);
   }
 
-  public async rejectMatch(releaseId: string, torrentId: number) {
+  public async rejectMatch(releaseId: string, entryId: number) {
     const releases = await this.getReleases();
     const release = releases.find(storedRelease => storedRelease.id === releaseId);
     if (release) {
-      release.rejectedTorrentIds = [...release.rejectedTorrentIds, torrentId].slice(-maxRejectedTorrentIds);
+      release.rejectedEntryIds = [...release.rejectedEntryIds, entryId].slice(-maxRejectedEntryIds);
       await releasesStorage.setItem(ChromeStorageKeys.ReleaseNotifier, releases);
     }
 
     const state = await this.getState();
-    state.matches[releaseId] = (state.matches[releaseId] ?? []).filter(match => match.torrentId !== torrentId);
+    state.matches[releaseId] = (state.matches[releaseId] ?? []).filter(match => match.entryId !== entryId);
     await stateStorage.setItem(ChromeStorageKeys.ReleaseNotifierState, state);
   }
 
-  public async dismissMatches(torrentIds: number[]) {
+  public async dismissMatches(entryIds: number[]) {
     const state = await this.getState();
-    state.dismissedTorrentIds = [...new Set([...state.dismissedTorrentIds, ...torrentIds])];
+    state.dismissedEntryIds = [...new Set([...state.dismissedEntryIds, ...entryIds])];
     await stateStorage.setItem(ChromeStorageKeys.ReleaseNotifierState, state);
   }
 
@@ -129,7 +129,7 @@ class ReleaseNotifierService {
       const size = /<td class=center>([\d.,]+)<br>(\w+)<\/td>/.exec(row);
 
       return [{
-        torrentId: parseInt(title[2], 10),
+        entryId: parseInt(title[2], 10),
         title: this.decodeHtmlEntities(title[3]).trim(),
         detailsLink: linkomanijaUrl + title[1],
         // Seconds are left out, so the date fits next to the match buttons in the popup
@@ -158,8 +158,8 @@ class ReleaseNotifierService {
 
       const matches = state.matches[release.id] ?? [];
       for (const result of results.slice(0, maxCheckedResults)) {
-        const isKnown = release.rejectedTorrentIds.includes(result.torrentId) ||
-          matches.some(match => match.torrentId === result.torrentId);
+        const isKnown = release.rejectedEntryIds.includes(result.entryId) ||
+          matches.some(match => match.entryId === result.entryId);
         const { isMatch, isPreferred } = this.matchTitle(release, result.title);
         if (!isKnown && isMatch) {
           const match: IReleaseMatch = { ...result, isPreferred, foundAt: Date.now() };
@@ -177,19 +177,19 @@ class ReleaseNotifierService {
     const latestMatches: IReleaseNotifierState['matches'] = {};
     for (const release of latestReleases) {
       latestMatches[release.id] = (state.matches[release.id] ?? latestState.matches[release.id] ?? [])
-        .filter(match => !release.rejectedTorrentIds.includes(match.torrentId));
+        .filter(match => !release.rejectedEntryIds.includes(match.entryId));
     }
-    const pendingTorrentIds = Object.values(latestMatches).flat().map(match => match.torrentId);
+    const pendingEntryIds = Object.values(latestMatches).flat().map(match => match.entryId);
 
     await stateStorage.setItem<IReleaseNotifierState>(ChromeStorageKeys.ReleaseNotifierState, {
       matches: latestMatches,
       lastCheck: loggedOut ? latestState.lastCheck : Date.now(),
       loggedOut,
-      dismissedTorrentIds: latestState.dismissedTorrentIds.filter(torrentId => pendingTorrentIds.includes(torrentId)),
+      dismissedEntryIds: latestState.dismissedEntryIds.filter(entryId => pendingEntryIds.includes(entryId)),
     });
 
     return found.filter(({ release, match }) =>
-      latestMatches[release.id]?.some(latestMatch => latestMatch.torrentId === match.torrentId));
+      latestMatches[release.id]?.some(latestMatch => latestMatch.entryId === match.entryId));
   }
 
   /**

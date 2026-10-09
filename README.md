@@ -12,23 +12,23 @@
 <p align="center"><strong><a href="https://tautvydasderzinskas.github.io/super-linkomanija/">Website</a></strong> · <a href="https://chromewebstore.google.com/detail/gmdhkalbljdblbogfladannflinppnji">Chrome Web Store</a> · <a href="https://microsoftedge.microsoft.com/addons/detail/dhmdmhhmpkhafcffhbihnpnfeknnnmlk">Edge Add-ons</a> · <a href="https://addons.mozilla.org/en-GB/firefox/addon/super-linkomanija/">Firefox Add-ons</a> · <a href="https://github.com/TautvydasDerzinskas/super-linkomanija/releases/latest">Latest release</a></p>
 
 ## About
-Browser extension with purpose to extend UX of oldest Lithuanian torrent web site http://www.linkomanija.net
+Browser extension with purpose to extend UX of oldest Lithuanian sharing community website http://www.linkomanija.net
 
 Features, screenshots and install instructions in English and Lithuanian are on the [website](https://tautvydasderzinskas.github.io/super-linkomanija/).
 
 ## Features
 1. Comment formatting
-2. Torrent preview
-3. Torrents view modes (list/grid)
+2. Release preview
+3. Releases view modes (list/grid)
 4. Homepage redirect
 5. Quick back to top
-6. Related torrents
+6. Related releases
 7. Release notifier
 8. Auto login
 9. Theme follows system
 
 ## Screenshots
-<a href="docs/images/screenshot_01.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_01.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_02.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_02.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_03.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_03.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_04.jpg" target="_blank"><img width="200px" src="docs/images/screenshot_04.jpg" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_05.png" target="_blank"><img width="200px" src="docs/images/screenshot_05.png" alt="Screenshot" title="Screenshot" /></a>
+<a href="docs/images/screenshot_01.png" target="_blank"><img width="200px" src="docs/images/screenshot_01.png" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_02.png" target="_blank"><img width="200px" src="docs/images/screenshot_02.png" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_03.png" target="_blank"><img width="200px" src="docs/images/screenshot_03.png" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_04.png" target="_blank"><img width="200px" src="docs/images/screenshot_04.png" alt="Screenshot" title="Screenshot" /></a><a href="docs/images/screenshot_05.png" target="_blank"><img width="200px" src="docs/images/screenshot_05.png" alt="Screenshot" title="Screenshot" /></a>
 
 ## Installation
 Chrome & Vivaldi users please click below:

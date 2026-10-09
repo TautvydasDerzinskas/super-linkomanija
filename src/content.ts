@@ -1,7 +1,7 @@
 import featureStorageService from './services/common/feature-storage.service';
 import historyService from './services/common/history.service';
 import urlService from './services/common/url.service';
-import extractTorrentDetailsService from './services/common/extract-torrent-details.service';
+import extractReleaseDetailsService from './services/common/extract-release-details.service';
 import browserService from './services/common/browser.service';
 
 import { Features } from './features/features';
@@ -34,22 +34,22 @@ const findParent = (tagName: string, element: HTMLElement) => {
 };
 
 const setupHistoryTracking = () => {
-  if (urlService.isTorrentDetailsPage()) {
-    const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
+  if (urlService.isReleaseDetailsPage()) {
+    const releaseDetails = extractReleaseDetailsService.getBasicReleaseDetailsInDetailsPage();
 
-    // Tracking viewed torrents
-    historyService.addViewedTorrent(torrentDetails);
+    // Tracking viewed releases
+    historyService.addViewedRelease(releaseDetails);
 
-    // Tracking commented torrents
+    // Tracking commented releases
     const commentSubmitButton = document.getElementById('comment-post-submit');
     if (commentSubmitButton) {
       commentSubmitButton.addEventListener('click', () => {
-        historyService.addCommentedTorrent(torrentDetails);
+        historyService.addCommentedRelease(releaseDetails);
       });
     }
   }
 
-  // Tracking downloaded torrents
+  // Tracking downloaded releases
   document.body.onclick = (event) => {
     const linkElement = findParent('a', event.target as HTMLElement);
     if (linkElement) {
@@ -57,12 +57,12 @@ const setupHistoryTracking = () => {
       if (downloadLink) {
         const isDownloadLink = downloadLink.includes('download.php?');
         if (isDownloadLink) {
-          if (urlService.isTorrentsListPage()) {
-            const torrentDetails = extractTorrentDetailsService.getMainTorrentDetailsByDownloadLink(downloadLink);
-            historyService.addDownloadedTorrent(torrentDetails);
-          } else if (urlService.isTorrentDetailsPage()) {
-            const torrentDetails = extractTorrentDetailsService.getBasicTorrentDetailsInDetailsPage();
-            historyService.addDownloadedTorrent(torrentDetails);
+          if (urlService.isReleasesListPage()) {
+            const releaseDetails = extractReleaseDetailsService.getMainReleaseDetailsByDownloadLink(downloadLink);
+            historyService.addDownloadedRelease(releaseDetails);
+          } else if (urlService.isReleaseDetailsPage()) {
+            const releaseDetails = extractReleaseDetailsService.getBasicReleaseDetailsInDetailsPage();
+            historyService.addDownloadedRelease(releaseDetails);
           }
         }
       }

@@ -40,7 +40,7 @@
     "description": "Features tab configuration setting title for comments formatting feature"
   },
   "featureCommentsFormattingDescription": {
-    "message": "Leidžia lengvai formatuoti tekstą komentuojant torentus",
+    "message": "Leidžia lengvai formatuoti tekstą komentuojant leidimus",
     "description": "Features tab configuration setting description for comments formatting feature"
   },
   "featureHomePageRedirectTitle": {
@@ -48,23 +48,23 @@
     "description": "Features tab configuration setting title for homepage redirect feature"
   },
   "featureHomePageRedirectDescription": {
-    "message": "Užėjus į Linkomanijos namų puslapį būsite peradresuoti į torentų puslapį",
+    "message": "Užėjus į Linkomanijos namų puslapį būsite peradresuoti į leidimų puslapį",
     "description": "Features tab configuration setting description for homepage redirect feature"
   },
-  "featureTorrentPreviewTitle": {
-    "message": "Išankstinė torento peržiūra",
-    "description": "Features tab configuration setting title for torrent preview feature"
+  "featureReleasePreviewTitle": {
+    "message": "Išankstinė leidimo peržiūra",
+    "description": "Features tab configuration setting title for release preview feature"
   },
-  "featureTorrentPreviewDescription": {
-    "message": "Peržiūrėkite torentų aprašymus neįeinant į jų detalių puslapius",
-    "description": "Features tab configuration setting description for torrent preview feature"
+  "featureReleasePreviewDescription": {
+    "message": "Peržiūrėkite leidimų aprašymus neįeinant į jų detalių puslapius",
+    "description": "Features tab configuration setting description for release preview feature"
   },
   "featureViewModesTitle": {
-    "message": "Torentų išdėstymas",
+    "message": "Leidimų išdėstymas",
     "description": "Features tab configuration setting title for view modes feature"
   },
   "featureViewModesDescription": {
-    "message": "Suteiks galimybę peržiūrėti torentų sąrašus 'kortelių' pavidalu",
+    "message": "Suteiks galimybę peržiūrėti leidimų sąrašus 'kortelių' pavidalu",
     "description": "Features tab configuration setting description for view modes feature"
   },
   "featureBackToTopTitle": {
@@ -75,13 +75,13 @@
     "message": "Į visus puslapius pridės mygtuką, kurį paspaudus atsidursite puslapio viršuje",
     "description": "Features tab configuration setting description for back to top feature"
   },
-  "featureRelatedTorrentsTitle": {
-    "message": "Susiję torentai",
-    "description": "Features tab configuration setting title for related torrents feature"
+  "featureRelatedReleasesTitle": {
+    "message": "Susiję leidimai",
+    "description": "Features tab configuration setting title for related releases feature"
   },
-  "featureRelatedTorrentsDescription": {
-    "message": "Torento puslapyje leis matyti susijusių torentų sąrašą",
-    "description": "Features tab configuration setting description for related torrents feature"
+  "featureRelatedReleasesDescription": {
+    "message": "Leidimo puslapyje leis matyti susijusių leidimų sąrašą",
+    "description": "Features tab configuration setting description for related releases feature"
   },
   "tabsLinksGithubRepositoryLabel": {
     "message": "GitHub saugykla",
@@ -117,18 +117,18 @@
   },
   "tabsHistoryRecentViewedLabel": {
     "message": "Paskutiniai atidaryti",
-    "description": "History tab recently viewed torrents group"
+    "description": "History tab recently viewed releases group"
   },
   "tabsHistoryRecentDownloadedLabel": {
     "message": "Paskutiniai parsisiųsti",
-    "description": "History tab recently downloaded torrents group"
+    "description": "History tab recently downloaded releases group"
   },
   "tabsHistoryRecentCommentedLabel": {
     "message": "Paskutiniai komentuoti",
-    "description": "History tab recently commented torrents group"
+    "description": "History tab recently commented releases group"
   },
-  "tabsHistoryNoTorrentEntriesLabel": {
-    "message": "Ši grupė dar neturi užfiksuotų torentų",
+  "tabsHistoryNoReleaseEntriesLabel": {
+    "message": "Ši grupė dar neturi užfiksuotų leidimų",
     "description": "History tab label showed when gruop doesn't have any items tracked yet"
   },
   "tabsHistoryTotalLabel": {
@@ -145,7 +145,7 @@
   },
   "open": {
     "message": "Atidaryti",
-    "description": "Generic (used in: torrents list)"
+    "description": "Generic (used in: releases list)"
   },
   "featureReleaseNotifierTitle": {
     "message": "Pranešimai apie leidimus",
@@ -277,7 +277,7 @@
   },
   "releaseNotifierPageMatch": {
     "message": "Šis puslapis atitinka laukiamą leidimą",
-    "description": "Release notifier bar text on the matched torrent page, followed by the search term"
+    "description": "Release notifier bar text on the matched release page, followed by the search term"
   },
   "releaseNotifierToastTitle": {
     "message": "Rasti laukiami leidimai",

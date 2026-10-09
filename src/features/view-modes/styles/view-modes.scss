@@ -45,21 +45,21 @@
 }
 
 .sl-view-mode--list {
-  #{variables.$torrents-table-selector} {
+  #{variables.$releases-table-selector} {
     display: table;
   }
 
-  .torrents {
+  .releases {
     display: none;
   }
 }
 
 .sl-view-mode--grid {
-  .torrents {
+  .releases {
     display: flex;
   }
 
-  #{variables.$torrents-table-selector} {
+  #{variables.$releases-table-selector} {
     display: none;
   }
 }

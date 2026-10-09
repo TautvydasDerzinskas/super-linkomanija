@@ -1,18 +1,18 @@
 @use '../../../popup/variables';
 
-.related-torrents {
+.related-releases {
   a[onClick], .colhead {
     display: none;
   }
 
-  &__torrents {
+  &__releases {
     max-height: 140px;
     overflow-y: auto;
     overflow-x: hidden;
     width: 90%;
     max-width: 1000px;
 
-    .related-torrents__empty {
+    .related-releases__empty {
       margin: 0;
     }
 

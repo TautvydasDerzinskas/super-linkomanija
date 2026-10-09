@@ -1,37 +1,37 @@
 import apiService from './api.service';
 import { LinkomanijaSelectors } from '../../enums';
-import { IBasicTorrentDetails, ITorrentDetails, ITorrentCategory, ITorrentComment } from '../../interfaces/torrent';
+import { IBasicReleaseDetails, IReleaseDetails, IReleaseCategory, IReleaseComment } from '../../interfaces/release';
 
-class ExtractTorrentDetailsService {
-  public generateMultipleTorrentsData(customDocument?: Document): Promise<ITorrentDetails[]> {
+class ExtractReleaseDetailsService {
+  public generateMultipleReleasesData(customDocument?: Document): Promise<IReleaseDetails[]> {
     return new Promise((resolve) => {
-      const torrentDetails: ITorrentDetails[] = [];
-      const titleColumns = (customDocument || document).querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
+      const releaseDetails: IReleaseDetails[] = [];
+      const titleColumns = (customDocument || document).querySelectorAll(LinkomanijaSelectors.ReleaseTableTitleColumn);
       let promisesLeft = titleColumns.length;
       for (let i = 0, b = titleColumns.length; i < b; i += 1) {
-        const torrentDetail = this.getMainTorrentDetails(titleColumns[i].parentElement as HTMLElement);
+        const releaseDetail = this.getMainReleaseDetails(titleColumns[i].parentElement as HTMLElement);
 
-        apiService.getTorrentDetails(torrentDetail.detailsLink).then((data: { descriptionHtml: string, comments: ITorrentComment[] }) => {
-          torrentDetail.descriptionHtml = data.descriptionHtml;
-          torrentDetail.comments = data.comments;
-          torrentDetail.imageLinks = this.exractImagesFromHtmlString(data.descriptionHtml);
-          torrentDetails[i] = torrentDetail;
+        apiService.getReleaseDetails(releaseDetail.detailsLink).then((data: { descriptionHtml: string, comments: IReleaseComment[] }) => {
+          releaseDetail.descriptionHtml = data.descriptionHtml;
+          releaseDetail.comments = data.comments;
+          releaseDetail.imageLinks = this.exractImagesFromHtmlString(data.descriptionHtml);
+          releaseDetails[i] = releaseDetail;
 
           promisesLeft--;
 
           if (promisesLeft === 0) {
-            resolve(torrentDetails);
+            resolve(releaseDetails);
           }
         });
       }
     });
   }
 
-  public getBasicTorrentDetailsInDetailsPage(): IBasicTorrentDetails {
+  public getBasicReleaseDetailsInDetailsPage(): IBasicReleaseDetails {
     const cagegoryImage = document.querySelector('#content tr:not(.rowhead) td > img');
-    const torrentId = parseInt(window.location.href.split('details?')[1].split('.')[0], 10);
+    const releaseId = parseInt(window.location.href.split('details?')[1].split('.')[0], 10);
     return {
-      id: torrentId,
+      id: releaseId,
       title: document.querySelector('#content h1').textContent,
       category: {
         imageLink: cagegoryImage.getAttribute('src'),
@@ -39,7 +39,7 @@ class ExtractTorrentDetailsService {
     };
   }
 
-  public getBasicTorrentDetails(rowElement: HTMLElement): IBasicTorrentDetails {
+  public getBasicReleaseDetails(rowElement: HTMLElement): IBasicReleaseDetails {
     const categoryColumnElement = rowElement.children[0];
     const titleColumnElement = rowElement.children[1];
 
@@ -50,7 +50,7 @@ class ExtractTorrentDetailsService {
     };
   }
 
-  public getMainTorrentDetails(rowElement: HTMLElement): ITorrentDetails {
+  public getMainReleaseDetails(rowElement: HTMLElement): IReleaseDetails {
     const categoryColumnElement = rowElement.children[0];
     const titleColumnElement = rowElement.children[1];
     const filesColumnElement = rowElement.children[2];
@@ -66,7 +66,7 @@ class ExtractTorrentDetailsService {
       title: this.getTitle(titleColumnElement),
       subTitle: this.getSubTitle(titleColumnElement),
       detailsLink: this.getDetailsLink(titleColumnElement),
-      torrentLink: this.getTorrentLink(titleColumnElement),
+      downloadLink: this.getReleaseLink(titleColumnElement),
       isNew: this.getIfIsNew(titleColumnElement),
       isFavourite: this.getIfIsFavourite(titleColumnElement),
       isFreeLeech: this.getIfIsFreeLeech(titleColumnElement),
@@ -81,21 +81,21 @@ class ExtractTorrentDetailsService {
     };
   }
 
-  public getMainTorrentDetailsByDownloadLink(downloadLink: string) {
-    const titleColumns = document.querySelectorAll(LinkomanijaSelectors.TorrentTableTitleColumn);
+  public getMainReleaseDetailsByDownloadLink(downloadLink: string) {
+    const titleColumns = document.querySelectorAll(LinkomanijaSelectors.ReleaseTableTitleColumn);
     for (let i = 0, b = titleColumns.length; i < b; i += 1) {
-      const rowDownloadLink = this.getTorrentLink(titleColumns[i]);
+      const rowDownloadLink = this.getReleaseLink(titleColumns[i]);
 
       if (rowDownloadLink.toLowerCase() === downloadLink.toLowerCase()) {
-        return this.getBasicTorrentDetails(titleColumns[i].parentElement as HTMLElement);
+        return this.getBasicReleaseDetails(titleColumns[i].parentElement as HTMLElement);
       }
     }
   }
 
-  public extractComments(torrentPageHtml: string) {
+  public extractComments(releasePageHtml: string) {
     const parser = new DOMParser();
-    const virtualDom = parser.parseFromString(torrentPageHtml, 'text/html');
-    const comments: ITorrentComment[] = [];
+    const virtualDom = parser.parseFromString(releasePageHtml, 'text/html');
+    const comments: IReleaseComment[] = [];
     const commentElements = virtualDom.getElementsByClassName('comment');
 
     for (let i = 0, b = commentElements.length; i < b; i++) {
@@ -105,7 +105,7 @@ class ExtractTorrentDetailsService {
       const rating = commentElements[i].getElementsByClassName('comment-balance')[0].textContent;
       const message = commentElements[i].getElementsByClassName('comment-text')[0].textContent;
 
-      const comment: ITorrentComment = {
+      const comment: IReleaseComment = {
         author: {
           name,
           id: parseInt(id, 10),
@@ -133,8 +133,8 @@ class ExtractTorrentDetailsService {
   }
 
   private getId(titleColumnElement: Element) {
-    const torrentLink = titleColumnElement.children[0].getAttribute('href');
-    return parseInt(torrentLink.split('?')[1].split('.')[0], 10);
+    const downloadLink = titleColumnElement.children[0].getAttribute('href');
+    return parseInt(downloadLink.split('?')[1].split('.')[0], 10);
   }
 
   private getTitle(titleColumnElement: Element) {
@@ -149,7 +149,7 @@ class ExtractTorrentDetailsService {
     return titleColumnElement.children[0].getAttribute('href');
   }
 
-  private getTorrentLink(titleColumnElement: Element) {
+  private getReleaseLink(titleColumnElement: Element) {
     return titleColumnElement.children[(titleColumnElement.children.length - 6)].getAttribute('href');
   }
 
@@ -195,7 +195,7 @@ class ExtractTorrentDetailsService {
     return parseInt(leechersColumnElement.textContent.replace(',', ''), 10);
   }
 
-  private getCategoryDetails(categoryColumnElement: Element): ITorrentCategory {
+  private getCategoryDetails(categoryColumnElement: Element): IReleaseCategory {
     return {
       title: categoryColumnElement.children[0].children[0].getAttribute('title'),
       link: categoryColumnElement.children[0].getAttribute('href'),
@@ -204,4 +204,4 @@ class ExtractTorrentDetailsService {
   }
 }
 
-export default new ExtractTorrentDetailsService();
+export default new ExtractReleaseDetailsService();

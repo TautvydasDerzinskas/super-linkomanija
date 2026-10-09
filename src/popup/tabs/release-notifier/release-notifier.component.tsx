@@ -20,7 +20,7 @@ function requestCheck() {
 export default function ReleaseNotifierComponent() {
   const intl = useIntl();
   const [releases, setReleases] = useState<IWatchedRelease[]>([]);
-  const [notifierState, setNotifierState] = useState<IReleaseNotifierState>({ matches: {}, dismissedTorrentIds: [] });
+  const [notifierState, setNotifierState] = useState<IReleaseNotifierState>({ matches: {}, dismissedEntryIds: [] });
   const [editedReleaseId, setEditedReleaseId] = useState<string>(null);
   const [isChecking, setIsChecking] = useState(false);
   const [hasNotifications, setHasNotifications] = useState(false);
@@ -151,7 +151,7 @@ export default function ReleaseNotifierComponent() {
             matches={notifierState.matches[release.id] ?? []}
             onEdit={() => setEditedReleaseId(release.id)}
             onDelete={() => releaseNotifierService.removeRelease(release.id)}
-            onReject={torrentId => releaseNotifierService.rejectMatch(release.id, torrentId)}
+            onReject={entryId => releaseNotifierService.rejectMatch(release.id, entryId)}
             onAccept={() => releaseNotifierService.acceptMatch(release.id)}
           />
         )))}

@@ -4,6 +4,8 @@ import releaseNotifierService, { IFoundRelease } from '../common/release-notifie
 import languageService from '../popup/language.service';
 import autoLoginService from '../common/auto-login.service';
 import releaseNotifierMeta from '../../features/release-notifier/meta';
+import releasePreviewMeta from '../../features/release-preview/meta';
+import relatedReleasesMeta from '../../features/related-releases/meta';
 import autoLoginMeta from '../../features/auto-login/meta';
 
 import { ChromeStorageKeys } from '../../enums';
@@ -13,12 +15,21 @@ const releaseNotifierCheckInterval = 6 * 60;
 const releaseNotifierNotificationPrefix = 'sl-release-notifier:';
 const maxNotificationsPerCheck = 3;
 
-// Version 2.1.0 stored the release notifier under its former name
-const legacyReleaseNotifierStorage = [
+// Version 2.1.0 and earlier stored data under former names
+const legacyStorageKeys = [
   { area: 'sync', key: 'sm-release-tracker', newKey: ChromeStorageKeys.ReleaseNotifier },
   { area: 'local', key: 'sm-release-tracker-state', newKey: ChromeStorageKeys.ReleaseNotifierState },
 ] as const;
-const legacyReleaseNotifierId = 'sl-release-tracker';
+const legacyStoredFields: [RegExp, string][] = [
+  [/"torrentId"/g, '"entryId"'],
+  [/"(rejected|dismissed)TorrentIds"/g, '"$1EntryIds"'],
+];
+const legacyFeatureIds: Record<string, string> = {
+  'sl-release-tracker': releaseNotifierMeta.id,
+  'sl-torrent-preview': releasePreviewMeta.id,
+  'sl-related-torrents': relatedReleasesMeta.id,
+};
+const legacyReleaseNotifierAlarm = 'sl-release-tracker';
 
 class ExtensionService {
   public async updateToolbarIcon() {
@@ -35,25 +46,29 @@ class ExtensionService {
   }
 
   /**
-   * Moves the release notifier's data from its former name, has to run before the feature settings are initialized
+   * Moves data stored under former names, has to run before the feature settings are initialized
    */
-  public async migrateLegacyReleaseNotifier() {
-    for (const { area, key, newKey } of legacyReleaseNotifierStorage) {
-      const stored = await chrome.storage[area].get(key);
-      if (stored[key] !== undefined) {
-        await chrome.storage[area].set({ [newKey]: stored[key] });
+  public async migrateLegacyStorage() {
+    for (const { area, key, newKey } of legacyStorageKeys) {
+      const stored = (await chrome.storage[area].get(key))[key];
+      if (typeof stored === 'string') {
+        const migrated = legacyStoredFields.reduce((data, [field, newField]) => data.replace(field, newField), stored);
+        await chrome.storage[area].set({ [newKey]: migrated });
         await chrome.storage[area].remove(key);
       }
     }
 
     const features = await featureStorageService.getFeatures();
-    if (features?.[legacyReleaseNotifierId]) {
-      features[releaseNotifierMeta.id] = features[legacyReleaseNotifierId];
-      delete features[legacyReleaseNotifierId];
+    const storedLegacyIds = Object.keys(legacyFeatureIds).filter(id => features?.[id]);
+    if (storedLegacyIds.length > 0) {
+      for (const id of storedLegacyIds) {
+        features[legacyFeatureIds[id]] = features[id];
+        delete features[id];
+      }
       await featureStorageService.setItem(ChromeStorageKeys.Features, features);
     }
 
-    await chrome.alarms.clear(legacyReleaseNotifierId);
+    await chrome.alarms.clear(legacyReleaseNotifierAlarm);
   }
 
   public async scheduleReleaseNotifierChecks() {
@@ -90,13 +105,13 @@ class ExtensionService {
    * Notifications are an optional permission, so the listener is added once the user grants it
    */
   public listenToNotificationClicks() {
-    if (!chrome.notifications || chrome.notifications.onClicked.hasListener(this.openNotifiedTorrent)) {
+    if (!chrome.notifications || chrome.notifications.onClicked.hasListener(this.openNotifiedRelease)) {
       return;
     }
-    chrome.notifications.onClicked.addListener(this.openNotifiedTorrent);
+    chrome.notifications.onClicked.addListener(this.openNotifiedRelease);
   }
 
-  private openNotifiedTorrent(notificationId: string) {
+  private openNotifiedRelease(notificationId: string) {
     if (notificationId.startsWith(releaseNotifierNotificationPrefix)) {
       chrome.tabs.create({ url: notificationId.slice(releaseNotifierNotificationPrefix.length) });
       chrome.notifications.clear(notificationId);

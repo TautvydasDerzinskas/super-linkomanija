@@ -5,7 +5,7 @@ $max-popup-width: 350px;
 $max-popup-height: 170px;
 
 // Column button
-.sm--preview-torrent {
+.sm--preview-release {
   text-align: center;
 
   button {
@@ -29,7 +29,7 @@ $max-popup-height: 170px;
 }
 
 // Popup
-.torrent-preview {
+.release-preview {
   $header: header;
   font-size: 11px;
   font-family: Verdana,Geneva,'DejaVu Sans',sans-serif;

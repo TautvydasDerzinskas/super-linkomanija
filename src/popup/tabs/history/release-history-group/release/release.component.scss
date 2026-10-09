@@ -1,20 +1,20 @@
 @use '../../../../variables';
 
-$torrent-item-height: 30px;
+$release-item-height: 30px;
 
-.torrent {
+.release {
   display: flex;
   align-items: center;
   width: 100%;
-  height: $torrent-item-height;
+  height: $release-item-height;
   overflow: hidden;
 
   &__category {
-    height: $torrent-item-height;
+    height: $release-item-height;
     display: inline-block;
 
     img {
-      max-height: $torrent-item-height;
+      max-height: $release-item-height;
     }
   }
 
@@ -34,7 +34,7 @@ $torrent-item-height: 30px;
   &:hover {
     background-color: var(--sl-card-hover);
 
-    .torrent__title {
+    .release__title {
       color: var(--sl-text-strong);
     }
   }

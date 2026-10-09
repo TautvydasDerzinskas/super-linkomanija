@@ -1,7 +1,7 @@
-import extractTorrentDetailsService from '../../services/common/extract-torrent-details.service';
+import extractReleaseDetailsService from '../../services/common/extract-release-details.service';
 
 import { LinkomanijaSelectors } from '../../enums';
-import { ITorrentComment } from '../../interfaces/torrent';
+import { IReleaseComment } from '../../interfaces/release';
 
 class ApiService {
   constructor() {
@@ -13,13 +13,13 @@ class ApiService {
   /**
    * Resolves to null when the search found nothing
    */
-  public async getRelatedTorrents(title: string): Promise<HTMLTableElement> {
+  public async getRelatedReleases(title: string): Promise<HTMLTableElement> {
     const responseHtml = await this.get(`browse.php?search=${encodeURIComponent(title)}`);
     const virtualDom = this.htmlStringToVirtualDom(responseHtml);
-    return virtualDom.querySelector<HTMLTableElement>(LinkomanijaSelectors.TorrentTable);
+    return virtualDom.querySelector<HTMLTableElement>(LinkomanijaSelectors.ReleaseTable);
   }
 
-  public async getTorrentDetails(url: string): Promise<{ descriptionHtml: string; comments: ITorrentComment[] }> {
+  public async getReleaseDetails(url: string): Promise<{ descriptionHtml: string; comments: IReleaseComment[] }> {
     const responseHtml = await this.get(url);
     const virtualDom = this.htmlStringToVirtualDom(responseHtml);
     const youtubeIframe = virtualDom.querySelector('.descr_text iframe');
@@ -30,7 +30,7 @@ class ApiService {
 
     return {
       descriptionHtml: virtualDom.getElementsByClassName('descr_text')[0].innerHTML,
-      comments: extractTorrentDetailsService.extractComments(responseHtml),
+      comments: extractReleaseDetailsService.extractComments(responseHtml),
     };
   }
 
