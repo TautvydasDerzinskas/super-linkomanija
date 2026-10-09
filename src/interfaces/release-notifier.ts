@@ -1,4 +1,4 @@
-export interface ITrackedRelease {
+export interface IWatchedRelease {
   id: string;
   searchTerm: string;
   // A torrent is never matched when its title contains any of these
@@ -18,8 +18,8 @@ export interface IReleaseMatch {
   foundAt: number;
 }
 
-export interface IReleaseTrackerState {
-  // Keyed by tracked release ID
+export interface IReleaseNotifierState {
+  // Keyed by watched release ID
   matches: Record<string, IReleaseMatch[]>;
   lastCheck?: number;
   loggedOut?: boolean;
@@ -27,6 +27,6 @@ export interface IReleaseTrackerState {
   dismissedTorrentIds: number[];
 }
 
-export interface IMessageReleaseTracker {
-  releaseTracker: 'check';
+export interface IMessageReleaseNotifier {
+  releaseNotifier: 'check';
 }

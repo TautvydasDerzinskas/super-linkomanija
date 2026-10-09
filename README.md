@@ -23,7 +23,7 @@ Features, screenshots and install instructions in English and Lithuanian are on 
 4. Homepage redirect
 5. Quick back to top
 6. Related torrents
-7. Release tracker
+7. Release notifier
 8. Auto login
 9. Theme follows system
 

@@ -4,7 +4,7 @@ import ContentViewModes from './view-modes/content';
 import ContentHomepageRedirect from './homepage-redirect/content';
 import ContentBackToTop from './back-to-top/content';
 import ContentRelatedTorrents from './related-torrents/content';
-import ContentReleaseTracker from './release-tracker/content';
+import ContentReleaseNotifier from './release-notifier/content';
 import ContentAutoLogin from './auto-login/content';
 import ContentThemeSync from './theme-sync/content';
 import { FeaturesMeta } from './features-meta';
@@ -19,7 +19,7 @@ const contents: IContent[] = [
   ContentHomepageRedirect,
   ContentBackToTop,
   ContentRelatedTorrents,
-  ContentReleaseTracker,
+  ContentReleaseNotifier,
   ContentAutoLogin,
   ContentThemeSync,
 ];

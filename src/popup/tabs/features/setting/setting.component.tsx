@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 
 import IMeta from '../../../../interfaces/meta';
 import { IMessageToggle } from '../../../../interfaces/communication';
-import { IMessageReleaseTracker } from '../../../../interfaces/release-tracker';
-import releaseTrackerMeta from '../../../../features/release-tracker/meta';
+import { IMessageReleaseNotifier } from '../../../../interfaces/release-notifier';
+import releaseNotifierMeta from '../../../../features/release-notifier/meta';
 import featureStorageService from '../../../../services/common/feature-storage.service';
 import Tooltip from '../../../shared/tooltip/tooltip.component';
 
@@ -44,8 +44,8 @@ export default function SettingComponent({ meta }: ISettingComponentProps) {
     featureStorageService.toggleFeatureStatus(meta.id).then(featureData => {
       setValue(featureData.status);
       notifyTabsAboutChange(meta.id, featureData.status);
-      if (meta.id === releaseTrackerMeta.id && featureData.status) {
-        const message: IMessageReleaseTracker = { releaseTracker: 'check' };
+      if (meta.id === releaseNotifierMeta.id && featureData.status) {
+        const message: IMessageReleaseNotifier = { releaseNotifier: 'check' };
         chrome.runtime.sendMessage(message);
       }
     });

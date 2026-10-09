@@ -147,149 +147,149 @@
     "message": "Open",
     "description": "Generic (used in: torrents list)"
   },
-  "featureReleaseTrackerTitle": {
-    "message": "Release tracker",
-    "description": "Features tab configuration setting title for release tracker feature"
+  "featureReleaseNotifierTitle": {
+    "message": "Release notifier",
+    "description": "Features tab configuration setting title for release notifier feature"
   },
-  "featureReleaseTrackerDescription": {
-    "message": "Get notified when a torrent you are waiting for appears",
-    "description": "Features tab configuration setting description for release tracker feature"
+  "featureReleaseNotifierDescription": {
+    "message": "Get notified when a release you are waiting for is published",
+    "description": "Features tab configuration setting description for release notifier feature"
   },
   "settingConfigure": {
     "message": "Settings",
     "description": "Features configuration cog title"
   },
-  "releaseTrackerBack": {
+  "releaseNotifierBack": {
     "message": "Back",
-    "description": "Release tracker back to features link"
+    "description": "Release notifier back to features link"
   },
-  "releaseTrackerCheckNow": {
+  "releaseNotifierCheckNow": {
     "message": "Check now",
-    "description": "Release tracker check button"
+    "description": "Release notifier check button"
   },
-  "releaseTrackerChecking": {
+  "releaseNotifierChecking": {
     "message": "Checking…",
-    "description": "Release tracker check button while checking"
+    "description": "Release notifier check button while checking"
   },
-  "releaseTrackerLastCheck": {
+  "releaseNotifierLastCheck": {
     "message": "Last checked {time}, checked every 6 hours",
-    "description": "Release tracker last check time"
+    "description": "Release notifier last check time"
   },
-  "releaseTrackerNeverChecked": {
+  "releaseNotifierNeverChecked": {
     "message": "Not checked yet, checked every 6 hours",
-    "description": "Release tracker status before the first check"
+    "description": "Release notifier status before the first check"
   },
-  "releaseTrackerLoggedOut": {
-    "message": "You are logged out of Linkomanija, so tracked releases can't be checked.",
-    "description": "Release tracker warning when the user is logged out"
+  "releaseNotifierLoggedOut": {
+    "message": "You are logged out of Linkomanija, so watched releases can't be checked.",
+    "description": "Release notifier warning when the user is logged out"
   },
-  "releaseTrackerLogIn": {
+  "releaseNotifierLogIn": {
     "message": "Log in",
-    "description": "Release tracker log in link"
+    "description": "Release notifier log in link"
   },
-  "releaseTrackerNoAccess": {
-    "message": "The extension has no access to Linkomanija, so tracked releases can't be checked.",
-    "description": "Release tracker warning when the host permission is missing"
+  "releaseNotifierNoAccess": {
+    "message": "The extension has no access to Linkomanija, so watched releases can't be checked.",
+    "description": "Release notifier warning when the host permission is missing"
   },
-  "releaseTrackerGrantAccess": {
+  "releaseNotifierGrantAccess": {
     "message": "Allow access",
-    "description": "Release tracker host permission request button"
+    "description": "Release notifier host permission request button"
   },
-  "releaseTrackerSystemNotifications": {
+  "releaseNotifierSystemNotifications": {
     "message": "Show system notifications",
-    "description": "Release tracker system notifications checkbox"
+    "description": "Release notifier system notifications checkbox"
   },
-  "releaseTrackerSearchTerm": {
+  "releaseNotifierSearchTerm": {
     "message": "Search term",
-    "description": "Release tracker form search term label"
+    "description": "Release notifier form search term label"
   },
-  "releaseTrackerSearchTermPlaceholder": {
-    "message": "e.g. The Odyssey",
-    "description": "Release tracker form search term placeholder"
+  "releaseNotifierSearchTermPlaceholder": {
+    "message": "e.g. Ubuntu",
+    "description": "Release notifier form search term placeholder"
   },
-  "releaseTrackerExcluded": {
+  "releaseNotifierExcluded": {
     "message": "Excluded keywords",
-    "description": "Release tracker form excluded keywords label"
+    "description": "Release notifier form excluded keywords label"
   },
-  "releaseTrackerExcludedPlaceholder": {
-    "message": "e.g. CAM, TS",
-    "description": "Release tracker form excluded keywords placeholder"
+  "releaseNotifierExcludedPlaceholder": {
+    "message": "e.g. beta, RC",
+    "description": "Release notifier form excluded keywords placeholder"
   },
-  "releaseTrackerPreferred": {
+  "releaseNotifierPreferred": {
     "message": "Preferred keywords",
-    "description": "Release tracker form preferred keywords label"
+    "description": "Release notifier form preferred keywords label"
   },
-  "releaseTrackerPreferredPlaceholder": {
-    "message": "e.g. WEBRip, BDRip",
-    "description": "Release tracker form preferred keywords placeholder"
+  "releaseNotifierPreferredPlaceholder": {
+    "message": "e.g. LTS, x64",
+    "description": "Release notifier form preferred keywords placeholder"
   },
-  "releaseTrackerKeywordsHint": {
+  "releaseNotifierKeywordsHint": {
     "message": "Separate keywords with Enter or a comma",
-    "description": "Release tracker form keywords input hint"
+    "description": "Release notifier form keywords input hint"
   },
-  "releaseTrackerAdd": {
-    "message": "Start tracking",
-    "description": "Release tracker form add button"
+  "releaseNotifierAdd": {
+    "message": "Start watching",
+    "description": "Release notifier form add button"
   },
-  "releaseTrackerSave": {
+  "releaseNotifierSave": {
     "message": "Save",
-    "description": "Release tracker form save button"
+    "description": "Release notifier form save button"
   },
-  "releaseTrackerCancel": {
+  "releaseNotifierCancel": {
     "message": "Cancel",
-    "description": "Release tracker form cancel button"
+    "description": "Release notifier form cancel button"
   },
-  "releaseTrackerEdit": {
+  "releaseNotifierEdit": {
     "message": "Edit",
-    "description": "Release tracker edit button"
+    "description": "Release notifier edit button"
   },
-  "releaseTrackerDelete": {
-    "message": "Stop tracking",
-    "description": "Release tracker delete button"
+  "releaseNotifierDelete": {
+    "message": "Stop watching",
+    "description": "Release notifier delete button"
   },
-  "releaseTrackerEmpty": {
-    "message": "Nothing is tracked yet. Add a search term of a release you are waiting for.",
-    "description": "Release tracker empty list message"
+  "releaseNotifierEmpty": {
+    "message": "Nothing is watched yet. Add a search term of a release you are waiting for.",
+    "description": "Release notifier empty list message"
   },
-  "releaseTrackerWaiting": {
+  "releaseNotifierWaiting": {
     "message": "Waiting for a release…",
-    "description": "Release tracker item without matches"
+    "description": "Release notifier item without matches"
   },
-  "releaseTrackerPreferredMatch": {
+  "releaseNotifierPreferredMatch": {
     "message": "Preferred",
-    "description": "Release tracker preferred match label"
+    "description": "Release notifier preferred match label"
   },
-  "releaseTrackerReject": {
-    "message": "Reject & keep tracking",
-    "description": "Release tracker reject button"
+  "releaseNotifierReject": {
+    "message": "Reject & keep watching",
+    "description": "Release notifier reject button"
   },
-  "releaseTrackerAccept": {
-    "message": "Accept & stop tracking",
-    "description": "Release tracker accept button"
+  "releaseNotifierAccept": {
+    "message": "Accept & stop watching",
+    "description": "Release notifier accept button"
   },
-  "releaseTrackerRejectedNotice": {
-    "message": "Rejected, tracking continues.",
-    "description": "Release tracker notice after rejecting on the website"
+  "releaseNotifierRejectedNotice": {
+    "message": "Rejected, still watching.",
+    "description": "Release notifier notice after rejecting on the website"
   },
-  "releaseTrackerAcceptedNotice": {
-    "message": "Accepted, no longer tracking.",
-    "description": "Release tracker notice after accepting on the website"
+  "releaseNotifierAcceptedNotice": {
+    "message": "Accepted, no longer watching.",
+    "description": "Release notifier notice after accepting on the website"
   },
-  "releaseTrackerPageMatch": {
-    "message": "This torrent matches tracked release",
-    "description": "Release tracker bar text on the matched torrent page, followed by the search term"
+  "releaseNotifierPageMatch": {
+    "message": "This page matches watched release",
+    "description": "Release notifier bar text on the matched torrent page, followed by the search term"
   },
-  "releaseTrackerToastTitle": {
-    "message": "Tracked releases found",
-    "description": "Release tracker toast title on the website"
+  "releaseNotifierToastTitle": {
+    "message": "Watched releases found",
+    "description": "Release notifier toast title on the website"
   },
-  "releaseTrackerDismiss": {
+  "releaseNotifierDismiss": {
     "message": "Hide",
-    "description": "Release tracker toast dismiss button title"
+    "description": "Release notifier toast dismiss button title"
   },
-  "releaseTrackerNotificationTitle": {
-    "message": "Tracked release found",
-    "description": "Release tracker system notification title"
+  "releaseNotifierNotificationTitle": {
+    "message": "Watched release found",
+    "description": "Release notifier system notification title"
   },
   "featureAutoLoginTitle": {
     "message": "Auto login",

@@ -1,7 +1,7 @@
 import BrowserStorageService from './browser-storage.service';
 
 import { ChromeStorageKeys } from '../../enums';
-import { ITrackedRelease, IReleaseMatch, IReleaseTrackerState } from '../../interfaces/release-tracker';
+import { IWatchedRelease, IReleaseMatch, IReleaseNotifierState } from '../../interfaces/release-notifier';
 
 // Releases sync between browsers, while found matches are per browser, as each one checks on its own
 const releasesStorage = new BrowserStorageService();
@@ -22,27 +22,27 @@ export interface ISearchResult {
 }
 
 export interface IFoundRelease {
-  release: ITrackedRelease;
+  release: IWatchedRelease;
   match: IReleaseMatch;
 }
 
-class ReleaseTrackerService {
+class ReleaseNotifierService {
   private runningCheck: Promise<IFoundRelease[]> = null;
 
-  public async getReleases(): Promise<ITrackedRelease[]> {
-    return await releasesStorage.getItem<ITrackedRelease[]>(ChromeStorageKeys.ReleaseTracker) ?? [];
+  public async getReleases(): Promise<IWatchedRelease[]> {
+    return await releasesStorage.getItem<IWatchedRelease[]>(ChromeStorageKeys.ReleaseNotifier) ?? [];
   }
 
-  public async getState(): Promise<IReleaseTrackerState> {
-    const state = await stateStorage.getItem<IReleaseTrackerState>(ChromeStorageKeys.ReleaseTrackerState);
+  public async getState(): Promise<IReleaseNotifierState> {
+    const state = await stateStorage.getItem<IReleaseNotifierState>(ChromeStorageKeys.ReleaseNotifierState);
     return { matches: {}, dismissedTorrentIds: [], ...state };
   }
 
-  public createRelease(searchTerm: string, excluded: string[], preferred: string[]): ITrackedRelease {
+  public createRelease(searchTerm: string, excluded: string[], preferred: string[]): IWatchedRelease {
     return { id: crypto.randomUUID(), searchTerm, excluded, preferred, rejectedTorrentIds: [] };
   }
 
-  public async saveRelease(release: ITrackedRelease) {
+  public async saveRelease(release: IWatchedRelease) {
     const releases = await this.getReleases();
     const index = releases.findIndex(storedRelease => storedRelease.id === release.id);
     if (index < 0) {
@@ -50,21 +50,21 @@ class ReleaseTrackerService {
     } else {
       releases[index] = release;
     }
-    await releasesStorage.setItem(ChromeStorageKeys.ReleaseTracker, releases);
+    await releasesStorage.setItem(ChromeStorageKeys.ReleaseNotifier, releases);
 
     // Keywords might have changed, so the next check finds the matches again
     const state = await this.getState();
     delete state.matches[release.id];
-    await stateStorage.setItem(ChromeStorageKeys.ReleaseTrackerState, state);
+    await stateStorage.setItem(ChromeStorageKeys.ReleaseNotifierState, state);
   }
 
   public async removeRelease(releaseId: string) {
     const releases = await this.getReleases();
-    await releasesStorage.setItem(ChromeStorageKeys.ReleaseTracker, releases.filter(release => release.id !== releaseId));
+    await releasesStorage.setItem(ChromeStorageKeys.ReleaseNotifier, releases.filter(release => release.id !== releaseId));
 
     const state = await this.getState();
     delete state.matches[releaseId];
-    await stateStorage.setItem(ChromeStorageKeys.ReleaseTrackerState, state);
+    await stateStorage.setItem(ChromeStorageKeys.ReleaseNotifierState, state);
   }
 
   public acceptMatch(releaseId: string) {
@@ -76,18 +76,18 @@ class ReleaseTrackerService {
     const release = releases.find(storedRelease => storedRelease.id === releaseId);
     if (release) {
       release.rejectedTorrentIds = [...release.rejectedTorrentIds, torrentId].slice(-maxRejectedTorrentIds);
-      await releasesStorage.setItem(ChromeStorageKeys.ReleaseTracker, releases);
+      await releasesStorage.setItem(ChromeStorageKeys.ReleaseNotifier, releases);
     }
 
     const state = await this.getState();
     state.matches[releaseId] = (state.matches[releaseId] ?? []).filter(match => match.torrentId !== torrentId);
-    await stateStorage.setItem(ChromeStorageKeys.ReleaseTrackerState, state);
+    await stateStorage.setItem(ChromeStorageKeys.ReleaseNotifierState, state);
   }
 
   public async dismissMatches(torrentIds: number[]) {
     const state = await this.getState();
     state.dismissedTorrentIds = [...new Set([...state.dismissedTorrentIds, ...torrentIds])];
-    await stateStorage.setItem(ChromeStorageKeys.ReleaseTrackerState, state);
+    await stateStorage.setItem(ChromeStorageKeys.ReleaseNotifierState, state);
   }
 
   public async getPendingMatches(): Promise<IFoundRelease[]> {
@@ -96,7 +96,7 @@ class ReleaseTrackerService {
   }
 
   /**
-   * Checks every tracked release, returns the matches found for the first time
+   * Checks every watched release, returns the matches found for the first time
    */
   public check(): Promise<IFoundRelease[]> {
     if (!this.runningCheck) {
@@ -107,7 +107,7 @@ class ReleaseTrackerService {
     return this.runningCheck;
   }
 
-  public matchTitle(release: ITrackedRelease, title: string) {
+  public matchTitle(release: IWatchedRelease, title: string) {
     const titleWords = this.normalizeWords(title);
     const isMatch = this.containsKeyword(titleWords, release.searchTerm) &&
       !release.excluded.some(keyword => this.containsKeyword(titleWords, keyword));
@@ -174,14 +174,14 @@ class ReleaseTrackerService {
     // Releases could have been edited, accepted or rejected while searching
     const latestReleases = await this.getReleases();
     const latestState = await this.getState();
-    const latestMatches: IReleaseTrackerState['matches'] = {};
+    const latestMatches: IReleaseNotifierState['matches'] = {};
     for (const release of latestReleases) {
       latestMatches[release.id] = (state.matches[release.id] ?? latestState.matches[release.id] ?? [])
         .filter(match => !release.rejectedTorrentIds.includes(match.torrentId));
     }
     const pendingTorrentIds = Object.values(latestMatches).flat().map(match => match.torrentId);
 
-    await stateStorage.setItem<IReleaseTrackerState>(ChromeStorageKeys.ReleaseTrackerState, {
+    await stateStorage.setItem<IReleaseNotifierState>(ChromeStorageKeys.ReleaseNotifierState, {
       matches: latestMatches,
       lastCheck: loggedOut ? latestState.lastCheck : Date.now(),
       loggedOut,
@@ -222,7 +222,7 @@ class ReleaseTrackerService {
   }
 
   /**
-   * Whole word match which ignores separators, so "webrip" matches "WEB-Rip" and "ts" does not match "Tapes"
+   * Whole word match which ignores separators, so "x64" matches "X-64" and "rc" does not match "Source"
    */
   private containsKeyword(titleWords: string[], keyword: string) {
     const target = this.normalizeWords(keyword).join('');
@@ -256,4 +256,4 @@ class ReleaseTrackerService {
   }
 }
 
-export default new ReleaseTrackerService();
+export default new ReleaseNotifierService();

@@ -1,7 +1,7 @@
 @use "sass:color";
 @use '../../../popup/variables';
 
-@mixin release-tracker-panel {
+@mixin release-notifier-panel {
   position: fixed;
   z-index: 10000;
   box-sizing: border-box;
@@ -19,8 +19,8 @@
   }
 }
 
-.release-tracker-bar {
-  @include release-tracker-panel;
+.release-notifier-bar {
+  @include release-notifier-panel;
   bottom: variables.$large-spacing;
   left: 50%;
   transform: translateX(-50%);
@@ -64,8 +64,8 @@
   }
 }
 
-.release-tracker-toast {
-  @include release-tracker-panel;
+.release-notifier-toast {
+  @include release-notifier-panel;
   bottom: variables.$large-spacing;
   left: variables.$large-spacing;
   width: 320px;

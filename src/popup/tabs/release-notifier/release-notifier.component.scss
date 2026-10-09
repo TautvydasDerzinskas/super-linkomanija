@@ -1,7 +1,7 @@
 @use "sass:color";
 @use '../../variables';
 
-.release-tracker {
+.release-notifier {
   display: flex;
   flex-direction: column;
   gap: variables.$default-spacing;

@@ -96,7 +96,7 @@ class ContentRelatedTorrents implements IContent {
   }
 
   /**
-   * Lowercase words without diacritics before the release details, so "Oppenheimer.2023.1080p" becomes ["oppenheimer"]
+   * Lowercase words without diacritics before the release details, so "Nature.Documentary.2023.1080p" becomes ["nature", "documentary"]
    */
   private getNameWords(title: string) {
     const words = title
@@ -105,7 +105,7 @@ class ContentRelatedTorrents implements IContent {
       .toLowerCase()
       .split(/[^\p{L}\p{N}]+/u)
       .filter(Boolean);
-    // The first word is always part of the name, so a movie like "1917" keeps it
+    // The first word is always part of the name, so a name like "1984" keeps it
     const detailsStart = words.findIndex((word, index) => index > 0 && releaseDetailsWord.test(word));
     return detailsStart < 0 ? words : words.slice(0, detailsStart);
   }

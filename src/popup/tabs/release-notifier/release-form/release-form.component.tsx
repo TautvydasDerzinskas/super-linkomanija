@@ -1,16 +1,16 @@
 import { useState, type FormEvent } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import releaseTrackerService from '../../../../services/common/release-tracker.service';
-import { ITrackedRelease } from '../../../../interfaces/release-tracker';
+import releaseNotifierService from '../../../../services/common/release-notifier.service';
+import { IWatchedRelease } from '../../../../interfaces/release-notifier';
 import KeywordsInputComponent from '../keywords-input/keywords-input.component';
 
 import './release-form.component.scss';
 
 interface IReleaseFormComponentProps {
   // Edited release, a new one is created when left out
-  release?: ITrackedRelease;
-  onSave: (release: ITrackedRelease) => void;
+  release?: IWatchedRelease;
+  onSave: (release: IWatchedRelease) => void;
   onCancel?: () => void;
 }
 
@@ -30,7 +30,7 @@ export default function ReleaseFormComponent({ release, onSave, onCancel }: IRel
 
     onSave(release
       ? { ...release, searchTerm: trimmedSearchTerm, excluded, preferred }
-      : releaseTrackerService.createRelease(trimmedSearchTerm, excluded, preferred));
+      : releaseNotifierService.createRelease(trimmedSearchTerm, excluded, preferred));
 
     if (!release) {
       setSearchTerm('');
@@ -42,7 +42,7 @@ export default function ReleaseFormComponent({ release, onSave, onCancel }: IRel
   return (
     <form className='release-form' onSubmit={handleSubmit}>
       <label htmlFor={`${idPrefix}-term`}>
-        <FormattedMessage id='releaseTrackerSearchTerm' />
+        <FormattedMessage id='releaseNotifierSearchTerm' />
       </label>
       <input
         id={`${idPrefix}-term`}
@@ -50,32 +50,32 @@ export default function ReleaseFormComponent({ release, onSave, onCancel }: IRel
         type='text'
         required
         value={searchTerm}
-        placeholder={intl.formatMessage({ id: 'releaseTrackerSearchTermPlaceholder' })}
+        placeholder={intl.formatMessage({ id: 'releaseNotifierSearchTermPlaceholder' })}
         onChange={event => setSearchTerm(event.target.value)}
       />
 
       <div className='release-form__keywords'>
         <div>
           <label htmlFor={`${idPrefix}-excluded`}>
-            <FormattedMessage id='releaseTrackerExcluded' />
+            <FormattedMessage id='releaseNotifierExcluded' />
           </label>
           <KeywordsInputComponent
             id={`${idPrefix}-excluded`}
             variant='excluded'
             keywords={excluded}
-            placeholder={intl.formatMessage({ id: 'releaseTrackerExcludedPlaceholder' })}
+            placeholder={intl.formatMessage({ id: 'releaseNotifierExcludedPlaceholder' })}
             onChange={setExcluded}
           />
         </div>
         <div>
           <label htmlFor={`${idPrefix}-preferred`}>
-            <FormattedMessage id='releaseTrackerPreferred' />
+            <FormattedMessage id='releaseNotifierPreferred' />
           </label>
           <KeywordsInputComponent
             id={`${idPrefix}-preferred`}
             variant='preferred'
             keywords={preferred}
-            placeholder={intl.formatMessage({ id: 'releaseTrackerPreferredPlaceholder' })}
+            placeholder={intl.formatMessage({ id: 'releaseNotifierPreferredPlaceholder' })}
             onChange={setPreferred}
           />
         </div>
@@ -83,15 +83,15 @@ export default function ReleaseFormComponent({ release, onSave, onCancel }: IRel
 
       <div className='release-form__footer'>
         <span className='release-form__hint'>
-          <FormattedMessage id='releaseTrackerKeywordsHint' />
+          <FormattedMessage id='releaseNotifierKeywordsHint' />
         </span>
         {onCancel && (
           <button type='button' className='sl-button' onClick={onCancel}>
-            <FormattedMessage id='releaseTrackerCancel' />
+            <FormattedMessage id='releaseNotifierCancel' />
           </button>
         )}
         <button type='submit' className='sl-button sl-button--primary'>
-          <FormattedMessage id={release ? 'releaseTrackerSave' : 'releaseTrackerAdd'} />
+          <FormattedMessage id={release ? 'releaseNotifierSave' : 'releaseNotifierAdd'} />
         </button>
       </div>
     </form>

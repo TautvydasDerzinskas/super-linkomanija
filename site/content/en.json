@@ -66,8 +66,8 @@
       },
       {
         "icon": "bell",
-        "title": "Release tracker",
-        "text": "Waiting for a movie or series? Add its name, plus keywords to skip (like CAM) or prefer (like WEBRip). The extension checks Linkomanija every 6 hours and tells you when it appears, with a number on the toolbar icon and a notice on the site. Off by default."
+        "title": "Release notifier",
+        "text": "Waiting for a new release? Add a search term, plus keywords to skip (like beta) or prefer (like LTS). The extension checks Linkomanija every 6 hours and tells you when it appears, with a number on the toolbar icon and a notice on the site. Off by default."
       },
       {
         "icon": "key",
@@ -93,7 +93,7 @@
       "The torrent list in list view and in grid view with posters",
       "Torrent preview: the description opens from the eye icon in the list",
       "Related torrents and the comment formatting editor on a torrent page",
-      "Release tracker: tracked releases in the popup, the notice on Linkomanija's pages and accepting or rejecting a found torrent"
+      "Release notifier: watched releases in the popup, the notice on Linkomanija's pages and accepting or rejecting a found release"
     ]
   },
   "install": {
@@ -178,15 +178,15 @@
       },
       {
         "title": "What it stores",
-        "body": "<p>The extension saves the following in your browser's extension storage:</p><ul><li>which features are switched on or off, and the chosen torrent list view</li><li>the popup's language</li><li>your history: the last 25 viewed, downloaded and commented torrents per group, each with its ID, title and category image address</li><li>for the release tracker: your search terms and keywords, the torrents you rejected, and the found torrents with the time of the last check</li><li>for auto login: Linkomanija's \"remember me\" login cookie and the time you last logged out</li></ul><p>If you use your browser's sync, the browser can sync this data between your own devices through your browser account. Found torrents are kept on each device only. Nothing is ever sent to the developer.</p><p>The login cookie gives access to your Linkomanija account, like a password. It stays saved until you log out through the website or switch auto login off. Logging out doesn't make an already copied cookie invalid, only changing your Linkomanija password does.</p>"
+        "body": "<p>The extension saves the following in your browser's extension storage:</p><ul><li>which features are switched on or off, and the chosen torrent list view</li><li>the popup's language</li><li>your history: the last 25 viewed, downloaded and commented torrents per group, each with its ID, title and category image address</li><li>for the release notifier: your search terms and keywords, the releases you rejected, and the found releases with the time of the last check</li><li>for auto login: Linkomanija's \"remember me\" login cookie and the time you last logged out</li></ul><p>If you use your browser's sync, the browser can sync this data between your own devices through your browser account. Found releases are kept on each device only. Nothing is ever sent to the developer.</p><p>The login cookie gives access to your Linkomanija account, like a password. It stays saved until you log out through the website or switch auto login off. Logging out doesn't make an already copied cookie invalid, only changing your Linkomanija password does.</p>"
       },
       {
         "title": "Network requests",
-        "body": "<p>The extension only talks to Linkomanija.net. On your behalf and with your existing login it loads torrent pages for previews and related torrents, and adds or removes bookmarks when you click them. When the release tracker is on, it also searches Linkomanija for your tracked releases when the browser starts, every 6 hours and when you ask. Smileys in the comment editor load from Linkomanija's own image server. No other websites are contacted.</p><p>When you uninstall the extension, the browser opens this website. No data is sent with it.</p>"
+        "body": "<p>The extension only talks to Linkomanija.net. On your behalf and with your existing login it loads torrent pages for previews and related torrents, and adds or removes bookmarks when you click them. When the release notifier is on, it also searches Linkomanija for your watched releases when the browser starts, every 6 hours and when you ask. Smileys in the comment editor load from Linkomanija's own image server. No other websites are contacted.</p><p>When you uninstall the extension, the browser opens this website. No data is sent with it.</p>"
       },
       {
         "title": "Permissions",
-        "body": "<ul><li><strong>Access to linkomanija.net</strong>: to add the features to the site's pages and to search for tracked releases</li><li><strong>Storage</strong>: to save your settings, history, tracked releases and login</li><li><strong>Tabs</strong>: to show the toolbar icon as active on Linkomanija.net, and to apply setting changes to open Linkomanija tabs straight away</li><li><strong>Alarms</strong>: to check tracked releases every 6 hours</li><li><strong>Notifications</strong> (optional): only asked for when you switch on system notifications for the release tracker</li></ul>"
+        "body": "<ul><li><strong>Access to linkomanija.net</strong>: to add the features to the site's pages and to search for watched releases</li><li><strong>Storage</strong>: to save your settings, history, watched releases and login</li><li><strong>Tabs</strong>: to show the toolbar icon as active on Linkomanija.net, and to apply setting changes to open Linkomanija tabs straight away</li><li><strong>Alarms</strong>: to check watched releases every 6 hours</li><li><strong>Notifications</strong> (optional): only asked for when you switch on system notifications for the release notifier</li></ul>"
       },
       {
         "title": "Removing your data",

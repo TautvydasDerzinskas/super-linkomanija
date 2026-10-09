@@ -2,25 +2,25 @@ import { useEffect, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Link } from 'react-router';
 
-import releaseTrackerService from '../../../services/common/release-tracker.service';
-import { ITrackedRelease, IReleaseTrackerState, IMessageReleaseTracker } from '../../../interfaces/release-tracker';
+import releaseNotifierService from '../../../services/common/release-notifier.service';
+import { IWatchedRelease, IReleaseNotifierState, IMessageReleaseNotifier } from '../../../interfaces/release-notifier';
 
 import ReleaseFormComponent from './release-form/release-form.component';
-import TrackedReleaseComponent from './tracked-release/tracked-release.component';
+import WatchedReleaseComponent from './watched-release/watched-release.component';
 
-import './release-tracker.component.scss';
+import './release-notifier.component.scss';
 
 const linkomanijaOrigins = ['*://*.linkomanija.net/*'];
 
 function requestCheck() {
-  const message: IMessageReleaseTracker = { releaseTracker: 'check' };
+  const message: IMessageReleaseNotifier = { releaseNotifier: 'check' };
   return chrome.runtime.sendMessage(message);
 }
 
-export default function ReleaseTrackerComponent() {
+export default function ReleaseNotifierComponent() {
   const intl = useIntl();
-  const [releases, setReleases] = useState<ITrackedRelease[]>([]);
-  const [trackerState, setTrackerState] = useState<IReleaseTrackerState>({ matches: {}, dismissedTorrentIds: [] });
+  const [releases, setReleases] = useState<IWatchedRelease[]>([]);
+  const [notifierState, setNotifierState] = useState<IReleaseNotifierState>({ matches: {}, dismissedTorrentIds: [] });
   const [editedReleaseId, setEditedReleaseId] = useState<string>(null);
   const [isChecking, setIsChecking] = useState(false);
   const [hasNotifications, setHasNotifications] = useState(false);
@@ -28,9 +28,9 @@ export default function ReleaseTrackerComponent() {
 
   useEffect(() => {
     const load = () => {
-      Promise.all([releaseTrackerService.getReleases(), releaseTrackerService.getState()]).then(([storedReleases, storedState]) => {
+      Promise.all([releaseNotifierService.getReleases(), releaseNotifierService.getState()]).then(([storedReleases, storedState]) => {
         setReleases(storedReleases);
-        setTrackerState(storedState);
+        setNotifierState(storedState);
       });
     };
 
@@ -52,8 +52,8 @@ export default function ReleaseTrackerComponent() {
     }
   };
 
-  const saveRelease = async (release: ITrackedRelease) => {
-    await releaseTrackerService.saveRelease(release);
+  const saveRelease = async (release: IWatchedRelease) => {
+    await releaseNotifierService.saveRelease(release);
     setEditedReleaseId(null);
     checkNow();
   };
@@ -78,63 +78,63 @@ export default function ReleaseTrackerComponent() {
   const renderStatus = () => {
     if (!hasHostAccess) {
       return (
-        <div className='release-tracker__warning'>
-          <FormattedMessage id='releaseTrackerNoAccess' />{' '}
+        <div className='release-notifier__warning'>
+          <FormattedMessage id='releaseNotifierNoAccess' />{' '}
           <button type='button' className='sl-button sl-button--link' onClick={grantHostAccess}>
-            <FormattedMessage id='releaseTrackerGrantAccess' />
+            <FormattedMessage id='releaseNotifierGrantAccess' />
           </button>
         </div>
       );
     }
-    if (trackerState.loggedOut) {
+    if (notifierState.loggedOut) {
       return (
-        <div className='release-tracker__warning'>
-          <FormattedMessage id='releaseTrackerLoggedOut' />{' '}
+        <div className='release-notifier__warning'>
+          <FormattedMessage id='releaseNotifierLoggedOut' />{' '}
           <a href='https://www.linkomanija.net/login.php' target='_blank'>
-            <FormattedMessage id='releaseTrackerLogIn' />
+            <FormattedMessage id='releaseNotifierLogIn' />
           </a>
         </div>
       );
     }
     return (
-      <div className='release-tracker__status'>
-        {trackerState.lastCheck
+      <div className='release-notifier__status'>
+        {notifierState.lastCheck
           ? intl.formatMessage(
-            { id: 'releaseTrackerLastCheck' },
-            { time: intl.formatDate(trackerState.lastCheck, { dateStyle: 'short', timeStyle: 'short' }) },
+            { id: 'releaseNotifierLastCheck' },
+            { time: intl.formatDate(notifierState.lastCheck, { dateStyle: 'short', timeStyle: 'short' }) },
           )
-          : intl.formatMessage({ id: 'releaseTrackerNeverChecked' })}
+          : intl.formatMessage({ id: 'releaseNotifierNeverChecked' })}
       </div>
     );
   };
 
   return (
-    <div className='release-tracker'>
-      <div className='release-tracker__heading'>
-        <Link to='/' className='release-tracker__back'>
-          ← <FormattedMessage id='releaseTrackerBack' />
+    <div className='release-notifier'>
+      <div className='release-notifier__heading'>
+        <Link to='/' className='release-notifier__back'>
+          ← <FormattedMessage id='releaseNotifierBack' />
         </Link>
-        <span className='release-tracker__title'>
-          <FormattedMessage id='featureReleaseTrackerTitle' />
+        <span className='release-notifier__title'>
+          <FormattedMessage id='featureReleaseNotifierTitle' />
         </span>
         <button type='button' className='sl-button' disabled={isChecking || releases.length === 0} onClick={checkNow}>
-          <FormattedMessage id={isChecking ? 'releaseTrackerChecking' : 'releaseTrackerCheckNow'} />
+          <FormattedMessage id={isChecking ? 'releaseNotifierChecking' : 'releaseNotifierCheckNow'} />
         </button>
       </div>
 
       {renderStatus()}
 
-      <label className='release-tracker__notifications'>
+      <label className='release-notifier__notifications'>
         <input type='checkbox' checked={hasNotifications} onChange={toggleNotifications} />
-        <FormattedMessage id='releaseTrackerSystemNotifications' />
+        <FormattedMessage id='releaseNotifierSystemNotifications' />
       </label>
 
       <ReleaseFormComponent onSave={saveRelease} />
 
-      <div className='release-tracker__releases'>
+      <div className='release-notifier__releases'>
         {releases.length === 0 && (
-          <div className='release-tracker__empty'>
-            <FormattedMessage id='releaseTrackerEmpty' />
+          <div className='release-notifier__empty'>
+            <FormattedMessage id='releaseNotifierEmpty' />
           </div>
         )}
         {releases.map(release => (release.id === editedReleaseId ? (
@@ -145,14 +145,14 @@ export default function ReleaseTrackerComponent() {
             onCancel={() => setEditedReleaseId(null)}
           />
         ) : (
-          <TrackedReleaseComponent
+          <WatchedReleaseComponent
             key={release.id}
             release={release}
-            matches={trackerState.matches[release.id] ?? []}
+            matches={notifierState.matches[release.id] ?? []}
             onEdit={() => setEditedReleaseId(release.id)}
-            onDelete={() => releaseTrackerService.removeRelease(release.id)}
-            onReject={torrentId => releaseTrackerService.rejectMatch(release.id, torrentId)}
-            onAccept={() => releaseTrackerService.acceptMatch(release.id)}
+            onDelete={() => releaseNotifierService.removeRelease(release.id)}
+            onReject={torrentId => releaseNotifierService.rejectMatch(release.id, torrentId)}
+            onAccept={() => releaseNotifierService.acceptMatch(release.id)}
           />
         )))}
       </div>
