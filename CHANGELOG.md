@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/TautvydasDerzinskas/super-linkomanija/compare/v2.1.0...v2.1.1) (2026-10-09)
+
+
+### Bug Fixes
+
+* rename release tracker to release notifier ([d26b8d7](https://github.com/TautvydasDerzinskas/super-linkomanija/commit/d26b8d75e34aa956d9b50e8d160b884fceeb82ed))
+
 # [2.1.0](https://github.com/TautvydasDerzinskas/super-linkomanija/compare/v2.0.0...v2.1.0) (2026-10-05)
 
 
