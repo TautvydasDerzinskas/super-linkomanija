@@ -29,6 +29,7 @@ export interface IFoundRelease {
 class ReleaseNotifierService {
   private runningCheck: Promise<IFoundRelease[]> = null;
   private queuedCheck: Promise<IFoundRelease[]> = null;
+  private requestedChecks = 0;
 
   public async getReleases(): Promise<IWatchedRelease[]> {
     return await releasesStorage.getItem<IWatchedRelease[]>(ChromeStorageKeys.ReleaseNotifier) ?? [];
@@ -97,15 +98,28 @@ class ReleaseNotifierService {
   }
 
   /**
-   * Checks every watched release, returns the matches found for the first time
+   * Checks every watched release, returns the matches found for the first time.
+   * A check asked for during a running one starts after it, once isEnabled is checked again.
    */
-  public check(): Promise<IFoundRelease[]> {
-    if (this.runningCheck) {
-      // Releases saved during the running check are searched by one more check after it
-      this.queuedCheck ??= this.runningCheck.catch(() => {}).then(() => {
-        this.queuedCheck = null;
-        return this.check();
+  public check(isEnabled: () => Promise<boolean>): Promise<IFoundRelease[]> {
+    this.requestedChecks++;
+    // Releases saved during the running check are searched by one more check after it
+    if (this.runningCheck && !this.queuedCheck) {
+      this.queuedCheck = this.runningCheck.catch(() => {}).then(async () => {
+        const requestedChecks = this.requestedChecks;
+        try {
+          // The release notifier could have been turned off meanwhile. A check asked for during this
+          // reading passed its own enabled check, so it still runs.
+          if (!await isEnabled() && requestedChecks === this.requestedChecks) {
+            return [];
+          }
+        } finally {
+          this.queuedCheck = null;
+        }
+        return this.check(isEnabled);
       });
+    }
+    if (this.queuedCheck) {
       return this.queuedCheck;
     }
 
