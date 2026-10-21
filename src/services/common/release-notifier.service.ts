@@ -28,6 +28,7 @@ export interface IFoundRelease {
 
 class ReleaseNotifierService {
   private runningCheck: Promise<IFoundRelease[]> = null;
+  private queuedCheck: Promise<IFoundRelease[]> = null;
 
   public async getReleases(): Promise<IWatchedRelease[]> {
     return await releasesStorage.getItem<IWatchedRelease[]>(ChromeStorageKeys.ReleaseNotifier) ?? [];
@@ -99,11 +100,18 @@ class ReleaseNotifierService {
    * Checks every watched release, returns the matches found for the first time
    */
   public check(): Promise<IFoundRelease[]> {
-    if (!this.runningCheck) {
-      this.runningCheck = this.performCheck().finally(() => {
-        this.runningCheck = null;
+    if (this.runningCheck) {
+      // Releases saved during the running check are searched by one more check after it
+      this.queuedCheck ??= this.runningCheck.catch(() => {}).then(() => {
+        this.queuedCheck = null;
+        return this.check();
       });
+      return this.queuedCheck;
     }
+
+    this.runningCheck = this.performCheck().finally(() => {
+      this.runningCheck = null;
+    });
     return this.runningCheck;
   }
 
@@ -156,7 +164,11 @@ class ReleaseNotifierService {
         break;
       }
 
-      const matches = state.matches[release.id] ?? [];
+      // A check running while the release was edited could have kept matches of its former keywords
+      const matches = (state.matches[release.id] ?? []).flatMap((match) => {
+        const { isMatch, isPreferred } = this.matchTitle(release, match.title);
+        return isMatch ? [{ ...match, isPreferred }] : [];
+      });
       for (const result of results.slice(0, maxCheckedResults)) {
         const isKnown = release.rejectedEntryIds.includes(result.entryId) ||
           matches.some(match => match.entryId === result.entryId);
