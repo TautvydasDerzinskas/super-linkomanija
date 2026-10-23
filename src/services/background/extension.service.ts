@@ -88,7 +88,7 @@ class ExtensionService {
     }
 
     try {
-      const foundReleases = await releaseNotifierService.check();
+      const foundReleases = await releaseNotifierService.check(() => this.isReleaseNotifierEnabled());
       await this.notifyAboutFoundReleases(foundReleases);
     } catch (error) {
       console.error('Checking watched releases failed', error);

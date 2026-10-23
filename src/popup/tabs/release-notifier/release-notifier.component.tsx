@@ -22,7 +22,9 @@ export default function ReleaseNotifierComponent() {
   const [releases, setReleases] = useState<IWatchedRelease[]>([]);
   const [notifierState, setNotifierState] = useState<IReleaseNotifierState>({ matches: {}, dismissedEntryIds: [] });
   const [editedReleaseId, setEditedReleaseId] = useState<string>(null);
-  const [isChecking, setIsChecking] = useState(false);
+  // Saving a release during a check asks for another one, so "Checking…" lasts until every requested check is done
+  const [requestedChecks, setRequestedChecks] = useState(0);
+  const isChecking = requestedChecks > 0;
   const [hasNotifications, setHasNotifications] = useState(false);
   const [hasHostAccess, setHasHostAccess] = useState(true);
 
@@ -44,11 +46,11 @@ export default function ReleaseNotifierComponent() {
   }, []);
 
   const checkNow = async () => {
-    setIsChecking(true);
+    setRequestedChecks(count => count + 1);
     try {
       await requestCheck();
     } finally {
-      setIsChecking(false);
+      setRequestedChecks(count => count - 1);
     }
   };
 
