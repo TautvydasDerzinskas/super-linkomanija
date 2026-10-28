@@ -27,7 +27,7 @@
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-intl": "^12.1.4",
-    "react-router": "^8.4.0",
+    "react-router": "^8.5.0",
     "sceditor": "^3.2.2",
     "tippy.js": "^6.3.7"
   },
